@@ -91,9 +91,9 @@ class SemEvalReviewOpinion(object):
     Attributes:
     Same as arguments except
     - target: "NULL" is converted to python3's None
-    - polarity: either -1/0/1, denoting negative/neutral/positive
+    - polarity: either 0/0.5/1, denoting negative/neutral/positive
     - target_position: (None, None) is converted to (0, 0)"""
-    polarity_dict = {"negative": -1, "neutral": 0, "positive": 1}
+    polarity_dict = {"negative": 0, "neutral": 0.5, "positive": 1}
 
     def __init__(self, target: str, polarity: str, target_position, category, subcategory):
         if target == "NULL":
