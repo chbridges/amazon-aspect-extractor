@@ -1,13 +1,12 @@
-from typing import List
 import RAKE
-import numpy as np
-from tqdm import tqdm
 from nltk.corpus import stopwords
+from tqdm import tqdm
+from typing import List
 
-def extract_keyword_str(document: str,
-                         maxWords: int = 5,
-                         minScore: float = 0.0,
-                         useNLTK: bool = True) -> List:
+
+def extract_keyword_str(
+    document: str, maxWords: int = -1, minScore: float = 0.0, useNLTK: bool = True
+) -> List[str]:
     """Extract the top keywords using RAKE
     Arguments:
     - document: A string containing the text to extract from
@@ -16,16 +15,26 @@ def extract_keyword_str(document: str,
     - useNLTK:  A boolean to choose between NLTK's stoplist and RAKE's SmartStoplist
 
     Return:
-    - keywords: A list of the keywords in the document"""
+    - keywords: A list of the keywords in the document
+    """
+    if type(document) in (list, set, tuple):
+        raise TypeError(
+            f"Function extract_keyword_str expects string type, got {type(document)} type instead. Did you mean to use extract_keyword_list?"
+        )
+
     if useNLTK:
-        stoplist = stopwords.words('english')
+        stoplist = stopwords.words("english")
     else:
         stoplist = RAKE.SmartStopList()
+
     rake = RAKE.Rake(stoplist)
-    keywords = rake.run(document) # dont use maxWords here, in case we filter words with minScore
+    keywords = rake.run(
+        document
+    )  # dont use maxWords here, in case we filter words with minScore
     keywords = [k for k in keywords if k[1] >= minScore]
-    keywords = keywords[:maxWords] #Sorted by Score
+    keywords = keywords[:maxWords]  # Sorted by Score
     return keywords
+
 
 def extract_keyword_list(documents: List[str], **kwargs) -> List:
     """Return top keywords using RAKE for a list of documents
@@ -36,9 +45,13 @@ def extract_keyword_list(documents: List[str], **kwargs) -> List:
     Return:
     - keywords: A list of the keywords in the document
     """
+    if type(documents) == str:
+        raise TypeError(
+            "Function extract_keyword_list expects list type, got string type. Did you mean to use extract_keyword_str?"
+        )
+
     keywords = []
     for doc in tqdm(documents, "Extracting keywords"):
         keywords.extend(extract_keyword_str(doc, **kwargs))
-    keywords = keywords.sort(key=lambda x: x[1]) #Sort by descending Score
-    keywords = keywords[::-1]
+    keywords.sort(key=lambda x: x[1], reverse=True)  # Sort by descending Score
     return keywords
