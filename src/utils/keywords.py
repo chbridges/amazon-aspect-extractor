@@ -1,10 +1,12 @@
 import RAKE
+import numpy as np
+import pandas as pd
 from nltk.corpus import stopwords
 from tqdm import tqdm
 from typing import List
 
 
-def extract_keyword_str(
+def extract_keywords_str(
     document: str, maxWords: int = -1, minScore: float = 0.0, useNLTK: bool = True
 ) -> List[str]:
     """Extract the top keywords using RAKE
@@ -15,7 +17,7 @@ def extract_keyword_str(
     - useNLTK:  A boolean to choose between NLTK's stoplist and RAKE's SmartStoplist
 
     Return:
-    - keywords: A list of the keywords in the document
+    - keywords: A list of the keywords in the document as (keyword, relevancy) tuples
     """
     if type(document) in (list, set, tuple):
         raise TypeError(
@@ -36,14 +38,14 @@ def extract_keyword_str(
     return keywords
 
 
-def extract_keyword_list(documents: List[str], **kwargs) -> List:
+def extract_keywords_list(documents: List[str], **kwargs) -> List:
     """Return top keywords using RAKE for a list of documents
     Arguments:
     - document: A list containing the documents to extract from
     - kwargs: Keywords arguments to extract_keyword_str
 
     Return:
-    - keywords: A list of the keywords in the document
+    - keywords: A list of the keywords in the documents (keyword, relevancy) tuples
     """
     if type(documents) == str:
         raise TypeError(
@@ -52,6 +54,23 @@ def extract_keyword_list(documents: List[str], **kwargs) -> List:
 
     keywords = []
     for doc in tqdm(documents, "Extracting keywords"):
-        keywords.extend(extract_keyword_str(doc, **kwargs))
+        keywords.extend(extract_keywords_str(doc, **kwargs))
     keywords.sort(key=lambda x: x[1], reverse=True)  # Sort by descending Score
     return keywords
+
+
+def keywords_to_dataframe(keywords: list, csv_name: str = ""):
+    """Converts a list of extracted keywords to an appropriate Pandas DataFrame
+    Arguments:
+    - keywords: A list of extracted keywords (using the above functions)
+    - csv_name: If non-empty, the DataFrame will be saved in data/<csv_name>.csv
+
+    Return:
+    - df: A dataframe with object column "keyword" and float column "relevancy"
+    """
+    df = pd.DataFrame(keywords, columns=['keyword', 'relevancy'])
+
+    if csv_name != "":
+        df.to_csv(f"data/{csv_name}.csv", index=False)
+
+    return df
