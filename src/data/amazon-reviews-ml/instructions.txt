@@ -1,0 +1,8 @@
+Follow the instructions on this website:
+https://registry.opendata.aws/amazon-reviews-ml/
+
+On most Linux systems, the following commands should suffice:
+sudo apt-get install awscli
+aws s3 cp s3://amazon-reviews-ml/ [target directory] --recursive --no-sign-request
+
+Move the dev, test, and train folders into this directory.

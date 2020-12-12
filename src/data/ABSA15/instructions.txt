@@ -1,0 +1,6 @@
+You can find the dataset here:
+https://alt.qcri.org/semeval2015/task12/index.php?id=data-and-tools
+
+Download the following files:
+absa-2015_laptops_trial.xml     (Laptops Trial Data)
+absa-2015_restaurants_trial.xml (Restaurants Trial Data)
