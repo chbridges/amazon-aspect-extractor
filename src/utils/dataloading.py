@@ -16,6 +16,9 @@ def load_amazon_mulitlingual(path: str,
     - data: A dictionary with the reviews for each of the 3 splits train/dev/test
     """
     data = {}
+    if "dev" in os.listdir(path):
+        os.rename(os.path.join(path, "dev"), os.path.join(path, "val"))
+
     for split in os.listdir(path):
         if not os.path.isdir(os.path.join(path, split)):
             continue
@@ -38,7 +41,7 @@ def load_semeval2015(path: str, categories: List[str] = ["laptops", "restaurants
     Return:
     - data: A dictionary with the reviews for each of the 3 splits train/dev/test
     """
-    data = {"train":[], "dev":[], "test":[]}
+    data = {"train":[], "val":[], "test":[]}
     for filename in os.listdir(path):
         if filename.endswith(".xml") and any(map(filename.lower().__contains__, categories)):
             print("Reading file {}...".format(filename))
@@ -71,7 +74,7 @@ def load_semeval2015(path: str, categories: List[str] = ["laptops", "restaurants
                 split.append(SemEvalReview(review_text, review_opinions))
             if "train" in filename.lower():
                 data["train"].extend(split[:math.floor(len(split)*0.9)])
-                data["dev"].extend(split[math.floor(len(split)*0.9):])
+                data["val"].extend(split[math.floor(len(split)*0.9):])
             elif "test" in filename.lower():
                 data["test"].extend(split)
     return data
@@ -119,6 +122,12 @@ class SemEvalReviewOpinion(object):
     def __str__(self):
         return "Opinion: " + ", ".join([attr+"="+str(self.__dict__[attr]) for attr in self.__dict__.keys()])
 
+    def __eq__(self, other):
+        for attr in self.__dict__.keys():
+            if self.__dict__[attr] != other.__dict__[attr]:
+                return False
+        return True
+
 class SemEvalReview(object):
     """A single review of the SemEval Dataset
     Arguments:
@@ -141,3 +150,21 @@ class SemEvalReview(object):
 
     def __str__(self):
         return self.text + "{ " + "\n".join([str(op) for op in self.opinions]) + " }"
+
+    def remove_text(self, span):
+        start, end = span
+        assert span[0] >= 0, "Invalid span {}".format(span)
+        assert span[1] <= len(self.text) + 1, "Span end {} exceeds review length {}".format(span[1], len(self.text))
+        self.text = self.text[:start] + self.text[end:]
+        for i, op in enumerate(self.opinions):
+            op_start, op_end = op.target_position
+            if start <= op_start:
+                if end >= op_end:
+                    #TODO Decide if it might be better to keep opinion and set target position to (0,0)
+                    self.opinions.remove(op) #delete opinion if the keyword is removed
+                else:
+                    op_start = op_start - min(op_start - start, end - start)
+
+            if start <= op_end:
+                op_end = op_end - min(end - start, op_end - start) #end and op_end both exclusive
+            op.target_position = (op_start, op_end)
