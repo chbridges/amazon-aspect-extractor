@@ -26,4 +26,5 @@ TODO.md
 
 # data
 src/data/*
-!src/data/.gitkeep
+!src/data/ABSA15/instructions.txt
+!src/data/amazon-reviews-ml/instructions.txt
