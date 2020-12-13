@@ -4,7 +4,7 @@ import json
 import xml.etree.cElementTree as ET
 import math
 
-def load_amazon_mulitlingual(path: str,
+def load_amazon_multilingual(path: str,
                              select_languages: List[str] =
                              ["en", "de", "zh", "es", "fr", "ja"]) -> dict:
     """Load the json formatted aws mulitlingual dataset
