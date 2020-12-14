@@ -3,6 +3,7 @@ import torch
 from torch.utils.data import Dataset, DataLoader, random_split
 from tqdm import tqdm, trange
 from utils.preprocessing import review_to_int
+import os
 
 class SentimentModel(nn.Module):
     """A sentiment predicting model"""
@@ -90,7 +91,7 @@ class SentimentModel(nn.Module):
         out = self.fc(out)
         out = self.activation(out)
 
-        return out.view(batch_size, seq_len, self.output_size)
+        return out.view(batch_size, seq_len, self.output_size)[:,-1,:]
 
 
 class SentimentDataset(Dataset):
@@ -146,7 +147,7 @@ def log_sq_diff(pred, y):
 
     Returns:
     logarithmic squared difference of the two vectors"""
-    return torch.mean(torch.log((pred - y)**2))
+    return torch.log(torch.mean((pred - y)**2))
 
 def accuracy(pred, y):
     """Accuracy of a prediction pred vs. ground truth y
@@ -156,9 +157,9 @@ def accuracy(pred, y):
 
     Returns:
     Accuracy of the predictions when rounded to the nearest label (0/0.5/1)"""
-    labels = torch.round(pred*2).astype(torch.int)
-    y = (y*2).astype(torch.int)
-    return torch.mean(labels == y)
+    labels = torch.round(pred*2).type(torch.int)
+    y = (y*2).type(torch.int)
+    return torch.mean((labels == y).float())
 
 def train_sentiment_model(model, optimizer, dataloaders, scheduler=None, criterion=log_sq_diff, n_epochs=1, eval_every=10, save_every=10, overwrite_chkpt=True):
     """
@@ -217,18 +218,18 @@ def train_sentiment_model(model, optimizer, dataloaders, scheduler=None, criteri
                         save_name)
 
     #Save model after training
-    save_name = os.path.join("models", model.name + str(epoch) + ".pth")
+    save_name = os.path.join("models", model.name + str(n_epochs) + ".pth")
     if overwrite_chkpt:
         save_name = os.path.join("models", model.name + ".pth")
 
-    torch.save({"epoch": epoch,
+    torch.save({"epoch": n_epochs,
                 "model_state_dict": model.state_dict(),
                 "optimizer_state_dict": optimizer.state_dict()},
                 save_name)
 
 def evaluate_sentiment_model(model, dataloaders, criterion=accuracy):
     acc = 0
-    for batch_id, (x, seq_len, y) in tqdm(enumerate(dataloaders["val"]), desc=f'Computing accuracy'):
+    for batch_id, (x, seq_lens, y) in tqdm(enumerate(dataloaders["val"]), desc=f'Computing accuracy'):
         with torch.no_grad():
             model.init_hidden(len(x))
 

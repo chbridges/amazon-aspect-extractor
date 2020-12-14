@@ -27,8 +27,8 @@ if __name__ == "__main__":
         dataloaders[phase] = DataLoader(sentiments, batch_size=32, shuffle=True)
 
     device = "cuda" if is_available() else "cpu"
-    model = SentimentModel(len(dict_for)+1, model_name="LSTM_run1", device=device)
-    optimizer = Adam(model.parameters())
+    model = SentimentModel(len(dict_for)+1, model_name="LSTM_testmodel", device=device)
+    optimizer = Adam(model.parameters(), lr=0.0002)
     scheduler = ReduceLROnPlateau(optimizer)
-    train_sentiment_model(model, optimizer, dataloaders, scheduler=scheduler, n_epochs=10, eval_every=1)
-    evaluate_sentiment_model(model)
+    train_sentiment_model(model, optimizer, dataloaders, scheduler=scheduler, n_epochs=3, eval_every=1)
+    evaluate_sentiment_model(model, dataloaders)

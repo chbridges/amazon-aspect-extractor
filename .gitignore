@@ -30,4 +30,4 @@ src/data/*
 !src/data/amazon-reviews-ml/instructions.txt
 
 # models
-models/*
+src/models/*
