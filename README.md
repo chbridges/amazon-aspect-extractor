@@ -1,4 +1,40 @@
-# Python Default Project
+# Amazon Aspect Extractor
+
+Team members:
+Mail Addresses:
+Existing Code Fragments: TODO links for existing code we are using
+Utilized libraries: TODO requirements.txt
+Contributions: TODO highlight pair programmed code, etc. in code
+
+## Project State
+
+Planning State:
+TODO implemented parts
+
+TODO parts yet to be finished
+
+Future Planning:
+TODO timeline for second part of the project
+
+High-level Architecture Description:
+TODO processing pipeline
+
+TODO Experiments:
+
+
+## Data Analysis
+
+Data Sources:
+TODO list data sources and add links
+
+Preprocessing:
+TODO describe data quality ensuring preprocessing steps
+
+TODO Basic Statistics:
+
+TODO Examples:
+
+
 
 ## Setup
 
