@@ -1,10 +1,12 @@
 # Amazon Aspect Extractor
 
-Team members:
-Mail Addresses:
-Existing Code Fragments: TODO links for existing code we are using
-Utilized libraries: TODO requirements.txt
-Contributions: TODO highlight pair programmed code, etc. in code
+Team members:  
+Mail Addresses:  
+Existing Code Fragments:  
+- https://towardsdatascience.com/sentiment-analysis-using-lstm-step-by-step-50d074f09948  
+- https://towardsdatascience.com/taming-lstms-variable-sized-mini-batches-and-why-pytorch-is-good-for-your-health-61d35642972e  
+Utilized libraries: TODO requirements.txt  
+Contributions: TODO highlight pair programmed code, etc. in code  
 
 ## Project State
 
