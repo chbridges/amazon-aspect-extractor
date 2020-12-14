@@ -1,7 +1,7 @@
 import os
 
-from utils.keywords import extract_keyword_list
-from utils.dataloading import load_amazon_mulitlingual, load_semeval2015
+from utils.keywords import extract_keywords_list
+from utils.dataloading import load_amazon_multilingual, load_semeval2015
 from utils.preprocessing import PreprocessingPipeline
 from utils.sentiment import SentimentModel, SentimentDataset, train_sentiment_model, evaluate_sentiment_model
 from torch.utils.data import DataLoader

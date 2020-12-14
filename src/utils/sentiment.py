@@ -2,7 +2,7 @@ import torch.nn as nn
 import torch
 from torch.utils.data import Dataset, DataLoader, random_split
 from tqdm import tqdm, trange
-from utils.preprocessing import review_to_int
+from .preprocessing import review_to_int
 
 class SentimentModel(nn.Module):
     """A sentiment predicting model"""
