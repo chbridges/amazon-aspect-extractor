@@ -3,10 +3,10 @@ import os
 from utils.keywords import extract_keywords_list
 from utils.dataloading import load_amazon_multilingual, load_semeval2015
 from utils.preprocessing import PreprocessingPipeline
-from utils.sentiment import SentimentModel, SentimentDataset, train_sentiment_model, evaluate_sentiment_model
+from utils.sentiment import SentimentModel, SentimentDataset, train_sentiment_model, evaluate_sentiment_model, cross_entropy
 from torch.utils.data import DataLoader
 from torch.optim import Adam
-from torch.optim.lr_scheduler import ReduceLROnPlateau
+from torch.optim.lr_scheduler import ReduceLROnPlateau, ExponentialLR
 from torch.cuda import is_available
 
 if __name__ == "__main__":
@@ -27,8 +27,9 @@ if __name__ == "__main__":
         dataloaders[phase] = DataLoader(sentiments, batch_size=32, shuffle=True)
 
     device = "cuda" if is_available() else "cpu"
-    model = SentimentModel(len(dict_for)+1, model_name="LSTM_testmodel", device=device)
-    optimizer = Adam(model.parameters(), lr=0.0002)
-    scheduler = ReduceLROnPlateau(optimizer)
-    train_sentiment_model(model, optimizer, dataloaders, scheduler=scheduler, n_epochs=3, eval_every=1)
+    model = SentimentModel(len(dict_for)+1, output_size=3, model_name="LSTM_classifier", device=device, normalize_output=False, n_layers=3, dropout=0.2, bidirectional=False)
+    optimizer = Adam(model.parameters(), lr=0.001, weight_decay=2e-4)
+    scheduler = ReduceLROnPlateau(optimizer, factor=0.2, verbose=True)
+    criterion = cross_entropy(dataloaders["train"], device=device)
+    train_sentiment_model(model, optimizer, dataloaders, criterion=criterion, scheduler=scheduler, n_epochs=100, eval_every=1)
     evaluate_sentiment_model(model, dataloaders)

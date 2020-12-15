@@ -4,6 +4,7 @@ from torch.utils.data import Dataset, DataLoader, random_split
 from tqdm import tqdm, trange
 from utils.preprocessing import review_to_int
 import os
+from torch.optim.lr_scheduler import ReduceLROnPlateau
 
 class SentimentModel(nn.Module):
     """A sentiment predicting model"""
@@ -147,9 +148,9 @@ def log_sq_diff(pred, y):
 
     Returns:
     logarithmic squared difference of the two vectors"""
-    return torch.log(torch.mean((pred - y)**2))
+    return torch.mean(- torch.log(1 - (pred - y)**2))
 
-def accuracy(pred, y):
+def accuracy(pred, y, regression=True):
     """Accuracy of a prediction pred vs. ground truth y
     Arguments:
     - pred: a vector of sentiment predictions between 0 and 1
@@ -157,9 +158,30 @@ def accuracy(pred, y):
 
     Returns:
     Accuracy of the predictions when rounded to the nearest label (0/0.5/1)"""
-    labels = torch.round(pred*2).type(torch.int)
+    if regression:
+        labels = torch.round(pred*2).type(torch.int)
+    else:
+        labels = torch.argmax(pred, dim=-1).type(torch.int)
     y = (y*2).type(torch.int)
     return torch.mean((labels == y).float())
+
+class cross_entropy(nn.CrossEntropyLoss):
+
+    def __init__(self, trainset, n_classes=3, device="cpu"):
+
+        self.n_classes = n_classes
+        sentiments = torch.cat([batch[2] for batch in trainset], dim=-1)
+        sentiments = torch.round(sentiments*(n_classes-1))
+        counts = []
+        for i in range(n_classes):
+            counts.append(torch.sum(sentiments == i))
+        weights = torch.reciprocal(torch.Tensor(counts)).to(device)
+        super().__init__(weights)
+
+    def __call__(self, pred, y):
+        y = (y*(self.n_classes -1)).type(torch.long)
+        return super().__call__(pred, y)
+
 
 def train_sentiment_model(model, optimizer, dataloaders, scheduler=None, criterion=log_sq_diff, n_epochs=1, eval_every=10, save_every=10, overwrite_chkpt=True):
     """
@@ -181,8 +203,6 @@ def train_sentiment_model(model, optimizer, dataloaders, scheduler=None, criteri
 
             x, seq_lens, y = x.to(model.device), seq_lens.to(model.device), y.to(model.device)
             pred = model(x, seq_lens)
-            if not model.normalize_output:
-                pred = nn.Sigmoid()(pred)
             loss = criterion(pred, y)
             loss.backward()
             optimizer.step()
@@ -198,14 +218,14 @@ def train_sentiment_model(model, optimizer, dataloaders, scheduler=None, criteri
 
                     x, seq_lens, y = x.to(model.device), seq_lens.to(model.device), y.to(model.device)
                     pred = model(x, seq_lens)
-                    if not model.normalize_output:
-                        pred = nn.Sigmoid()(pred)
                     loss = criterion(pred, y)
                     val_loss += loss.item()/len(dataloaders["val"])
             tqdm.write("Epoch {} validation loss: {}".format(epoch, val_loss))
 
-            if not scheduler is None:
-                scheduler.step(val_loss)
+        if type(scheduler) == ReduceLROnPlateau:
+            scheduler.step(epoch_loss)
+        elif not scheduler is None:
+            scheduler.step()
 
         if not epoch % save_every:
             save_name = os.path.join("models", model.name + str(epoch) + ".pth")
@@ -229,13 +249,20 @@ def train_sentiment_model(model, optimizer, dataloaders, scheduler=None, criteri
 
 def evaluate_sentiment_model(model, dataloaders, criterion=accuracy):
     acc = 0
-    for batch_id, (x, seq_lens, y) in tqdm(enumerate(dataloaders["val"]), desc=f'Computing accuracy'):
+    for batch_id, (x, seq_lens, y) in tqdm(enumerate(dataloaders["train"]), desc=f'Computing train accuracy'):
         with torch.no_grad():
             model.init_hidden(len(x))
 
             x, seq_lens, y = x.to(model.device), seq_lens.to(model.device), y.to(model.device)
             pred = model(x, seq_lens)
-            if not model.normalize_output:
-                pred = nn.Sigmoid()(pred)
-            acc += criterion(pred, y)/len(dataloaders["val"])
+            acc += criterion(pred, y, regression=(model.output_size==1))/len(dataloaders["train"])
+    print("Training results of model {} on criterion {}: {}".format(model.name, criterion.__name__, acc))
+    acc = 0
+    for batch_id, (x, seq_lens, y) in tqdm(enumerate(dataloaders["val"]), desc=f'Computing validation accuracy'):
+        with torch.no_grad():
+            model.init_hidden(len(x))
+
+            x, seq_lens, y = x.to(model.device), seq_lens.to(model.device), y.to(model.device)
+            pred = model(x, seq_lens)
+            acc += criterion(pred, y, regression=(model.output_size==1))/len(dataloaders["val"])
     print("Validation results of model {} on criterion {}: {}".format(model.name, criterion.__name__, acc))
