@@ -28,3 +28,6 @@ TODO.md
 src/data/*
 !src/data/ABSA15/instructions.txt
 !src/data/amazon-reviews-ml/instructions.txt
+
+# models
+src/models/*

@@ -2,7 +2,9 @@ import torch.nn as nn
 import torch
 from torch.utils.data import Dataset, DataLoader, random_split
 from tqdm import tqdm, trange
-from .preprocessing import review_to_int
+from utils.preprocessing import review_to_int
+import os
+from torch.optim.lr_scheduler import ReduceLROnPlateau
 
 class SentimentModel(nn.Module):
     """A sentiment predicting model"""
@@ -39,7 +41,6 @@ class SentimentModel(nn.Module):
         self.n_layers = n_layers
         self.bidirectional = bidirectional
         self.device = device
-
         self.embedding = nn.Embedding(dict_size, embedding_dim, padding_idx = 0).to(self.device)
         self.lstm = nn.LSTM(embedding_dim + 1,
                             hidden_dim,
@@ -48,7 +49,8 @@ class SentimentModel(nn.Module):
                             bidirectional=bidirectional,
                             batch_first=True).to(self.device)
         self.dropout = nn.Dropout(dropout).to(self.device)
-        self.fc = nn.Linear(hidden_dim, output_size).to(self.device)
+        self.fc = nn.Linear(hidden_dim*(1+self.bidirectional), output_size).to(self.device)
+        self.normalize_output = normalize_output
         if normalize_output:
             self.activation = nn.Sigmoid().to(self.device)
         else:
@@ -59,8 +61,8 @@ class SentimentModel(nn.Module):
         """Reset the hidden state. Always call this before a new, unrelated prediction
         Arguments:
         - batch_size: size of the next incoming batch"""
-        h = torch.randn(self.n_layers, batch_size, self.hidden_dim*(1+self.bidirectional)).to(self.device)
-        c = torch.randn(self.n_layers, batch_size, self.hidden_dim*(1+self.bidirectional)).to(self.device)
+        h = torch.randn(self.n_layers*(1+self.bidirectional), batch_size, self.hidden_dim).to(self.device)
+        c = torch.randn(self.n_layers*(1+self.bidirectional), batch_size, self.hidden_dim).to(self.device)
         self.hidden = (h, c)
 
     def forward(self, x, s_lengths):
@@ -75,15 +77,14 @@ class SentimentModel(nn.Module):
         Sentiment prediction for the batch of inputs, shape (batch_size, seq_len, self.output_size)"""
 
         batch_size, seq_len, _ = x.shape
-
-        embedded = torch.cat((self.embedding(x[:, :, 0]), x[:, :, 1]), dim=-1)
+        embedded = torch.cat((self.embedding(x[:, :, 0]), x[:, :, 1].float().unsqueeze(-1)), dim=-1)
 
 
         out = torch.nn.utils.rnn.pack_padded_sequence(embedded, s_lengths, batch_first=True)
 
         out, self.hidden = self.lstm(out, self.hidden)
 
-        out = torch.nn.utils.rnn.pack_padded_sequence(out, batch_first=True)
+        out, _ = torch.nn.utils.rnn.pad_packed_sequence(out, batch_first=True)
 
         out = out.contiguous().view(-1, out.shape[2])
 
@@ -91,7 +92,7 @@ class SentimentModel(nn.Module):
         out = self.fc(out)
         out = self.activation(out)
 
-        return out.view(batch_size, seq_len, self.output_size)
+        return out.view(batch_size, seq_len, self.output_size)[:,-1,:]
 
 
 class SentimentDataset(Dataset):
@@ -130,8 +131,7 @@ class SentimentDataset(Dataset):
 
         assert self.reviews.shape == (len(reviews), self.max_len), "Review tensor shape not recognized correctly by pytorch"
         assert self.aspects.shape == (len(aspects), self.max_len), "Aspect tensor shape not recognized correctly by pytorch"
-        print(torch.max(self.reviews), torch.min(self.reviews))
-        print(torch.max(self.aspects), torch.min(self.aspects))
+
     def __len__(self):
         return len(self.reviews)
 
@@ -148,9 +148,9 @@ def log_sq_diff(pred, y):
 
     Returns:
     logarithmic squared difference of the two vectors"""
-    return torch.mean(torch.log((pred - y)**2))
+    return torch.mean(- torch.log(1 - (pred - y)**2))
 
-def accuracy(pred, y):
+def accuracy(pred, y, regression=True):
     """Accuracy of a prediction pred vs. ground truth y
     Arguments:
     - pred: a vector of sentiment predictions between 0 and 1
@@ -158,9 +158,30 @@ def accuracy(pred, y):
 
     Returns:
     Accuracy of the predictions when rounded to the nearest label (0/0.5/1)"""
-    labels = torch.round(pred*2).astype(torch.int)
-    y = (y*2).astype(torch.int)
-    return torch.mean(labels == y)
+    if regression:
+        labels = torch.round(pred*2).type(torch.int)
+    else:
+        labels = torch.argmax(pred, dim=-1).type(torch.int)
+    y = (y*2).type(torch.int)
+    return torch.mean((labels == y).float())
+
+class cross_entropy(nn.CrossEntropyLoss):
+
+    def __init__(self, trainset, n_classes=3, device="cpu"):
+
+        self.n_classes = n_classes
+        sentiments = torch.cat([batch[2] for batch in trainset], dim=-1)
+        sentiments = torch.round(sentiments*(n_classes-1))
+        counts = []
+        for i in range(n_classes):
+            counts.append(torch.sum(sentiments == i))
+        weights = torch.reciprocal(torch.Tensor(counts)).to(device)
+        super().__init__(weights)
+
+    def __call__(self, pred, y):
+        y = (y*(self.n_classes -1)).type(torch.long)
+        return super().__call__(pred, y)
+
 
 def train_sentiment_model(model, optimizer, dataloaders, scheduler=None, criterion=log_sq_diff, n_epochs=1, eval_every=10, save_every=10, overwrite_chkpt=True):
     """
@@ -182,12 +203,10 @@ def train_sentiment_model(model, optimizer, dataloaders, scheduler=None, criteri
 
             x, seq_lens, y = x.to(model.device), seq_lens.to(model.device), y.to(model.device)
             pred = model(x, seq_lens)
-            if not model.normalize_output:
-                pred = nn.Sigmoid()(pred)
             loss = criterion(pred, y)
             loss.backward()
             optimizer.step()
-            epoch_loss += loss.item()/len(len(dataloaders["train"]))
+            epoch_loss += loss.item()/len(dataloaders["train"])
 
         tqdm.write("Epoch {} train loss: {}".format(epoch, epoch_loss))
 
@@ -199,14 +218,14 @@ def train_sentiment_model(model, optimizer, dataloaders, scheduler=None, criteri
 
                     x, seq_lens, y = x.to(model.device), seq_lens.to(model.device), y.to(model.device)
                     pred = model(x, seq_lens)
-                    if not model.normalize_output:
-                        pred = nn.Sigmoid()(pred)
                     loss = criterion(pred, y)
                     val_loss += loss.item()/len(dataloaders["val"])
             tqdm.write("Epoch {} validation loss: {}".format(epoch, val_loss))
 
-            if not scheduler is None:
-                scheduler.step(val_loss)
+        if type(scheduler) == ReduceLROnPlateau:
+            scheduler.step(epoch_loss)
+        elif not scheduler is None:
+            scheduler.step()
 
         if not epoch % save_every:
             save_name = os.path.join("models", model.name + str(epoch) + ".pth")
@@ -219,24 +238,31 @@ def train_sentiment_model(model, optimizer, dataloaders, scheduler=None, criteri
                         save_name)
 
     #Save model after training
-    save_name = os.path.join("models", model.name + str(epoch) + ".pth")
+    save_name = os.path.join("models", model.name + str(n_epochs) + ".pth")
     if overwrite_chkpt:
         save_name = os.path.join("models", model.name + ".pth")
 
-    torch.save({"epoch": epoch,
+    torch.save({"epoch": n_epochs,
                 "model_state_dict": model.state_dict(),
                 "optimizer_state_dict": optimizer.state_dict()},
                 save_name)
 
 def evaluate_sentiment_model(model, dataloaders, criterion=accuracy):
     acc = 0
-    for batch_id, (x, seq_len, y) in tqdm(enumerate(dataloaders["val"]), desc=f'Computing accuracy'):
+    for batch_id, (x, seq_lens, y) in tqdm(enumerate(dataloaders["train"]), desc=f'Computing train accuracy'):
         with torch.no_grad():
             model.init_hidden(len(x))
 
             x, seq_lens, y = x.to(model.device), seq_lens.to(model.device), y.to(model.device)
             pred = model(x, seq_lens)
-            if not model.normalize_output:
-                pred = nn.Sigmoid()(pred)
-            acc += criterion(pred, y)/len(dataloaders["val"])
+            acc += criterion(pred, y, regression=(model.output_size==1))/len(dataloaders["train"])
+    print("Training results of model {} on criterion {}: {}".format(model.name, criterion.__name__, acc))
+    acc = 0
+    for batch_id, (x, seq_lens, y) in tqdm(enumerate(dataloaders["val"]), desc=f'Computing validation accuracy'):
+        with torch.no_grad():
+            model.init_hidden(len(x))
+
+            x, seq_lens, y = x.to(model.device), seq_lens.to(model.device), y.to(model.device)
+            pred = model(x, seq_lens)
+            acc += criterion(pred, y, regression=(model.output_size==1))/len(dataloaders["val"])
     print("Validation results of model {} on criterion {}: {}".format(model.name, criterion.__name__, acc))
