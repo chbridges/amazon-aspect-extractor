@@ -63,6 +63,8 @@ def load_semeval2015(path: str, categories: List[str] = ["laptops", "restaurants
                         if len(category) == 1:
                             category.append(None)
                         assert len(category) == 2, "category has wrong format: {}".format(category)
+                        if op.attrib.get("polarity") is None or op.attrib.get("polarity") == "":
+                            continue
                         pos = (op.attrib.get("from"), op.attrib.get("to"))
                         opinion = SemEvalReviewOpinion(op.attrib.get("target"),
                                                        op.attrib.get("polarity"),

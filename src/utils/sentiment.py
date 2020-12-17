@@ -5,6 +5,7 @@ from tqdm import tqdm, trange
 from utils.preprocessing import review_to_int
 import os
 from torch.optim.lr_scheduler import ReduceLROnPlateau
+from utils.metrics import log_sq_diff, cross_entropy, f1_score, accuracy, class_balanced_accuracy
 
 class SentimentModel(nn.Module):
     """A sentiment predicting model"""
@@ -42,7 +43,8 @@ class SentimentModel(nn.Module):
         self.bidirectional = bidirectional
         self.device = device
         self.embedding = nn.Embedding(dict_size, embedding_dim, padding_idx = 0).to(self.device)
-        self.lstm = nn.LSTM(embedding_dim + 1,
+        self.fc1 = nn.Linear(embedding_dim+1, embedding_dim+1).to(self.device)
+        self.lstm = nn.LSTM(embedding_dim +1,
                             hidden_dim,
                             n_layers,
                             dropout=dropout,
@@ -57,12 +59,12 @@ class SentimentModel(nn.Module):
             self.activation = nn.Identity().to(self.device)
 
 
-    def init_hidden(self, batch_size: int):
+    def init_hidden(self, batch_size: int, stddev=1):
         """Reset the hidden state. Always call this before a new, unrelated prediction
         Arguments:
         - batch_size: size of the next incoming batch"""
-        h = torch.randn(self.n_layers*(1+self.bidirectional), batch_size, self.hidden_dim).to(self.device)
-        c = torch.randn(self.n_layers*(1+self.bidirectional), batch_size, self.hidden_dim).to(self.device)
+        h = torch.randn(self.n_layers*(1+self.bidirectional), batch_size, self.hidden_dim).to(self.device) * stddev
+        c = torch.randn(self.n_layers*(1+self.bidirectional), batch_size, self.hidden_dim).to(self.device) * stddev
         self.hidden = (h, c)
 
     def forward(self, x, s_lengths):
@@ -80,13 +82,19 @@ class SentimentModel(nn.Module):
         embedded = torch.cat((self.embedding(x[:, :, 0]), x[:, :, 1].float().unsqueeze(-1)), dim=-1)
 
 
+        embedded = self.fc1(embedded)
+
+        embedded = self.dropout(embedded)
+
         out = torch.nn.utils.rnn.pack_padded_sequence(embedded, s_lengths, batch_first=True)
+
 
         out, self.hidden = self.lstm(out, self.hidden)
 
         out, _ = torch.nn.utils.rnn.pad_packed_sequence(out, batch_first=True)
 
-        out = out.contiguous().view(-1, out.shape[2])
+        out = out.contiguous().view(batch_size, seq_len, out.shape[2])
+
 
         out = self.dropout(out)
         out = self.fc(out)
@@ -136,54 +144,9 @@ class SentimentDataset(Dataset):
         return len(self.reviews)
 
     def __getitem__(self, idx):
-        return torch.stack((self.reviews[idx], self.aspects[idx]), dim=-1), self.seq_lens[idx], self.sentiments[idx]
+        return torch.stack((self.reviews[idx], self.aspects[idx]), dim=-1), self.seq_lens[idx], self.sentiments[idx] #
 
-
-def log_sq_diff(pred, y):
-    """Logarithmic squared difference loss.
-    This ranges from 0 to -infinity and is subject to minimization
-    Arguments:
-    - pred: a vector of sentiment predictions between 0 and 1
-    - y: a vector of sentiment ground truths between 0 and 1
-
-    Returns:
-    logarithmic squared difference of the two vectors"""
-    return torch.mean(- torch.log(1 - (pred - y)**2))
-
-def accuracy(pred, y, regression=True):
-    """Accuracy of a prediction pred vs. ground truth y
-    Arguments:
-    - pred: a vector of sentiment predictions between 0 and 1
-    - y: a vector of sentiment ground truths between 0 and 1
-
-    Returns:
-    Accuracy of the predictions when rounded to the nearest label (0/0.5/1)"""
-    if regression:
-        labels = torch.round(pred*2).type(torch.int)
-    else:
-        labels = torch.argmax(pred, dim=-1).type(torch.int)
-    y = (y*2).type(torch.int)
-    return torch.mean((labels == y).float())
-
-class cross_entropy(nn.CrossEntropyLoss):
-
-    def __init__(self, trainset, n_classes=3, device="cpu"):
-
-        self.n_classes = n_classes
-        sentiments = torch.cat([batch[2] for batch in trainset], dim=-1)
-        sentiments = torch.round(sentiments*(n_classes-1))
-        counts = []
-        for i in range(n_classes):
-            counts.append(torch.sum(sentiments == i))
-        weights = torch.reciprocal(torch.Tensor(counts)).to(device)
-        super().__init__(weights)
-
-    def __call__(self, pred, y):
-        y = (y*(self.n_classes -1)).type(torch.long)
-        return super().__call__(pred, y)
-
-
-def train_sentiment_model(model, optimizer, dataloaders, scheduler=None, criterion=log_sq_diff, n_epochs=1, eval_every=10, save_every=10, overwrite_chkpt=True):
+def train_sentiment_model(model, optimizer, dataloaders, scheduler=None, criterion=log_sq_diff, n_epochs=1, eval_every=10, save_every=10, save_best=True, overwrite_chkpt=True):
     """
     Arguments:
     - model: the SentimentModel that is to be trained
@@ -194,6 +157,7 @@ def train_sentiment_model(model, optimizer, dataloaders, scheduler=None, criteri
     - eval_every: in which epoch interval to evaluate on the val set
     - save_every: in which epoch interval to save the model
     - overwrite_chkpt: whether to overwrite saved models from earlier epochs"""
+    best = -1
 
     for epoch in trange(n_epochs, desc='Epoch', leave=True, position=0):
         epoch_loss = 0
@@ -221,6 +185,16 @@ def train_sentiment_model(model, optimizer, dataloaders, scheduler=None, criteri
                     loss = criterion(pred, y)
                     val_loss += loss.item()/len(dataloaders["val"])
             tqdm.write("Epoch {} validation loss: {}".format(epoch, val_loss))
+            if best == -1 or val_loss < best:
+                best = val_loss
+
+                tqdm.write("Saving new best model...")
+                save_name = os.path.join("models", model.name + "_best" + ".pth")
+
+                torch.save({"epoch": epoch,
+                            "model_state_dict": model.state_dict(),
+                            "optimizer_state_dict": optimizer.state_dict()},
+                            save_name)
 
         if type(scheduler) == ReduceLROnPlateau:
             scheduler.step(epoch_loss)
