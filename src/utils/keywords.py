@@ -68,7 +68,7 @@ def keywords_to_dataframe(keywords: list, csv_name: str = ""):
     Return:
     - df: A dataframe with object column "keyword" and float column "relevancy"
     """
-    df = pd.DataFrame(keywords, columns=['keyword', 'relevancy'])
+    df = pd.DataFrame(keywords, columns=["keyword", "relevancy"])
 
     if csv_name != "":
         df.to_csv(f"data/{csv_name}.csv", index=False)
