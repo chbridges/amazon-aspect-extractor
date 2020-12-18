@@ -85,7 +85,7 @@ def keywords_to_dataframe(keywords: list, include_relevancy: bool = True, csv_na
 
     return df
 
-def find_aspects_str(doc: str, ignore_adjectives: bool = False, return_as_int: bool = False) -> str:
+def find_aspects_str(doc: str, ignore_adjectives: bool = True, return_as_int: bool = False) -> str:
     """
     Returns a boolean vector where each entry corresponds to a token in the given review.
     True means that the token belongs to an aspect, False means otherwise.
@@ -101,12 +101,14 @@ def find_aspects_str(doc: str, ignore_adjectives: bool = False, return_as_int: b
         nlp = spacy.load("en_core_web_sm", disable=["ner", "parser"])
         pos = lambda w: nlp(w)[0].pos_
 
-    keywords_nltk = [k[0] for k in extract_keywords_str(doc.text)]
-    keywords_smart = [k[0] for k in extract_keywords_str(doc.text, useNLTK=False)]
+    # Different results using NLTK stoplist and SmartStoplist, so we combine both
+    keywords_nltk = [k[0] for k in extract_keywords_str(doc)]
+    keywords_smart = [k[0] for k in extract_keywords_str(doc, useNLTK=False)]
     keywords = list(set(keywords_nltk + keywords_smart))
 
-    doc_tokens = re.split(" |\n", re.sub(r"[^\w\d\s]|'", "", doc.text).lower())
-    doc_tokens.remove("")
+    doc_tokens = re.split(" |\n", re.sub(r"[^\w\d\s]|'", "", doc).lower())
+    if "" in doc_tokens:
+        doc_tokens.remove("")
 
     doc_len = len(doc_tokens)
     aspectvector = [False for i in range(doc_len)]

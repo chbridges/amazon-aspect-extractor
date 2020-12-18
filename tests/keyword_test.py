@@ -2,7 +2,8 @@ import unittest
 import numpy as np
 import pandas as pd
 import os
-from src.utils.keywords import extract_keywords_str, extract_keywords_list, keywords_to_dataframe
+import re
+from src.utils.keywords import extract_keywords_str, extract_keywords_list, keywords_to_dataframe, find_aspects_str
 
 sample = "I recently bought a Fjallraven bag from Urban Outfitters and wanted to buy my friend one for her birthday. This color happened to be on sale, and I immediately bought it. I did read the reviews, saying that some of these bags are counterfeit, but was positive that this may have been a mistake. I received the bag in the mail, and immediately could tell the main difference between the bag I ordered from Urban, and the one I received from Amazon. This bag seemed to be made of cloth, was a little more slouchy, and is definitely less waterproof than my bag. My bag is made of a thick, waterproof material, and compared to this one, could probably be submerged in water and be just fine. To be honest, this was the only thing that I could tell was off. The bag looks great, has all of the same details that mine does, and it is in a super cute color! I do not mind that this bag may be made out of a different material, since I did pay such a low price for it. I do not plan on returning it, because my friend loves it! Buyers, beware that you may not be getting the same quality bag as Fjallraven sells, but the quality is still good, and comparable to a Jansport backpack. I would still recommend this bag, as it is super cute, affordable on Amazon, and very trendy nowadays."
 
@@ -93,6 +94,53 @@ class DataFrameTest(unittest.TestCase):
         os.remove("src/data/test.csv")
         self.assertFalse("test.csv" in os.listdir("src/data"))
 
+class AspectExtracionTest(unittest.TestCase):
+    """Tests for find_aspects_str"""
+    def test_invalid_inputs(self):
+        self.assertRaises(TypeError, find_aspects_str, None)
+        self.assertRaises(TypeError, find_aspects_str, 0)
+        self.assertRaises(TypeError, find_aspects_str, [""])
+
+    def test_empty_string(self):
+        aspectvector = find_aspects_str("")
+        
+        self.assertIsInstance(aspectvector, list)
+        self.assertEqual(len(aspectvector), 0)
+
+    def test_sample(self):
+        aspectvector = find_aspects_str(sample)
+        aspectvector_int = find_aspects_str(sample, return_as_int=True)
+        aspectvector_adj = find_aspects_str(sample, ignore_adjectives=False)
+
+        sample_tokens = re.split(" |\n", re.sub(r"[^\w\d\s]|'", "", sample))
+
+        self.assertIsInstance(aspectvector, list)
+        self.assertGreater(len(aspectvector), 0)
+        self.assertEqual(len(aspectvector), len(sample_tokens))
+        self.assertIsInstance(aspectvector[0], bool)
+        self.assertIn(True, aspectvector)
+        self.assertIn(False, aspectvector)
+
+        self.assertEqual(len(aspectvector), len(aspectvector_int))
+        self.assertIsInstance(aspectvector_int[0], int)
+        self.assertIn(1, aspectvector_int)  
+        self.assertIn(0, aspectvector_int)
+        for i in range(len(aspectvector_int)):
+            self.assertEqual(bool(aspectvector_int[i]), aspectvector[i])
+            self.assertEqual(aspectvector_int[i], int(aspectvector[i]))
+        
+        self.assertEqual(len(aspectvector), len(aspectvector_adj))
+        truecount = 0
+        truecount_adj = 0
+        for i in range(len(aspectvector_adj)):
+            if aspectvector[i] == True:
+                self.assertEqual(aspectvector_adj[i], True)
+                truecount += 1
+            if aspectvector_adj[i] == True:
+                truecount_adj += 1
+            elif aspectvector_adj[i] == False:
+                self.assertEqual(aspectvector[i], False)
+        self.assertLess(truecount, truecount_adj)
 
 if __name__ == "__main__":
     unittest.main()
