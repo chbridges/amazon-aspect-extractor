@@ -1,93 +1,139 @@
 # Amazon Aspect Extractor
 
-Team members:  
-Mail Addresses:  
-Existing Code Fragments:  
-- https://towardsdatascience.com/sentiment-analysis-using-lstm-step-by-step-50d074f09948  
-- https://towardsdatascience.com/taming-lstms-variable-sized-mini-batches-and-why-pytorch-is-good-for-your-health-61d35642972e  
-Utilized libraries: TODO requirements.txt  
-Contributions: TODO highlight pair programmed code, etc. in code  
+### Team members:  
+- Christopher Brückner
+- Julius Ernesti
+- Raphael Kirchholtes
+- Armand Rousselot
+
+### Mail Addresses:  
+- christopher.brueckner95@gmail.com
+- juliusernesti@yahoo.de
+- kirchholtes@stud.uni-heidelberg.de
+- armand.r@live.de
+
+### Existing Code Fragments:  
+- Sentiment LSTM: https://towardsdatascience.com/sentiment-analysis-using-lstm-step-by-step-50d074f09948  
+- Dynamic input sizes for LSTMs: https://towardsdatascience.com/taming-lstms-variable-sized-mini-batches-and-why-pytorch-is-good-for-your-health-61d35642972e  
+
+### Utilized libraries: 
+- see requirements.txt  
 
 ## Project State
 
-Planning State:
-TODO implemented parts
+### Planning State:
+<img src="Planning_State.png" alt="drawing" width="600rem"/>
 
-TODO parts yet to be finished
 
-Future Planning:
-TODO timeline for second part of the project
+- Stretch Goal: GUI (Browser-PlugIn)
 
-High-level Architecture Description:
-TODO processing pipeline
 
-TODO Experiments:
+## High-level Architecture Description:
+
+### Processing pipeline
+
+<img src="Pipeline.png" alt="drawing" width="600rem"/>
 
 
 ## Data Analysis
 
-Data Sources:
-TODO list data sources and add links
+### Data Sources:
 
-Preprocessing:
-TODO describe data quality ensuring preprocessing steps
+#### Training Data:
+- https://alt.qcri.org/semeval2015/task12/index.php?id=data-and-tools
+- https://europe.naverlabs.com/research/natural-language-processing/aspect-based-sentiment-analysis-dataset/
 
-TODO Basic Statistics:
+#### Pre-crawled  Amazon reviews:
+- https://registry.opendata.aws/amazon-reviews-ml/
 
-TODO Examples:
+### Preprocessing:
+
+The implementation of our crawler is still a work in progress. 
+A uniform document schema for the crawled data to ensure its quality will be developed later on.
+
+### Basic Statistics:
+
+#### Training Datasets
+
+
+<table style="width:30rem">
+  <tr>
+    <th>Dataset</th>
+    <th>#(Reviews)</th> 
+    <th>Opinions per Review</th>
+    <th>Polarity</th>
+    <th></th>
+    <th></th> 
+  </tr>
+  <tr>
+    <th></th>
+    <th></th> 
+    <th></th>
+    <th>(+)</th>
+    <th>(0)</th>
+    <th>(-)</th>
+  </tr>
+  <tr>
+    <td>laptopdata</td>
+    <td>340</td> 
+    <td>8.35</td>
+    <td>1103</td> 
+    <td>106</td>
+    <td>765</td>
+  </tr>
+  <tr>
+    <td>restaurantsdata</td>
+    <td>195</td> 
+    <td>7.28</td>
+    <td>1198</td> 
+    <td>53</td>
+    <td>403</td>
+  </tr>
+  <tr>
+    <td>foursquare_gold</td>
+    <td>157</td> 
+    <td>2.24</td>
+    <td>946</td> 
+    <td>18</td>
+    <td>191</td>
+  </tr>
+</table> 
+
+The overall amount of training data is quite small for training a neural network.  
+Another challenge is the uneven representation of classes.  
+
+The following three plots visualize the distribution of our training data.  
+Empty opinions are opinions in the dataset which do not include a target category or polarity. 
+
+#### Laptop:
+
+<img src="laptopdata.png" alt="drawing" width="450rem"/>
+
+#### Restaurant:
+
+<img src="restaurantsdata.png" alt="drawing" width="450rem"/>
+
+#### Foursqare:
+
+<img src="foursquare_gold.png" alt="drawing" width="450rem"/>
 
 
 
-## Setup
 
-1. [Install](https://pipenv.pypa.io/en/latest/#install-pipenv-today) ```pipenv```. You might want to set ```export PIPENV_VENV_IN_PROJECT=1``` in your ```.bashrc/.zshrc``` for local virtual environments. Thereby you are making sure that all dependencies for your application are stored in the same directory under the `.venv` folder.
-<br>
+### Examples:
 
-2. Clone repository into preferred directory (or simply download the source code and rename the folder as you like): `git clone https://github.com/jomazi/Python-Default`
-<br>
-
-3. Install packages: `cd Python-Default && pipenv install --dev`
-<br>
-
-4. Init ```.env``` file. Use this file to store all your environment variables, such as credentials or encryption phrases. This file should never be added to your public repository but should always stay local: `mv .example.env .env`
-<br>
-
-5. Activate virtual environment: `pipenv shell`
-<br>
-
-6. Test setup: `pipenv run main`
-<br>
-
-7. Install Git hooks. They help you to execute tasks before your code is committed (see [Working with Git](#working-with-git)). Learn more about pre-commit in the [official docs](https://pre-commit.com/). ([Installation](https://pre-commit.com/#installation) and [Activation](https://pre-commit.com/#3-install-the-git-hook-scripts) are described here) In our case they are used to make sure that the application code is well formatted using [black](https://github.com/psf/black)/[autopep8](https://github.com/hhatto/autopep8), has no syntax errors using [flake8](https://gitlab.com/pycqa/flake8) and that the dependency imports are well sorted using [isort](https://github.com/PyCQA/isort). The pre-commit instructions are given by the `.pre-commit-config.yaml`. Any isort specific settings are given by the `.isort.cfg` file.
-
-**Note:** To deactivate the environment again, simply run `deactivate`.
-
-## Testing
-
-A script to automatically execute tests is already defined in the project's `Pipfile`. Therefore you can simply run: `pipenv run test`
-To generate a report on code coverage alongside run: `pipenv run test && pipenv run report`
-
-## Working with Git
-
-In case you do not know about Git yet it is now time to make yourself familiar with it :)
-There are already plenty of very good tutorials about Git out there which is why  we refer to them. For a good introduction written in German you might want to go to [Roger Dudler's awesome post](https://rogerdudler.github.io/git-guide/index.de.html).
-
-### Git Workflow
-
-To coordinate the software development process a set of guidelines are necessary. It is helpful to rely on the [GitHub Flow](https://guides.github.com/introduction/flow/) strategy which defines a branch-based workflow. Essentially, it boils down to the following steps:
-
-1. Create a `main/master` branch. This is done automatically by creating a new project.
-2. Create an issue that describes a bug or asks for an additional feature.
-3. Add features or solve bug fixes by creating new branches via `git checkout`. Those branches should be named `feature-*` or `fix-*` accordingly. Assign the issue that the code changes are meant to solve.
-4. Commit to new feature or fix branch. Make sure that you also write `tests` which cover the new features or show that the bug is solved. They should run automatically using the [GitHub CI system](https://docs.github.com/en/free-pro-team@latest/actions/guides/about-continuous-integration). Having a CI system set up is not mandatory but helps a lot to avoid mistakes during the development process.
-5. Create pull request once you are done with your work. Use the @mention system to get the maintainer's attention or ask questions to specific people.
-6. Optional discussion about the pull request. If necessary, additional changes can be made.
-7. New branch is merged into `main/master` branch.
-
-## Packaging
-
-Packaging a Python application is not as trivial as it seems to be. A good introduction into this topic is given by the official [docs](https://packaging.python.org/overview/). In any case you should always make sure that your program has only one entry point. In this example project it is the `src/main.py` file.
-
-## Important Note
-
-Leave a star ⭐ ;)
+|reviewid|text                                                                                                                                                                                                       |category                     |polarity|
+|--------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------|--------|
+|239     |(I found a 2GB stick for a bit under $50)                                                                                                                                                                  |                             |        |
+|239     |Bottom line, I doubt you'd be overly disappointed if you invest in this machine.                                                                                                                           |LAPTOP#GENERAL               |positive|
+|239     |If what you need is a machine to do some surfing, email checking, word processing, and watching a movie or two, this is the machine you want.                                                              |LAPTOP#MISCELLANEOUS         |positive|
+|239     |If you want a little more custom ability, drop a few bucks and upgrade to one of the more robust versions of Win 7 and grab a 2GB stick of memory to spice it all up a bit more.                           |                             |        |
+|239     |It's priced very reasonable and works very well right out of the box.                                                                                                                                      |LAPTOP#OPERATION_PERFORMANCE |positive|
+|239     |It's priced very reasonable and works very well right out of the box.                                                                                                                                      |LAPTOP#PRICE                 |positive|
+|239     |My ONLY issues are:                                                                                                                                                                                        |                             |        |
+|239     |Nice and portable and definitely a decent enough system to keep you entertained while sitting in the airplane for a couple of hours, or at the hotel taking care of some last minute details and documents.|LAPTOP#GENERAL               |positive|
+|239     |Nice and portable and definitely a decent enough system to keep you entertained while sitting in the airplane for a couple of hours, or at the hotel taking care of some last minute details and documents.|LAPTOP#MISCELLANEOUS         |positive|
+|239     |Nice and portable and definitely a decent enough system to keep you entertained while sitting in the airplane for a couple of hours, or at the hotel taking care of some last minute details and documents.|LAPTOP#PORTABILITY           |positive|
+|239     |That being said, it still runs video in full screen decently.                                                                                                                                              |DISPLAY#OPERATION_PERFORMANCE|neutral |
+|239     |the screen/video resolution won't increase to a higher resolution then 1024 x 60                                                                                                                           |DISPLAY#QUALITY              |negative|
+|239     |The sound is a bit quiet if you're on a plane, this can easily be overcome with a decent pair of head phones.                                                                                              |MULTIMEDIA_DEVICES#QUALITY   |neutral |
