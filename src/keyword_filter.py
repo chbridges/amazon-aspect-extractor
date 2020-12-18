@@ -36,6 +36,10 @@ tags = tags[:tags.index("X")+1]
 
 tagmap = {tags[i]:i for i in range(len(tags))}
 
+# map proper nouns to nouns
+#tagmap['PROPN'] = tagmap['NOUN']
+#tags.remove('PROPN')
+
 # create matrix
 
 matrix = np.zeros((len(data),len(tags)+1))
@@ -46,9 +50,10 @@ for i in range(len(data)):
         matrix[i,j] += 1
         matrix[i,-1] += 1
 
+
 # classifier evaluation
 
-def evaluate_classifier(model, splits=5):
+def evaluate_classifier(model, splits=10):
     P = []
     R = []
     F1 = []
@@ -78,9 +83,9 @@ print("\nDecision Tree:")
 evaluate_classifier(DecisionTreeClassifier())
 print("\nRandom Forest:")
 evaluate_classifier(RandomForestClassifier(n_estimators=100))
-print("\nGBD:")
+print("\nGradient Boosted Trees:")
 evaluate_classifier(GradientBoostingClassifier())
-print("\nSVM:")
+print("\nSupport Vector Machine:")
 evaluate_classifier(LinearSVC(tol=1e-3))
-print("\nMLP:")
+print("\nMultilayer Perceptron:")
 evaluate_classifier(MLPClassifier(solver='lbfgs'))
