@@ -35,7 +35,9 @@ Results of current best sentiment model
 |Training|0.803|0.758|0.847|
 |Validation|0.659|0.569|0.686|
 
-
+### Extraction State:
+- See issue "Feature: Keyword Filter"  
+- Missing: Accurate splitting of reviews into components containing both the extracted keyword and its associated sentiment terms  
 
 ## High-level Architecture Description:
 
