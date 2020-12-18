@@ -137,3 +137,6 @@ Empty opinions are opinions in the dataset which do not include a target categor
 |239     |That being said, it still runs video in full screen decently.                                                                                                                                              |DISPLAY#OPERATION_PERFORMANCE|neutral |
 |239     |the screen/video resolution won't increase to a higher resolution then 1024 x 60                                                                                                                           |DISPLAY#QUALITY              |negative|
 |239     |The sound is a bit quiet if you're on a plane, this can easily be overcome with a decent pair of head phones.                                                                                              |MULTIMEDIA_DEVICES#QUALITY   |neutral |
+
+### Deepnote-Reading Access:
+https://deepnote.com/project/c0f53828-5296-4fd9-84e1-b3660423ecac
