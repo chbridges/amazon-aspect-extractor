@@ -1,0 +1,10 @@
+numpy
+pandas
+sklearn
+torch
+nltk
+spacy
+en_core_web_sm
+python-rake
+bs4
+selenium
