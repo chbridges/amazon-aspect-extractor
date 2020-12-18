@@ -22,7 +22,7 @@
 ## Project State
 
 ### Planning State:
-<img src="Planning_State.png" alt="drawing" width="600rem"/>
+<img src="./milestone_01/Planning_State.png" alt="drawing" width="600rem"/>
 
 
 - Stretch Goal: GUI (Browser-PlugIn)
@@ -32,7 +32,7 @@
 
 ### Processing pipeline
 
-<img src="Pipeline.png" alt="drawing" width="600rem"/>
+<img src="./milestone_01/Pipeline.png" alt="drawing" width="600rem"/>
 
 
 ## Data Analysis
@@ -107,15 +107,15 @@ Empty opinions are opinions in the dataset which do not include a target categor
 
 #### Laptop:
 
-<img src="laptopdata.png" alt="drawing" width="450rem"/>
+<img src="./milestone_01/laptopdata.png" alt="drawing" width="450rem"/>
 
 #### Restaurant:
 
-<img src="restaurantsdata.png" alt="drawing" width="450rem"/>
+<img src="./milestone_01/restaurantsdata.png" alt="drawing" width="450rem"/>
 
 #### Foursqare:
 
-<img src="foursquare_gold.png" alt="drawing" width="450rem"/>
+<img src="./milestone_01/foursquare_gold.png" alt="drawing" width="450rem"/>
 
 
 
