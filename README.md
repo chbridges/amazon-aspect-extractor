@@ -27,6 +27,15 @@
 
 - Stretch Goal: GUI (Browser-PlugIn)
 
+### Training State:
+Results of current best sentiment model
+
+|Split \ Metric|Accuracy|Class balanced accuracy|F1 Score|
+|--------------|--------|-----------------------|--------|
+|Training|0.803|0.758|0.847|
+|Validation|0.659|0.569|0.686|
+
+
 
 ## High-level Architecture Description:
 
