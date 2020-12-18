@@ -85,7 +85,7 @@ class DataFrameTest(unittest.TestCase):
 
     def test_csv(self):
         os.chdir("src")
-        sample_df = keywords_to_dataframe(extract_keywords_str(sample), "test")
+        sample_df = keywords_to_dataframe(extract_keywords_str(sample), csv_name="test")
         os.chdir("..")
 
         self.assertTrue("test.csv" in os.listdir("src/data"))

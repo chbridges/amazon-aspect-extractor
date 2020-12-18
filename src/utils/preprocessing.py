@@ -1,6 +1,7 @@
 import en_core_web_sm
 import spacy
 import re
+from nltk.stem import PorterStemmer
 from tqdm import tqdm
 from collections import Counter
 
@@ -17,7 +18,16 @@ def lower(review):
     review.text = review.text.lower()
     return review
 
-def remove_special_characters(review):
+def remove_special_characters_str(doc: str) -> str:
+    """Remove special characters
+    Arguments:
+    - doc: the string
+    Returns:
+    The string without special characters
+    """
+    return re.sub(r"[^\w\d\s]|'", "", doc)
+
+def remove_special_characters_review(review):
     """Remove special characters
     Arguments:
     - review: the review of the SemEvalReview class
@@ -34,7 +44,7 @@ def remove_special_characters(review):
         review.remove_text(match.span())
     return review
 
-def remove_stopwords(review):
+def remove_stopwords_review(review):
     """Remove Stopwords
     Arguments:
     - review: the review of the SemEvalReview class
@@ -53,7 +63,30 @@ def remove_stopwords(review):
         review.remove_text(match.span())
     return review
 
-def review_to_int(reviewtexts):
+def remove_stopwords_list(tokens: list, aspectvector: list = None) -> list:
+    """Remove Stopwords from a list of tokens and optionally the indices from a corresponding boolean vector
+    Arguments:
+    - tokens: a list of tokens
+    - aspectvector: a boolean vector returned when extracting the aspects from the same review
+
+    Returns:
+    - The list of tokens without stop words
+    - Optionally: The filtered aspect vector of same length as the returned list
+    """
+    stopwords = spacy.lang.en.stop_words.STOP_WORDS
+
+    if aspectvector == None:
+        return [t for t in tokens if t not in stopwords]
+    else:
+        new_tokens = []
+        new_aspectvector = []
+        for i in range(len(tokens)):
+            if tokens[i] not in stopwords:
+                new_tokens.append(tokens[i])
+                new_aspectvector.append(aspectvector[i])
+        return new_tokens, new_aspectvector
+
+def review_to_int(reviewtexts: list):
     """Create the dictionaries for converting words to numbers and back
     Arguments:
     - reviews: a 2d list of shape (num_reviews, num_tokens), where reviews are saved as strings"""
@@ -65,10 +98,24 @@ def review_to_int(reviewtexts):
     int_to_str_dict = {v: k for k, v in str_to_int_dict.items()}
     return str_to_int_dict, int_to_str_dict
 
-def stemming(reviewtext):
-    raise(NotImplementedError("Stemming not implemented"))
+def stem_str(reviewtext: str) -> str:
+    raise(NotImplementedError("Stemming strings not implemented"))
 
-def tokenize(review):
+def stem_list(tokens: list) -> list:
+    """Stems all tokens in a given list
+    Arguments:
+    - tokens: List of tokens
+
+    Returns:
+    List of stemmed tokens
+    """
+    stem = PorterStemmer().stem
+    return [stem(t) for t in tokens]
+
+def tokenize_str(doc: str) -> list:
+    pass
+
+def tokenize_review(review):
     """Tokenize a review
     Arguments:
     - review: the untokenized review of the SemEvalReview class
@@ -125,14 +172,14 @@ class PreprocessingPipeline(object):
             if self.lower:
                 reviews = list(map(lower, tqdm(reviews, desc="Converting to lowercase", leave=False, position=1)))
             if self.rm_special_char:
-                reviews = list(map(remove_special_characters, tqdm(reviews, desc="Removing special characters", leave=False, position=1)))
+                reviews = list(map(remove_special_characters_review, tqdm(reviews, desc="Removing special characters", leave=False, position=1)))
             if self.rm_stopwords:
-                reviews = list(map(remove_stopwords, tqdm(reviews, desc="Removing stopwords", leave=False, position=1)))
+                reviews = list(map(remove_stopwords_review, tqdm(reviews, desc="Removing stopwords", leave=False, position=1)))
             if self.tokenize:
-                reviews = list(map(tokenize, tqdm(reviews, desc="Tokenizing", leave=False, position=1)))
+                reviews = list(map(tokenize_review, tqdm(reviews, desc="Tokenizing", leave=False, position=1)))
                 reviews = ([rev[0] for rev in reviews], [rev[1] for rev in reviews], [rev[2] for rev in reviews])
             if self.stemming:
-                reviews[0] = list(map(stemming, tqdm(reviews[0], desc="Stemming", leave=False, position=1)))
+                reviews[0] = list(map(stem_str, tqdm(reviews[0], desc="Stemming", leave=False, position=1)))
             dataset[phase] = reviews
 
 
