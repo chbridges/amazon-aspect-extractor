@@ -107,15 +107,15 @@ Empty opinions are opinions in the dataset which do not include a target categor
 
 #### Laptop:
 
-<img src="./milestone_01/laptopdata.png" alt="drawing" width="450rem"/>
+<img src="./milestone_01/laptopdata-2.png" alt="drawing" width="450rem"/>
 
 #### Restaurant:
 
-<img src="./milestone_01/restaurantsdata.png" alt="drawing" width="450rem"/>
+<img src="./milestone_01/restaurantsdata-2.png" alt="drawing" width="450rem"/>
 
 #### Foursqare:
 
-<img src="./milestone_01/foursquare_gold.png" alt="drawing" width="450rem"/>
+<img src="./milestone_01/foursquare_gold-2.png" alt="drawing" width="450rem"/>
 
 
 
