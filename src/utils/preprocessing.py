@@ -98,8 +98,30 @@ def review_to_int(reviewtexts: list):
     int_to_str_dict = {v: k for k, v in str_to_int_dict.items()}
     return str_to_int_dict, int_to_str_dict
 
-def stem_str(reviewtext: str) -> str:
-    raise(NotImplementedError("Stemming strings not implemented"))
+def stem_str(doc: str) -> str:
+    """Stems all words in a given string
+    Arguments:
+    - doc: A string (typically review.text)
+    Returns:
+    - modified doc
+    """
+    wordpattern = r"\b\w+\b"
+    stemmer = PorterStemmer()
+
+    last_index = 0
+
+    while True:
+        new_word = re.search(wordpattern, doc[last_index:])
+        print(new_word)
+        if new_word == None:
+            break
+        else:
+            begin = new_word.span()[0] + last_index
+            end = new_word.span()[1] + last_index
+            stem = stemmer.stem(doc[begin:end])
+            doc = doc[:begin] + stem + doc[end:]
+            last_index = begin + len(stem)
+    return doc
 
 def stem_list(tokens: list) -> list:
     """Stems all tokens in a given list
