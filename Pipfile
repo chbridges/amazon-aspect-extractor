@@ -11,6 +11,12 @@ coverage = "*"
 [packages]
 torch = "*"
 numpy = "*"
+pandas = "*"
+nltk = "*"
+spacy = "*"
+python-rake = "*"
+selenium = "*"
+pre-commit = "*"
 
 [scripts]
 test = "coverage run --include=src/*,tests/* -m unittest discover -s ./tests -p *_test.py"
