@@ -7,6 +7,7 @@ verify_ssl = true
 flake8 = "*"
 autopep8 = "*"
 coverage = "*"
+pre-commit = "*"
 
 [packages]
 torch = "*"
@@ -16,7 +17,6 @@ nltk = "*"
 spacy = "*"
 python-rake = "*"
 selenium = "*"
-pre-commit = "*"
 
 [scripts]
 test = "coverage run --include=src/*,tests/* -m unittest discover -s ./tests -p *_test.py"
