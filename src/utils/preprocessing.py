@@ -1,9 +1,10 @@
+import re
+from collections import Counter
+
 import en_core_web_sm
 import spacy
-import re
 from nltk.stem import PorterStemmer
 from tqdm import tqdm
-from collections import Counter
 
 nlp = en_core_web_sm.load(disable=["parser", "tagger", "ner"])
 
@@ -69,18 +70,18 @@ def remove_stopwords_review(review):
 
 
 def remove_stopwords_list(tokens: list, aspectvector: list = None) -> list:
-    """Remove Stopwords from a list of tokens and optionally the indices from a corresponding boolean vector
+    """Remove stopwords from a list of tokens and corresponding boolean vector
     Arguments:
     - tokens: a list of tokens
-    - aspectvector: a boolean vector returned when extracting the aspects from the same review
+    - aspectvector: a boolean vector where True = aspect in the token list
 
     Returns:
     - The list of tokens without stop words
-    - Optionally: The filtered aspect vector of same length as the returned list
+    - Optionally: The filtered aspect vector of equal length
     """
     stopwords = spacy.lang.en.stop_words.STOP_WORDS
 
-    if aspectvector == None:
+    if aspectvector is None:
         return [t for t in tokens if t not in stopwords]
     else:
         new_tokens = []
@@ -95,7 +96,8 @@ def remove_stopwords_list(tokens: list, aspectvector: list = None) -> list:
 def review_to_int(reviewtexts: list):
     """Create the dictionaries for converting words to numbers and back
     Arguments:
-    - reviews: a 2d list of shape (num_reviews, num_tokens), where reviews are saved as strings"""
+    - reviews: a 2d list of shape (num_reviews, num_tokens)
+               where reviews are saved as strings"""
     reviewtexts = [
         token
         for rev in tqdm(
@@ -126,7 +128,7 @@ def stem_str(doc: str) -> str:
     while True:
         new_word = re.search(wordpattern, doc[last_index:])
         print(new_word)
-        if new_word == None:
+        if new_word is None:
             break
         else:
             begin = new_word.span()[0] + last_index
@@ -187,14 +189,14 @@ class PreprocessingPipeline(object):
     - rm_special_char: Whether to remove special characters
     - rm_stopwords: Whether to remove stopwords
     - tokenize: Whether to tokenize the text
-    If this option is set, applying the pipeline will return a 2-tuple of nested
-    lists with tokens, opinions and polarity, instead of the original reviews in
-    the dataset
+    If this option is set, applying the pipeline will return a 2-tuple of
+    nested lists with tokens, opinions and polarity, instead of the original
+    reviews in the dataset
     - stemming: Whether to perform stemming. Needs tokenization
-    - rev_to_int: Whether to encode the review text as integers. Needs tokenization
+    - rev_to_int: Whether to encode the text as integers. Needs tokenization
     If this option is set, applying the pipeline will return a 3-tuple of
-    transformed review text, opinions, sentiment in the dataset and the forward and
-    reverse dict for integer conversion"""
+    transformed review text, opinions, sentiment in the dataset and the
+    forward and reverse dict for integer conversion"""
 
     def __init__(
         self,
@@ -208,7 +210,8 @@ class PreprocessingPipeline(object):
         if rev_to_int or stemming:
             assert (
                 tokenize
-            ), "Need to tokenize before stemming or converting to int, but tokenize is set to False"
+            ), "Need to tokenize before stemming or converting to int, " \
+               "but tokenize is set to False"
         self.lower = lower
         self.rm_special_char = rm_special_char
         self.rm_stopwords = rm_stopwords
@@ -219,9 +222,11 @@ class PreprocessingPipeline(object):
     def __call__(self, dataset):
         """Apply the pipeline
         Arguments:
-        - dataset: The dataset dictionary with a list of reviews for each split"""
+        - dataset: The dataset dictionary with a list of reviews
+                   for each split"""
         for phase in tqdm(
-            dataset.keys(), desc="Processing dataset splits", leave=False, position=0
+            dataset.keys(), desc="Processing dataset splits",
+            leave=False, position=0
         ):
             reviews = dataset[phase]
             if self.lower:
@@ -253,7 +258,8 @@ class PreprocessingPipeline(object):
                     map(
                         remove_stopwords_review,
                         tqdm(
-                            reviews, desc="Removing stopwords", leave=False, position=1
+                            reviews, desc="Removing stopwords",
+                            leave=False, position=1
                         ),
                     )
                 )
@@ -261,7 +267,8 @@ class PreprocessingPipeline(object):
                 reviews = list(
                     map(
                         tokenize_review,
-                        tqdm(reviews, desc="Tokenizing", leave=False, position=1),
+                        tqdm(reviews, desc="Tokenizing",
+                             leave=False, position=1),
                     )
                 )
                 reviews = (
@@ -273,7 +280,8 @@ class PreprocessingPipeline(object):
                 reviews[0] = list(
                     map(
                         stem_str,
-                        tqdm(reviews[0], desc="Stemming", leave=False, position=1),
+                        tqdm(reviews[0], desc="Stemming",
+                             leave=False, position=1),
                     )
                 )
             dataset[phase] = reviews

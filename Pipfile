@@ -9,10 +9,11 @@ autopep8 = "*"
 coverage = "*"
 
 [packages]
-pre-commit = "*"
+torch = "*"
+numpy = "*"
 
 [scripts]
-test = "coverage run -m unittest discover -s ./tests -p *_test.py"
+test = "coverage run --include=src/*,tests/* -m unittest discover -s ./tests -p *_test.py"
 report = "coverage html"
 main = "python ./src/main.py"
 

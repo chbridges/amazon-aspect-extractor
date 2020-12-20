@@ -1,22 +1,18 @@
-import torch.nn as nn
-import torch
-from torch.utils.data import Dataset, DataLoader, random_split
-from tqdm import tqdm, trange
-from utils.preprocessing import review_to_int
 import os
+
+import torch
+import torch.nn as nn
 from torch.optim.lr_scheduler import ReduceLROnPlateau
-from utils.metrics import (
-    log_sq_diff,
-    cross_entropy,
-    f1_score,
-    accuracy,
-    class_balanced_accuracy,
-)
+from torch.utils.data import Dataset
+from tqdm import tqdm, trange
+from utils.metrics import accuracy, log_sq_diff
+from utils.preprocessing import review_to_int
 
 
 class SentimentModel(nn.Module):
     """A sentiment predicting model
-    Adapted from https://towardsdatascience.com/sentiment-analysis-using-lstm-step-by-step-50d074f09948"""
+    Adapted from https://towardsdatascience.com/
+                    sentiment-analysis-using-lstm-step-by-step-50d074f09948"""
 
     def __init__(
         self,
@@ -38,9 +34,11 @@ class SentimentModel(nn.Module):
         - embedding_dim: tokens are embedded into a vector of this dimension
         - hidden_dim: the hidden dimension of the lstm
         - n_layers: the number of layers for the lstm
-        - normalize_output: whether to apply the sigmoid activation function before returning the prediction
+        - normalize_output: whether to apply the sigmoid activation function
+                            before returning the prediction
         - bidirectional: whether the lstm is evaluated in both directions
-        - dropout: dropout chance of the lstm and before the final fully connected layer
+        - dropout: dropout chance of the lstm and before the final fully
+                   connected layer
         - model_name: name to save the model under
         - device: name of device to run the model on (use gpu if available)"""
 
@@ -52,10 +50,10 @@ class SentimentModel(nn.Module):
         self.n_layers = n_layers
         self.bidirectional = bidirectional
         self.device = device
-        self.embedding = nn.Embedding(dict_size, embedding_dim, padding_idx=0).to(
-            self.device
-        )
-        self.fc1 = nn.Linear(embedding_dim + 1, embedding_dim + 1).to(self.device)
+        self.embedding = nn.Embedding(dict_size, embedding_dim,
+                                      padding_idx=0).to(self.device)
+        self.fc1 = nn.Linear(
+            embedding_dim + 1, embedding_dim + 1).to(self.device)
         self.lstm = nn.LSTM(
             embedding_dim + 1,
             hidden_dim,
@@ -65,9 +63,8 @@ class SentimentModel(nn.Module):
             batch_first=True,
         ).to(self.device)
         self.dropout = nn.Dropout(dropout).to(self.device)
-        self.fc = nn.Linear(hidden_dim * (1 + self.bidirectional), output_size).to(
-            self.device
-        )
+        self.fc = nn.Linear(hidden_dim * (1 + self.bidirectional),
+                            output_size).to(self.device)
         self.normalize_output = normalize_output
         if normalize_output:
             self.activation = nn.Sigmoid().to(self.device)
@@ -80,13 +77,15 @@ class SentimentModel(nn.Module):
         - batch_size: size of the next incoming batch"""
         h = (
             torch.randn(
-                self.n_layers * (1 + self.bidirectional), batch_size, self.hidden_dim
+                self.n_layers *
+                (1 + self.bidirectional), batch_size, self.hidden_dim
             ).to(self.device)
             * stddev
         )
         c = (
             torch.randn(
-                self.n_layers * (1 + self.bidirectional), batch_size, self.hidden_dim
+                self.n_layers *
+                (1 + self.bidirectional), batch_size, self.hidden_dim
             ).to(self.device)
             * stddev
         )
@@ -101,11 +100,13 @@ class SentimentModel(nn.Module):
         - s_lengths: length of the original unpadded reviews
 
         Returns:
-        Sentiment prediction for the batch of inputs, shape (batch_size, seq_len, self.output_size)"""
+        Sentiment prediction for the batch of inputs,
+        shape (batch_size, seq_len, self.output_size)"""
 
         batch_size, seq_len, _ = x.shape
         embedded = torch.cat(
-            (self.embedding(x[:, :, 0]), x[:, :, 1].float().unsqueeze(-1)), dim=-1
+            (self.embedding(x[:, :, 0]),
+             x[:, :, 1].float().unsqueeze(-1)), dim=-1
         )
 
         embedded = self.fc1(embedded)
@@ -136,7 +137,8 @@ class SentimentDataset(Dataset):
         """
         Arguments:
         - reviews: a 2d list of shape (num_reviews, num_tokens)
-        - aspects: a list of shape (num_reviews, num_tokens), which contains a one-hot encoding for aspects
+        - aspects: a list of shape (num_reviews, num_tokens)
+                   which contains a one-hot encoding for aspects
         - sentiments: a list of sentiment labels"""
 
         assert len(aspects) == len(
@@ -153,7 +155,8 @@ class SentimentDataset(Dataset):
         if type(reviews[0][0]) == str:
             self.str_to_int_dict, self.int_to_str_dict = review_to_int(reviews)
             reviews = [
-                [self.str_to_int_dict[token] for token in rev] for rev in reviews
+                [self.str_to_int_dict[token] for token in rev]
+                for rev in reviews
             ]
 
         self.max_len = max([len(rev) for rev in reviews])
@@ -163,10 +166,13 @@ class SentimentDataset(Dataset):
             rev for i, rev in enumerate(reviews) for op in aspects[i]
         ]  # Duplicate reviews to have one per opinion
         aspects = [op for asp in aspects for op in asp]  # flatten opinions
-        sentiments = [pol for sent in sentiments for pol in sent]  # flatten sentiments
+        # flatten sentiments
+        sentiments = [pol for sent in sentiments for pol in sent]
 
-        [asp.extend([0] * (self.max_len - len(asp))) for asp in aspects]  # pad opinions
-        [rev.extend([0] * (self.max_len - len(rev))) for rev in reviews]  # pad reviews
+        [asp.extend([0] * (self.max_len - len(asp)))
+         for asp in aspects]  # pad opinions
+        [rev.extend([0] * (self.max_len - len(rev)))
+         for rev in reviews]  # pad reviews
 
         self.seq_lens = [len(rev) for rev in reviews]
 
@@ -210,7 +216,7 @@ def train_sentiment_model(
     Arguments:
     - model: the SentimentModel that is to be trained
     - optimizer: the optimizer used for training
-    - dataloaders: a dictionary of pytorch dataloaders with keys train/val/(test)
+    - dataloaders: a dictionary of pytorch dataloaders with keys train/val/test
     - criterion: the loss function to optimize
     - n_epochs: the number of epochs to train for
     - eval_every: in which epoch interval to evaluate on the val set
@@ -266,7 +272,8 @@ def train_sentiment_model(
                 best = val_loss
 
                 tqdm.write("Saving new best model...")
-                save_name = os.path.join("models", model.name + "_best" + ".pth")
+                save_name = os.path.join(
+                    "models", model.name + "_best" + ".pth")
 
                 torch.save(
                     {
@@ -279,11 +286,12 @@ def train_sentiment_model(
 
         if type(scheduler) == ReduceLROnPlateau:
             scheduler.step(epoch_loss)
-        elif not scheduler is None:
+        elif scheduler is not None:
             scheduler.step()
 
         if not epoch % save_every:
-            save_name = os.path.join("models", model.name + str(epoch) + ".pth")
+            save_name = os.path.join(
+                "models", model.name + str(epoch) + ".pth")
             if overwrite_chkpt:
                 save_name = os.path.join("models", model.name + ".pth")
 
@@ -325,9 +333,8 @@ def evaluate_sentiment_model(model, dataloaders, criterion=accuracy):
                 y.to(model.device),
             )
             pred = model(x, seq_lens)
-            acc += criterion(pred, y, regression=(model.output_size == 1)) / len(
-                dataloaders["train"]
-            )
+            acc += criterion(pred, y, regression=(model.output_size == 1)) \
+                / len(dataloaders["train"])
     print(
         "Training results of model {} on criterion {}: {}".format(
             model.name, criterion.__name__, acc
@@ -346,9 +353,8 @@ def evaluate_sentiment_model(model, dataloaders, criterion=accuracy):
                 y.to(model.device),
             )
             pred = model(x, seq_lens)
-            acc += criterion(pred, y, regression=(model.output_size == 1)) / len(
-                dataloaders["val"]
-            )
+            acc += criterion(pred, y, regression=(model.output_size == 1)) \
+                / len(dataloaders["val"])
     print(
         "Validation results of model {} on criterion {}: {}".format(
             model.name, criterion.__name__, acc

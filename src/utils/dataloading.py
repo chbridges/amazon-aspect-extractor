@@ -1,12 +1,13 @@
-from typing import List
-import os
 import json
-import xml.etree.cElementTree as ET
 import math
+import os
+import xml.etree.cElementTree as ET
+from typing import List
 
 
 def load_amazon_multilingual(
-    path: str, select_languages: List[str] = ["en", "de", "zh", "es", "fr", "ja"]
+    path: str, select_languages: List[str] = ["en", "de", "zh",
+                                              "es", "fr", "ja"]
 ) -> dict:
     """Load the json formatted aws mulitlingual dataset
     Arguments:
@@ -14,7 +15,7 @@ def load_amazon_multilingual(
     - select_languages: A list of languages to filter the data for
 
     Return:
-    - data: A dictionary with the reviews for each of the 3 splits train/dev/test
+    - data: A dictionary with reviews for each of the 3 splits train/dev/test
     """
     data = {}
     if "dev" in os.listdir(path):
@@ -45,7 +46,7 @@ def load_semeval2015(
     for hotels only test data is available
 
     Return:
-    - data: A dictionary with the reviews for each of the 3 splits train/dev/test
+    - data: A dictionary with reviews for each of the 3 splits train/dev/test
     """
     data = {"train": [], "val": [], "test": []}
     for filename in os.listdir(path):
@@ -91,7 +92,7 @@ def load_semeval2015(
                 split.append(SemEvalReview(review_text, review_opinions))
             if "train" in filename.lower():
                 data["train"].extend(split[: math.floor(len(split) * 0.9)])
-                data["val"].extend(split[math.floor(len(split) * 0.9) :])
+                data["val"].extend(split[math.floor(len(split) * 0.9):])
             elif "test" in filename.lower():
                 data["test"].extend(split)
     return data
@@ -116,13 +117,14 @@ class SemEvalReviewOpinion(object):
     polarity_dict = {"negative": 0, "neutral": 0.5, "positive": 1}
 
     def __init__(
-        self, target: str, polarity: str, target_position, category, subcategory
+        self,
+        target: str, polarity: str, target_position, category, subcategory
     ):
         if target == "NULL":
             target = None
         self.target = target
         self.polarity = SemEvalReviewOpinion.polarity_dict.get(polarity)
-        if self.polarity == None and not (polarity is None):
+        if self.polarity is None and not (polarity is None):
             raise (Warning("Unknown polarity {}".format(polarity)))
         try:
             if target_position[0].isdigit() and target_position[1].isdigit():
@@ -132,7 +134,7 @@ class SemEvalReviewOpinion(object):
                 )
             else:
                 raise (ValueError("Target Position not a digit"))
-        except:
+        except ValueError:
             self.target_position = (0, 0)
         self.category = category
         self.subcategory = subcategory
@@ -146,7 +148,8 @@ class SemEvalReviewOpinion(object):
 
     def __str__(self):
         return "Opinion: " + ", ".join(
-            [attr + "=" + str(self.__dict__[attr]) for attr in self.__dict__.keys()]
+            [attr + "=" + str(self.__dict__[attr])
+             for attr in self.__dict__.keys()]
         )
 
     def __eq__(self, other):
@@ -164,7 +167,8 @@ class SemEvalReview(object):
 
     Attributes:
     - text: the full review text as a string, one sentence per line
-    - opinions: a list of opinions, with target_poitions adjusted for the sentence offset"""
+    - opinions: list of opinions with target_positions adjusted
+                for the sentence offset"""
 
     def __init__(self, text: List[str], opinions: List):
         assert len(text) == len(
@@ -181,21 +185,26 @@ class SemEvalReview(object):
             self.text += line + "\n"
 
     def __str__(self):
-        return self.text + "{ " + "\n".join([str(op) for op in self.opinions]) + " }"
+        return self.text + "{ " \
+                         + "\n".join([str(op) for op in self.opinions]) \
+                         + " }"
 
     def remove_text(self, span):
         start, end = span
         assert span[0] >= 0, "Invalid span {}".format(span)
         assert (
             span[1] <= len(self.text) + 1
-        ), "Span end {} exceeds review length {}".format(span[1], len(self.text))
+        ), "Span end {} exceeds review length {}" \
+            .format(span[1], len(self.text))
         self.text = self.text[:start] + self.text[end:]
         for i, op in enumerate(self.opinions):
             op_start, op_end = op.target_position
             if start <= op_start:
                 if end >= op_end:
-                    # TODO Decide if it might be better to keep opinion and set target position to (0,0)
-                    self.opinions.remove(op)  # delete opinion if the keyword is removed
+                    # TODO Decide if it might be better to keep opinion
+                    #      and set target position to (0,0)
+                    # delete opinion if the keyword is removed
+                    self.opinions.remove(op)
                 else:
                     op_start = op_start - min(op_start - start, end - start)
 

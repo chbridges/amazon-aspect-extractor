@@ -19,7 +19,8 @@ def accuracy(pred, y, regression=True, n_classes=3):
     Arguments:
     - pred: a vector of sentiment predictions between 0 and 1
     - y: a vector of sentiment ground truths between 0 and 1
-    - regression: whether the model output is a regression of the sentiment or the class scores
+    - regression: whether the model output is a regression of the sentiment
+                  or the class scores
     - n_classes: The number of classes in the model output
 
     Returns:
@@ -38,11 +39,13 @@ def class_balanced_accuracy(pred, y, regression=True, n_classes=3):
     Arguments:
     - pred: a vector of sentiment predictions between 0 and 1
     - y: a vector of sentiment ground truths between 0 and 1
-    - regression: whether the model output is a regression of the sentiment or the class scores
+    - regression: whether the model output is a regression of the sentiment
+                  or the class scores
     - n_classes: The number of classes in the model output
 
     Returns:
-    Balanced accuracy of the predictions when rounded to the nearest label (0/0.5/1)"""
+    Balanced accuracy of the predictions when rounded to the nearest
+    label (0/0.5/1)"""
     if regression:
         labels = torch.round(pred * (n_classes - 1)).type(torch.int)
     else:
@@ -70,7 +73,8 @@ def f1_score(pred, y, regression=True, n_classes=3):
     Arguments:
     - pred: a vector of sentiment predictions between 0 and 1
     - y: a vector of sentiment ground truths between 0 and 1
-    - regression: whether the model output is a regression of the sentiment or the class scores
+    - regression: whether the model output is a regression of the sentiment
+                  or the class scores
     - n_classes: The number of classes in the model output
 
     Returns:

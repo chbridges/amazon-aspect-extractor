@@ -1,16 +1,34 @@
-import unittest
-import numpy as np
-import pandas as pd
 import os
 import re
-from src.utils.keywords import (
-    extract_keywords_str,
-    extract_keywords_list,
-    keywords_to_dataframe,
-    find_aspects_str,
-)
+import unittest
 
-sample = """I recently bought a Fjallraven bag from Urban Outfitters and wanted to buy my friend one for her birthday. This color happened to be on sale, and I immediately bought it. I did read the reviews, saying that some of these bags are counterfeit, but was positive that this may have been a mistake. I received the bag in the mail, and immediately could tell the main difference between the bag I ordered from Urban, and the one I received from Amazon. This bag seemed to be made of cloth, was a little more slouchy, and is definitely less waterproof than my bag. My bag is made of a thick, waterproof material, and compared to this one, could probably be submerged in water and be just fine. To be honest, this was the only thing that I could tell was off. The bag looks great, has all of the same details that mine does, and it is in a super cute color! I do not mind that this bag may be made out of a different material, since I did pay such a low price for it. I do not plan on returning it, because my friend loves it! Buyers, beware that you may not be getting the same quality bag as Fjallraven sells, but the quality is still good, and comparable to a Jansport backpack. I would still recommend this bag, as it is super cute, affordable on Amazon, and very trendy nowadays."""
+import numpy as np
+import pandas as pd
+
+from src.utils.keywords import (extract_keywords_list, extract_keywords_str,
+                                find_aspects_str, keywords_to_dataframe)
+
+# Source of sample:
+# https://www.amazon.com/gp/customer-reviews/R2LK13YHGM6HW/
+# ref=cm_cr_dp_d_rvw_ttl?ie=UTF8&ASIN=B002OWETK4
+
+sample = """I recently bought a Fjallraven bag from Urban Outfitters and
+wanted to buy my friend one for her birthday. This color happened to be on
+sale, and I immediately bought it. I did read the reviews, saying that some
+of these bags are counterfeit, but was positive that this may have been a
+mistake. I received the bag in the mail, and immediately could tell the main
+difference between the bag I ordered from Urban, and the one I received from
+Amazon. This bag seemed to be made of cloth, was a little more slouchy, and is
+definitely less waterproof than my bag. My bag is made of a thick, waterproof
+material, and compared to this one, could probably be submerged in water and be
+just fine. To be honest, this was the only thing that I could tell was off. The
+bag looks great, has all of the same details that mine does, and it is in a
+super cute color! I do not mind that this bag may be made out of a different
+material, since I did pay such a low price for it. I do not plan on returning
+it, because my friend loves it! Buyers, beware that you may not be getting the
+same quality bag as Fjallraven sells, but the quality is still good, and
+comparable to a Jansport backpack. I would still recommend this bag, as it is
+super cute, affordable on Amazon, and very trendy nowadays."""
 
 
 class StrTest(unittest.TestCase):
@@ -33,7 +51,7 @@ class StrTest(unittest.TestCase):
         self.assertIsInstance(sample_keywords[0], tuple)
         self.assertIsInstance(sample_keywords[0][0], str)
         self.assertIsInstance(sample_keywords[0][1], float)
-        # The following assume the usage of the NLTK stoplist, which should be default
+        # The following assume the NLTK stoplist, which is the default
         self.assertIn(("definitely less waterproof", 8.5), sample_keywords)
         self.assertEqual(
             sample_keywords[0], ("definitely less waterproof", 8.5)
@@ -45,7 +63,8 @@ class StrTest(unittest.TestCase):
             extract_keywords_str(sample, useNLTK=False),
         )
         self.assertGreater(
-            len(sample_keywords), len(extract_keywords_str(sample, useNLTK=False))
+            len(sample_keywords), len(
+                extract_keywords_str(sample, useNLTK=False))
         )
 
 
@@ -67,15 +86,18 @@ class ListTest(unittest.TestCase):
 
         extract_keywords_list([sample])
         self.assertEqual(sample_keywords_str, sample_keywords_list)
-        self.assertEqual(sample_keywords_list, extract_keywords_list([sample, ""]))
+        self.assertEqual(sample_keywords_list,
+                         extract_keywords_list([sample, ""]))
         self.assertNotEqual(
             sample_keywords_list, extract_keywords_list([sample, sample])
         )
         self.assertGreater(
-            len(extract_keywords_list([sample, sample])), len(sample_keywords_list)
+            len(extract_keywords_list([sample, sample])), len(
+                sample_keywords_list)
         )
         self.assertEqual(
-            set(sample_keywords_list), set(extract_keywords_list([sample, sample]))
+            set(sample_keywords_list), set(
+                extract_keywords_list([sample, sample]))
         )
 
 
@@ -101,16 +123,19 @@ class DataFrameTest(unittest.TestCase):
 
         self.assertIsInstance(sample_df, pd.core.frame.DataFrame)
         self.assertTrue(
-            sample_df.equals(keywords_to_dataframe(extract_keywords_list([sample])))
+            sample_df.equals(keywords_to_dataframe(
+                extract_keywords_list([sample])))
         )
         self.assertGreater(len(sample_df), 0)
         self.assertEqual(tuple(sample_df.dtypes), (np.object, np.float64))
         self.assertEqual(tuple(sample_df.columns), ("keyword", "relevancy"))
-        self.assertEqual(tuple(sample_df.iloc[0]), ("definitely less waterproof", 8.5))
+        self.assertEqual(
+            tuple(sample_df.iloc[0]), ("definitely less waterproof", 8.5))
 
     def test_csv(self):
         os.chdir("src")
-        sample_df = keywords_to_dataframe(extract_keywords_str(sample), csv_name="test")
+        sample_df = keywords_to_dataframe(
+            extract_keywords_str(sample), csv_name="test")
         os.chdir("..")
 
         self.assertTrue("test.csv" in os.listdir("src/data"))
@@ -159,12 +184,12 @@ class AspectExtracionTest(unittest.TestCase):
         truecount = 0
         truecount_adj = 0
         for i in range(len(aspectvector_adj)):
-            if aspectvector[i] == True:
+            if aspectvector[i] is True:
                 self.assertEqual(aspectvector_adj[i], True)
                 truecount += 1
-            if aspectvector_adj[i] == True:
+            if aspectvector_adj[i] is True:
                 truecount_adj += 1
-            elif aspectvector_adj[i] == False:
+            elif aspectvector_adj[i] is False:
                 self.assertEqual(aspectvector[i], False)
         self.assertLess(truecount, truecount_adj)
 

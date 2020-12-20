@@ -1,11 +1,11 @@
 import re
+from typing import List
+
+import pandas as pd
 import RAKE
 import spacy
-import numpy as np
-import pandas as pd
-from tqdm import tqdm
-from typing import List
 from nltk.corpus import stopwords
+from tqdm import tqdm
 
 
 def extract_keywords_str(
@@ -20,14 +20,16 @@ def extract_keywords_str(
     - document: A string containing the text to extract from
     - maxWords: An integer indicating how many keywords to extract
     - minScore: A float that filters out any keywods with lower Score than this
-    - useNLTK:  A boolean to choose between NLTK's stoplist and RAKE's SmartStoplist
+    - useNLTK:  A boolean to choose between NLTK stoplist and SmartStoplist
 
     Return:
-    - keywords: A list of the keywords in the document as (keyword, relevancy) tuples
+    - keywords: A list of (keyword, relevancy) tuples
     """
     if type(document) in (list, set, tuple):
         raise TypeError(
-            f"Function extract_keyword_str expects string type, got {type(document)} type instead. Did you mean to use extract_keyword_list?"
+            "Function extract_keyword_str expects string type, "
+            f"got {type(document)} type instead. "
+            "Did you mean to use extract_keyword_list?"
         )
 
     def count_words(keyword: str):
@@ -46,7 +48,8 @@ def extract_keywords_str(
         document
     )  # dont use maxWords here, in case we filter words with minScore
     keywords = [
-        k for k in keywords if k[1] >= minScore and count_words(k[0]) >= minWords
+        k for k in keywords if k[1] >= minScore
+        and count_words(k[0]) >= minWords
     ]
     keywords = keywords[:maxKeywords]  # Sorted by Score
     return keywords
@@ -59,11 +62,13 @@ def extract_keywords_list(documents: List[str], **kwargs) -> List:
     - kwargs: Keywords arguments to extract_keyword_str
 
     Return:
-    - keywords: A list of the keywords in the documents (keyword, relevancy) tuples
+    - keywords: A list of (keyword, relevancy) tuples
     """
     if type(documents) == str:
         raise TypeError(
-            "Function extract_keyword_list expects list type, got string type. Did you mean to use extract_keyword_str?"
+            "Function extract_keyword_list expects list type, "
+            "got string type instead. "
+            "Did you mean to use extract_keyword_str?"
         )
 
     keywords = []
@@ -79,8 +84,8 @@ def keywords_to_dataframe(
     """Converts a list of extracted keywords to an appropriate Pandas DataFrame
     Arguments:
     - keywords: A list of extracted keywords (using the above functions)
-    - include_relevancy: A boolean whether or not to include the relevancy score as a second column or not
-    - csv_name: If non-empty, the DataFrame will be saved in data/<csv_name>.csv
+    - include_relevancy: A boolean to add relevancy score as a second column
+    - csv_name: If non-empty, the DF will be saved in data/<csv_name>.csv
 
     Return:
     - df: A dataframe with object column "keyword" and float column "relevancy"
@@ -102,21 +107,21 @@ def find_aspects_str(
     doc: str, ignore_adjectives: bool = True, return_as_int: bool = False
 ) -> str:
     """
-    Returns a boolean vector where each entry corresponds to a token in the given review.
+    Returns a boolean vector where each entry corresponds to a token.
     True means that the token belongs to an aspect, False means otherwise.
-    Optionally set all adjectives and adverbs to False as they can belong to the sentiment.
     Arguments:
     - document: A string, typically containing a review
-    - ignore_adjectives: Boolean, if True all adjectives and adverbs will be set to False.
+    - ignore_adjectives: Boolean, if True all adjectives and adverbs are False
     - return_as_int: Boolean, if True the list will contain values 0 and 1
     Return:
     List of booleans
     """
     if ignore_adjectives:
         nlp = spacy.load("en_core_web_sm", disable=["ner", "parser"])
-        pos = lambda w: nlp(w)[0].pos_
 
-    # Different results using NLTK stoplist and SmartStoplist, so we combine both
+        def pos(w): return nlp(w)[0].pos_
+
+    # Different results for NLTK stoplist and SmartStoplist, so we combine both
     keywords_nltk = [k[0] for k in extract_keywords_str(doc)]
     keywords_smart = [k[0] for k in extract_keywords_str(doc, useNLTK=False)]
     keywords = list(set(keywords_nltk + keywords_smart))
@@ -132,12 +137,12 @@ def find_aspects_str(
         kw_tokens = re.split(" |\n", kw)
         kw_len = len(kw_tokens)
         for i in range(doc_len - kw_len):
-            if doc_tokens[i : i + kw_len] == kw_tokens:
+            if doc_tokens[i: i + kw_len] == kw_tokens:
                 if ignore_adjectives:
                     subvec = [pos(t) not in ("ADJ", "ADV") for t in kw_tokens]
                 else:
                     subvec = [True] * kw_len
-                aspectvector[i : i + kw_len] = subvec
+                aspectvector[i: i + kw_len] = subvec
 
     if return_as_int:
         return [int(x) for x in aspectvector]
