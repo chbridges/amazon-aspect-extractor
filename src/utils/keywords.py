@@ -118,7 +118,7 @@ def find_aspects_str(
     List of booleans
     """
     if ignore_adjectives:
-        nlp = spacy.load("en_core_web_sm", disable=["ner", "parser"])
+        nlp = spacy.load("en", disable=["ner", "parser"])
 
         def pos(w):
             return nlp(w)[0].pos_

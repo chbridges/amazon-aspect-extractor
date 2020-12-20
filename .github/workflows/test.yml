@@ -20,5 +20,7 @@ jobs:
         run: pipenv install --dev
       - name: Copy .env file
         run: cp .example.env .env
+      - name: Download English spaCy model
+        run: pipenv run spacy
       - name: Run tests
         run: pipenv run test

@@ -19,6 +19,7 @@ selenium = "*"
 numpy = "*"
 
 [scripts]
+spacy = "python -m spacy download en"
 test = "coverage run --include=src/*,tests/* -m unittest discover -s ./tests -p *_test.py"
 report = "coverage html"
 main = "python ./src/main.py"
