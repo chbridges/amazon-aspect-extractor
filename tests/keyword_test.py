@@ -5,8 +5,12 @@ import unittest
 import numpy as np
 import pandas as pd
 
-from src.utils.keywords import (extract_keywords_list, extract_keywords_str,
-                                find_aspects_str, keywords_to_dataframe)
+from src.utils.keywords import (
+    extract_keywords_list,
+    extract_keywords_str,
+    find_aspects_str,
+    keywords_to_dataframe,
+)
 
 # Source of sample:
 # https://www.amazon.com/gp/customer-reviews/R2LK13YHGM6HW/
@@ -63,8 +67,8 @@ class StrTest(unittest.TestCase):
             extract_keywords_str(sample, useNLTK=False),
         )
         self.assertGreater(
-            len(sample_keywords), len(
-                extract_keywords_str(sample, useNLTK=False))
+            len(sample_keywords),
+            len(extract_keywords_str(sample, useNLTK=False)),
         )
 
 
@@ -86,18 +90,17 @@ class ListTest(unittest.TestCase):
 
         extract_keywords_list([sample])
         self.assertEqual(sample_keywords_str, sample_keywords_list)
-        self.assertEqual(sample_keywords_list,
-                         extract_keywords_list([sample, ""]))
+        self.assertEqual(sample_keywords_list, extract_keywords_list([sample, ""]))
         self.assertNotEqual(
             sample_keywords_list, extract_keywords_list([sample, sample])
         )
         self.assertGreater(
-            len(extract_keywords_list([sample, sample])), len(
-                sample_keywords_list)
+            len(extract_keywords_list([sample, sample])),
+            len(sample_keywords_list),
         )
         self.assertEqual(
-            set(sample_keywords_list), set(
-                extract_keywords_list([sample, sample]))
+            set(sample_keywords_list),
+            set(extract_keywords_list([sample, sample])),
         )
 
 
@@ -123,19 +126,16 @@ class DataFrameTest(unittest.TestCase):
 
         self.assertIsInstance(sample_df, pd.core.frame.DataFrame)
         self.assertTrue(
-            sample_df.equals(keywords_to_dataframe(
-                extract_keywords_list([sample])))
+            sample_df.equals(keywords_to_dataframe(extract_keywords_list([sample])))
         )
         self.assertGreater(len(sample_df), 0)
         self.assertEqual(tuple(sample_df.dtypes), (np.object, np.float64))
         self.assertEqual(tuple(sample_df.columns), ("keyword", "relevancy"))
-        self.assertEqual(
-            tuple(sample_df.iloc[0]), ("definitely less waterproof", 8.5))
+        self.assertEqual(tuple(sample_df.iloc[0]), ("definitely less waterproof", 8.5))
 
     def test_csv(self):
         os.chdir("src")
-        sample_df = keywords_to_dataframe(
-            extract_keywords_str(sample), csv_name="test")
+        sample_df = keywords_to_dataframe(extract_keywords_str(sample), csv_name="test")
         os.chdir("..")
 
         self.assertTrue("test.csv" in os.listdir("src/data"))

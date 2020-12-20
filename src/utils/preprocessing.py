@@ -39,7 +39,7 @@ def remove_special_characters_review(review):
     Returns:
     The review without special characters
     """
-    pattern = re.compile("[^\w\d\s]|'")
+    pattern = re.compile(r"[^\w\d\s]|'")
 
     while True:
         match = pattern.search(review.text)
@@ -208,10 +208,10 @@ class PreprocessingPipeline(object):
         rev_to_int=True,
     ):
         if rev_to_int or stemming:
-            assert (
-                tokenize
-            ), "Need to tokenize before stemming or converting to int, " \
-               "but tokenize is set to False"
+            assert tokenize, (
+                "Need to tokenize before stemming or converting to int, "
+                "but tokenize is set to False"
+            )
         self.lower = lower
         self.rm_special_char = rm_special_char
         self.rm_stopwords = rm_stopwords
@@ -225,8 +225,10 @@ class PreprocessingPipeline(object):
         - dataset: The dataset dictionary with a list of reviews
                    for each split"""
         for phase in tqdm(
-            dataset.keys(), desc="Processing dataset splits",
-            leave=False, position=0
+            dataset.keys(),
+            desc="Processing dataset splits",
+            leave=False,
+            position=0,
         ):
             reviews = dataset[phase]
             if self.lower:
@@ -258,8 +260,10 @@ class PreprocessingPipeline(object):
                     map(
                         remove_stopwords_review,
                         tqdm(
-                            reviews, desc="Removing stopwords",
-                            leave=False, position=1
+                            reviews,
+                            desc="Removing stopwords",
+                            leave=False,
+                            position=1,
                         ),
                     )
                 )
@@ -267,8 +271,7 @@ class PreprocessingPipeline(object):
                 reviews = list(
                     map(
                         tokenize_review,
-                        tqdm(reviews, desc="Tokenizing",
-                             leave=False, position=1),
+                        tqdm(reviews, desc="Tokenizing", leave=False, position=1),
                     )
                 )
                 reviews = (
@@ -280,8 +283,12 @@ class PreprocessingPipeline(object):
                 reviews[0] = list(
                     map(
                         stem_str,
-                        tqdm(reviews[0], desc="Stemming",
-                             leave=False, position=1),
+                        tqdm(
+                            reviews[0],
+                            desc="Stemming",
+                            leave=False,
+                            position=1,
+                        ),
                     )
                 )
             dataset[phase] = reviews

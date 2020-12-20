@@ -6,9 +6,11 @@ from selenium.webdriver.chrome.options import Options
 
 # test
 
-url = "https://www.amazon.com/-/de/product-reviews/B07GLV1VC7/" \
-      + "ref=cm_cr_arp_d_viewopt_sr?ie=UTF8&filterByStar=all_stars" \
-      + "&reviewerType=all_reviews&pageNumber=1"
+url = (
+    "https://www.amazon.com/-/de/product-reviews/B07GLV1VC7/"
+    + "ref=cm_cr_arp_d_viewopt_sr?ie=UTF8&filterByStar=all_stars"
+    + "&reviewerType=all_reviews&pageNumber=1"
+)
 
 driver = webdriver.Chrome()
 

@@ -6,8 +6,8 @@ from typing import List
 
 
 def load_amazon_multilingual(
-    path: str, select_languages: List[str] = ["en", "de", "zh",
-                                              "es", "fr", "ja"]
+    path: str,
+    select_languages: List[str] = ["en", "de", "zh", "es", "fr", "ja"],
 ) -> dict:
     """Load the json formatted aws mulitlingual dataset
     Arguments:
@@ -92,7 +92,7 @@ def load_semeval2015(
                 split.append(SemEvalReview(review_text, review_opinions))
             if "train" in filename.lower():
                 data["train"].extend(split[: math.floor(len(split) * 0.9)])
-                data["val"].extend(split[math.floor(len(split) * 0.9):])
+                data["val"].extend(split[math.floor(len(split) * 0.9) :])
             elif "test" in filename.lower():
                 data["test"].extend(split)
     return data
@@ -118,7 +118,11 @@ class SemEvalReviewOpinion(object):
 
     def __init__(
         self,
-        target: str, polarity: str, target_position, category, subcategory
+        target: str,
+        polarity: str,
+        target_position,
+        category,
+        subcategory,
     ):
         if target == "NULL":
             target = None
@@ -148,8 +152,7 @@ class SemEvalReviewOpinion(object):
 
     def __str__(self):
         return "Opinion: " + ", ".join(
-            [attr + "=" + str(self.__dict__[attr])
-             for attr in self.__dict__.keys()]
+            [attr + "=" + str(self.__dict__[attr]) for attr in self.__dict__.keys()]
         )
 
     def __eq__(self, other):
@@ -185,17 +188,14 @@ class SemEvalReview(object):
             self.text += line + "\n"
 
     def __str__(self):
-        return self.text + "{ " \
-                         + "\n".join([str(op) for op in self.opinions]) \
-                         + " }"
+        return self.text + "{ " + "\n".join([str(op) for op in self.opinions]) + " }"
 
     def remove_text(self, span):
         start, end = span
         assert span[0] >= 0, "Invalid span {}".format(span)
         assert (
             span[1] <= len(self.text) + 1
-        ), "Span end {} exceeds review length {}" \
-            .format(span[1], len(self.text))
+        ), "Span end {} exceeds review length {}".format(span[1], len(self.text))
         self.text = self.text[:start] + self.text[end:]
         for i, op in enumerate(self.opinions):
             op_start, op_end = op.target_position

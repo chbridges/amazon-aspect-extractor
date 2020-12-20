@@ -1,11 +1,13 @@
 import re
 from typing import List
 
+import nltk
 import pandas as pd
 import RAKE
 import spacy
-from nltk.corpus import stopwords
 from tqdm import tqdm
+
+nltk.download("stopwords")
 
 
 def extract_keywords_str(
@@ -39,7 +41,7 @@ def extract_keywords_str(
         return count
 
     if useNLTK:
-        stoplist = stopwords.words("english")
+        stoplist = nltk.corpus.stopwords.words("english")
     else:
         stoplist = RAKE.SmartStopList()
 
@@ -48,8 +50,7 @@ def extract_keywords_str(
         document
     )  # dont use maxWords here, in case we filter words with minScore
     keywords = [
-        k for k in keywords if k[1] >= minScore
-        and count_words(k[0]) >= minWords
+        k for k in keywords if k[1] >= minScore and count_words(k[0]) >= minWords
     ]
     keywords = keywords[:maxKeywords]  # Sorted by Score
     return keywords
@@ -119,7 +120,8 @@ def find_aspects_str(
     if ignore_adjectives:
         nlp = spacy.load("en_core_web_sm", disable=["ner", "parser"])
 
-        def pos(w): return nlp(w)[0].pos_
+        def pos(w):
+            return nlp(w)[0].pos_
 
     # Different results for NLTK stoplist and SmartStoplist, so we combine both
     keywords_nltk = [k[0] for k in extract_keywords_str(doc)]
@@ -137,12 +139,12 @@ def find_aspects_str(
         kw_tokens = re.split(" |\n", kw)
         kw_len = len(kw_tokens)
         for i in range(doc_len - kw_len):
-            if doc_tokens[i: i + kw_len] == kw_tokens:
+            if doc_tokens[i : i + kw_len] == kw_tokens:
                 if ignore_adjectives:
                     subvec = [pos(t) not in ("ADJ", "ADV") for t in kw_tokens]
                 else:
                     subvec = [True] * kw_len
-                aspectvector[i: i + kw_len] = subvec
+                aspectvector[i : i + kw_len] = subvec
 
     if return_as_int:
         return [int(x) for x in aspectvector]

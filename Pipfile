@@ -5,18 +5,18 @@ verify_ssl = true
 
 [dev-packages]
 flake8 = "*"
-autopep8 = "*"
 coverage = "*"
 pre-commit = "*"
+autopep8 = "*"
 
 [packages]
 torch = "*"
-numpy = "*"
 pandas = "*"
 nltk = "*"
 spacy = "*"
 python-rake = "*"
 selenium = "*"
+numpy = "*"
 
 [scripts]
 test = "coverage run --include=src/*,tests/* -m unittest discover -s ./tests -p *_test.py"

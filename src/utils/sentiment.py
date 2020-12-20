@@ -50,10 +50,10 @@ class SentimentModel(nn.Module):
         self.n_layers = n_layers
         self.bidirectional = bidirectional
         self.device = device
-        self.embedding = nn.Embedding(dict_size, embedding_dim,
-                                      padding_idx=0).to(self.device)
-        self.fc1 = nn.Linear(
-            embedding_dim + 1, embedding_dim + 1).to(self.device)
+        self.embedding = nn.Embedding(dict_size, embedding_dim, padding_idx=0).to(
+            self.device
+        )
+        self.fc1 = nn.Linear(embedding_dim + 1, embedding_dim + 1).to(self.device)
         self.lstm = nn.LSTM(
             embedding_dim + 1,
             hidden_dim,
@@ -63,8 +63,9 @@ class SentimentModel(nn.Module):
             batch_first=True,
         ).to(self.device)
         self.dropout = nn.Dropout(dropout).to(self.device)
-        self.fc = nn.Linear(hidden_dim * (1 + self.bidirectional),
-                            output_size).to(self.device)
+        self.fc = nn.Linear(hidden_dim * (1 + self.bidirectional), output_size).to(
+            self.device
+        )
         self.normalize_output = normalize_output
         if normalize_output:
             self.activation = nn.Sigmoid().to(self.device)
@@ -77,15 +78,17 @@ class SentimentModel(nn.Module):
         - batch_size: size of the next incoming batch"""
         h = (
             torch.randn(
-                self.n_layers *
-                (1 + self.bidirectional), batch_size, self.hidden_dim
+                self.n_layers * (1 + self.bidirectional),
+                batch_size,
+                self.hidden_dim,
             ).to(self.device)
             * stddev
         )
         c = (
             torch.randn(
-                self.n_layers *
-                (1 + self.bidirectional), batch_size, self.hidden_dim
+                self.n_layers * (1 + self.bidirectional),
+                batch_size,
+                self.hidden_dim,
             ).to(self.device)
             * stddev
         )
@@ -105,8 +108,8 @@ class SentimentModel(nn.Module):
 
         batch_size, seq_len, _ = x.shape
         embedded = torch.cat(
-            (self.embedding(x[:, :, 0]),
-             x[:, :, 1].float().unsqueeze(-1)), dim=-1
+            (self.embedding(x[:, :, 0]), x[:, :, 1].float().unsqueeze(-1)),
+            dim=-1,
         )
 
         embedded = self.fc1(embedded)
@@ -155,8 +158,7 @@ class SentimentDataset(Dataset):
         if type(reviews[0][0]) == str:
             self.str_to_int_dict, self.int_to_str_dict = review_to_int(reviews)
             reviews = [
-                [self.str_to_int_dict[token] for token in rev]
-                for rev in reviews
+                [self.str_to_int_dict[token] for token in rev] for rev in reviews
             ]
 
         self.max_len = max([len(rev) for rev in reviews])
@@ -169,10 +171,8 @@ class SentimentDataset(Dataset):
         # flatten sentiments
         sentiments = [pol for sent in sentiments for pol in sent]
 
-        [asp.extend([0] * (self.max_len - len(asp)))
-         for asp in aspects]  # pad opinions
-        [rev.extend([0] * (self.max_len - len(rev)))
-         for rev in reviews]  # pad reviews
+        [asp.extend([0] * (self.max_len - len(asp))) for asp in aspects]  # pad opinions
+        [rev.extend([0] * (self.max_len - len(rev))) for rev in reviews]  # pad reviews
 
         self.seq_lens = [len(rev) for rev in reviews]
 
@@ -228,7 +228,7 @@ def train_sentiment_model(
         epoch_loss = 0
         for batch_id, (x, seq_lens, y) in tqdm(
             enumerate(dataloaders["train"]),
-            desc=f"Batch train",
+            desc="Batch train",
             leave=False,
             position=1,
         ):
@@ -252,7 +252,7 @@ def train_sentiment_model(
             val_loss = 0
             for batch_id, (x, seq_lens, y) in tqdm(
                 enumerate(dataloaders["val"]),
-                desc=f"Batch val",
+                desc="Batch val",
                 leave=False,
                 position=1,
             ):
@@ -272,8 +272,7 @@ def train_sentiment_model(
                 best = val_loss
 
                 tqdm.write("Saving new best model...")
-                save_name = os.path.join(
-                    "models", model.name + "_best" + ".pth")
+                save_name = os.path.join("models", model.name + "_best" + ".pth")
 
                 torch.save(
                     {
@@ -290,8 +289,7 @@ def train_sentiment_model(
             scheduler.step()
 
         if not epoch % save_every:
-            save_name = os.path.join(
-                "models", model.name + str(epoch) + ".pth")
+            save_name = os.path.join("models", model.name + str(epoch) + ".pth")
             if overwrite_chkpt:
                 save_name = os.path.join("models", model.name + ".pth")
 
@@ -322,7 +320,7 @@ def train_sentiment_model(
 def evaluate_sentiment_model(model, dataloaders, criterion=accuracy):
     acc = 0
     for batch_id, (x, seq_lens, y) in tqdm(
-        enumerate(dataloaders["train"]), desc=f"Computing train accuracy"
+        enumerate(dataloaders["train"]), desc="Computing train accuracy"
     ):
         with torch.no_grad():
             model.init_hidden(len(x))
@@ -333,8 +331,9 @@ def evaluate_sentiment_model(model, dataloaders, criterion=accuracy):
                 y.to(model.device),
             )
             pred = model(x, seq_lens)
-            acc += criterion(pred, y, regression=(model.output_size == 1)) \
-                / len(dataloaders["train"])
+            acc += criterion(pred, y, regression=(model.output_size == 1)) / len(
+                dataloaders["train"]
+            )
     print(
         "Training results of model {} on criterion {}: {}".format(
             model.name, criterion.__name__, acc
@@ -342,7 +341,7 @@ def evaluate_sentiment_model(model, dataloaders, criterion=accuracy):
     )
     acc = 0
     for batch_id, (x, seq_lens, y) in tqdm(
-        enumerate(dataloaders["val"]), desc=f"Computing validation accuracy"
+        enumerate(dataloaders["val"]), desc="Computing validation accuracy"
     ):
         with torch.no_grad():
             model.init_hidden(len(x))
@@ -353,8 +352,9 @@ def evaluate_sentiment_model(model, dataloaders, criterion=accuracy):
                 y.to(model.device),
             )
             pred = model(x, seq_lens)
-            acc += criterion(pred, y, regression=(model.output_size == 1)) \
-                / len(dataloaders["val"])
+            acc += criterion(pred, y, regression=(model.output_size == 1)) / len(
+                dataloaders["val"]
+            )
     print(
         "Validation results of model {} on criterion {}: {}".format(
             model.name, criterion.__name__, acc
