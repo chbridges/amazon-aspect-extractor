@@ -1,9 +1,8 @@
-from sklearn.svm import SVC
-from sklearn.ensemble import RandomForestClassifier
-import torch
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.feature_extraction.text import TfidfTransformer
 import numpy as np
+import torch
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
+from sklearn.svm import SVC
 
 
 class SentimentSVM(SVC):
@@ -50,7 +49,9 @@ class SentimentSVM(SVC):
 
         for j, ngram in enumerate(self.ngrams):
             ngram_occurence = np.all(rolling_window(revs, len(ngram)) == ngram, axis=-1)
-            ngram_occurence = np.concatenate((ngram_occurence, np.zeros((len(revs), len(ngram)-1))), axis=-1)
+            ngram_occurence = np.concatenate(
+                (ngram_occurence, np.zeros((len(revs), len(ngram) - 1))), axis=-1
+            )
             ngram_score = np.sum(ngram_occurence * distance_vector, axis=-1)
             X[:, j] = ngram_score
         return X
@@ -113,7 +114,9 @@ class SentimentForest(RandomForestClassifier):
 
         for j, ngram in enumerate(self.ngrams):
             ngram_occurence = np.all(rolling_window(revs, len(ngram)) == ngram, axis=-1)
-            ngram_occurence = np.concatenate((ngram_occurence, np.zeros((len(revs), len(ngram)-1))), axis=-1)
+            ngram_occurence = np.concatenate(
+                (ngram_occurence, np.zeros((len(revs), len(ngram) - 1))), axis=-1
+            )
             ngram_score = np.sum(ngram_occurence * distance_vector, axis=-1)
             X[:, j] = ngram_score
         return X
@@ -168,7 +171,7 @@ def top_ngrams(review_dataset, number=100, n=2):
 
 
 def rolling_window(a, size):
-    #From https://stackoverflow.com/questions/7100242/python-numpy-first-occurrence-of-subarray
+    # From https://stackoverflow.com/questions/7100242/python-numpy-first-occurrence-of-subarray
     shape = a.shape[:-1] + (a.shape[-1] - size + 1, size)
-    strides = a.strides + (a. strides[-1],)
+    strides = a.strides + (a.strides[-1],)
     return np.lib.stride_tricks.as_strided(a, shape=shape, strides=strides)

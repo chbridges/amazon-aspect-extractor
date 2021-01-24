@@ -17,6 +17,7 @@ spacy = "*"
 python-rake = "*"
 selenium = "*"
 numpy = "*"
+yake = {git = "https://github.com/LIAAD/yake"}
 
 [scripts]
 spacy = "python -m spacy download en"

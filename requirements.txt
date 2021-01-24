@@ -5,3 +5,4 @@ nltk
 spacy
 python-rake
 selenium
+git+https://github.com/LIAAD/yake
