@@ -2,7 +2,10 @@ import re
 
 import spacy
 
-from keywords import rake_str, yake_str
+try:
+    from keywords import rake_str, yake_str
+except ImportError:  # necessary for tests
+    from .keywords import rake_str, yake_str
 
 
 def create_aspectmask(

@@ -8,9 +8,8 @@ import pandas as pd
 from src.utils.keywords import (
     extract_keywords_from_list,
     rake_str,
-    find_aspects_str,
     keywords_to_dataframe,
-    yake_str
+    yake_str,
 )
 
 # Source of sample:
@@ -113,7 +112,7 @@ class YakeStrTest(unittest.TestCase):
         self.assertRaises(TypeError, yake_str, [])
 
     def test_empty_string(self):
-        self.assertEqual(yake_str( ""), [])
+        self.assertEqual(yake_str(""), [])
 
     def test_sample(self):
         sample_keywords = yake_str(sample)
@@ -124,9 +123,9 @@ class YakeStrTest(unittest.TestCase):
         self.assertIsInstance(sample_keywords[0][0], str)
         self.assertIsInstance(sample_keywords[0][1], float)
         # Sample entry
-        self.assertIn(('urban outfitters', 0.016481602005070258), sample_keywords)
+        self.assertIn(("urban outfitters", 0.016481602005070258), sample_keywords)
         self.assertEqual(
-            sample_keywords[0], ('urban outfitters', 0.016481602005070258)
+            sample_keywords[0], ("urban outfitters", 0.016481602005070258)
         )  # correct sorting
 
 
@@ -134,30 +133,32 @@ class YakeListTest(unittest.TestCase):
     """Tests for extract_keywords_from_list"""
 
     def test_invalid_inputs(self):
-        self.assertRaises(TypeError, extract_keywords_from_list, None, 'yake')
-        self.assertRaises(TypeError, extract_keywords_from_list, 0, 'yake')
-        self.assertRaises(TypeError, extract_keywords_from_list, "", 'yake')
+        self.assertRaises(TypeError, extract_keywords_from_list, None, "yake")
+        self.assertRaises(TypeError, extract_keywords_from_list, 0, "yake")
+        self.assertRaises(TypeError, extract_keywords_from_list, "", "yake")
 
     def test_empty_list(self):
-        self.assertEqual(len(extract_keywords_from_list([], 'yake')), 0)
-        self.assertEqual(extract_keywords_from_list([], 'yake'), [])
+        self.assertEqual(len(extract_keywords_from_list([], "yake")), 0)
+        self.assertEqual(extract_keywords_from_list([], "yake"), [])
 
     def test_sample(self):
         sample_keywords_str = yake_str(sample)
-        sample_keywords_list = extract_keywords_from_list([sample], 'yake')
+        sample_keywords_list = extract_keywords_from_list([sample], "yake")
 
         self.assertEqual(sample_keywords_str, sample_keywords_list)
-        self.assertEqual(sample_keywords_list, extract_keywords_from_list([sample, ""], 'yake'))
+        self.assertEqual(
+            sample_keywords_list, extract_keywords_from_list([sample, ""], "yake")
+        )
         self.assertNotEqual(
-            sample_keywords_list, extract_keywords_from_list([sample, sample], 'yake')
+            sample_keywords_list, extract_keywords_from_list([sample, sample], "yake")
         )
         self.assertGreater(
-            len(extract_keywords_from_list([sample, sample], 'yake')),
+            len(extract_keywords_from_list([sample, sample], "yake")),
             len(sample_keywords_list),
         )
         self.assertEqual(
             set(sample_keywords_list),
-            set(extract_keywords_from_list([sample, sample], 'yake')),
+            set(extract_keywords_from_list([sample, sample], "yake")),
         )
 
 
@@ -183,7 +184,9 @@ class DataFrameTest(unittest.TestCase):
 
         self.assertIsInstance(sample_df, pd.core.frame.DataFrame)
         self.assertTrue(
-            sample_df.equals(keywords_to_dataframe(extract_keywords_from_list([sample])))
+            sample_df.equals(
+                keywords_to_dataframe(extract_keywords_from_list([sample]))
+            )
         )
         self.assertGreater(len(sample_df), 0)
         self.assertEqual(tuple(sample_df.dtypes), (np.object, np.float64))
@@ -199,56 +202,6 @@ class DataFrameTest(unittest.TestCase):
         self.assertTrue(sample_df.equals(pd.read_csv("src/data/test.csv")))
         os.remove("src/data/test.csv")
         self.assertFalse("test.csv" in os.listdir("src/data"))
-
-
-class AspectExtracionTest(unittest.TestCase):
-    """Tests for find_aspects_str"""
-
-    def test_invalid_inputs(self):
-        self.assertRaises(TypeError, find_aspects_str, None)
-        self.assertRaises(TypeError, find_aspects_str, 0)
-        self.assertRaises(TypeError, find_aspects_str, [""])
-
-    def test_empty_string(self):
-        aspectvector = find_aspects_str("")
-
-        self.assertIsInstance(aspectvector, list)
-        self.assertEqual(len(aspectvector), 0)
-
-    def test_sample(self):
-        aspectvector = find_aspects_str(sample)
-        aspectvector_int = find_aspects_str(sample, return_as_int=True)
-        aspectvector_adj = find_aspects_str(sample, ignore_adjectives=False)
-
-        sample_tokens = re.split(" |\n", re.sub(r"[^\w\d\s]|'", "", sample))
-
-        self.assertIsInstance(aspectvector, list)
-        self.assertGreater(len(aspectvector), 0)
-        self.assertEqual(len(aspectvector), len(sample_tokens))
-        self.assertIsInstance(aspectvector[0], bool)
-        self.assertIn(True, aspectvector)
-        self.assertIn(False, aspectvector)
-
-        self.assertEqual(len(aspectvector), len(aspectvector_int))
-        self.assertIsInstance(aspectvector_int[0], int)
-        self.assertIn(1, aspectvector_int)
-        self.assertIn(0, aspectvector_int)
-        for i in range(len(aspectvector_int)):
-            self.assertEqual(bool(aspectvector_int[i]), aspectvector[i])
-            self.assertEqual(aspectvector_int[i], int(aspectvector[i]))
-
-        self.assertEqual(len(aspectvector), len(aspectvector_adj))
-        truecount = 0
-        truecount_adj = 0
-        for i in range(len(aspectvector_adj)):
-            if aspectvector[i] is True:
-                self.assertEqual(aspectvector_adj[i], True)
-                truecount += 1
-            if aspectvector_adj[i] is True:
-                truecount_adj += 1
-            elif aspectvector_adj[i] is False:
-                self.assertEqual(aspectvector[i], False)
-        self.assertLess(truecount, truecount_adj)
 
 
 if __name__ == "__main__":
