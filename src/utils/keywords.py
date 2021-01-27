@@ -7,10 +7,12 @@ import RAKE
 import spacy
 from tqdm import tqdm
 
+import yake
+
 nltk.download("stopwords")
 
 
-def extract_keywords_str(
+def rake_str(
     document: str,
     minWords: int = 1,
     maxKeywords: int = -1,
@@ -31,7 +33,7 @@ def extract_keywords_str(
         raise TypeError(
             "Function extract_keyword_str expects string type, "
             f"got {type(document)} type instead. "
-            "Did you mean to use extract_keyword_list?"
+            "Did you mean to use rake_list?"
         )
 
     def count_words(keyword: str):
@@ -56,26 +58,71 @@ def extract_keywords_str(
     return keywords
 
 
-def extract_keywords_list(documents: List[str], **kwargs) -> List:
-    """Return top keywords using RAKE for a list of documents
+def yake_str(document: str, maxScore: float = 1.0, **kwargs) -> List[str]:
+    """Extract the top keywords using YAKE
     Arguments:
-    - document: A list containing the documents to extract from
-    - kwargs: Keywords arguments to extract_keyword_str
+    - document: A string containing the text to extract from
+    - maxScore: A float that filters out any keywods with greater score than this
+    - kwargs:   Arguments for the YAKE keyword extractor
+                max_ngram_size = 3
+                deduplication_threshold = 0.9
+                numOfKeywords = 20
+
+    Return:
+    - keywords: A list of (keyword, score) tuples
+    """
+    if type(document) in (list, set, tuple):
+        raise TypeError(
+            "Function extract_keyword_str expects string type, "
+            f"got {type(document)} type instead. "
+            "Did you mean to use yake_list?"
+        )
+
+    if document == "":
+        return []
+
+    extractor = yake.KeywordExtractor(**kwargs)
+
+    keywords = extractor.extract_keywords(document)
+    keywords = [k for k in keywords if k[1] <= maxScore]
+
+    return keywords
+
+
+def extract_keywords_from_list(
+    documents: List[str], algorithm="rake", **kwargs
+) -> List:
+    """Return top keywords using RAKE or YAKE for a list of documents
+    Arguments:
+    - documents: A list containing the documents to extract from
+    - algorithm: Can be either 'rake' or 'yake'
+    - kwargs:    Keywords arguments for the respective extractor
 
     Return:
     - keywords: A list of (keyword, relevancy) tuples
     """
     if type(documents) == str:
         raise TypeError(
-            "Function extract_keyword_list expects list type, "
-            "got string type instead. "
-            "Did you mean to use extract_keyword_str?"
+            "Function extract_keywords_from_list expects list type, "
+            "got string type instead."
         )
 
     keywords = []
+    if algorithm == "rake":
+        extractor = rake_str
+        _reverse = True
+    elif algorithm == "yake":
+        extractor = yake_str
+        _reverse = False
+    else:
+        raise ValueError(
+            f"Function extract_keywords_from_list expects algorithm 'rake' or 'yake',"
+            "got argument {algorithm} instead."
+        )
+
     for doc in tqdm(documents, "Extracting keywords"):
-        keywords.extend(extract_keywords_str(doc, **kwargs))
-    keywords.sort(key=lambda x: x[1], reverse=True)  # Sort by descending Score
+        keywords.extend(extractor(doc, **kwargs))
+    keywords.sort(key=lambda x: x[1], reverse=_reverse)  # Sort by score
     return keywords
 
 
@@ -102,51 +149,3 @@ def keywords_to_dataframe(
         df.to_csv(f"data/{csv_name}.csv", index=False)
 
     return df
-
-
-def find_aspects_str(
-    doc: str, ignore_adjectives: bool = True, return_as_int: bool = False
-) -> str:
-    """
-    Returns a boolean vector where each entry corresponds to a token.
-    True means that the token belongs to an aspect, False means otherwise.
-    Arguments:
-    - document: A string, typically containing a review
-    - ignore_adjectives: Boolean, if True all adjectives and adverbs are False
-    - return_as_int: Boolean, if True the list will contain values 0 and 1
-    Return:
-    List of booleans
-    """
-    if ignore_adjectives:
-        nlp = spacy.load("en", disable=["ner", "parser"])
-
-        def pos(w):
-            return nlp(w)[0].pos_
-
-    # Different results for NLTK stoplist and SmartStoplist, so we combine both
-    keywords_nltk = [k[0] for k in extract_keywords_str(doc)]
-    keywords_smart = [k[0] for k in extract_keywords_str(doc, useNLTK=False)]
-    keywords = list(set(keywords_nltk + keywords_smart))
-
-    doc_tokens = re.split(" |\n", re.sub(r"[^\w\d\s]|'", "", doc).lower())
-    if "" in doc_tokens:
-        doc_tokens.remove("")
-
-    doc_len = len(doc_tokens)
-    aspectvector = [False for i in range(doc_len)]
-
-    for kw in keywords:
-        kw_tokens = re.split(" |\n", kw)
-        kw_len = len(kw_tokens)
-        for i in range(doc_len - kw_len):
-            if doc_tokens[i : i + kw_len] == kw_tokens:
-                if ignore_adjectives:
-                    subvec = [pos(t) not in ("ADJ", "ADV") for t in kw_tokens]
-                else:
-                    subvec = [True] * kw_len
-                aspectvector[i : i + kw_len] = subvec
-
-    if return_as_int:
-        return [int(x) for x in aspectvector]
-
-    return aspectvector

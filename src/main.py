@@ -1,19 +1,16 @@
 import os
 
-import torch
 import numpy as np
-
+import torch
 from torch.cuda import is_available
 from torch.optim import Adam
 from torch.optim.lr_scheduler import ReduceLROnPlateau
 from torch.utils.data import DataLoader
+from utils.baselines import SentimentForest, SentimentSVM, top_ngrams
 from utils.dataloading import load_semeval2015
 from utils.metrics import accuracy, class_balanced_accuracy, cross_entropy, f1_score
 from utils.preprocessing import PreprocessingPipeline
 from utils.sentiment import SentimentDataset, SentimentModel, evaluate_sentiment_model
-from utils.baselines import top_ngrams, SentimentSVM, SentimentForest
-
-
 
 if __name__ == "__main__":
     # path = os.path.join(os.path.dirname(os.path.realpath(__file__)),
@@ -34,20 +31,19 @@ if __name__ == "__main__":
 
     revtexts, aspects, sentiment = dataset["val"]
     val_set = SentimentDataset(revtexts, aspects, sentiment)
-    #----------------------------------------------------------------------------------------
-    #Baseline Models
+    # ----------------------------------------------------------------------------------------
+    # Baseline Models
     top_x = top_ngrams(train_set)
     forest = SentimentForest(top_x)
     svm = SentimentSVM(top_x)
 
     x_train = torch.stack([event for event, _, _ in train_set], axis=0).numpy()
     y_train = torch.Tensor([sentiment for _, _, sentiment in train_set]).numpy()
-    y_train = (2*y_train).astype(np.int)
-
+    y_train = (2 * y_train).astype(np.int)
 
     x_val = torch.stack([event for event, _, _ in val_set], axis=0).numpy()
     y_val = torch.Tensor([sentiment for _, _, sentiment in val_set]).numpy()
-    y_val = (2*y_val).astype(np.int)
+    y_val = (2 * y_val).astype(np.int)
 
     print("Fitting SVM...")
     svm.fit(x_train, y_train)
@@ -59,14 +55,37 @@ if __name__ == "__main__":
     y_forest_train = forest(x_train)
     y_forest_val = forest(x_val)
 
-    print("SVM train accuracy: {}".format(np.mean(np.where((y_train).astype(np.int) == y_svm_train.astype(np.int), 1, 0))))
-    print("SVM val accuracy: {}".format(np.mean(np.where((y_val).astype(np.int) == y_svm_val.astype(np.int), 1, 0))))
-    print("Random Forest train accuracy: {}".format(np.mean(np.where((y_train).astype(np.int) == y_forest_train.astype(np.int), 1, 0))))
-    print("Random Forest val accuracy: {}".format(np.mean(np.where((y_val).astype(np.int) == y_forest_val.astype(np.int), 1, 0))))
+    print(
+        "SVM train accuracy: {}".format(
+            np.mean(
+                np.where((y_train).astype(np.int) == y_svm_train.astype(np.int), 1, 0)
+            )
+        )
+    )
+    print(
+        "SVM val accuracy: {}".format(
+            np.mean(np.where((y_val).astype(np.int) == y_svm_val.astype(np.int), 1, 0))
+        )
+    )
+    print(
+        "Random Forest train accuracy: {}".format(
+            np.mean(
+                np.where(
+                    (y_train).astype(np.int) == y_forest_train.astype(np.int), 1, 0
+                )
+            )
+        )
+    )
+    print(
+        "Random Forest val accuracy: {}".format(
+            np.mean(
+                np.where((y_val).astype(np.int) == y_forest_val.astype(np.int), 1, 0)
+            )
+        )
+    )
 
-
-    #----------------------------------------------------------------------------------------
-    #Neural Network
+    # ----------------------------------------------------------------------------------------
+    # Neural Network
 
     # for phase in dataset.keys():
     #     revtexts, aspects, sentiment = dataset[phase]
