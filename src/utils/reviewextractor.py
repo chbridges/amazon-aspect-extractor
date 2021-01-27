@@ -5,6 +5,10 @@ from selenium import webdriver
 import pprint
 import math
 from typing import List
+import re
+
+# requires chrome driver
+# https://chromedriver.chromium.org/downloads/
 
 review_part_start = '<span class="cr-original-review-content">'
 review_part_end = '</span>'
@@ -51,7 +55,7 @@ def remove_html_code(text: str) -> str:
     :param text: review text
     :return: cleaned up review text
     """
-    result = text.replace('<br>', '').replace('\n', '').strip()
+    result = re.sub(' +', ' ', text.replace('<br>', ' ').replace('\n', ' ').strip())
     return result
 
 
@@ -162,11 +166,16 @@ def check_product_urls(urls: List[str]) -> bool:
     :param urls: array of amazon product urls
     :return: True if everything is fine and raises an exception if there was no product id
     """
-    for url in urls:
-        product_id = get_amazon_product_id(url)
-        if len(product_id) != 10:
-            raise Exception('Failed to extract the product id for the given url: ' + url)
-    return True
+    if len(urls) == 0:
+        return False
+    else:
+        for url_idx in range(len(urls)):
+            url = urls[url_idx]
+            product_id = get_amazon_product_id(url)
+            if len(product_id) != 10:
+                # After a random test, all product IDs have 10 characters
+                raise Exception('Failed to extract the product id for the ' + str(url_idx + 1) + '. url: ' + url)
+        return True
 
 
 def thread_extract_reviews_for_product(product_url: str, max_pages: int, max_threads: int, thread_idx: int, data: list):
@@ -208,9 +217,11 @@ def extract_reviews_for_products(products: List[str], max_pages: int, max_thread
         for product_num in range(len(products)):
             threads[product_num].join()
         return data
+    else:
+        return []
 
 
-def main():
+if __name__ == '__main__':
     print('Start: ' + datetime.datetime.now().strftime('%H:%M:%S'))
     testlink = ['https://www.amazon.com/-/de/dp/B07RF1XD36/ref=lp_16225009011_1_6',
                 'https://www.amazon.com/dp/B08JQKMFFB/ref=sspa_dk_detail_2?psc=1&pd_rd_i=B08JQKMFFB&pd_rd_w=5AdCg' +
@@ -226,7 +237,3 @@ def main():
     pp = pprint.PrettyPrinter(indent=4)
     pp.pprint(review_data)
     print('End  : ' + datetime.datetime.now().strftime('%H:%M:%S'))
-
-
-if __name__ == '__main__':
-    main()

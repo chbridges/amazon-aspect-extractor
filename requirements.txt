@@ -6,3 +6,5 @@ spacy
 python-rake
 selenium
 git+https://github.com/LIAAD/yake
+# chromedirver https://chromedriver.chromium.org/downloads/
+# Google Chrome Browser
