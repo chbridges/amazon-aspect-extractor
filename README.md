@@ -18,6 +18,8 @@
 
 ### Utilized libraries: 
 - see requirements.txt  
+- Google Chrome, available https://www.google.com/chrome/
+- chromedriver, available: https://chromedriver.chromium.org/downloads
 
 ## Project State
 
