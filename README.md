@@ -27,7 +27,7 @@
 <img src="./milestone_01/Planning_State.png" alt="drawing" width="600rem"/>
 
 
-- Stretch Goal: GUI (Browser-PlugIn)
+- Stretch Goal: GUI (Simple Tkinter/Browser-PlugIn) 
 
 ### Training State:
 Results of current best sentiment model
@@ -45,7 +45,7 @@ Results of current best sentiment model
 
 ### Processing pipeline
 
-<img src="./milestone_01/Pipeline.png" alt="drawing" width="600rem"/>
+<img src="./milestone_01/Pipeline_02.png" alt="drawing" width="600rem"/>
 
 
 ## Data Analysis
