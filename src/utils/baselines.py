@@ -7,9 +7,10 @@ from sklearn.svm import SVC
 
 class SentimentSVM(SVC):
     def __init__(
-        self, ngrams, kernel="poly", mode="classifier", reg=1.0, balanced=True, degree=3
+        self, ngrams, kernel="poly", mode="classifier", reg=1.0, balanced=True, degree=3, ex=1
     ):
         self.ngrams = ngrams
+        self.ex = ex
         if mode == "classifier":
             class_weight = "balanced" if balanced else None
             super().__init__(
@@ -42,7 +43,7 @@ class SentimentSVM(SVC):
             indx_asp = np.where(asp == 1)[0]
             if len(indx_asp):
                 indx_asp = indx_asp.reshape(1, len(indx_asp))
-                dist = np.reciprocal(np.min(np.abs(indx[i] - indx_asp), axis=-1) + 1)
+                dist = np.reciprocal(np.min(np.abs(indx[i] - indx_asp), axis=-1) + 1) ** self.ex
                 distance_vector[i] = dist
             else:
                 distance_vector[i] = np.ones(distance_vector.shape[1])
@@ -68,8 +69,10 @@ class SentimentForest(RandomForestClassifier):
         balanced=True,
         mode="classifier",
         pruning=0.0,
+        ex=1,
     ):
         self.ngrams = ngrams
+        self.ex = ex
         if mode == "classifier":
             class_weight = "balanced_subsample" if balanced else None
             super().__init__(
@@ -107,7 +110,7 @@ class SentimentForest(RandomForestClassifier):
             indx_asp = np.where(asp == 1)[0]
             if len(indx_asp):
                 indx_asp = indx_asp.reshape(1, len(indx_asp))
-                dist = np.reciprocal(np.min(np.abs(indx[i] - indx_asp), axis=-1) + 1)
+                dist = np.reciprocal(np.min(np.abs(indx[i] - indx_asp), axis=-1) + 1) ** self.ex
                 distance_vector[i] = dist
             else:
                 distance_vector[i] = np.ones(distance_vector.shape[1])

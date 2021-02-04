@@ -54,6 +54,8 @@ class SentimentModel(nn.Module):
             self.device
         )
         self.fc1 = nn.Linear(embedding_dim + 1, embedding_dim + 1).to(self.device)
+        self.fc2 = nn.Linear(embedding_dim + 1, embedding_dim + 1).to(self.device)
+
         self.lstm = nn.LSTM(
             embedding_dim + 1,
             hidden_dim,
@@ -63,10 +65,14 @@ class SentimentModel(nn.Module):
             batch_first=True,
         ).to(self.device)
         self.dropout = nn.Dropout(dropout).to(self.device)
-        self.fc = nn.Linear(hidden_dim * (1 + self.bidirectional), output_size).to(
+        self.fc3 = nn.Linear(hidden_dim * (1 + self.bidirectional), hidden_dim * (1 + self.bidirectional)).to(
+            self.device
+        )
+        self.fc4 = nn.Linear(hidden_dim * (1 + self.bidirectional), output_size).to(
             self.device
         )
         self.normalize_output = normalize_output
+        self.relu = nn.ReLU()
         if normalize_output:
             self.activation = nn.Sigmoid().to(self.device)
         else:
@@ -115,6 +121,9 @@ class SentimentModel(nn.Module):
         embedded = self.fc1(embedded)
 
         embedded = self.dropout(embedded)
+        #embedded = self.fc2(embedded)
+        embedded = self.relu(embedded)
+        #embedded = self.dropout(embedded)
 
         # Dynamic input packing adapted from
         # https://towardsdatascience.com/taming-lstms-variable-sized-mini-batches-and-why-pytorch-is-good-for-your-health-61d35642972e
@@ -128,8 +137,11 @@ class SentimentModel(nn.Module):
 
         out = out.contiguous().view(batch_size, seq_len, out.shape[2])
 
+        # out = self.dropout(out)
+        # out = self.fc3(out)
         out = self.dropout(out)
-        out = self.fc(out)
+        out = self.fc4(out)
+
         out = self.activation(out)
 
         return out.view(batch_size, seq_len, self.output_size)[:, -1, :]
