@@ -18,7 +18,7 @@ python-rake = "*"
 selenium = "*"
 numpy = "*"
 yake = {git = "https://github.com/LIAAD/yake"}
-chromedriver-py = "89.0.4389.23"
+chromedriver-py = {version="89.0.4389.23"}
 
 [scripts]
 spacy = "python -m spacy download en"
