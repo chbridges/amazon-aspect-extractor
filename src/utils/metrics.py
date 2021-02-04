@@ -1,6 +1,6 @@
 import torch
 from torch import nn
-
+from tqdm import tqdm
 
 def log_sq_diff(pred, y):
     """Logarithmic squared difference loss.
@@ -66,6 +66,33 @@ def class_balanced_accuracy(pred, y, regression=True, n_classes=3):
         )
         acc.append(tp / count)
     return torch.mean(torch.Tensor(acc))
+
+def class_ratio(model, dataloaders, n_classes=3):
+    ratios = torch.zeros(2, n_classes).to(model.device)
+    for batch_id, (x, seq_lens, y) in tqdm(
+        enumerate(dataloaders["val"]), desc="Computing validation accuracy"
+    ):
+        with torch.no_grad():
+            model.init_hidden(len(x))
+
+            x, seq_lens, y = (
+                x.to(model.device),
+                seq_lens.to(model.device),
+                y.to(model.device),
+            )
+            pred = model(x, seq_lens)
+            if model.output_size == 1:
+                labels = torch.round(pred * (n_classes - 1)).type(torch.int)
+            else:
+                labels = torch.argmax(pred, dim=-1).type(torch.int)
+            labels = labels.squeeze()
+            y = (y * (n_classes - 1)).type(torch.int)
+            ratio_true = torch.mean((y.view(1, -1)==torch.arange(n_classes).to(y.device).view(-1, 1)).float(), dim=-1) * 100
+            ratio_pred = torch.mean((labels.view(1, -1)==torch.arange(n_classes).to(labels.device).view(-1, 1)).float(), dim=-1) * 100
+            ratios[0] += ratio_true/len(dataloaders["val"])
+            ratios[1] += ratio_pred/len(dataloaders["val"])
+
+    print("True class ratio: {}%\nPredicted class ratio: {}%".format("/".join(list(map(str,ratios[0].tolist()))), "/".join(list(map(str, ratios[1].tolist())))))
 
 
 def f1_score(pred, y, regression=True, n_classes=3):
