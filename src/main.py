@@ -8,9 +8,20 @@ from torch.optim.lr_scheduler import ReduceLROnPlateau
 from torch.utils.data import DataLoader
 from utils.baselines import SentimentForest, SentimentSVM, top_ngrams
 from utils.dataloading import load_semeval2015
-from utils.metrics import accuracy, class_balanced_accuracy, cross_entropy, f1_score, class_ratio
+from utils.metrics import (
+    accuracy,
+    class_balanced_accuracy,
+    cross_entropy,
+    f1_score,
+    class_ratio,
+)
 from utils.preprocessing import PreprocessingPipeline
-from utils.sentiment import SentimentDataset, SentimentModel, evaluate_sentiment_model, train_sentiment_model
+from utils.sentiment import (
+    SentimentDataset,
+    SentimentModel,
+    evaluate_sentiment_model,
+    train_sentiment_model,
+)
 from utils.reviewextractor import extract_reviews_for_products
 
 if __name__ == "__main__":
@@ -125,8 +136,15 @@ if __name__ == "__main__":
     optimizer = Adam(model.parameters(), lr=0.004, weight_decay=1e-4)
     scheduler = ReduceLROnPlateau(optimizer, cooldown=10, factor=0.4, verbose=True)
     criterion = cross_entropy(dataloaders["train"], device=device)
-    train_sentiment_model(model, optimizer, dataloaders, criterion=criterion,
-                       scheduler=scheduler, n_epochs=400, eval_every=1)
+    train_sentiment_model(
+        model,
+        optimizer,
+        dataloaders,
+        criterion=criterion,
+        scheduler=scheduler,
+        n_epochs=400,
+        eval_every=1,
+    )
     model.load_state_dict(
         torch.load(os.path.join("models", model.name + "_best" + ".pth"))[
             "model_state_dict"

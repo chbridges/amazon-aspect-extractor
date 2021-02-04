@@ -65,9 +65,9 @@ class SentimentModel(nn.Module):
             batch_first=True,
         ).to(self.device)
         self.dropout = nn.Dropout(dropout).to(self.device)
-        self.fc3 = nn.Linear(hidden_dim * (1 + self.bidirectional), hidden_dim * (1 + self.bidirectional)).to(
-            self.device
-        )
+        self.fc3 = nn.Linear(
+            hidden_dim * (1 + self.bidirectional), hidden_dim * (1 + self.bidirectional)
+        ).to(self.device)
         self.fc4 = nn.Linear(hidden_dim * (1 + self.bidirectional), output_size).to(
             self.device
         )
@@ -121,9 +121,9 @@ class SentimentModel(nn.Module):
         embedded = self.fc1(embedded)
 
         embedded = self.dropout(embedded)
-        #embedded = self.fc2(embedded)
+        # embedded = self.fc2(embedded)
         embedded = self.relu(embedded)
-        #embedded = self.dropout(embedded)
+        # embedded = self.dropout(embedded)
 
         # Dynamic input packing adapted from
         # https://towardsdatascience.com/taming-lstms-variable-sized-mini-batches-and-why-pytorch-is-good-for-your-health-61d35642972e

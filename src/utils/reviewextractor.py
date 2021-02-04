@@ -12,7 +12,7 @@ import re
 # https://chromedriver.chromium.org/downloads/
 
 review_part_start = '<span class="cr-original-review-content">'
-review_part_end = '</span>'
+review_part_end = "</span>"
 
 
 class AmazonReviewPageExtractor:
@@ -39,11 +39,18 @@ class AmazonReviewPageExtractor:
             end_idx = self.data.find(review_part_end, start_idx)  # starting end point
             while start_idx != -1:  # As long as there are still reviews
                 # extract the header an find the body
-                header = remove_html_code(self.data[start_idx + len(review_part_start):end_idx]) + '. '
+                header = (
+                    remove_html_code(
+                        self.data[start_idx + len(review_part_start) : end_idx]
+                    )
+                    + ". "
+                )
                 start_idx = self.data.find(review_part_start, end_idx)
                 end_idx = self.data.find(review_part_end, start_idx)
                 # extract the body
-                content = remove_html_code(self.data[start_idx + len(review_part_start):end_idx])
+                content = remove_html_code(
+                    self.data[start_idx + len(review_part_start) : end_idx]
+                )
                 start_idx = self.data.find(review_part_start, end_idx)
                 end_idx = self.data.find(review_part_end, start_idx)
                 # concat the header and the body, store into the review array
@@ -56,7 +63,7 @@ def remove_html_code(text: str) -> str:
     :param text: review text
     :return: cleaned up review text
     """
-    result = re.sub(' +', ' ', text.replace('<br>', ' ').replace('\n', ' ').strip())
+    result = re.sub(" +", " ", text.replace("<br>", " ").replace("\n", " ").strip())
     return result
 
 
@@ -67,10 +74,12 @@ def get_amazon_link(product_id: str, page: int) -> str:
     :param page: review page number
     :return: amazon review page without any filter
     """
-    result = 'https://www.amazon.com/-/de/product-reviews/' + \
-             product_id + \
-             '/ref=cm_cr_arp_d_viewopt_sr?ie=UTF8&filterByStar=all_stars&reviewerType=all_reviews&pageNumber=' + \
-             str(page)
+    result = (
+        "https://www.amazon.com/-/de/product-reviews/"
+        + product_id
+        + "/ref=cm_cr_arp_d_viewopt_sr?ie=UTF8&filterByStar=all_stars&reviewerType=all_reviews&pageNumber="
+        + str(page)
+    )
     return result
 
 
@@ -80,15 +89,15 @@ def get_amazon_product_id(url: str) -> str:
     :param url: url of product
     :return: product id
     """
-    start = url.find('/dp/')  # search pattern for a product url
+    start = url.find("/dp/")  # search pattern for a product url
     count = 4
     if start == -1:
-        start = url.find('/product-reviews/')  # search pattern for a review page
+        start = url.find("/product-reviews/")  # search pattern for a review page
         count = 17
         if start == -1:
-            raise Exception('Failed to find the product id in the given url: ' + url)
-    end = url.find('/', start + count)
-    result = url[start + count:end]
+            raise Exception("Failed to find the product id in the given url: " + url)
+    end = url.find("/", start + count)
+    result = url[start + count : end]
     return result
 
 
@@ -115,8 +124,12 @@ def extract_amazon_review(thread_idx: int, product_id: str, data: list):
     :param data: shared memory array to save the web page source
     :return: None
     """
-    driver = webdriver.Chrome(options=get_chrome_options(), executable_path=binary_path)  # create driver engine
-    driver.get(get_amazon_link(product_id, thread_idx + 1))  # set browser to use this page
+    driver = webdriver.Chrome(
+        options=get_chrome_options(), executable_path=binary_path
+    )  # create driver engine
+    driver.get(
+        get_amazon_link(product_id, thread_idx + 1)
+    )  # set browser to use this page
     time.sleep(6)  # wait for page
     result = driver.page_source  # extract page html source
     driver.quit()  # close driver
@@ -124,7 +137,9 @@ def extract_amazon_review(thread_idx: int, product_id: str, data: list):
     data[thread_idx] = review_page.reviews  # store extracted reviews in shared memory
 
 
-def extract_all_amazon_reviews(product_url: str, max_pages: int, max_threads: int) -> list:
+def extract_all_amazon_reviews(
+    product_url: str, max_pages: int, max_threads: int
+) -> list:
     """
     main function to extract all amazon reviews for a given product url
     :param product_url: product url copied from web browser
@@ -133,15 +148,19 @@ def extract_all_amazon_reviews(product_url: str, max_pages: int, max_threads: in
     :return: array of reviews
     """
     product_id = get_amazon_product_id(product_url)
-    thread_data: List[str] = [''] * max_pages
+    thread_data: List[str] = [""] * max_pages
     threads: List[threading.Thread] = list()
     last_review_page = max_pages
     for thread_iter in range(0, max_pages, max_threads):
         # create only a limited amount of threads
         for web_page in range(thread_iter, thread_iter + max_threads, 1):
             # create thread and start
-            threads.append(threading.Thread(target=extract_amazon_review,
-                                            args=(web_page, product_id, thread_data)))
+            threads.append(
+                threading.Thread(
+                    target=extract_amazon_review,
+                    args=(web_page, product_id, thread_data),
+                )
+            )
             threads[web_page].start()
         for web_page in range(thread_iter, thread_iter + max_threads, 1):
             # join threads and count the number of reviews
@@ -175,11 +194,18 @@ def check_product_urls(urls: List[str]) -> bool:
             product_id = get_amazon_product_id(url)
             if len(product_id) != 10:
                 # After a random test, all product IDs have 10 characters
-                raise Exception('Failed to extract the product id for the ' + str(url_idx + 1) + '. url: ' + url)
+                raise Exception(
+                    "Failed to extract the product id for the "
+                    + str(url_idx + 1)
+                    + ". url: "
+                    + url
+                )
         return True
 
 
-def thread_extract_reviews_for_product(product_url: str, max_pages: int, max_threads: int, thread_idx: int, data: list):
+def thread_extract_reviews_for_product(
+    product_url: str, max_pages: int, max_threads: int, thread_idx: int, data: list
+):
     """
     Thread function used to extract the reviews for a given product url
     The first 3 parameters are passed on to extract_all_amazon_reviews and the thread_idx is used to
@@ -194,7 +220,9 @@ def thread_extract_reviews_for_product(product_url: str, max_pages: int, max_thr
     data[thread_idx] = extract_all_amazon_reviews(product_url, max_pages, max_threads)
 
 
-def extract_reviews_for_products(products: List[str], max_pages: int, max_threads: int) -> list:
+def extract_reviews_for_products(
+    products: List[str], max_pages: int, max_threads: int
+) -> list:
     """
     Main function
     Is used to extract all reviews from a list of amazon products in parallel.
@@ -212,8 +240,12 @@ def extract_reviews_for_products(products: List[str], max_pages: int, max_thread
         threads_for_product = math.trunc(max_threads / len(products))
         for product_num in range(len(products)):
             url = products[product_num]
-            threads.append(threading.Thread(target=thread_extract_reviews_for_product,
-                                            args=(url, max_pages, threads_for_product, product_num, data)))
+            threads.append(
+                threading.Thread(
+                    target=thread_extract_reviews_for_product,
+                    args=(url, max_pages, threads_for_product, product_num, data),
+                )
+            )
             threads[product_num].start()
         for product_num in range(len(products)):
             threads[product_num].join()
@@ -222,19 +254,20 @@ def extract_reviews_for_products(products: List[str], max_pages: int, max_thread
         return []
 
 
-if __name__ == '__main__':
-    print('Start: ' + datetime.datetime.now().strftime('%H:%M:%S'))
-    testlink = ['https://www.amazon.com/-/de/dp/B07RF1XD36/ref=lp_16225009011_1_6',
-                'https://www.amazon.com/dp/B08JQKMFFB/ref=sspa_dk_detail_2?psc=1&pd_rd_i=B08JQKMFFB&pd_rd_w=5AdCg' +
-                '&pf_rd_p=45e679f6-d55f-4626-99ea-f1ec7720af94&pd_rd_wg=bWbE5&pf_rd_r=HJV72D1QHGE2XJ8QJBV0&pd_rd_r' +
-                '=b3a4c265-2d13-454f-a385-3ad0a71737eb&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEzN1NSWjVRTFFINUFNJmVuY3J5cHR' +
-                'lZElkPUEwMjY3OTk2MUQ5ODYwVU4zNlhBVCZlbmNyeXB0ZWRBZElkPUEwMzMwMjc2M1VQMVJXVllMVVpGJndpZGdldE5hbWU9c' +
-                '3BfZGV0YWlsJmFjdGlvbj1jbGlja1JlZGlyZWN0JmRvTm90TG9nQ2xpY2s9dHJ1ZQ==',
-                'https://www.amazon.com/product-reviews/B08KH53NKR/ref=cm_cr_arp_d_viewopt_sr?ie=UTF8&filterByStar' +
-                '=all_stars&reviewerType=all_reviews&pageNumber=1#reviews-filter-bar'
-                ]
+if __name__ == "__main__":
+    print("Start: " + datetime.datetime.now().strftime("%H:%M:%S"))
+    testlink = [
+        "https://www.amazon.com/-/de/dp/B07RF1XD36/ref=lp_16225009011_1_6",
+        "https://www.amazon.com/dp/B08JQKMFFB/ref=sspa_dk_detail_2?psc=1&pd_rd_i=B08JQKMFFB&pd_rd_w=5AdCg"
+        + "&pf_rd_p=45e679f6-d55f-4626-99ea-f1ec7720af94&pd_rd_wg=bWbE5&pf_rd_r=HJV72D1QHGE2XJ8QJBV0&pd_rd_r"
+        + "=b3a4c265-2d13-454f-a385-3ad0a71737eb&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEzN1NSWjVRTFFINUFNJmVuY3J5cHR"
+        + "lZElkPUEwMjY3OTk2MUQ5ODYwVU4zNlhBVCZlbmNyeXB0ZWRBZElkPUEwMzMwMjc2M1VQMVJXVllMVVpGJndpZGdldE5hbWU9c"
+        + "3BfZGV0YWlsJmFjdGlvbj1jbGlja1JlZGlyZWN0JmRvTm90TG9nQ2xpY2s9dHJ1ZQ==",
+        "https://www.amazon.com/product-reviews/B08KH53NKR/ref=cm_cr_arp_d_viewopt_sr?ie=UTF8&filterByStar"
+        + "=all_stars&reviewerType=all_reviews&pageNumber=1#reviews-filter-bar",
+    ]
     review_data = extract_reviews_for_products(testlink, 100, 30)
-    print('Found: ' + str(len(review_data)) + ' reviews')
+    print("Found: " + str(len(review_data)) + " reviews")
     pp = pprint.PrettyPrinter(indent=4)
     pp.pprint(review_data)
-    print('End  : ' + datetime.datetime.now().strftime('%H:%M:%S'))
+    print("End  : " + datetime.datetime.now().strftime("%H:%M:%S"))
