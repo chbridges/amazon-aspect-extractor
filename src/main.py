@@ -11,6 +11,7 @@ from utils.dataloading import load_semeval2015
 from utils.metrics import accuracy, class_balanced_accuracy, cross_entropy, f1_score, class_ratio
 from utils.preprocessing import PreprocessingPipeline
 from utils.sentiment import SentimentDataset, SentimentModel, evaluate_sentiment_model, train_sentiment_model
+from utils.reviewextractor import extract_reviews_for_products
 
 if __name__ == "__main__":
     # path = os.path.join(os.path.dirname(os.path.realpath(__file__)),
@@ -19,6 +20,20 @@ if __name__ == "__main__":
     # reviewtext = [rev["review_body"] for rev in dataset["train"]]
     # keywords = extract_keyword_list(reviewtext, minScore=2.0)
     # print(keywords[:10])
+
+    # TODO: Implement Input infrastructure for URLs (-> GUI?)
+
+    # input_url = ['https://www.amazon.com/-/de/dp/B07RF1XD36/ref=lp_16225009011_1_6',
+    #             'https://www.amazon.com/dp/B08JQKMFFB/ref=sspa_dk_detail_2?psc=1&pd_rd_i=B08JQKMFFB&pd_rd_w=5AdCg' +
+    #             '&pf_rd_p=45e679f6-d55f-4626-99ea-f1ec7720af94&pd_rd_wg=bWbE5&pf_rd_r=HJV72D1QHGE2XJ8QJBV0&pd_rd_r' +
+    #             '=b3a4c265-2d13-454f-a385-3ad0a71737eb&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEzN1NSWjVRTFFINUFNJmVuY3J5cHR' +
+    #             'lZElkPUEwMjY3OTk2MUQ5ODYwVU4zNlhBVCZlbmNyeXB0ZWRBZElkPUEwMzMwMjc2M1VQMVJXVllMVVpGJndpZGdldE5hbWU9c' +
+    #             '3BfZGV0YWlsJmFjdGlvbj1jbGlja1JlZGlyZWN0JmRvTm90TG9nQ2xpY2s9dHJ1ZQ==',
+    #             'https://www.amazon.com/product-reviews/B08KH53NKR/ref=cm_cr_arp_d_viewopt_sr?ie=UTF8&filterByStar' +
+    #             '=all_stars&reviewerType=all_reviews&pageNumber=1#reviews-filter-bar'
+    #             ]
+    # crawl list of reviews from input amazon URLs
+    # dataset = extract_reviews_for_products(input_url)
 
     path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "data/ABSA15")
     dataset = load_semeval2015(path, categories=["restaurants", "hotels"])
