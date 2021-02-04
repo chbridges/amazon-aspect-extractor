@@ -2,6 +2,7 @@ import datetime
 import time
 import threading
 from selenium import webdriver
+from chromedriver_py import binary_path
 import pprint
 import math
 from typing import List
@@ -114,7 +115,7 @@ def extract_amazon_review(thread_idx: int, product_id: str, data: list):
     :param data: shared memory array to save the web page source
     :return: None
     """
-    driver = webdriver.Chrome(options=get_chrome_options())  # create driver engine
+    driver = webdriver.Chrome(options=get_chrome_options(), executable_path=binary_path)  # create driver engine
     driver.get(get_amazon_link(product_id, thread_idx + 1))  # set browser to use this page
     time.sleep(6)  # wait for page
     result = driver.page_source  # extract page html source
