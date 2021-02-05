@@ -177,7 +177,7 @@ class DataFrameTest(unittest.TestCase):
         self.assertTrue(empty_df.equals(keywords_to_dataframe(None)))
         self.assertEqual(len(empty_df), 0)
         self.assertEqual(tuple(empty_df.columns), ("keyword", "relevancy"))
-        self.assertEqual(tuple(empty_df.dtypes), (np.object, np.object))
+        self.assertEqual(tuple(empty_df.dtypes), (object, object))
 
     def test_sample(self):
         sample_df = keywords_to_dataframe(rake_str(sample))
@@ -189,7 +189,7 @@ class DataFrameTest(unittest.TestCase):
             )
         )
         self.assertGreater(len(sample_df), 0)
-        self.assertEqual(tuple(sample_df.dtypes), (np.object, np.float64))
+        self.assertEqual(tuple(sample_df.dtypes), (object, np.float64))
         self.assertEqual(tuple(sample_df.columns), ("keyword", "relevancy"))
         self.assertEqual(tuple(sample_df.iloc[0]), ("definitely less waterproof", 8.5))
 

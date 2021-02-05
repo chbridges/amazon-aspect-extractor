@@ -18,11 +18,10 @@ python-rake = "*"
 selenium = "*"
 numpy = "*"
 yake = {git = "https://github.com/LIAAD/yake"}
-chromedriver-py = "==88.0.4324.96"
+chromedriver-py = "*"
 
 [scripts]
-
-spacy = "python -m spacy download en"
+spacy = "python -m spacy download en_core_web_sm"
 test = "coverage run --include=src/*,tests/* -m unittest discover -s ./tests -p *_test.py"
 report = "coverage html"
 main = "python ./src/main.py"
