@@ -8,9 +8,20 @@ from torch.optim.lr_scheduler import ReduceLROnPlateau
 from torch.utils.data import DataLoader
 from utils.baselines import SentimentForest, SentimentSVM, top_ngrams
 from utils.dataloading import load_semeval2015, load_custom_dataset
-from utils.metrics import accuracy, class_balanced_accuracy, cross_entropy, f1_score, class_ratio
+from utils.metrics import (
+    accuracy,
+    class_balanced_accuracy,
+    cross_entropy,
+    f1_score,
+    class_ratio,
+)
 from utils.preprocessing import PreprocessingPipeline
-from utils.sentiment import SentimentDataset, SentimentModel, evaluate_sentiment_model, train_sentiment_model
+from utils.sentiment import (
+    SentimentDataset,
+    SentimentModel,
+    evaluate_sentiment_model,
+    train_sentiment_model,
+)
 from utils.reviewextractor import extract_reviews_for_products
 
 if __name__ == "__main__":
@@ -37,8 +48,8 @@ if __name__ == "__main__":
 
     path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "data/ABSA15")
     dataset = load_semeval2015(path, categories=["restaurants"])
-    #path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "data/custom")
-    #dataset = load_custom_dataset(path, categories=["laptops"])
+    # path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "data/custom")
+    # dataset = load_custom_dataset(path, categories=["laptops"])
 
     pipeline = PreprocessingPipeline()
     dataloaders = {}
@@ -117,69 +128,59 @@ if __name__ == "__main__":
     class_freq_forest = []
     class_freq_val = []
 
-    for c in range(np.max(y_train)+1):
+    for c in range(np.max(y_train) + 1):
         tp = np.sum(np.logical_and(y_train == c, y_svm_train == c))
         fp = np.sum(np.logical_and(y_train != c, y_svm_train == c))
         fn = np.sum(np.logical_and(y_train == c, y_svm_train != c))
-        acc_svm_train.append(tp/np.sum(y_train == c))
+        acc_svm_train.append(tp / np.sum(y_train == c))
         f1_svm_train.append(tp / (tp + 0.5 * (fp + fn)))
 
         tp = np.sum(np.logical_and(y_val == c, y_svm_val == c))
         fp = np.sum(np.logical_and(y_val != c, y_svm_val == c))
         fn = np.sum(np.logical_and(y_val == c, y_svm_val != c))
-        acc_svm_val.append(tp/np.sum(y_val == c))
+        acc_svm_val.append(tp / np.sum(y_val == c))
         f1_svm_val.append(tp / (tp + 0.5 * (fp + fn)))
-        class_freq_svm.append(np.sum(y_svm_val==c)/len(y_svm_val))
+        class_freq_svm.append(np.sum(y_svm_val == c) / len(y_svm_val))
 
         tp = np.sum(np.logical_and(y_train == c, y_forest_train == c))
         fp = np.sum(np.logical_and(y_train != c, y_forest_train == c))
         fn = np.sum(np.logical_and(y_train == c, y_forest_train != c))
-        acc_forest_train.append(tp/np.sum(y_train == c))
+        acc_forest_train.append(tp / np.sum(y_train == c))
         f1_forest_train.append(tp / (tp + 0.5 * (fp + fn)))
 
         tp = np.sum(np.logical_and(y_val == c, y_forest_val == c))
         fp = np.sum(np.logical_and(y_val != c, y_forest_val == c))
         fn = np.sum(np.logical_and(y_val == c, y_forest_val != c))
-        acc_forest_val.append(tp/np.sum(y_val == c))
+        acc_forest_val.append(tp / np.sum(y_val == c))
         f1_forest_val.append(tp / (tp + 0.5 * (fp + fn)))
-        class_freq_forest.append(np.sum(y_forest_val==c)/len(y_forest_val))
+        class_freq_forest.append(np.sum(y_forest_val == c) / len(y_forest_val))
 
-        class_freq_val.append(np.sum(y_val==c)/len(y_val))
+        class_freq_val.append(np.sum(y_val == c) / len(y_val))
 
-    print(
-        "SVM train balanced accuracy: {}".format(np.mean(acc_svm_train))
-    )
-    print(
-        "SVM val balanced accuracy: {}".format(np.mean(acc_svm_val))
-    )
-    print(
-        "Random Forest train balanced accuracy: {}".format(np.mean(acc_forest_train))
-    )
-    print(
-        "Random Forest val balanced accuracy: {}".format(np.mean(acc_forest_val))
-    )
+    print("SVM train balanced accuracy: {}".format(np.mean(acc_svm_train)))
+    print("SVM val balanced accuracy: {}".format(np.mean(acc_svm_val)))
+    print("Random Forest train balanced accuracy: {}".format(np.mean(acc_forest_train)))
+    print("Random Forest val balanced accuracy: {}".format(np.mean(acc_forest_val)))
+
+    print("SVM train f1 score: {}".format(np.mean(f1_svm_train)))
+    print("SVM val f1 score: {}".format(np.mean(f1_svm_val)))
+    print("Random Forest train f1 score: {}".format(np.mean(f1_forest_train)))
+    print("Random Forest val f1 score: {}".format(np.mean(f1_forest_val)))
 
     print(
-        "SVM train f1 score: {}".format(np.mean(f1_svm_train))
+        "SVM class ratio: {}".format(
+            "/".join(["{:.2f}".format(x * 100) + "%" for x in class_freq_svm])
+        )
     )
     print(
-        "SVM val f1 score: {}".format(np.mean(f1_svm_val))
+        "Random Forest class ratio: {}".format(
+            "/".join(["{:.2f}".format(x * 100) + "%" for x in class_freq_forest])
+        )
     )
     print(
-        "Random Forest train f1 score: {}".format(np.mean(f1_forest_train))
-    )
-    print(
-        "Random Forest val f1 score: {}".format(np.mean(f1_forest_val))
-    )
-
-    print(
-        "SVM class ratio: {}".format("/".join(["{:.2f}".format(x*100)+"%" for x in class_freq_svm]))
-    )
-    print(
-        "Random Forest class ratio: {}".format("/".join(["{:.2f}".format(x*100)+"%" for x in class_freq_forest]))
-    )
-    print(
-        "True class ratio: {}".format("/".join(["{:.2f}".format(x*100)+"%" for x in class_freq_val]))
+        "True class ratio: {}".format(
+            "/".join(["{:.2f}".format(x * 100) + "%" for x in class_freq_val])
+        )
     )
 
     # ----------------------------------------------------------------------------------------
@@ -188,7 +189,9 @@ if __name__ == "__main__":
     for phase in dataset.keys():
         revtexts, aspects, sentiment = dataset[phase]
         sentiments = SentimentDataset(revtexts, aspects, sentiment)
-        dataloaders[phase] = DataLoader(sentiments, batch_size=32, shuffle=True, drop_last=False)
+        dataloaders[phase] = DataLoader(
+            sentiments, batch_size=32, shuffle=True, drop_last=False
+        )
 
     length = 0
     for batch in dataloaders["val"]:

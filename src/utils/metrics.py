@@ -2,6 +2,7 @@ import torch
 from torch import nn
 from tqdm import tqdm
 
+
 def log_sq_diff(pred, y):
     """Logarithmic squared difference loss.
     This ranges from 0 to infinity and is subject to minimization
@@ -67,6 +68,7 @@ def class_balanced_accuracy(pred, y, regression=True, n_classes=3):
         acc.append(tp / count)
     return torch.mean(torch.Tensor(acc))
 
+
 def class_ratio(model, dataloaders, n_classes=3):
     ratios = torch.zeros(2, n_classes).to(model.device)
     for batch_id, (x, seq_lens, y) in tqdm(
@@ -87,12 +89,28 @@ def class_ratio(model, dataloaders, n_classes=3):
                 labels = torch.argmax(pred, dim=-1).type(torch.int)
             labels = labels.squeeze()
             y = (y * (n_classes - 1)).type(torch.int)
-            ratio_true = torch.mean((y.view(1, -1)==torch.arange(n_classes).to(y.device).view(-1, 1)).float(), dim=-1)
-            ratio_pred = torch.mean((labels.view(1, -1)==torch.arange(n_classes).to(labels.device).view(-1, 1)).float(), dim=-1)
-            ratios[0] += ratio_true/len(dataloaders["val"])
-            ratios[1] += ratio_pred/len(dataloaders["val"])
+            ratio_true = torch.mean(
+                (
+                    y.view(1, -1) == torch.arange(n_classes).to(y.device).view(-1, 1)
+                ).float(),
+                dim=-1,
+            )
+            ratio_pred = torch.mean(
+                (
+                    labels.view(1, -1)
+                    == torch.arange(n_classes).to(labels.device).view(-1, 1)
+                ).float(),
+                dim=-1,
+            )
+            ratios[0] += ratio_true / len(dataloaders["val"])
+            ratios[1] += ratio_pred / len(dataloaders["val"])
 
-    print("True class ratio: {}\nPredicted class ratio: {}".format("/".join(["{:.2f}".format(x*100)+"%" for x in ratios[0]]), "/".join(["{:.2f}".format(x*100)+"%" for x in ratios[1]])))
+    print(
+        "True class ratio: {}\nPredicted class ratio: {}".format(
+            "/".join(["{:.2f}".format(x * 100) + "%" for x in ratios[0]]),
+            "/".join(["{:.2f}".format(x * 100) + "%" for x in ratios[1]]),
+        )
+    )
 
 
 def f1_score(pred, y, regression=True, n_classes=3):
