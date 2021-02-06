@@ -32,10 +32,15 @@
 ### Training State:
 Results of current best sentiment model
 
-|Split \ Metric|Accuracy|Class balanced accuracy|F1 Score|
-|--------------|--------|-----------------------|--------|
-|Training|0.803|0.758|0.847|
-|Validation|0.659|0.569|0.686|
+|Split \ Metric|Accuracy|Class balanced accuracy|F1 Score|Class Splits|
+|--------------|--------|-----------------------|--------|------------|
+|LSTM Training|86.20%|72.92%|0.8698|-|
+|LSTM Validation|77.81%|58.24%|0.7676|21.88%/4.92%/73.20%|
+|Random Forest Training|76.81%|36.21%|0.3389|-|
+|Random Forest Validation|77.04%|33.82%|0.3180|1.23%/3.28%/95.49%|
+|SVM Training|80.23%|42.88%|0.4585|-|
+|SVM Validation|78.68%|36.03%|0.3501|3.69%/0.00%/96.31%|
+|Validation Set|-|-|-|20.08%/1.80%/78.12%|
 
 ### Extraction State:
 - See issue "Feature: Keyword Filter"  
