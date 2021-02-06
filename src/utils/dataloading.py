@@ -98,6 +98,35 @@ def load_semeval2015(
     return data
 
 
+def load_custom_dataset(path: str, categories: List[str] = ["laptops", "restaurants", "hotels"]):
+    data = {"train": [], "val": [], "test": []}
+    for filename in os.listdir(path):
+        if filename.endswith(".json") and any(
+            map(filename.lower().__contains__, categories)
+        ):
+            with open(os.path.join(path, filename), "r") as f:
+                json_data = json.load(f)["data"]
+            split = []
+            for rev in json_data:
+                review_opinions = []
+                for sentence in rev["opinions"]:
+                    sentence_opinions = []
+                    for op in sentence:
+                        sentence_opinions.append(SemEvalReviewOpinion(
+                        op.get("target"),
+                        op.get("polarity"),
+                        op.get("target_position"),
+                        op.get("category"),
+                        op.get("subcategory")))
+                    review_opinions.append(sentence_opinions)
+                split.append(SemEvalReview(rev["text"], review_opinions))
+            if "train" in filename.lower():
+                data["train"].extend(split[: math.floor(len(split) * 0.9)])
+                data["val"].extend(split[math.floor(len(split) * 0.9) :])
+            elif "test" in filename.lower():
+                data["test"].extend(split)
+    return data
+
 class SemEvalReviewOpinion(object):
     """An opinion contained in a review of the SemEval Dataset.
     Arguments:
