@@ -149,3 +149,7 @@ def keywords_to_dataframe(
         df.to_csv(f"data/{csv_name}.csv", index=False)
 
     return df
+
+
+def aggregate_similar_keywords(kw1: str, kw2: str):
+    pass

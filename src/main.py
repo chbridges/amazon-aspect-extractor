@@ -7,22 +7,22 @@ from torch.optim import Adam
 from torch.optim.lr_scheduler import ReduceLROnPlateau
 from torch.utils.data import DataLoader
 from utils.baselines import SentimentForest, SentimentSVM, top_ngrams
-from utils.dataloading import load_semeval2015, load_custom_dataset
+from utils.dataloading import load_custom_dataset, load_semeval2015
 from utils.metrics import (
     accuracy,
     class_balanced_accuracy,
+    class_ratio,
     cross_entropy,
     f1_score,
-    class_ratio,
 )
 from utils.preprocessing import PreprocessingPipeline
+from utils.reviewextractor import extract_reviews_for_products
 from utils.sentiment import (
     SentimentDataset,
     SentimentModel,
     evaluate_sentiment_model,
     train_sentiment_model,
 )
-from utils.reviewextractor import extract_reviews_for_products
 
 if __name__ == "__main__":
     # path = os.path.join(os.path.dirname(os.path.realpath(__file__)),

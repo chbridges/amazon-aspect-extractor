@@ -1,5 +1,6 @@
-import src.utils.reviewextractor as rw
 import json
+
+import src.utils.reviewextractor as rw
 
 if __name__ == "__main__":
     urls = [

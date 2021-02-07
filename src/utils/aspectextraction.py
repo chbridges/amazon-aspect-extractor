@@ -96,7 +96,7 @@ def split_aspect_mask(input_mask: list):
     return new_masks
 
 
-def extract_aspects(doc: str, sep=r"\."):
+def extract_aspects(doc: str, sep=r"\.", algorithm="rake"):
     """
     Returns tokenized substrings and corresponding aspect masks for each aspect in a document
     based on a given seperator

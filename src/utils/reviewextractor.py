@@ -1,12 +1,14 @@
 import datetime
-import time
-import threading
-from selenium import webdriver
-from chromedriver_py import binary_path
-import pprint
 import math
-from typing import List
+import pprint
 import re
+import threading
+import time
+from typing import List
+
+from selenium import webdriver
+
+from chromedriver_py import binary_path
 
 # requires chrome driver
 # https://chromedriver.chromium.org/downloads/

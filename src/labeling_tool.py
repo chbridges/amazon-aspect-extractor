@@ -1,9 +1,9 @@
-from tkinter import *
 import datetime
-import sys
 import json
+import sys
 from collections import OrderedDict
 from time import sleep
+from tkinter import *
 
 label_file = sys.argv[1]
 
