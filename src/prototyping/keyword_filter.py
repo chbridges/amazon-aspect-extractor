@@ -1,19 +1,18 @@
 import csv  # Dataset loading
-
 import numpy as np
-from sklearn.ensemble import GradientBoostingClassifier, RandomForestClassifier
+import spacy  # PoS tags
 
 # Classifiers
+from sklearn.ensemble import GradientBoostingClassifier, RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import precision_recall_fscore_support
-
-# Evaluation
-from sklearn.model_selection import KFold
 from sklearn.neural_network import MLPClassifier
 from sklearn.svm import LinearSVC
 from sklearn.tree import DecisionTreeClassifier
 
-import spacy  # PoS tags
+# Evaluation
+from sklearn.metrics import precision_recall_fscore_support
+from sklearn.model_selection import KFold
+
 
 # load dataset
 
