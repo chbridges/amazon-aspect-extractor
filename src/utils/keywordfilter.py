@@ -103,7 +103,11 @@ if __name__ == "__main__":
 
     # Requires matplotlib which is not in Pipfile or requirements.txt
 
-    from matplotlib import pyplot as plt
+    try:
+        from matplotlib import pyplot as plt
 
-    xgb.plot_importance(bst.bst)
-    plt.show()
+        xgb.plot_importance(bst.bst)
+        plt.show()
+
+    except ModuleNotFoundError:
+        pass
