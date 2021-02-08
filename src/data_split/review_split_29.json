@@ -1,0 +1,1964 @@
+{
+    "data": [
+        {
+            "text": [
+                "The quality is very good",
+                "The quality is very good"
+            ],
+            "opinions": [
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Great!",
+                "Great laptop for business use"
+            ],
+            "opinions": [
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "get it",
+                "Great"
+            ],
+            "opinions": [
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Buena performance",
+                "Excelente"
+            ],
+            "opinions": [
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "my firt mac",
+                "great mac"
+            ],
+            "opinions": [
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Price",
+                "Every thing about this product is great."
+            ],
+            "opinions": [
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Great PC!",
+                "Personal",
+                "Great PC!"
+            ],
+            "opinions": [
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Great Value all around!",
+                "Great display and spec!"
+            ],
+            "opinions": [
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "I\u2019m in l",
+                "The best"
+            ],
+            "opinions": [
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "It\u2019s time for Apple to go hull touch screen",
+                "Personal use"
+            ],
+            "opinions": [
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Worth for money",
+                "Good product for money"
+            ],
+            "opinions": [
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Good shopping experience",
+                "quite excellent"
+            ],
+            "opinions": [
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Has esc key now :p",
+                "Sleek design"
+            ],
+            "opinions": [
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Received the product I expected",
+                "Everything went fine!",
+                "Thanks!"
+            ],
+            "opinions": [
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Contented",
+                "Great product !"
+            ],
+            "opinions": [
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "make sure you get it the specs you want",
+                "its a apple"
+            ],
+            "opinions": [
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "OVERHEATS when you connect an external monitor",
+                "I have had the 8-core i9 model for 2 months",
+                "Reddit it full of complaints that their macbook sounds like a jet engine and overheats if they connect to an external monitor",
+                "Apple customer support has no clue, or claims this is intended behavior",
+                "After careful search, I have observed that this is due to a series of fundamental design flaws",
+                "1",
+                "You can only use the discrete AMD GPU when connecting an external monitor",
+                "Other laptops can use the Intel GPU",
+                "Also, you can only use the AMD GPU on Bootcamp",
+                "This makes battery life ~3 hours on Bootcamp",
+                "2",
+                "The AMD GPU is a power hog",
+                "My laptop is pulling over 100 Watts from the wall, measured with a meter",
+                "It increases my energy bill",
+                "3",
+                "Things are worse in Windows (Bootcamp)",
+                "If I play a light video game (such as AoE2), the laptop gets so hot and draws so much power that the battery starts to empty",
+                "After 30-60' of gameplay, battery drops to 70%-50% of charge, while plugged in",
+                "4",
+                "The heat sink of the GPU and CPU are connected",
+                "The CPU goes up to 80 Celsius at idle when connecting an external monitor, while idling",
+                "5",
+                "The final nail in the coffin",
+                "When the CPU gets hot, macOS launches a process called kernel_task",
+                "One of the functions of the kernel task process is to help manage the temperature of your CPU",
+                "Ironically kernel_task then takes up all of my 8 cores",
+                "This shows up as 800% CPU use on the activity monitor",
+                "This unavoidably makes the CPU much hotter, and triggers a vicious circle",
+                "Then my 16\" macbook becomes unusable and I have to reboot",
+                "If you think this behavior is insane, and must be a bug, guess again",
+                "Apple intends for mac OS to behave this way",
+                "Google 'apple support HT207359'",
+                "Other issues include",
+                "-No Nvidia/CUDA support",
+                "Even if I want to plug in an external Nvidia GPU, Apple is now blocking it",
+                "(All my old Macs support Nvidia in High Sierra, but this one only runs Catalina.) -No touch/stylus support",
+                "I cannot use the touchbar to draw figures when I teach/present",
+                "-No 32-bit application support",
+                "I can no longer use my equation editors",
+                "-Severe screen ghosting issues",
+                "Google it",
+                "-Severe random crash/restart issues",
+                "-Power delivery issues",
+                "It starts discharging when plugged in if I am doing computational work",
+                "-Not sure why reviewers praise the speakers",
+                "They are bass heavy bangers",
+                "The highs are very sibilant, \"S\" sounds like \"TH\"",
+                "I had to use an EQ to reduce the sibilance, but it cannot be removed completely",
+                "Also, the speakers pop when you start or stop a video",
+                "Apple claims it is a software issue, but the latest Catalina 10.15.4 has not fixed it",
+                "It only happens with low frequency sounds, which is why many users have not noticed it, but it is there",
+                "This is just a partial list of flaws",
+                "I regret my purchase",
+                "I will sell this laptop and will buy a used 2014 Macbook with an Nvidia GPU instead."
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Great computer with a fatal flaw",
+                "I bought a maxed out 16\" 2.4GHz with 64GB of DDR and 8GB of integrated graphic RAM and a 2TB SSD Overall the computer is great *but* I would strongly recommend *against* purchasing one because there is a major issue that I believe to be at the hardware level",
+                "The Macbook Pro regularly gets very hot and crashes and has done so since I received it",
+                "Many others have experienced this same issue and it seems to happen almost independently of what I'm doing",
+                "I've had a long history from the Titanium PowerBook Pro G4 through several of the unibody MacBook Pros and this is at least my 6th Mac and I couldn't be more disappointed",
+                "The previous generation had a horrible issue with the keyboard which they have at least resolved here, but the machine is exceedingly frustrating especially given that mine was far from cheap",
+                "Can not in good conscience recommend getting one."
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Avoid the 16\" MBP like the plague, ....",
+                "If you plan to use the 16\" MBP with an external monitor",
+                "Avoid it at all costs",
+                "There are dozens of threads online discussing these issues",
+                "Macrumors forum has a single thread with over 100 pages of 16\" MBP owners desperate for a solution",
+                "When not using an external monitor, it's hotter and noisier than pervious models, but when used with an external monitor, the heat goes through the roof...and the fans noise is insane",
+                "I've had MS Teams, Zoom and other sessions where people asked me, \"What is that loud noise in your background...it's hard to hear you.\" Apple Support denies there is a problem and refuses to replace or fix the machines",
+                "I'm currently trying to decide what to buy as a replacement for my 16\" MBP."
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Great computer! (Also discount)",
+                "Great computer! though the cooling system is not that good, so after some minutes it gets a little hot in the middle upper part of the keyboard",
+                "I will use it for school so it\u2019s perfect",
+                "Also, if you are planing to buy it for school, you can buy it from the apple web site, and in only costs 2199 us$, so you have a 200 us$ discount",
+                "Really good",
+                "(also if you are not a student, i think you can buy it ;) )"
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Fatal flaw with audio, left unfixed for 9 months",
+                "Unfit for professional or personal use.",
+                "I've had this computer for many months and it's often unusable because of a persistent problem with the audio where persistent crackling and (less often) stuttering occurs",
+                "Thus, the computer is unusable for most professional/critical applications, and can't even be used enjoyably for casual applications that rely on audio (i.e., watching videos, listening to music)",
+                "Apparently, Apple knows about this issue (there are many instances of it being mentioned on the Apple support forums, in the tech press, and on YouTube, by frustrated vloggers",
+                "Apple's inaction suggests that this isn't a simple software problem but something much harder to remedy",
+                "It's terrible that there is no workaround that works (at least not for me\u2014some suggest killing the audiocored process or other fixes, but these things do nothing)",
+                "My advice to you is to AVOID the 16\" MacBook until you can get confirmation these issues are addressed",
+                "You should search \"16 MacBook crackle problem\" and similar terms to see that thousands of people have similar problems."
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Freezes and restart frequently",
+                "There is a hardware problem with this device",
+                "It freezes several times in a day",
+                "After every freeze there is some sound and the device reboots",
+                "This problem is faced by many users, just google \"apple macbook pro 16 freezes\"",
+                "My MBP has been freezing from day one",
+                "Reinstalling the OS twice, but the problem persists",
+                "Apple is not able to offer any hardware or software solution",
+                "According to service centre the mother board needs to be replaced",
+                "They have NO PARTS available",
+                "In India they don't even have replacement policy",
+                "It is more than a week and they have not yet offered any solution",
+                "HOPELESS product and WORST service from Apple."
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Wake up Lemmings and don't buy Apple!",
+                "I just switched from being an Apple Mac Owner since 1986 because of poor quality, high prices and horrible customer service",
+                "After paying a premium for my Macbook Pro 2015, Model ID 11,4 it first had a recall on the battery in 2018",
+                "I had the batter replaced and since then I've had it in service twice for HD issues",
+                "First the problem was a cable connection that came loose, probably as a result of the battery replacement and then the HD failed",
+                "After paying nearly $2,600, the cost of a new HD would be $980 at the Apple repair facility",
+                "Besides the loss of funds, it is a huge loss in work-time and energy",
+                "Today, Apple's proprietary obsession and lack of upgrade-ability no longer make Apple an economically sound solution",
+                "On top of that, Apple's software has become cumbersome, complicated and quickly makes your hardware obsolete",
+                "Apple's focus has shifted from providing quality products to being another parasitic 'service' provider."
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Battery and overheating issues with 2019 16\" MacbookPro",
+                "2019 16\" MacBook pro was purchased as a gift at Costco warehouse in November 2019",
+                "Unfortunately, the gift box wasn't opened until March 2020",
+                "When it was opened, it failed to even power-on",
+                "Apple support diagnosed a problem with the batter after a series of troubleshooting and asked to ship it back for battery replacement",
+                "The first time I'm ever sending an apple product for repair over the past two decades! I thought this must have been one-off a problem since I had never experienced any hardware issue with other Macbook Pro or iPads or iPhones in the past",
+                "After the laptop was returned from repair, I started noticing that the battery does not last for more than 2 - 2.5 hours at the maximum",
+                "The charge will go down from 100% to 20% in just under 2 hours",
+                "Contacted Apple again and it performed another series of remote diagnostics, determined an issue with holding the charge",
+                "I was asked to send my Apple to repair once again",
+                "Apple repair notified me this time saying that the speaker unit had a liquid contact and battery repair would cost me $699 + tax",
+                "Like other high-end apple peripherals, I take the utmost precaution in using Apple products and wasn't aware of any instance where liquid could have come in touch, or had any issues with the speaker",
+                "Either Apple is trying to upcharge for a service that should have been typically covered in a warranty (Replacement battery on a brand new laptop not holding up the charge) by saying liquid damage, or they damaged the battery during one of the two times the laptop was at their repair facility",
+                "Apple support told me that the only options I have were to pay $699 for the repair or have the unit returned as is",
+                "For a high-end laptop that costs a premium (paid around $2600), I was expecting that it would last for 3 - 5 years for business use without any issue",
+                "Alas, it didn't even last three months and spent two weeks in the repair center twice during the past three months",
+                "The 16\" unit also becomes hotter with 45 minutes of regular browser use",
+                "I didn't have similar issues with 13.3\" Macbook Pro that I purchased around the same time last year",
+                "Reviewing Mac forums online, I see many complained about similar battery and heating issues with the 2019 16\" model",
+                "Apple has gone back years in HW quality on its 2019 model",
+                "Had it been within a 90-day purchase period window, I would have returned this to Costco",
+                "I will rather buy a high-end PC for $699 (instead of having the MacbookPro repaired)",
+                "Avoid buying this 16\" MacBook Pro 2019 model for peace of mind or purchase AppleCare (which costs $300 for 3-year insurance, plus $299 for each instance of repair incident) if you must buy one."
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "disappointing",
+                "no USB port, no matte display, no DVD drive, no card reader, no UTP port, no AC power on without battery ..",
+                "I had to switch to a PC"
+            ],
+            "opinions": [
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Major Flaw with Third Party Displays",
+                "This version does not seem to support third party displays",
+                "My 2018 MacBook 15.4 supports Acer 4K and other monitors, the 2019 16 MacBook Pro does not",
+                "Went thru two different MacBooks and tech support with Apple",
+                "Finally just returned",
+                "If you need to use an external monitor that\u2019s not Apple be aware of this major flaw."
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Nice laptop with stuttering issues",
+                "Good laptop overall - you can check other reviews for that I wanted to report an issue on my stock configuration that many people on Reddit and MacRumors have",
+                "The cursor will stutter for 0.5-1 seconds randomly",
+                "This happens intermittently whenever graphics switching is activated",
+                "It makes the laptop feel buggy and sluggish",
+                "People have figured out that disabling graphics switching solves the microstutters but requires the discrete GPU to run all the time",
+                "This leads to excess heat and is not an ideal fix",
+                "This is not a hardware problem because it does NOT occur on Windows 10",
+                "A clean install of MacOS does NOT resolve the issue",
+                "While setting up from a new install, stutters are seen before any 3rd party software or accessories are used",
+                "This is most likely a problem with the crappy intel graphics driver",
+                "Users have messaged Apple about this 5 months ago but there is no fix",
+                "They will suggest you change some cursor settings but it does not work",
+                "The fact that random people on the internet have figured out a fix before Apple is sad",
+                "I still like the laptop and use it everyday but the stutters get annoying."
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "This experience was horrible.",
+                "Nothing against the Mac book but the horrible, unprofessional service given to me by Amazon was pure garbage",
+                "First I'm told that my laptop was scheduled for delivery Aug 4 at 8",
+                "No one contacts me the entire day, I receive a email 1 min before the scheduled time of delivery stating the would not be delivering my laptop",
+                "To make matters worse they have no idea where the laptop is, or even when it would be delivered",
+                "The management were just nonchalant about the whole ordeal",
+                "I guess that is normal procedure.I see now Amazon shall no longer be my go to for services needed",
+                "I'm thinking also closing my Amazon music accounts..just pure trash."
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Its like the developers never used it themselves",
+                "The specs are good, the Touch Bar on the top is cool",
+                "The keyboard layout is TERRIBLE",
+                "If you use this on a day to day basis you will suffer",
+                "HALF of the laptop is a touch pad",
+                "The other half is a keyboard far away from the edges",
+                "This means your hands will uncomfortably be reaching over the lap top and resting on the edges while you type",
+                "I consistently get scratches and marks on my arm from pressing against it and I have to use a towel or something over the HUGE DEAD SPACE on the edges of the lap top to protect my arms",
+                "Don't get me started about the fan being on the bottom, so all the hot air get thrown back from the table back onto the lap top and does not properly cool",
+                "It seriously is like they just made it without the dev team using it or thinking about the layout."
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Apple lost its way in 2013 and the MacBook never been the same",
+                "I owned one of these for 2 weeks and hated it so much I returned it",
+                "* The keyboard is only a slight improvement over the butterfly keyboard",
+                "The Lenovo Thinkpad series has a much nicer keyboard",
+                "Typing on the MacBook Pro feels like typing on a stone slate",
+                "* The display has very poor response time and clear ghosting issues, most easily observed while scrolling text",
+                "It's not even a real 4K display - almost every other laptop on the market now offers a genuine 4K display",
+                "* Ports - only USB-C, because Apple says so",
+                "Yet more than half of the devices I want to plug in are still USB-A",
+                "I don't want to pay for the replacement dongle subscription service which Apple will probably announce soon",
+                "No SD card slot either, because, you know, you're an iPhone user and you don't have an SD card slot on your phone either (unlike e.g",
+                "Samsung Galaxy devices that offer fully expandable MicroSD storage)",
+                "* Performance",
+                "On par with my late-2013 MacBook Pro",
+                "A slight improvement but still much slower than my desktop PC",
+                "* The sound",
+                "Yes, in the store, these will be the loudest speakers on any laptop",
+                "But I couldn't stand listening to them for more than 10 minutes",
+                "The speakers are overdriven and weirdly phased",
+                "The speakers pop when pausing or playing audio",
+                "* The touchbar",
+                "Quite possibly the most irritating gimmick Apple has ever stuck with for so long",
+                "Yet if you don't like it, it's almost impossible to turn off",
+                "* Cost",
+                "The entry level model is too expensive but has very limited RAM and SSD",
+                "The package gets far more expensive as soon as you add enough RAM or SSD storage to make the machine usable",
+                "PC laptops don't suffer this issue because they are user upgradable (and, for that matter, user repairable)",
+                "Don't buy one of these and then end up in a situation where you regret it but can't return it",
+                "Look at Windows laptops instead",
+                "Windows has improved a lot over the last decade, if you're a developer you can use WSL2 to get a full Linux terminal experience, and you won't be locked into Apple's evil ecosystem, a world where very soon all Mac app purchases will no doubt require paying a 30% Apple tax",
+                "There are so many other great laptop manufacturers out there (Lenovo, Dell, Razor, HP, etc.) and they deserve your business, in a way that Apple no longer does."
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Ridiculously Fragile Screen",
+                "Watch out! This screen is REALLY fragile",
+                "It WILL break if you look at it cross eyed",
+                "Mine cracked while sitting untouched on my desk",
+                "My friend's cracked after sliding two inches from her lap to the carpet",
+                "Google it",
+                "See how many people there are who claim they did NOTHING to it and the screen just cracked",
+                "And guess what? Unless you bought apple plus coverage it will cost you $700 to fix it",
+                "Even with apple plus they charge you to fix it, just less",
+                "I love the computer, it is wonderful",
+                "But apple knows this product is flawed",
+                "The screen was made too flimsy in order to make it lighter",
+                "You might get lucky but If I were you I wouldn't spend this much money to get robbed later."
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Exactly What I Needed",
+                "This is the best computer I've ever owned or used",
+                "I'm 45 years old, love computers, and have used them in a variety of capacities at home and at work for nearly 30 years",
+                "However, I would also add that I'm not in a creative professional career, so I have never needed to max out a computer's horsepower, and I couldn't tell you about the highest-end computers",
+                "This review is not to be mistaken for a comparison to those $6K+ models out there",
+                "I bought the higher of the two base models in the 2019 MBP 16\" lineup: 2.3GHz i9, 16gb RAM, 1TB SSD, and 5500M Graphics card",
+                "I'm a little impatient and being cautious about COVID, so I bought this directly from the Apple Store because I knew I could pay online and do a quick drive-by to pick it up and have it at my house within the hour",
+                "I initially wanted to upgrade to 32GB of RAM, but I discovered that the Apple Store tends to only carry the standard model configurations they feed you on their website",
+                "If you want an upgrade, you'll probably have to order online or through a Big Box retailer, unless you just get lucky",
+                "I should also add that I didn't want to order a computer to be mailed to my house because we routinely receive battered cardboard deliveries and I didn't want to deal with exchanging or returning if the driver was having a bad day",
+                "Plus, there is the whole lack of patience thing I've got",
+                "I work from home and this is my computer situation: Google Chrome with 5-10 open tabs, MS Outlook open, MS Teams open, MS Word and Excel open",
+                "I open Adobe Acrobat all day long, off and on, and I keep Photoshop open because I dabble in photo editing here and there through the day, on breaks",
+                "I'm on 2 hours of Zoom meetings most days",
+                "I have been scrubbing a 3TB photo/video collection, so Amazon Photos and the Photos App are opened here and there, along with apps called Duplicate File Finder and Silent Sifter (organization apps to clean up files and delete duplicates)",
+                "My 2015 Macbook Air performed surprisingly well with all of that, considering the specs, BUT ..",
+                "I did get the spinning rainbow frisbee if I pushed it too hard or an app might freeze and not open again until I forced it to quit",
+                "It was frustrating",
+                "When I go into the office I use a new Mac Mini and it does a better job than the MBA, but still room for improvement",
+                "As it turns out, 16GB of RAM has been more than enough for my dabbling in creating book covers and editing photos",
+                "I also edited some 1080P video and it rendered quickly",
+                "The Cinebench Score is around 3300",
+                "If I were a \"bigtime\" video person, doing lots of rendering, I would have upgraded to the 8GB of Graphics Card, and recommend you do that, too, if that's something you are concerned about",
+                "Editing photos and opening lots of apps and tabs is more of a RAM thing, though",
+                "You can never go wrong with too much RAM (unless on a budget)",
+                "I would again stress that 16GB has been more than I have needed and I have intentionally opened a lot and lots of processes going",
+                "The keyboard is a true pleasure",
+                "Wow",
+                "It's the best I have typed on, both desktop and laptop",
+                "Unlike some, I LOVE the touchbar",
+                "This model goes on sale here and there, so don't pay full price!"
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Too Much Laptop for the Battery - Epic Fail from Apple",
+                "I have owned Macs since 1985",
+                "I even sold them at a local Apple VAR for years",
+                "This is a very nice laptop (sound, screen) but the battery is woefully underpowered for this machine",
+                "I wanted a professional laptop for work but I need to plug this thing in 2 or 3 times a day to recharge just to get through the work day",
+                "Apple support ran diagnostics and said the battery is within acceptable performance range but I disagree",
+                "I started out with about 8 to 10 hours run time and now I am at less than 6 hours runtime per charge, often less",
+                "The case gets hot too and burns my lap",
+                "I move around a lot when I work and I need a battery to last the work day",
+                "Browsing web pages, attending webex calls, managing 4-5 apps and numerous files all day long should not be draining my battery so fast",
+                "I was excited to get this machine but I now have familiar Apple buyers regret",
+                "This company just does not care any longer about putting out insanely great products; just 'nice' ones",
+                "I asked my company to send me a Dell laptop so I can get some work done when my Mac Book Pro drains out",
+                "I wish Apple would put a decent battery in their laptops for a change",
+                "I feel cheated."
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Only for you if you want a paperweight",
+                "Apple used to be pretty good at hardware design",
+                "This machine was a complete and total flop, the battery life is at best 1/4 of the previous generation",
+                "The oled bar is only \"useful\" to those that don't use it, everyone I know that doesn't mind it maps \"real\" keys to do what they want",
+                "The mousepad is so large that I invariably touch it un-intentionally to constantly annoy my work flow as buttons get pressed unintentionally",
+                "I'm seriously interested in losing half my money to sell this pos for whatever I can get",
+                "I really really wish I hadn't upgraded as my older 2015 based laptop was so much better than this one",
+                "The only feature I would say was not a complete disappointment is the making of usb-c the only port",
+                "While this does make you have to buy all new dongles, it is nice to your workflow to be able to plug in anywhere."
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Lack of ports completely ruins this computer",
+                "I've been a macbook user for 10 years",
+                "I stretched out my old one as long as possible to avoid buying the new USB-C only models",
+                "It's worse than a thought",
+                "What a pain",
+                "using stupid hubs and adapters",
+                "I hate it."
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Kill the Touch Bar",
+                "The touch bar is ridiculous",
+                "I'm sure there are isolated people who actually think it provides some value, but as a professional designer myself surrounded by similar across 3 continents, I have a reasonable sample size of hatred",
+                "Apple, of course, used to care what it's users want...but now they treat us with contempt",
+                "Is it any surprise we hate them back? It's bad enough I have to use these garbage computers for work",
+                "KILL THE EXTRA-WORK, POINTLESS TOUCH BAR",
+                "I'm not buying another MacBook Pro until they do."
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Best Macbook yet",
+                "I've had many macbook pros",
+                "This would be my 4th one yet",
+                "I'm 24 and have been using them since 12 years old",
+                "I previously had a 2018 macbook pro 13 inch",
+                "All my other previous ones were 13 inches too",
+                "I got through high school, college, and now as a 3rd year post-grad student with 13 inch macbook",
+                "I was getting tired of working on a small screen and didn't want to always use my iMac to get work done, so I bought this one",
+                "It probably has more power than I need; the difference in power between this and the 13 inch is night and day",
+                "I've never been able to game on a Mac because poor graphics performance, but this one could actually qualify as a decent gaming laptop",
+                "It's so nice to have games to play wherever you are, and I have never been able to do that with Macs",
+                "The gaming performance is really good",
+                "I'll use Fortnite as a reference since it's used so much, but I can hit a solid 60fps on mostly epic settings, with a few high settings",
+                "I also downloaded bootcamp and got games like Sekiro, which play flawlessly on high settings",
+                "The only bad thing is the fan noise, which can get really loud any time you boot up a game or do intensive tasks",
+                "It isn't hot most of the time because the fans, which is good I guess for performance and longevity",
+                "But, I think they should find a better way to cool in the future though",
+                "There are some complaints that the fans are really loud even when simply connecting to an external monitor",
+                "It's not a deal breaker for me, but can be annoying at times",
+                "The speakers are vastly improved",
+                "Everything sounds so much better",
+                "It has great clarity, volume, and there's actually a little bass",
+                "I love them",
+                "Everyone knows about the keyboard",
+                "It's very nice",
+                "I had to get the keyboard replaced on my last one, but I shouldn't have a problem on this one",
+                "I never liked the butterfly that much",
+                "I like more travel personally",
+                "The screen is pretty big, which I like",
+                "Honestly, I think it could of been even a little bigger without much compromise, like a 16.5 or even 17",
+                "That would be perfect to me",
+                "But either way,16 is way bigger than the 13 inch I had",
+                "So overall, I think it's a great laptop",
+                "With the sales right now (it's $1999 on Amazon), it's actually a really good deal",
+                "I paid almost $1800 on my last 13 inch (the most comparable one now is $1699) and to compare them is like apples and oranges",
+                "Ok, the 13 inch wasn't bad at all, but this thing is a beast performance wise",
+                "And it has better speakers, new keyboard (new 13 inch does too), bigger screen, etc",
+                "Def worth $200-300 than a specced out 13 inch",
+                "If you are deciding between this and the base 13 inch pro or air because the bigger screen- if you can afford it I say go for it",
+                "You may like gaming on it and it's better in a lot of ways that I already mentioned",
+                "The other ones are still great, so if you're not keen on spending the extra cash you can't go wrong either way",
+                "So, if you're looking for a new macbook pro and want a bigger screen, power, and more, this is a great choice",
+                "If you want portability and don't need huge power, the Macbook Air is a great choice and $1k less than this- basically half the price."
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Downgrade on older models",
+                "I have been using MacBooks for 8 years but I am disappointed with this iteration: - battery life is inferior to my ~2014 MBP - lack of standard USB ports leaves me carrying dongle(s) around, which don't always work reliably - lack of HDMI..",
+                "more dongles - keyboard is poor and after just a year is constantly putting the ssame leetter twice when I type",
+                "I understand Apple will fix this for free but for $3k I shouldn't have to waste a day taking my laptop in."
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Quite a few issues for such an expensive laptop",
+                "Updated review.",
+                "The battery life simply isn't what's advertised",
+                "For example, right now the battery is down to 22% in 5 hours with very little use",
+                "There are a number of apps open but mostly the computer has just been sitting idle",
+                "If I had been using the machine more during this time the battery would definitely have run down to 0%",
+                "The trackpad is supersensitive",
+                "There are often unwanted clicked that interfere with work",
+                "I've changed settings which has helped somewhat but the problem continues",
+                "Update: I thought I might adapt to this but now, after using the computer for quite a while, It's as frustrating as ever",
+                "Chrome doesn't function correctly",
+                "This is due to the computer, not to some problem with Chrome",
+                "As is too often the case, Apple simply doesn't keep up with software to ensure smooth functioning",
+                "For example their word processing program \"Pages\" has never been brought up to snuff, despite the initial hype",
+                "The syncing between phone and laptop is unreliable",
+                "The \"Photos\" app has various annoyances",
+                "Etc., etc",
+                "My long experience with Apple has taught me that the company is often aware of problems but will deny a given problem unless it becomes so widely known that they simply can't continue denying it",
+                "The net result is that the quality of Apple products is not often not what it should be",
+                "I recommend staying away from Apple products."
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Hard Drive replacement is $1600",
+                "If you happen to purchase on of these just know that if something goes wrong with your hard drive the entire logic board needs to be replaced",
+                "The estimate to do the repair was 1600."
+            ],
+            "opinions": [
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Broke a week after I got it",
+                "I got the MacBook Pro and literally a week after getting it the small bar at the top just blacked out forever",
+                "It still works but I cannot see what I am pressing",
+                "But then my computer started to randomly shut down every 30 minutes!!"
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "From a 13in to a 16in Macbook",
+                "Love this thing",
+                "Initially was very torn between this and the 13in, and decided that the close price difference didn't justify the 13in when speced out",
+                "Very powerful, beautiful screen (almost indistinguishable from a high PPI 4k screen), amazing speakers, and more portable than I thought it would be",
+                "What surprised me the most was the battery life wasn't as good as I expected (even with 100Wh), but still very good",
+                "I initially didn't like how clunky the 16in felt in store (coming from a 13in)",
+                "It took me all of one day to get used to the much bigger size- now I don't know how I dealt with that small screen size before",
+                "So yes, buy this thing, it should last and perform well for a long time."
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Warning very loud",
+                "I've had mine for around 2 months now",
+                "It's connected to two external 1440p monitors",
+                "This thing will start going fan crazy at any time I do anything more than text",
+                "Download large files, watch youtube, etc",
+                "The cpu's never go past 10%",
+                "Very annoying",
+                "And it gets hot too",
+                "Performance is so so",
+                "Certainly not as good as I would like for the money",
+                "Build quality is excellent",
+                "Display is bright and crisp",
+                "Keyboard seems to be ok",
+                "I like lenovo better",
+                "No crashing issues, pretty stable."
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Too short support for MAC OS",
+                "Apple has a tendency to take out support for still good computers from the latest Mac OSX",
+                "If you paid $4000 for a Mac then be ready to know that 6-8 years from the purchase date your mac will not be supported at all",
+                "The hardware used by Macs are, for a similar price, quite slower than if the same money were used to build a Linux/Windows machine",
+                "For example, Mac Pros 2012, with 32Gb of Ram and quad/six core processors are not supported any more by the latest version of Mac OSx and still those machines can do a lot of good."
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Good with some caveats",
+                "I upgraded recently to this model of MacBook Pro",
+                "Overall, it is a good computer but I have two main gripes",
+                "The screen is hard to keep clean and despite following manufacturer recommendations, it is a challenge to keep screen from collecting smudges",
+                "Same goes for the keyboard",
+                "If you are the type to be anal about things like cleanliness of screen and keyboard, look elsewhere."
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Ssd not user upgradable(not even talking about Ram)",
+                "The laptop is designed to be obsolete in a matter a of a few years(depending on how long ssd will last)",
+                "For a pro machine it\u2019s unacceptable to have no ability to upgrade ssd or ram."
+            ],
+            "opinions": [
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "MacBook Pro 16\" - Does not Charge and Dead in 6 weeks",
+                "I would like to share my worst experience with the \"MacBook Pro 16\"",
+                "I have purchased new on August 25th 2020 from Bestbuy.com",
+                "With in 6 weeks from the purchase, laptop did not recognize the power supply and does not charge the battery",
+                "Eventually the laptop is dead",
+                "I can not access my data and laptop is just useless",
+                "I chose MacBook Pro because I thought the Mac products are best in quality and I do not need to worry about performance for many years",
+                "Worst experience is it took 10days to get appointment at Apple store for service, after visiting the apple store for service with hope of fix, they mentioned they can not fix in store and need to ship out for service",
+                "I have paid $29xx + $379 for Apple care",
+                "I did not get the quality for $$ I have paid",
+                "and lot of frustration with the process",
+                "Not Fair for Apple to charge premium price and provide the worst experience",
+                "With the price I paid for Mac I should have chosen different windows laptop with much much better configuration and they come home for service",
+                "Just think why we should pay about $3000 for this worst quality and experience? The more customers you make with this type of experience there starts the fall of Apple as company."
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Welcome to Apple\u2019s Windows 98 World",
+                "I have this for work, gets way too hot, your hands start getting sweaty",
+                "Then it does like 4 random restarts per month, this is under high CPU load running virtual box",
+                "Don\u2019t buy this just buy a Windows box for 60% less than price of this POS."
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Want to love it but",
+                "Ok",
+                "I bought this at Best Buy on Monday because the screen on my 2015 Mac book was cracked",
+                "I was just about to write and saw another review which was really similar",
+                "My 2015 refurbished at that) 15 inch Mac was perfect",
+                "The 16 inch is fine - for my log in to work / edit my kids videos stuff - is fine, but I\u2019m not sure what else to say",
+                "I\u2019m sure it is super powerful and all, but to date, just fine",
+                "Only thing I actually don\u2019t like is the massive trackpad - why so big? And no idea why all the reviews start with the keyboard - come on",
+                "That\u2019s not a reason to buy a computer",
+                "Anyway, I\u2019ll try my best to love it"
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Trivial to Break",
+                "If you even slightly crack the screen it goes completely black",
+                "I have no idea how my screen even broke",
+                "I woke up one morning and the display was completely black",
+                "It would cost ~700 dollars to fix the screen",
+                "The crack on the screen is difficult to even see",
+                "Of course, this is not covered in the warranty",
+                "In addition, my laptop had serious problems overheating",
+                "Buy a more durable laptop."
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Apple products can be nice..",
+                "when they work",
+                "I've been an Apple power user for almost a decade now",
+                "I've been impressed with the software, hardware and integration they've achieved in the past but those days appear to be over",
+                "Up until 2016, Apple had a pretty good run at being one of the best, if not THE best in the market at innovation",
+                "However, these days they seem to be plagued with a lack of innovation, hardware problems and constant software bugs",
+                "Are your Apple products working properly now? If so, don't upgrade anything",
+                "You're destined for a world of problems, pain and support hoola-hoops",
+                "From faulty keyboards to faulty wireless cards to dead pixels to software bugs to keychain issues to watch integrations breaking to phone integrations breaking",
+                "They're ALL part of the new Apple product lineups",
+                "Short of the story..",
+                "if you thought your $4k worth of Apple products integrating nicely together was money well spent? You may be in for the frustration of a lifetime",
+                "Or, you might get all to work..",
+                "IF it's all new and even then..",
+                "you have about a 40% chance of problems",
+                "However, if you're upgrading any one of those things..",
+                "be prepared to spend a LOT of time sorting through the issues",
+                "I warned you."
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "USB port",
+                "I am very satisfied with the function of my computer, I did not purchase this item off amazon I bought it at and apple store however due to no review on their website I came here",
+                "I was expecting to have a USB port on my computer but it seems apple just wants me to spend my mom on some attachment to use usb",
+                "If there is another way to use a usb without having to buy and attachment call me stupid and then tell me",
+                "I am also very dissatisfied with the battery life",
+                "If I take it off the charger for a couple minutes it'll be dead",
+                "However everything about the computer other then my two complaints I enjoy",
+                "The touch takes a little getting used to because I'm used to having a volume button right there for me to click",
+                "The graphics on the computer is top notch and my family comments on it every time they look at my computer",
+                "People tell you its really heavy but to me a 13 year old it's not that heavy."
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "High Quality Laptop",
+                "This is my 2nd MacBook Pro and it didn't disappoint",
+                "The keyboard is great, the display is bright and sharp, the speakers are definitely my favorite part of this new version of the laptop",
+                "Really great sound, like really great for a laptop",
+                "16GB of RAM and the core i7 2.6 is plenty of power",
+                "The system never bogs down during tasks",
+                "I don't video edit or photo edit, or do anything very heavy, but for everyday tasks this laptop is plenty",
+                "I didn't go with the i9 because I don't do anything even close to needing 8 cores or the 1TB, and to save the $ made sense",
+                "So far very happy overall but it's only been a few days so I will update as needed."
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Great machine",
+                "This is the most beautiful machine I\u2019ve ever had I\u2019ve had the MBP 17inch, 24inch iMac, 13inch MBP, and 13inch MacBook over the years the 13inch MBP still works fine and I\u2019ve had it 10 years since graduating college",
+                "I\u2019m a photographer and researcher and I decided to step away from Apple and purchased an MSI creator 65 4K 32GB 1TB SSD with a crazy high end graphics card and \u201cstate of the art\u201d cooling system to handle running taxing software like photoshop",
+                "That was in December 2019, after 3 weeks the cpu was constantly running at 90 degrees Celsius and consequently burnt the hell out of my thigh and I was only using Lightroom, so I returned it to get the 16inch MBP 16gb i9 with 1TB SSD I don\u2019t think I\u2019ll ever have another machine that isn\u2019t made by apple, this is the highest quality you can get they have really cornered the market and this was about $500 more than the MSI but well worth it",
+                "I highly recommend",
+                "But if you have a lot of equipment that uses USB ports like me, don\u2019t forget the adapters like I did \ud83e\udd26\ud83c\udffe\u200d\u2640\ufe0f"
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "What a return to form by apple with the 16 inch MacBook Pro",
+                "I have the 8 core processor 2.4 GHz, 32 GB of RAM, 2 TB SSD, maxed out graphics card",
+                "Elegant and a beast",
+                "Pictured with 43 inch 4K monitor that Apple automatically configures with a plug in of one thunderbolt three",
+                "What a return to form by apple with the 16 inch MacBook Pro",
+                "Using with adobe creative cloud applications, some apps seem to need to be written for this processor architecture, although zero complaints with current performance",
+                "Battery life is great finally",
+                "The screen is beautiful",
+                "The increased cooling is evident",
+                "Overall I am overwhelmingly pleased",
+                "What a return to form for Apple",
+                "Only downside is this computer cost me north of $4000 with the three year extended warranty and accidental damage."
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "New Apple MacBook Pro (16-Inch, 16GB RAM, 1TB Storage, 2.3GHz Intel Core i9) - Space Gray",
+                "this is what we have been waiting for, awesome storage , fantastic keyboard, 4 C-USB ports and a port for ear phones, ear phones is for the tiny size plug ",
+                "This is Just great for spreadsheets and photos! I like to have my music available and I loaded it up with 2,000 songs --it has awesome sound-- great speakers!! I have spent the evening playing with this gorgeous lap top - this is simply the best ever--get one you will be blown away---as I am"
+            ],
+            "opinions": [
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Garbage quality",
+                "MacBooks used to last years - my 10 year old one still functions, albeit very slowly",
+                "Now a days Apple has absolutely no quality control",
+                "Both of our MacBook Pros died a year after purchase",
+                "One of them was repaired for around $1000",
+                "The second one just sits there",
+                "I will never buy another Apple",
+                "I\u2019m advising all of my friends and acquaintances to stay away from their products",
+                "Both of us babied our machines",
+                "BTW, I had to conduct Zoom meetings, and I found out that the camera on a $2700 MacBook Pro is complete garbage."
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Best MacBook ever made by Apple",
+                "Upgraded from the 15 Inch MacBook Pro, this new 16 Inch is a game changer, they got everything right except one minor thing the face-cam is still 720P they should have upgraded to a 1080P, this should not stop you, video is still good",
+                "The sound from this system is miraculous, like a high end audio system you have to hear it to believe it, the keyboard is great, Touch ID saves time",
+                "I bought my Macbook from a different Amazon seller Expercom",
+                "I needed more memory and more ram",
+                "My Mac cost $4200 :( expensive I expect this will be good for the next 5 years",
+                "I highly recommend."
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "It's good enough for Apple to sell",
+                "If you just use it as a laptop it works pretty good but if you need to use multiple external displays and need to plug in a bunch of gear that's when you'll start noticing some problems",
+                "If you populate all the thunderbolt ports there's no way to charge it unless you buy a dongle that has a charging port and multiple USB ports but the problem with those if you're using a very intensive program you'll start to notice battery drain while it's plugged in through a dongle (I have two and both dongles do the same thing one I paid $100 for and it still doesn't work)",
+                "also when connected to external displays I've noticed a few system crashes and after owning 4 Macs (one of them was a hackintosh) I have never seen a mac system crash until this machine",
+                "Like I said performances great when you're just using it as a laptop but once I started hooking up my external displays I noticed a lot of thermal throttling so I had to buy a laptop cooling pad and that seemed to help a lot",
+                "All in all it's all right",
+                "it gets the job done I guess"
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Dongle life is bad",
+                "Still no MagSafe for A life and bag full of dongles is what you're really signing up for."
+            ],
+            "opinions": [
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Apple fixed everything that was wrong with the previous models",
+                "The best Laptop around",
+                "The keyboard is great, the physical esc button is back, finally! I run Kali Linux and Windows 10 in virtual machines at the same time for security testing along side Chrome with on average a dozen tabs open and not a single slow down or beachball",
+                "Hands down the best laptop on the market, well worth the price",
+                "The only thing I upgraded was the RAM, everything else is base."
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Where is the M1 chip for this price?",
+                "Why are they selling the smaller macbook air for $999 with the awesome M1 chip and this has the old garbage",
+                "Apple smoked intel with making better chip but they want to dump all the old chips on us."
+            ],
+            "opinions": [
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Crappy Laptop.",
+                "don\u2019t buy !!",
+                "I bought this laptop in January and used it couple of times.",
+                "shut down the laptop and did not use it for 2 months.",
+                "today tried to start up.",
+                "it Did not work .",
+                "called Apple customer care.",
+                "they were pathetic.."
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Awesome Machine",
+                "The best MacBook so far",
+                "The speakers are a HUGE upgrade over the outgoing 15\".",
+                "one of the best I've heard on any laptop",
+                "The smaller bezels are also a very welcome upgrade along with the return to scissor switch keyboard",
+                "I can use the MacBook practically all day without plugging in as long as I'm not watching a ton of videos",
+                "Even then the battery life is pretty respectable",
+                "A month in and I genuinely don't have a single complaint other than the heat that my wallet is still feeling",
+                "Worth it though."
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Too heavy!",
+                "The WiFi kept disconnecting after waking from sleep",
+                "Couldn\u2019t troubleshoot further",
+                "Besides the 16\u201d frame seemed a tad too heavy to carry as a day to day daily driver",
+                "Will suggest to go with the 13/14\u201d model."
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "It's ok - but occasional freeze not seen in 13\"",
+                "I had a 13\" bought in 2013",
+                "It never froze",
+                "My 16\" will freeze randomly for several seconds, and its brand new (2020)",
+                "Pisses me off",
+                "Makes me worried about when I need to take a college exam on the laptop - will it freeze? Would this freeze problem be an issue if Steve Job were alive? I don't think so."
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "why would someone pay 1900.00 for this?",
+                "You have got to be kidding me",
+                "You get a previous generation Intel i7 and a 512GB SSD and integrated graphics? This thing is worth 800 bucks at most",
+                "You people buying these things are fools."
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Best price for the best product",
+                "Kudos to Amazon and Apple!",
+                "My daughter absolutely loves the pro",
+                "She sets up programs for students at a local elementary school",
+                "She loves the graphics; long term battery; and stay cool features",
+                "All in all this computer has made her life easier",
+                "From a satisfied Dad"
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "MacBook Pro is back",
+                "The best laptop, hands down",
+                "Worth waiting on since 2016, until Apple got the keyboard right",
+                "Everything works flawlessly, great sound, gorgeous display, easy to set up and integrate",
+                "Yep, the mouse pad is still too big though",
+                "Now, if only they would bring back the MagSafe adaptor..."
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "AHHHHH ITS AN APPLE PRODUCT",
+                "HOW DARE YOU APPLE PRODUCT TRY TO COMPARE WITH AN ACTUAL WINDOWS LAPTOP WITH NVIDIA GRAPHICS!! YOU OVERPRICED THING THAT DOESNT EVEN RUN QUICK! YOU CAN GET A WINDOWS PC THAT COSTS THE SAME BUT RUNS 2 TIMES QUICKER."
+            ],
+            "opinions": [
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "A Must Buy",
+                "Excellent computer, I bought if for my wife for her birthday and she loves it."
+            ],
+            "opinions": [
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "a 8 billion customers will buys this notebook around cities to the world ultimately harder!!!",
+                "MacBook pro 16 inch imputing of dell ultra sharp up3218k best than a 5k monitor models!"
+            ],
+            "opinions": [
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "It's Worth It",
+                "This new keyboard is so much better and responsive and I'm surprised given the overall value that they still have any in stock",
+                "These are probably selling out like the AirPod Pros right now",
+                "A big thanks to Apple for this great machine which will probably last a very long time if I carefully take care of it as one should for something this expensive."
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Started out good",
+                "I updated my computer and the screen then came out like this",
+                "So I\u2019m resetting the settings and sending it back to Amazon",
+                "I\u2019ve had this less than 7 days and haven\u2019t used it much",
+                "I guess I\u2019ll have to go to Bestbuy and pay the full price."
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Non user replaceable ssd/ram.",
+                "The computer is not upgradable",
+                "Non user replaceable ssd/ram even the battery is glued tight to make replacement complicated."
+            ],
+            "opinions": [
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "That is a best laptop in 2020!",
+                "That is a best laptop for me now, I'am a senior javascript developer, and I use only this laptop, but I have previous model of this laptop and now want a buy new!"
+            ],
+            "opinions": [
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "why would you ever buy a mac",
+                "this thing isn't even a worthy boat anchor..."
+            ],
+            "opinions": [
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Proud of my decision to choose macbook pro 16\u201d.",
+                "&nbsp;I always wanted to buy macbook and I am loving it",
+                "Right on point everything I needed."
+            ],
+            "opinions": [
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "BEST PRICE FOR A MACBOOK PRO...ANYWHERE!",
+                "This is an outstanding machine, at a remarkable price, sold by the most trusted vendor out there!"
+            ],
+            "opinions": [
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Fantastic buy",
+                "Great laptop one of apple best MacBook Pro ever so far",
+                "Totally happy with this purchase"
+            ],
+            "opinions": [
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Very good five stars",
+                "&nbsp;You can play two videos at once"
+            ],
+            "opinions": [
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Happy as expected\ud83d\ude01",
+                "Awesome product!"
+            ],
+            "opinions": [
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Perfect as expected",
+                "No issues, works like a charm."
+            ],
+            "opinions": [
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Too much stress!!!!",
+                "Battery life is 5-6 hours! You can\u2019t return it or you need to pay 15% of purchase + shipping! And they will not give you 18 months payment! You need to pay once and full price! Easier way to get MacBook from store only!!!!!"
+            ],
+            "opinions": [
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "It's an Apple!",
+                "What can I say about a new MacBook Pro? Love everything about it including the new keyboard, refined touch bar, fingerprint sensor, separate \"Esc\" key and of course the 16-inch hi def display",
+                "This was a great value considering a similarly configured previous model actually costs more",
+                "The processing power is awesome for my music and video production tasks",
+                "Love it, love it, love it !!!"
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Very good laptop",
+                "Finally, apple made an awesome laptop",
+                "Super cool screen",
+                "Good keyboard",
+                "Good battery life",
+                "One of the best laptops I have ever had",
+                "I highly recommend."
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "LOVEEEE THIS COMPUTER",
+                "I got this as a gift and it is such an improvement compared to my 2014 MacBook Air",
+                "Everything works great and I haven't had any issues with my computer (it's been around 3 months)",
+                "The only unfortunate thing is that my Touch Bar will occasionally be non responsive, sometimes one part, but when I restart my computer it typically fixes it."
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Awesome",
+                "CRAZY quality and software, I love MacOS as someone who comes from Windows."
+            ],
+            "opinions": [
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Awesome laptop",
+                "The best macbook pro apple has ever made!",
+                "Great laptop!"
+            ],
+            "opinions": [
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Switched from 2012 11\" Macbook Air",
+                "I purchased my new MBP at the beginning of the pandemic as a switch from a 2012 11\" MBA",
+                "Man oh man! The weight difference is hardly noticeable, the difference in the screen is amazing",
+                "Both in quality and in size the 16\" is amazing",
+                "Some people say it is \"too big,\" but to me it is really the perfect size",
+                "Thinking about getting a 13\" MBA or maybe the 12.9\" to supplement",
+                "I do occasionally hit the touch bar on accident, but that can be disabled if needed",
+                "I do like having easy access to certain shortcuts in various applications",
+                "Highly recommend the bump up to the 1TB hard drive over the 512",
+                "Kinda wish I had gone up even more on hard drive space."
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "That's the one!",
+                "The best computer if have ever used",
+                "Period",
+                "If you have important things to do, that's the laptop to get",
+                "The screen is incredible, I am a true fan of the new magic keyboard and the performance is out of this world with the crazy I9 setup",
+                "It just works",
+                "No driver crap or ads on the start menu",
+                "You may not like the price tag, but for sure! you get what you pay for."
+            ],
+            "opinions": [
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Great machine",
+                "One thing I like about this machine is that the OS is robust that I've never saw any hanging."
+            ],
+            "opinions": [
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Best Macbook in 2020!",
+                "I have a previous Macbook pro 16', yesterday i dropped it and it doesn't work well now, I want to buy the last one!)"
+            ],
+            "opinions": [
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Excelente notebook, acess\u00f3rios escassos",
+                "A m\u00e1quina \u00e9 excelente e compacta para o que oferece",
+                "O \u00fanico problema \u00e9 a escassez de acess\u00f3rios adequados ao tamanho (capas, carregadores etc)."
+            ],
+            "opinions": [
+                [],
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "A nota fiscal",
+                "A nota fiscal poderia ficar disponivel no site para casos de mkt place, tirando isso tudo ok at\u00e9 o momento."
+            ],
+            "opinions": [
+                [],
+                []
+            ]
+        },
+        {
+            "text": [
+                "Excellent",
+                "The new magic keyboard is awesome."
+            ],
+            "opinions": [
+                [],
+                []
+            ]
+        }
+    ]
+}
