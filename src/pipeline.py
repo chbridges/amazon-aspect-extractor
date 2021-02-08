@@ -5,14 +5,7 @@ from utils.keywords import aggregate_similar_keywords
 from utils.reviewextractor import extract_reviews_for_products
 from utils.sentiment import SentimentModel
 
-
-# dummy class to be removed when the filter class is done
-class Filter:
-    def __init__(self):
-        pass
-
-    def predict(self, aspect):
-        return 0
+from keywordfilter import Filter
 
 
 class Pipeline:
@@ -21,7 +14,7 @@ class Pipeline:
         algorithm="rake",
         filter_keywords=False,
         aggregate_similar_aspects=True,
-        filter_threshold=0.5,
+        filter_threshold=0.3,
         **kwargs
     ):
         self.algorithm = algorithm
@@ -61,7 +54,7 @@ class Pipeline:
             # aspect = ' '.join(aspect)
             if not self.filter_keywords:
                 aspects.append(aspect)
-            elif kw_filter.predict(aspect) >= self.threshold:
+            elif kw_filter.predict(aspect)[0] >= self.threshold:
                 aspects.append(aspect)
                 keyphrases_filtered.append(keyphrases[i])
                 aspect_masks_filtered.append(aspect_masks[i])

@@ -19,6 +19,7 @@ selenium = "*"
 numpy = "*"
 yake = {git = "https://github.com/LIAAD/yake"}
 chromedriver-py = "*"
+xgboost = "*"
 
 [scripts]
 spacy = "python -m spacy download en_core_web_sm"

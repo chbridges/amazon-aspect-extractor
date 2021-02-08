@@ -1,3 +1,7 @@
+##################################################################
+# Requires sklearn which is not in Pipfile or requirements.txt ! #
+##################################################################
+
 import csv  # Dataset loading
 import numpy as np
 import spacy  # PoS tags
@@ -54,7 +58,7 @@ for i in range(len(data)):
 # classifier evaluation
 
 
-def evaluate_classifier(model, splits=10):
+def evaluate_classifier(model, splits=5):
     P = []
     R = []
     F1 = []
