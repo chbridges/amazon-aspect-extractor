@@ -8,10 +8,11 @@ import xgboost as xgb
 
 
 class Filter:
-    def __init__(self, params=dict()):
+    def __init__(self, include_wordlength=False, params=dict()):
         self.nlp = spacy.load("en_core_web_sm", disable=["ner", "parser"])
         self.params = params
         self.bst = None
+        self.dtrain = None
 
         # Important paths
         self.current_path = os.path.dirname(os.path.abspath(__file__))
@@ -21,9 +22,11 @@ class Filter:
         tags = list(spacy.glossary.GLOSSARY.keys())
         self.tags = tags[: tags.index("X") + 1]  # we only want the simple pos_ tags
         self.tagmap = {tags[i]: i for i in range(len(tags))}
-        self.tags.append("WORDCOUNT")
+        self.include_wordlength = include_wordlength
+        if self.include_wordlength:
+            self.tags.append("WORDCOUNT")
 
-    def train(self, cv=False):
+    def train(self):
         # Load data
         data = []
 
@@ -43,25 +46,27 @@ class Filter:
             for word in self.nlp(data[i]):
                 j = self.tagmap[word.pos_]
                 matrix[i, j] += 1
-                matrix[i, -1] += 1
+                if self.include_wordlength:
+                    matrix[i, -1] += 1
 
-        dtrain = xgb.DMatrix(data=matrix, label=labels, feature_names=self.tags)
+        self.dtrain = xgb.DMatrix(data=matrix, label=labels, feature_names=self.tags)
+        self.dtrain.save_binary(os.path.join(self.current_path, "keywordfilter.buffer"))
 
         # Training
         print("Training the XGBoost model...")
-        bst = xgb.train(params=self.params, dtrain=dtrain)
-        bst.save_model(os.path.join(self.current_path, "keywordfilter.model"))
+        self.bst = xgb.train(params=self.params, dtrain=self.dtrain)
+        self.bst.save_model(os.path.join(self.current_path, "keywordfilter.model"))
 
-        if cv:
-            print(xgb.cv(dict(), dtrain))
-
-        self.bst = bst
         return self.bst
 
     def load_model(self):
-        self.bst = xgb.Booster()
+        print("Loading XGBoost model...")
         try:
+            self.bst = xgb.Booster()
             self.bst.load_model(os.path.join(self.current_path, "keywordfilter.model"))
+            self.dtrain = xgb.DMatrix(
+                os.path.join(self.current_path, "keywordfilter.buffer")
+            )
         except xgb.core.XGBoostError:
             print("ERROR: There is no pretrained model, call Filter.train() instead.")
             return None
@@ -76,19 +81,34 @@ class Filter:
         for word in self.nlp(keyword):
             idx = self.tagmap[word.pos_]
             vector[0, idx] += 1
-            vector[0, -1] += 1
+            if self.include_wordlength:
+                vector[0, -1] += 1
 
         data = xgb.DMatrix(vector, feature_names=self.tags)
 
         return self.bst.predict(data)
 
+    def cv(self):
+        if self.dtrain == None:
+            print("ERROR: Model is not trained")
+            return
+
+        results = xgb.cv(dict(), self.dtrain, nfold=5, as_pandas=False)
+        print("\nResults of 5-fold cross-validation:")
+        print("train-rmse-mean:", np.mean(results["train-rmse-mean"]))
+        print("train-rmse-std: ", np.mean(results["train-rmse-std"]))
+        print("test-rmse-mean: ", np.mean(results["test-rmse-mean"]))
+        print("test-rmse-std:  ", np.mean(results["test-rmse-std"]), "\n")
+
 
 # Sample usage and some insights for the report
 if __name__ == "__main__":
-    bst = Filter()
+    bst = Filter(include_wordlength=False)
 
     if bst.load_model() == None:
-        bst.train(cv=True)
+        bst.train()
+
+    bst.cv()
 
     print("good battery life:", bst.predict("good battery life"))
     print("I am amazed:", bst.predict("I am amazed"))
