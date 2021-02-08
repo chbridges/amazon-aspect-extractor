@@ -89,7 +89,7 @@ class Filter:
                 vector[0, idx] += 1
                 if self.include_wordlength:
                     vector[0, -1] += 1
-            np.vstack((matrix, vector))
+            matrix = np.vstack((matrix, vector))
 
         data = xgb.DMatrix(matrix, feature_names=self.tags)
 
@@ -117,16 +117,16 @@ if __name__ == "__main__":
 
     bst.cv()
 
-    print("good battery life:", bst.predict("good battery life"))
-    print("I am amazed:", bst.predict("I am amazed"))
-    print("okay:", bst.predict("okay"))
-    print("customer support:", bst.predict("customer support"))
-    print("lenovo:", bst.predict("lenovo"))
+    print("good battery life:     ", bst.predict("good battery life"))
+    print("I am amazed:           ", bst.predict("I am amazed"))
+    print("okay:                  ", bst.predict("okay"))
+    print("customer support:      ", bst.predict("customer support"))
+    print("lenovo:                ", bst.predict("lenovo"))
+    print("service:               ", bst.predict("service"))
     print(
-        "this one is impossible but long:",
-        bst.predict("this one is impossible but long"),
+        "this one is impossible:",
+        bst.predict("this one is impossible"),
     )
-    print("service:", bst.predict("service"))
 
     # Requires matplotlib which is not in Pipfile or requirements.txt
 
