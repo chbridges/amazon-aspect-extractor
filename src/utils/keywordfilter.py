@@ -72,24 +72,31 @@ class Filter:
             return None
         return self.bst
 
-    def predict(self, keyword: str):
-        if self.bst == None:
+    def predict(self, keywords: list):
+        if self.bst is None:
             print("ERROR: Model is not trained.")
             return None
 
-        vector = np.zeros((1, len(self.tags)))
-        for word in self.nlp(keyword):
-            idx = self.tagmap[word.pos_]
-            vector[0, idx] += 1
-            if self.include_wordlength:
-                vector[0, -1] += 1
+        if type(keywords) == str:
+            keywords = [keywords]
 
-        data = xgb.DMatrix(vector, feature_names=self.tags)
+        matrix = np.zeros((0, len(self.tags)))
+
+        for kw in keywords:
+            vector = np.zeros((1, len(self.tags)))
+            for word in self.nlp(kw):
+                idx = self.tagmap[word.pos_]
+                vector[0, idx] += 1
+                if self.include_wordlength:
+                    vector[0, -1] += 1
+            np.vstack((matrix, vector))
+
+        data = xgb.DMatrix(matrix, feature_names=self.tags)
 
         return self.bst.predict(data)
 
     def cv(self):
-        if self.dtrain == None:
+        if self.dtrain is None:
             print("ERROR: Model is not trained")
             return
 
@@ -105,7 +112,7 @@ class Filter:
 if __name__ == "__main__":
     bst = Filter(include_wordlength=False)
 
-    if bst.load_model() == None:
+    if bst.load_model() is None:
         bst.train()
 
     bst.cv()

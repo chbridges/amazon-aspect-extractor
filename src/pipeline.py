@@ -32,11 +32,6 @@ class Pipeline:
         aspects = []
         sentiments = []
 
-        if self.filter_keywords:
-            kw_filter = Filter()
-            keyphrases_filtered = []
-            aspect_masks_filtered = []
-
         # Step 2: Extract sentences containing aspects
         for review in reviews:
             kp_temp, am_temp = extract_aspects(review, algorithm=self.algorithm)
@@ -51,17 +46,24 @@ class Pipeline:
                 for j in range(len(keyphrases[i]))
                 if aspect_masks[i][j] == 1
             ]
-            # aspect = ' '.join(aspect)
-            if not self.filter_keywords:
-                aspects.append(aspect)
-            elif kw_filter.predict(aspect)[0] >= self.threshold:
-                aspects.append(aspect)
-                keyphrases_filtered.append(keyphrases[i])
-                aspect_masks_filtered.append(aspect_masks[i])
+            aspect = " ".join(aspect)
+
+            aspects.append(aspect)
 
         if self.filter_keywords:
-            keyphrases = keyphrases_filtered
-            aspect_masks = aspect_masks_filtered
+            kw_filter = Filter()
+
+            filter_mask = list(
+                map(lambda x: x > self.filter_threshold, kw_filter.predict(aspects))
+            )
+
+            aspects = [aspects[i] for i in range(len(filter_mask)) if filter_mask[i]]
+            keyphrases = [
+                keyphrases[i] for i in range(len(filter_mask)) if filter_mask[i]
+            ]
+            aspect_masks = [
+                aspect_masks[i] for i in range(len(filter_mask)) if filter_mask[i]
+            ]
 
         # Step 4: Predict sentiments
         for i in range(len(aspects)):
