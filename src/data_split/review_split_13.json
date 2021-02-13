@@ -10,7 +10,18 @@
                 "I am very very not happy."
             ],
             "opinions": [
-                [],
+                [
+                    {
+                        "target_position": [
+                            "20",
+                            "29"
+                        ],
+                        "polarity": "negative",
+                        "target": "condition",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 [],
                 [],
@@ -51,8 +62,30 @@
             "opinions": [
                 [],
                 [],
-                [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "5",
+                            "12"
+                        ],
+                        "polarity": "negative",
+                        "target": "buttons",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "4",
+                            "11"
+                        ],
+                        "polarity": "negative",
+                        "target": "battery",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 []
             ]
         },
@@ -67,7 +100,18 @@
             "opinions": [
                 [],
                 [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "44",
+                            "47"
+                        ],
+                        "polarity": "positive",
+                        "target": "usb",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 []
             ]
@@ -112,7 +156,18 @@
                 "Headline says it all"
             ],
             "opinions": [
-                [],
+                [
+                    {
+                        "target_position": [
+                            "0",
+                            "8"
+                        ],
+                        "polarity": "negative",
+                        "target": "Hardrive",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 []
             ]
         },
@@ -127,7 +182,18 @@
             "opinions": [
                 [],
                 [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "7",
+                            "20"
+                        ],
+                        "polarity": "negative",
+                        "target": "charger cable",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 []
             ]
@@ -139,7 +205,18 @@
             ],
             "opinions": [
                 [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "23",
+                            "28"
+                        ],
+                        "polarity": "positive",
+                        "target": "price",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ]
             ]
         },
         {
@@ -154,7 +231,18 @@
             ],
             "opinions": [
                 [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "0",
+                            "7"
+                        ],
+                        "polarity": "negative",
+                        "target": "Battery",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 [],
                 [],
@@ -170,7 +258,18 @@
             ],
             "opinions": [
                 [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "64",
+                            "67"
+                        ],
+                        "polarity": "negative",
+                        "target": "RAM",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 []
             ]
         },
@@ -181,7 +280,18 @@
                 "Out of the box ready to be used."
             ],
             "opinions": [
-                [],
+                [
+                    {
+                        "target_position": [
+                            "13",
+                            "18"
+                        ],
+                        "polarity": "positive",
+                        "target": "space",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 []
             ]
@@ -193,7 +303,18 @@
             ],
             "opinions": [
                 [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "42",
+                            "46"
+                        ],
+                        "polarity": "negative",
+                        "target": "rams",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ]
             ]
         },
         {
@@ -250,7 +371,18 @@
                 [],
                 [],
                 [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "27",
+                            "34"
+                        ],
+                        "polarity": "negative",
+                        "target": "outside",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 []
             ]
         },
@@ -261,8 +393,50 @@
                 "It cost $80 to replace...."
             ],
             "opinions": [
-                [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "0",
+                            "11"
+                        ],
+                        "polarity": "negative",
+                        "target": "Powert cord",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "55",
+                            "0"
+                        ],
+                        "polarity": "negative",
+                        "target": "power cable\n",
+                        "category": "",
+                        "subcategory": ""
+                    },
+                    {
+                        "target_position": [
+                            "55",
+                            "0"
+                        ],
+                        "polarity": "negative",
+                        "target": "power cable\n",
+                        "category": "",
+                        "subcategory": ""
+                    },
+                    {
+                        "target_position": [
+                            "55",
+                            "66"
+                        ],
+                        "polarity": "negative",
+                        "target": "power cable",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 []
             ]
         },
@@ -276,10 +450,43 @@
             ],
             "opinions": [
                 [],
+                [
+                    {
+                        "target_position": [
+                            "0",
+                            "6"
+                        ],
+                        "polarity": "negative",
+                        "target": "Screen",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "35",
+                            "41"
+                        ],
+                        "polarity": "negative",
+                        "target": "screen",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
-                [],
-                [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "19",
+                            "23"
+                        ],
+                        "polarity": "positive",
+                        "target": "case",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ]
             ]
         },
         {
@@ -306,7 +513,18 @@
             "opinions": [
                 [],
                 [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "8",
+                            "15"
+                        ],
+                        "polarity": "negative",
+                        "target": "Charger",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 [],
                 []
@@ -326,7 +544,18 @@
                 [],
                 [],
                 [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "43",
+                            "51"
+                        ],
+                        "polarity": "positive",
+                        "target": "keyboard",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 []
             ]
         },
@@ -338,7 +567,18 @@
             ],
             "opinions": [
                 [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "30",
+                            "44"
+                        ],
+                        "polarity": "negative",
+                        "target": "charging cable",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 []
             ]
         },
@@ -358,7 +598,18 @@
                 [],
                 [],
                 [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "25",
+                            "34"
+                        ],
+                        "polarity": "negative",
+                        "target": "scratches",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 [],
                 []
@@ -401,7 +652,18 @@
                 [],
                 [],
                 [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "25",
+                            "32"
+                        ],
+                        "polarity": "negative",
+                        "target": "battery",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ]
             ]
         },
         {
@@ -412,8 +674,40 @@
             ],
             "opinions": [
                 [],
-                [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "35",
+                            "46"
+                        ],
+                        "polarity": "negative",
+                        "target": "disc reader",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "11",
+                            "24"
+                        ],
+                        "polarity": "negative",
+                        "target": "missing screw",
+                        "category": "",
+                        "subcategory": ""
+                    },
+                    {
+                        "target_position": [
+                            "29",
+                            "49"
+                        ],
+                        "polarity": "negative",
+                        "target": "missing eject button",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ]
             ]
         },
         {
@@ -476,8 +770,30 @@
             ],
             "opinions": [
                 [],
-                [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "22",
+                            "29"
+                        ],
+                        "polarity": "positive",
+                        "target": "quality",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "4",
+                            "11"
+                        ],
+                        "polarity": "negative",
+                        "target": "battery",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 []
             ]
@@ -489,7 +805,18 @@
             ],
             "opinions": [
                 [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "7",
+                            "14"
+                        ],
+                        "polarity": "negative",
+                        "target": "charger",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ]
             ]
         },
         {
@@ -509,7 +836,18 @@
             ],
             "opinions": [
                 [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "5",
+                            "10"
+                        ],
+                        "polarity": "positive",
+                        "target": "price",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ]
             ]
         },
         {
@@ -521,7 +859,18 @@
             "opinions": [
                 [],
                 [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "8",
+                            "18"
+                        ],
+                        "polarity": "negative",
+                        "target": "hard drive",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ]
             ]
         },
         {
@@ -554,8 +903,40 @@
                 "great condition, I loved it but I had to return it because I needed a newer operating system and delivery was super fast"
             ],
             "opinions": [
-                [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "6",
+                            "15"
+                        ],
+                        "polarity": "positive",
+                        "target": "condition",
+                        "category": "",
+                        "subcategory": ""
+                    },
+                    {
+                        "target_position": [
+                            "18",
+                            "26"
+                        ],
+                        "polarity": "positive",
+                        "target": "delivery",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "6",
+                            "15"
+                        ],
+                        "polarity": "positive",
+                        "target": "condition",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ]
             ]
         },
         {
@@ -570,7 +951,18 @@
             "opinions": [
                 [],
                 [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "36",
+                            "46"
+                        ],
+                        "polarity": "negative",
+                        "target": "hard drive",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 [],
                 []
@@ -616,7 +1008,28 @@
             ],
             "opinions": [
                 [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "61",
+                            "70"
+                        ],
+                        "polarity": "negative",
+                        "target": "scratches",
+                        "category": "",
+                        "subcategory": ""
+                    },
+                    {
+                        "target_position": [
+                            "113",
+                            "119"
+                        ],
+                        "polarity": "negative",
+                        "target": "screws",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 []
             ]
         },
@@ -764,8 +1177,30 @@
                 "There is no battery life it has to stay on the charger if it\u2019s off the charger it dies immediately other than that it\u2019s a good computer"
             ],
             "opinions": [
-                [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "21",
+                            "33"
+                        ],
+                        "polarity": "negative",
+                        "target": "battery life",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "12",
+                            "24"
+                        ],
+                        "polarity": "negative",
+                        "target": "battery life",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ]
             ]
         },
         {
@@ -777,7 +1212,18 @@
             "opinions": [
                 [],
                 [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "30",
+                            "37"
+                        ],
+                        "polarity": "negative",
+                        "target": "battery",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ]
             ]
         },
         {
@@ -797,7 +1243,18 @@
             ],
             "opinions": [
                 [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "19",
+                            "34"
+                        ],
+                        "polarity": "positive",
+                        "target": "picture quality",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ]
             ]
         },
         {
@@ -827,7 +1284,18 @@
             "opinions": [
                 [],
                 [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "89",
+                            "97"
+                        ],
+                        "polarity": "negative",
+                        "target": "keyboard",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 []
             ]
@@ -877,7 +1345,18 @@
             "opinions": [
                 [],
                 [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "4",
+                            "11"
+                        ],
+                        "polarity": "negative",
+                        "target": "charger",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ]
             ]
         },
         {
@@ -892,7 +1371,18 @@
             "opinions": [
                 [],
                 [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "4",
+                            "11"
+                        ],
+                        "polarity": "negative",
+                        "target": "battery",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 [],
                 []
@@ -962,7 +1452,18 @@
                 "The computer is very slow to turn on and to work with it."
             ],
             "opinions": [
-                [],
+                [
+                    {
+                        "target_position": [
+                            "8",
+                            "13"
+                        ],
+                        "polarity": "negative",
+                        "target": "speed",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 []
             ]
         },
@@ -1033,7 +1534,18 @@
                 [],
                 [],
                 [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "23",
+                            "27"
+                        ],
+                        "polarity": "positive",
+                        "target": "case",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ]
             ]
         },
         {
@@ -1065,8 +1577,30 @@
                 "I am extremely happy!"
             ],
             "opinions": [
-                [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "24",
+                            "29"
+                        ],
+                        "polarity": "positive",
+                        "target": "price",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "17",
+                            "22"
+                        ],
+                        "polarity": "positive",
+                        "target": "price",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 []
             ]
         },
@@ -1077,7 +1611,18 @@
                 "so kind of like a rob."
             ],
             "opinions": [
-                [],
+                [
+                    {
+                        "target_position": [
+                            "28",
+                            "37"
+                        ],
+                        "polarity": "positive",
+                        "target": "condition",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 []
             ]
@@ -1092,7 +1637,18 @@
             "opinions": [
                 [],
                 [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "39",
+                            "43"
+                        ],
+                        "polarity": "negative",
+                        "target": "dent",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 []
             ]
         },
@@ -1153,7 +1709,18 @@
             ],
             "opinions": [
                 [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "78",
+                            "84"
+                        ],
+                        "polarity": "negative",
+                        "target": "Seller",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ]
             ]
         },
         {
@@ -1169,7 +1736,18 @@
                 [],
                 [],
                 [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "24",
+                            "40"
+                        ],
+                        "polarity": "positive",
+                        "target": "customer service",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ]
             ]
         },
         {
@@ -1179,7 +1757,18 @@
             ],
             "opinions": [
                 [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "163",
+                            "172"
+                        ],
+                        "polarity": "negative",
+                        "target": "condition",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ]
             ]
         },
         {
@@ -1189,7 +1778,18 @@
             ],
             "opinions": [
                 [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "13",
+                            "17"
+                        ],
+                        "polarity": "positive",
+                        "target": "size",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ]
             ]
         },
         {
@@ -1202,7 +1802,28 @@
             "opinions": [
                 [],
                 [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "68",
+                            "74"
+                        ],
+                        "polarity": "positive",
+                        "target": "Screen",
+                        "category": "",
+                        "subcategory": ""
+                    },
+                    {
+                        "target_position": [
+                            "87",
+                            "94"
+                        ],
+                        "polarity": "negative",
+                        "target": "battery",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 []
             ]
         },
@@ -1237,7 +1858,18 @@
             "opinions": [
                 [],
                 [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "74",
+                            "87"
+                        ],
+                        "polarity": "negative",
+                        "target": "charging port",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ]
             ]
         }
     ]
