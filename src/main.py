@@ -70,6 +70,7 @@ if __name__ == "__main__":
     x_train = torch.stack([event for event, _, _ in train_set], axis=0).numpy()
     y_train = torch.Tensor([sentiment for _, _, sentiment in train_set]).numpy()
     y_train = (2 * y_train).astype(np.int)
+    print(len(x_train))
 
     x_val = torch.stack([event for event, _, _ in val_set], axis=0).numpy()
     y_val = torch.Tensor([sentiment for _, _, sentiment in val_set]).numpy()
@@ -207,14 +208,14 @@ if __name__ == "__main__":
         n_layers=1,
         embedding_dim=200,
         hidden_dim=400,
-        dropout=0.33,
+        dropout=0.1,
         bidirectional=False,
     )
     optimizer = Adam(model.parameters(), lr=0.004, weight_decay=1e-4)
     scheduler = ReduceLROnPlateau(optimizer, cooldown=10, factor=0.4, verbose=True)
     criterion = cross_entropy(dataloaders["train"], device=device)
-    # train_sentiment_model(model, optimizer, dataloaders, criterion=criterion,
-    #                    scheduler=scheduler, n_epochs=400, eval_every=1)
+    train_sentiment_model(model, optimizer, dataloaders, criterion=criterion,
+                          scheduler=scheduler, n_epochs=400, eval_every=1)
     model.load_state_dict(
         torch.load(os.path.join("models", model.name + "_best" + ".pth"))[
             "model_state_dict"
