@@ -42,16 +42,17 @@ class SentimentSVM(SVC):
 
         distance_vector = np.zeros(asps.shape)
         indx = (
-            np.arange(x.shape[1])
-            .repeat(x.shape[0], 0)
-            .reshape(x.shape[0], x.shape[1], 1)
+            np.tile(np.arange(x.shape[1]),
+            (x.shape[0], 1)).reshape(x.shape[0], x.shape[1], 1)
         )
         for i, asp in enumerate(asps):
             indx_asp = np.where(asp == 1)[0]
+
+
             if len(indx_asp):
                 indx_asp = indx_asp.reshape(1, len(indx_asp))
                 dist = (
-                    np.reciprocal(np.min(np.abs(indx[i] - indx_asp), axis=-1) + 1)
+                    np.reciprocal(np.min(np.abs(indx[i] - indx_asp), axis=-1).astype(np.float) + 1)
                     ** self.ex
                 )
                 distance_vector[i] = dist
@@ -112,16 +113,17 @@ class SentimentForest(RandomForestClassifier):
 
         distance_vector = np.zeros(asps.shape)
         indx = (
-            np.arange(x.shape[1])
-            .repeat(x.shape[0], 0)
-            .reshape(x.shape[0], x.shape[1], 1)
+            np.tile(np.arange(x.shape[1]),
+            (x.shape[0], 1)).reshape(x.shape[0], x.shape[1], 1)
         )
         for i, asp in enumerate(asps):
             indx_asp = np.where(asp == 1)[0]
+
+
             if len(indx_asp):
                 indx_asp = indx_asp.reshape(1, len(indx_asp))
                 dist = (
-                    np.reciprocal(np.min(np.abs(indx[i] - indx_asp), axis=-1) + 1)
+                    np.reciprocal(np.min(np.abs(indx[i] - indx_asp), axis=-1).astype(np.float) + 1)
                     ** self.ex
                 )
                 distance_vector[i] = dist
@@ -138,7 +140,7 @@ class SentimentForest(RandomForestClassifier):
         return X
 
 
-def top_ngrams(review_dataset, number=100, n=2):
+def top_ngrams(review_dataset, number=250, n=2):
     rev_texts = [[], [], []]
 
     for rev, seq_len, sentiment in review_dataset:
@@ -180,6 +182,8 @@ def top_ngrams(review_dataset, number=100, n=2):
     F_0 = np.abs(frac0 - 1 / 2 * (frac1 + frac2))
     F_1 = np.abs(frac1 - 1 / 2 * (frac0 + frac2))
     F_2 = np.abs(frac2 - 1 / 2 * (frac0 + frac1))
+
+    #F_0, F_1, F_2 = F_0/np.mean(F_0), F_1/np.mean(F_1), F_2/np.mean(F_2)
 
     F = F_0 + F_1 + F_2
     top_x = np.argsort(F)[:number]

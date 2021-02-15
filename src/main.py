@@ -46,10 +46,10 @@ if __name__ == "__main__":
     # crawl list of reviews from input amazon URLs
     # dataset = extract_reviews_for_products(input_url)
 
-    path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "data/ABSA15")
-    dataset = load_semeval2015(path, categories=["restaurants"])
-    # path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "data/custom")
-    # dataset = load_custom_dataset(path, categories=["laptops"])
+    # path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "data/ABSA15")
+    # dataset = load_semeval2015(path, categories=["restaurants"])
+    path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "data/custom")
+    dataset = load_custom_dataset(path, categories=["laptops"])
 
     pipeline = PreprocessingPipeline()
     dataloaders = {}
@@ -64,18 +64,17 @@ if __name__ == "__main__":
     revtexts, aspects, sentiment = dataset["val"]
     val_set = SentimentDataset(revtexts, aspects, sentiment)
     top_x = top_ngrams(train_set)
-    forest = SentimentForest(top_x, pruning=0.01)
-    svm = SentimentSVM(top_x)
+    forest = SentimentForest(top_x, pruning=0.01, ex=2)
+    svm = SentimentSVM(top_x, degree=3, ex=2)
 
     x_train = torch.stack([event for event, _, _ in train_set], axis=0).numpy()
     y_train = torch.Tensor([sentiment for _, _, sentiment in train_set]).numpy()
     y_train = (2 * y_train).astype(np.int)
-    print(len(x_train))
 
     x_val = torch.stack([event for event, _, _ in val_set], axis=0).numpy()
     y_val = torch.Tensor([sentiment for _, _, sentiment in val_set]).numpy()
     y_val = (2 * y_val).astype(np.int)
-
+    #print([dict_back[i[0]] for i in top_x])
     print("Fitting SVM...")
     svm.fit(x_train, y_train)
     print("Fitting Random Forest...")
