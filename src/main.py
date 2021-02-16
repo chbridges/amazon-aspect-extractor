@@ -14,6 +14,7 @@ from utils.metrics import (
     class_ratio,
     cross_entropy,
     f1_score,
+    log_sq_diff,
 )
 from utils.preprocessing import PreprocessingPipeline
 from utils.reviewextractor import extract_reviews_for_products
@@ -58,6 +59,7 @@ if __name__ == "__main__":
     # ----------------------------------------------------------------------------------------
     # Baseline Models
     #
+
     revtexts, aspects, sentiment = dataset["train"]
     train_set = SentimentDataset(revtexts, aspects, sentiment)
 
@@ -74,7 +76,6 @@ if __name__ == "__main__":
     x_val = torch.stack([event for event, _, _ in val_set], axis=0).numpy()
     y_val = torch.Tensor([sentiment for _, _, sentiment in val_set]).numpy()
     y_val = (2 * y_val).astype(np.int)
-    #print([dict_back[i[0]] for i in top_x])
     print("Fitting SVM...")
     svm.fit(x_train, y_train)
     print("Fitting Random Forest...")
@@ -205,16 +206,19 @@ if __name__ == "__main__":
         device=device,
         normalize_output=False,
         n_layers=1,
-        embedding_dim=200,
-        hidden_dim=400,
-        dropout=0.1,
+        embedding_dim=300,
+        hidden_dim=128,
+        dropout=0.35,
         bidirectional=False,
     )
-    optimizer = Adam(model.parameters(), lr=0.004, weight_decay=1e-4)
-    scheduler = ReduceLROnPlateau(optimizer, cooldown=10, factor=0.4, verbose=True)
+    optimizer = Adam(
+        model.parameters(), lr=0.001, weight_decay=3e-2, betas=[0.9, 0.999]
+    )
+    # scheduler = ReduceLROnPlateau(optimizer, cooldown=10, factor=0.4, verbose=True)
+    scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=1, gamma=0.975)
     criterion = cross_entropy(dataloaders["train"], device=device)
-    train_sentiment_model(model, optimizer, dataloaders, criterion=criterion,
-                          scheduler=scheduler, n_epochs=400, eval_every=1)
+    # train_sentiment_model(model, optimizer, dataloaders, criterion=criterion,
+    #                       scheduler=scheduler, n_epochs=50, eval_every=1)
     model.load_state_dict(
         torch.load(os.path.join("models", model.name + "_best" + ".pth"))[
             "model_state_dict"

@@ -74,6 +74,7 @@ class Pipeline:
                 if aspect_masks[i][j] == 1
             ]
             aspect = " ".join(aspect)
+            print(aspect)
             # Predict sentiment
             sentiment = 0  # Armand pls help
             # Store sentiment as (aspect, sentiment) tuple

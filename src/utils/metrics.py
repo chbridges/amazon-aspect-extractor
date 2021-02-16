@@ -69,7 +69,15 @@ def class_balanced_accuracy(pred, y, regression=True, n_classes=3):
     return torch.mean(torch.Tensor(acc))
 
 
-def class_ratio(model, dataloaders, n_classes=3):
+def class_ratio(model, dataloaders, n_classes: int = 3):
+    """Compare the True class ratio of a dataset and the one predicted by the
+    sentiment LSTM
+    Arguments:
+    - model: the SentimentModel that should be evaluated
+    - dataloaders: a dictionary of pytorch dataloaders with keys train/val/test
+    - n_classes: the number of classes in the dataset (needed if labels are between 0 and 1)
+    """
+
     ratios = torch.zeros(2, n_classes).to(model.device)
     for batch_id, (x, seq_lens, y) in tqdm(
         enumerate(dataloaders["val"]), desc="Computing validation accuracy"
@@ -164,7 +172,15 @@ def f1_score(pred, y, regression=True, n_classes=3):
 
 
 class cross_entropy(nn.CrossEntropyLoss):
-    def __init__(self, trainset, n_classes=3, device="cpu"):
+    """Weighted CrossEntropyLoss
+    Weights are the inverse ratios of classes in the dataset
+    Arguments:
+    - trainset: the dataset to calculate the weights from
+    - n_classes: number of classes in the dataset
+    - device: device of the data during training
+    """
+
+    def __init__(self, trainset, n_classes: int = 3, device: str = "cpu"):
 
         self.n_classes = n_classes
         sentiments = torch.cat([batch[2] for batch in trainset], dim=-1)

@@ -101,6 +101,15 @@ def load_semeval2015(
 def load_custom_dataset(
     path: str, categories: List[str] = ["laptops", "restaurants", "hotels"]
 ):
+    """Load a customly annotated dataset
+    Arguments:
+    - path: A path to the dataset directory
+    - categories: A list of categories to include data from
+    choices are: laptops
+
+    Return:
+    - data: A dictionary with reviews for each of the 3 splits train/dev/test
+    """
     data = {"train": [], "val": [], "test": []}
     for filename in os.listdir(path):
         if filename.endswith(".json") and any(
@@ -236,9 +245,6 @@ class SemEvalReview(object):
             op_start, op_end = op.target_position
             if start <= op_start:
                 if end >= op_end:
-                    # TODO Decide if it might be better to keep opinion
-                    #      and set target position to (0,0)
-                    # delete opinion if the keyword is removed
                     self.opinions.remove(op)
                 else:
                     op_start = op_start - min(op_start - start, end - start)
