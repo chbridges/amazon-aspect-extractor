@@ -30,7 +30,19 @@
 - Stretch Goal: GUI (Simple Tkinter/Browser-PlugIn) 
 
 ### Training State:
-Results of current best sentiment model
+Results of best sentiment model on custom Laptop dataset:
+
+|Split \ Metric|Accuracy|Class balanced accuracy|F1 Score|Class Splits|
+|--------------|--------|-----------------------|--------|------------|
+|LSTM Training|81.31%|85.80%|0.8421|-|
+|LSTM Validation|69.11%|59.81.24%|0.7324|30.46%/6.44%/63.10%|
+|Random Forest Training|63.26%|73.30%|0.5876|-|
+|Random Forest Validation|52.94%|48.82%|0.4204|49.73%/16.58%/33.69%|
+|SVM Training|71.15%|65.78%|0.6438|-|
+|SVM Validation|61.49%|37.84%|0.3689|14.97%/4.28%/80.75%|
+|Validation Set|-|-|-|37.97%/3.21%/58.82%|
+
+Results of best sentiment model on Restaurants (deprecated):
 
 |Split \ Metric|Accuracy|Class balanced accuracy|F1 Score|Class Splits|
 |--------------|--------|-----------------------|--------|------------|
