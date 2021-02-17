@@ -7,7 +7,7 @@ from torch.utils.data import Dataset
 from tqdm import tqdm, trange
 from utils.metrics import accuracy, log_sq_diff
 from utils.preprocessing import review_to_int
-from typings import List
+from typing import List
 
 
 class SentimentModel(nn.Module):
@@ -44,7 +44,6 @@ class SentimentModel(nn.Module):
         - device: name of device to run the model on (use gpu if available)"""
 
         super().__init__()
-
         self.name = model_name
         self.output_size = output_size
         self.hidden_dim = hidden_dim
@@ -138,6 +137,7 @@ class SentimentModel(nn.Module):
 
         # Dynamic input packing adapted from
         # https://towardsdatascience.com/taming-lstms-variable-sized-mini-batches-and-why-pytorch-is-good-for-your-health-61d35642972e
+
         out = torch.nn.utils.rnn.pack_padded_sequence(
             embedded, s_lengths, batch_first=True
         )
@@ -319,6 +319,8 @@ def train_sentiment_model(
                         "epoch": epoch,
                         "model_state_dict": model.state_dict(),
                         "optimizer_state_dict": optimizer.state_dict(),
+                        "dict_for": model.dict_for,
+                        "dict_back": model.dict_back,
                     },
                     save_name,
                 )
@@ -338,6 +340,8 @@ def train_sentiment_model(
                     "epoch": epoch,
                     "model_state_dict": model.state_dict(),
                     "optimizer_state_dict": optimizer.state_dict(),
+                    "dict_for": model.dict_for,
+                    "dict_back": model.dict_back,
                 },
                 save_name,
             )
@@ -352,6 +356,8 @@ def train_sentiment_model(
             "epoch": n_epochs,
             "model_state_dict": model.state_dict(),
             "optimizer_state_dict": optimizer.state_dict(),
+            "dict_for": model.dict_for,
+            "dict_back": model.dict_back,
         },
         save_name,
     )
