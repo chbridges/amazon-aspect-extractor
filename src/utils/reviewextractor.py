@@ -5,7 +5,7 @@ import re
 import threading
 import time
 from typing import List
-
+import requests
 from selenium import webdriver
 
 from chromedriver_py import binary_path
@@ -14,7 +14,10 @@ from chromedriver_py import binary_path
 # https://chromedriver.chromium.org/downloads/
 
 review_part_start = '<span class="cr-original-review-content">'
-review_part_end = "</span>"
+review_part_end = '</span>'
+
+title_part_start = '<span id="productTitle" class="a-size-large product-title-word-break">'
+title_part_end = '</span>'
 
 
 class AmazonReviewPageExtractor:
@@ -256,10 +259,41 @@ def extract_reviews_for_products(
         return []
 
 
+def extract_product_title_and_jpg(url: str) -> (str, bytes):
+    """
+    Extract the product title and the product image for a given amazon product url
+    :param url: url of the product
+    :return: title and jpg image as bytes
+    """
+    driver = webdriver.Chrome(
+        options=get_chrome_options(), executable_path=binary_path
+    )  # create driver engine
+    driver.get(url)  # set browser to use this page
+    time.sleep(6)  # wait for page
+    data = driver.page_source  # extract page html source
+    start_idx = data.find(title_part_start)  # starting point
+    if start_idx != -1:
+        end_idx = data.find(title_part_end, start_idx)  # starting end point
+        title = (
+            remove_html_code(
+                data[start_idx + len(title_part_start): end_idx]
+            )
+        )
+    else:
+        title = 'unknown'
+    img_url_start = '<img alt="' + title + '" src="'
+    start_idx = data.find(img_url_start)
+    end_idx = data.find('"', start_idx + len(img_url_start))
+    img_url = data[start_idx + len(img_url_start): end_idx]
+    r = requests.get(img_url)  # set browser to use this page
+    img = r.content
+    return title, img
+
+
 if __name__ == "__main__":
-    print("Start: " + datetime.datetime.now().strftime("%H:%M:%S"))
+    # print("Start: " + datetime.datetime.now().strftime("%H:%M:%S"))
     testlink = [
-        "https://www.amazon.com/-/de/dp/B07RF1XD36/ref=lp_16225009011_1_6",
+        "https://www.amazon.com/-/de/dp/B07RF1XD36/",
         "https://www.amazon.com/dp/B08JQKMFFB/ref=sspa_dk_detail_2?psc=1&pd_rd_i=B08JQKMFFB&pd_rd_w=5AdCg"
         + "&pf_rd_p=45e679f6-d55f-4626-99ea-f1ec7720af94&pd_rd_wg=bWbE5&pf_rd_r=HJV72D1QHGE2XJ8QJBV0&pd_rd_r"
         + "=b3a4c265-2d13-454f-a385-3ad0a71737eb&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEzN1NSWjVRTFFINUFNJmVuY3J5cHR"
@@ -268,8 +302,13 @@ if __name__ == "__main__":
         "https://www.amazon.com/product-reviews/B08KH53NKR/ref=cm_cr_arp_d_viewopt_sr?ie=UTF8&filterByStar"
         + "=all_stars&reviewerType=all_reviews&pageNumber=1#reviews-filter-bar",
     ]
-    review_data = extract_reviews_for_products(testlink, 100, 30)
-    print("Found: " + str(len(review_data)) + " reviews")
-    pp = pprint.PrettyPrinter(indent=4)
-    pp.pprint(review_data)
-    print("End  : " + datetime.datetime.now().strftime("%H:%M:%S"))
+    title, jpg = extract_product_title_and_jpg(testlink[0])
+    newFile = open("img.jpg", "w+b")
+    # write to file
+    newFile.write(bytearray(jpg))
+
+    #review_data = extract_reviews_for_products(testlink, 100, 30)
+    #print("Found: " + str(len(review_data)) + " reviews")
+    #pp = pprint.PrettyPrinter(indent=4)
+    #pp.pprint(review_data)
+    #print("End  : " + datetime.datetime.now().strftime("%H:%M:%S"))
