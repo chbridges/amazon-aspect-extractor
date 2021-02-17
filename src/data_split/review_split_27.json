@@ -2,1281 +2,2317 @@
     "data": [
         {
             "text": [
-                "Best Mac yet",
-                "I just received it today, and have been using for about two hours now",
-                "SO FAR best MacBook Pro I have had",
-                "I used to have the older model but 15' from 2017",
-                "Immediately I love the screen, the extra inch of size really makes a difference.",
-                "perfect screen size in my opinion and the weight feels great",
-                "Key board types beautiful, the Touch ID is now separate like the escape key, so it adds to the beautiful design and the touch pad pops out a bit (sexy)",
-                "Screen is immaculate",
+                "Best Mac yet", 
+                "I just received it today, and have been using for about two hours now", 
+                "SO FAR best MacBook Pro I have had", 
+                "I used to have the older model but 15' from 2017", 
+                "Immediately I love the screen, the extra inch of size really makes a difference.", 
+                "perfect screen size in my opinion and the weight feels great", 
+                "Key board types beautiful, the Touch ID is now separate like the escape key, so it adds to the beautiful design and the touch pad pops out a bit (sexy)", 
+                "Screen is immaculate", 
                 "Over all so far an epic piece of hardware"
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                [],
-                [],
-                [],
-                [],
-                [],
-                [],
-                []
+                [], 
+                [], 
+                [
+                    {
+                        "target_position": [
+                            "12", 
+                            "19"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "MacBook", 
+                        "subcategory": ""
+                    }
+                ], 
+                [], 
+                [
+                    {
+                        "target_position": [
+                            "23", 
+                            "29"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "screen", 
+                        "subcategory": ""
+                    }
+                ], 
+                [
+                    {
+                        "target_position": [
+                            "8", 
+                            "14"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "screen", 
+                        "subcategory": ""
+                    }
+                ], 
+                [
+                    {
+                        "target_position": [
+                            "0", 
+                            "9"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "Key board", 
+                        "subcategory": ""
+                    }
+                ], 
+                [
+                    {
+                        "target_position": [
+                            "0", 
+                            "6"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "Screen", 
+                        "subcategory": ""
+                    }
+                ], 
+                [
+                    {
+                        "target_position": [
+                            "33", 
+                            "41"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "hardware", 
+                        "subcategory": ""
+                    }
+                ]
             ]
-        },
+        }, 
         {
             "text": [
-                "Greatest of all!",
-                "The greatest and the best computer I have ever used",
-                "Very fast, great screen, fantastic keyboard and wonderful speakers",
+                "Greatest of all!", 
+                "The greatest and the best computer I have ever used", 
+                "Very fast, great screen, fantastic keyboard and wonderful speakers", 
                 "Though expensive but it is worth the money."
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                [],
+                [], 
+                [
+                    {
+                        "target_position": [
+                            "26", 
+                            "34"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "computer", 
+                        "subcategory": ""
+                    }
+                ], 
+                [
+                    {
+                        "target_position": [
+                            "17", 
+                            "24"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "screen,", 
+                        "subcategory": ""
+                    }, 
+                    {
+                        "target_position": [
+                            "35", 
+                            "43"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "keyboard", 
+                        "subcategory": ""
+                    }, 
+                    {
+                        "target_position": [
+                            "58", 
+                            "66"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "speakers", 
+                        "subcategory": ""
+                    }
+                ], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "The battery is not up to 10 hours as described!",
+                "The battery is not up to 10 hours as described!", 
                 "The battery is not up to 10 hours as described!"
-            ],
+            ], 
             "opinions": [
-                [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "4", 
+                            "11"
+                        ], 
+                        "polarity": "negative", 
+                        "category": "", 
+                        "target": "battery", 
+                        "subcategory": ""
+                    }
+                ], 
+                [
+                    {
+                        "target_position": [
+                            "4", 
+                            "11"
+                        ], 
+                        "polarity": "negative", 
+                        "category": "", 
+                        "target": "battery", 
+                        "subcategory": ""
+                    }
+                ]
             ]
-        },
+        }, 
         {
             "text": [
-                "Bought a used one from Amazon Warehouse, Works great!",
-                "I bought this used with \"minor damage\"",
-                "Came in mint condition, except battery has been dying quickly",
-                "It did however come with only 5 battery cycle charges",
+                "Bought a used one from Amazon Warehouse, Works great!", 
+                "I bought this used with \"minor damage\"", 
+                "Came in mint condition, except battery has been dying quickly", 
+                "It did however come with only 5 battery cycle charges", 
                 "Recommend it, this is the best of the 15+ MacBook's I've ever owned!"
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                [],
-                [],
+                [], 
+                [], 
+                [
+                    {
+                        "target_position": [
+                            "31", 
+                            "38"
+                        ], 
+                        "polarity": "negative", 
+                        "category": "", 
+                        "target": "battery", 
+                        "subcategory": ""
+                    }
+                ], 
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "Get extremely hot under normal use",
-                "I just started my new Macbook Pro yesterday, and noticed that the mac heat up very badly",
-                "I was not even using any heavy application (just browsing around) and it get so hot that I can't even put it on my lap",
+                "Get extremely hot under normal use", 
+                "I just started my new Macbook Pro yesterday, and noticed that the mac heat up very badly", 
+                "I was not even using any heavy application (just browsing around) and it get so hot that I can't even put it on my lap", 
                 "Trying to get apple tech support to help on this issue..."
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                [],
+                [], 
+                [], 
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "There is always something.",
-                "The only complaint I have, had nothing to do with the quality of the item itself",
-                "The MacBook Pro arrived in its factory packaging with a small chip on the edge near the track pad",
-                "This was mostly done in the factory before packaging",
-                "Due to the large amount of padding in the boxes it arrived in I do not believe it was caused by transit",
+                "There is always something.", 
+                "The only complaint I have, had nothing to do with the quality of the item itself", 
+                "The MacBook Pro arrived in its factory packaging with a small chip on the edge near the track pad", 
+                "This was mostly done in the factory before packaging", 
+                "Due to the large amount of padding in the boxes it arrived in I do not believe it was caused by transit", 
                 "Otherwise I very much enjoy the product."
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                [],
-                [],
-                [],
+                [], 
+                [], 
+                [], 
+                [], 
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "Lousy fan noise",
-                "Bought this as a gift for my family",
-                "Here is my main concern",
-                "The fan noise sounding like a jet taking off as soon as it has any kind of load",
-                "I doubt if it has anything to do with the AMD graphic card",
-                "Apple switch to AMD in this generation of MBP, and I heard it was never like this before",
+                "Lousy fan noise", 
+                "Bought this as a gift for my family", 
+                "Here is my main concern", 
+                "The fan noise sounding like a jet taking off as soon as it has any kind of load", 
+                "I doubt if it has anything to do with the AMD graphic card", 
+                "Apple switch to AMD in this generation of MBP, and I heard it was never like this before", 
                 "Overheating is another issue."
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                [],
-                [],
-                [],
-                [],
+                [], 
+                [], 
+                [], 
+                [
+                    {
+                        "target_position": [
+                            "4", 
+                            "7"
+                        ], 
+                        "polarity": "negative", 
+                        "category": "", 
+                        "target": "fan", 
+                        "subcategory": ""
+                    }
+                ], 
+                [], 
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "Longer and longer boot time",
-                "I used to complain how long it takes Windows to boot",
-                "Now Windows10 boots fast whereas Big Sur requires multiple reboots to start up",
+                "Longer and longer boot time", 
+                "I used to complain how long it takes Windows to boot", 
+                "Now Windows10 boots fast whereas Big Sur requires multiple reboots to start up", 
                 "Each iteration of the macOS takes longer to boot than the previous one."
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "18", 
+                            "27"
+                        ], 
+                        "polarity": "negative", 
+                        "category": "", 
+                        "target": "boot time", 
+                        "subcategory": ""
+                    }
+                ], 
+                [], 
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "Best laptop I\u2019ve owned",
-                "I love my new MacBook",
-                "I\u2019ve had it for a about four months now, and I still can\u2019t help but smile using it",
-                "Runs quiet and cool",
-                "Battery life is solid",
-                "Display is beautiful",
-                "Speakers sound amazing",
-                "And yes the keyboard is fantastic",
+                "Best laptop I\u2019ve owned", 
+                "I love my new MacBook", 
+                "I\u2019ve had it for a about four months now, and I still can\u2019t help but smile using it", 
+                "Runs quiet and cool", 
+                "Battery life is solid", 
+                "Display is beautiful", 
+                "Speakers sound amazing", 
+                "And yes the keyboard is fantastic", 
                 "Thumbs up."
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                [],
-                [],
-                [],
-                [],
-                [],
-                [],
+                [], 
+                [
+                    {
+                        "target_position": [
+                            "14", 
+                            "21"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "MacBook", 
+                        "subcategory": ""
+                    }
+                ], 
+                [], 
+                [], 
+                [
+                    {
+                        "target_position": [
+                            "0", 
+                            "7"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "Battery", 
+                        "subcategory": ""
+                    }
+                ], 
+                [
+                    {
+                        "target_position": [
+                            "0", 
+                            "7"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "Display", 
+                        "subcategory": ""
+                    }
+                ], 
+                [
+                    {
+                        "target_position": [
+                            "0", 
+                            "8"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "Speakers", 
+                        "subcategory": ""
+                    }
+                ], 
+                [
+                    {
+                        "target_position": [
+                            "12", 
+                            "20"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "keyboard", 
+                        "subcategory": ""
+                    }
+                ], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "It\u2019s fast with a great keyboard and screen",
-                "I love the screen and the new keyboard on this!! I never really had a problem with my 13 inch keyboard...but I would never go back",
+                "It\u2019s fast with a great keyboard and screen", 
+                "I love the screen and the new keyboard on this!! I never really had a problem with my 13 inch keyboard...but I would never go back", 
                 "Battery life seems to be as advertised so far, and performance is great."
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                []
+                [], 
+                [
+                    {
+                        "target_position": [
+                            "11", 
+                            "17"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "screen", 
+                        "subcategory": ""
+                    }, 
+                    {
+                        "target_position": [
+                            "30", 
+                            "38"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "keyboard", 
+                        "subcategory": ""
+                    }
+                ], 
+                [
+                    {
+                        "target_position": [
+                            "0", 
+                            "7"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "Battery", 
+                        "subcategory": ""
+                    }, 
+                    {
+                        "target_position": [
+                            "51", 
+                            "62"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "performance", 
+                        "subcategory": ""
+                    }
+                ]
             ]
-        },
+        }, 
         {
             "text": [
-                "Nice Computer",
-                "This is my first Mac and after 3 months I am very happy",
-                "I am heavily invested in the Apple ecosystem so it is nice to have everything at my fingertips on this computer",
+                "Nice Computer", 
+                "This is my first Mac and after 3 months I am very happy", 
+                "I am heavily invested in the Apple ecosystem so it is nice to have everything at my fingertips on this computer", 
                 "It is a bit expensive."
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                [],
+                [], 
+                [], 
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "Runs hot",
-                "Case heats up very quickly to the point it is too hot to hold or have in lap",
+                "Runs hot", 
+                "Case heats up very quickly to the point it is too hot to hold or have in lap", 
                 "Definitely not worth buying."
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
+                [], 
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "MacBook Pro 16",
-                "Great laptop at a great price",
-                "Delivered fast",
+                "MacBook Pro 16", 
+                "Great laptop at a great price", 
+                "Delivered fast", 
                 "Very happy."
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                [],
+                [], 
+                [
+                    {
+                        "target_position": [
+                            "6", 
+                            "12"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "laptop", 
+                        "subcategory": ""
+                    }, 
+                    {
+                        "target_position": [
+                            "24", 
+                            "29"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "price", 
+                        "subcategory": ""
+                    }
+                ], 
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "Best of the best",
-                "What can you say, it's an Apple product",
-                "Easy to setup",
-                "Using it with wireless keyboard and trackpad, and external monitor",
+                "Best of the best", 
+                "What can you say, it's an Apple product", 
+                "Easy to setup", 
+                "Using it with wireless keyboard and trackpad, and external monitor", 
                 "Small issue: fan comes up too often ( I do application development with it)."
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                [],
-                [],
-                []
+                [], 
+                [], 
+                [], 
+                [], 
+                [
+                    {
+                        "target_position": [
+                            "13", 
+                            "16"
+                        ], 
+                        "polarity": "negative", 
+                        "category": "", 
+                        "target": "fan", 
+                        "subcategory": ""
+                    }
+                ]
             ]
-        },
+        }, 
         {
             "text": [
-                "Terrific 17\u201d screen",
+                "Terrific 17\u201d screen", 
                 "Love my new Mac laptop Good value from Amazon"
-            ],
+            ], 
             "opinions": [
-                [],
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "Screen a distortion in corner",
+                "Screen a distortion in corner", 
                 "well we noticed as time was going on the bottom right screen became a little red colorist more and more ! when i called they said its just the color pattern of the screen and should be fine...however seems to be somewhat getting worst..."
-            ],
+            ], 
             "opinions": [
-                [],
+                [
+                    {
+                        "target_position": [
+                            "0", 
+                            "6"
+                        ], 
+                        "polarity": "negative", 
+                        "category": "", 
+                        "target": "Screen", 
+                        "subcategory": ""
+                    }
+                ], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "DON\u2019T BUY THIS COMPUTER!!!!",
-                "I was so happy once I received my new laptop",
-                "Open the box connected all my links and ready work on some pictures that I had taken",
-                "Press the power button nothing, checked the connection as well as the power....tried thinking it was finger recognition...nothing",
-                "The battery feels like its overheating let it cool off shipping back ASAP",
-                "I am so disappointed",
-                "Seller offered a refund or replacement",
-                "I think a refund at this point is best",
+                "DON\u2019T BUY THIS COMPUTER!!!!", 
+                "I was so happy once I received my new laptop", 
+                "Open the box connected all my links and ready work on some pictures that I had taken", 
+                "Press the power button nothing, checked the connection as well as the power....tried thinking it was finger recognition...nothing", 
+                "The battery feels like its overheating let it cool off shipping back ASAP", 
+                "I am so disappointed", 
+                "Seller offered a refund or replacement", 
+                "I think a refund at this point is best", 
                 "\u2639\ufe0f"
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                [],
-                [],
-                [],
-                [],
-                [],
-                [],
+                [], 
+                [], 
+                [], 
+                [], 
+                [
+                    {
+                        "target_position": [
+                            "4", 
+                            "11"
+                        ], 
+                        "polarity": "negative", 
+                        "category": "", 
+                        "target": "battery", 
+                        "subcategory": ""
+                    }
+                ], 
+                [], 
+                [], 
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "MAC FOREVER!!!",
-                "What can I possibly say about a brand new larger screen MacBook Pro",
-                "It is wonderful",
-                "The upgrades are great and the color with the retina viewing is amazing",
+                "MAC FOREVER!!!", 
+                "What can I possibly say about a brand new larger screen MacBook Pro", 
+                "It is wonderful", 
+                "The upgrades are great and the color with the retina viewing is amazing", 
                 "Once I got a Mac I never went back!"
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                [],
-                [],
+                [], 
+                [], 
+                [], 
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "Wrong stuff",
+                "Wrong stuff", 
                 "Got the wrong macbook soo unhappy"
-            ],
+            ], 
             "opinions": [
-                [],
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "the fuzzy sound problem still persist",
-                "Is very well know that some macbook starts to have a fuzzy and weird sound when you reproduce any audio in high volume, I bought this laptop hoping this was fixed already, but since some days ago I started to get the same noisy sound",
+                "the fuzzy sound problem still persist", 
+                "Is very well know that some macbook starts to have a fuzzy and weird sound when you reproduce any audio in high volume, I bought this laptop hoping this was fixed already, but since some days ago I started to get the same noisy sound", 
                 "Is not good that a so expensive laptop have this kind of problems"
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
+                [], 
+                [
+                    {
+                        "target_position": [
+                            "98", 
+                            "103"
+                        ], 
+                        "polarity": "negative", 
+                        "category": "", 
+                        "target": "audio", 
+                        "subcategory": ""
+                    }
+                ], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "Poor shipping, great product",
-                "5 stars for the computer",
-                "Apple always delivers good quality products that I know I will have for a while",
+                "Poor shipping, great product", 
+                "5 stars for the computer", 
+                "Apple always delivers good quality products that I know I will have for a while", 
                 "1 star for shipping - shipped under a 45-pound bedframe with no packing materials"
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "5", 
+                            "14"
+                        ], 
+                        "polarity": "negative", 
+                        "category": "", 
+                        "target": "shipping,", 
+                        "subcategory": ""
+                    }
+                ], 
+                [], 
+                [
+                    {
+                        "target_position": [
+                            "27", 
+                            "34"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "quality", 
+                        "subcategory": ""
+                    }
+                ], 
+                [
+                    {
+                        "target_position": [
+                            "11", 
+                            "19"
+                        ], 
+                        "polarity": "negative", 
+                        "category": "", 
+                        "target": "shipping", 
+                        "subcategory": ""
+                    }
+                ]
             ]
-        },
+        }, 
         {
             "text": [
-                "Perfection!",
-                "The package was in perfect condition upon arrival",
-                "The laptop booted up and installed updates immediately and setup was a breeze",
+                "Perfection!", 
+                "The package was in perfect condition upon arrival", 
+                "The laptop booted up and installed updates immediately and setup was a breeze", 
                 "Couldn\u2019t be happier with this!!!"
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                [],
+                [], 
+                [], 
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "I could not get it hooked up and returned it",
-                "Very sad.",
-                "I had a miserable time hooking it up and retuned it",
-                "This is not a reflection on the computer but me",
+                "I could not get it hooked up and returned it", 
+                "Very sad.", 
+                "I had a miserable time hooking it up and retuned it", 
+                "This is not a reflection on the computer but me", 
                 "I did not care for the lack of input devices."
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                [],
-                [],
+                [], 
+                [], 
+                [], 
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "Best Macbook I have purchased!",
-                "Performance",
-                "Love the new screen size and the new keyboard",
-                "The speakers on this thing are truly impressive for such laptop with such a thin frame",
+                "Best Macbook I have purchased!", 
+                "Performance", 
+                "Love the new screen size and the new keyboard", 
+                "The speakers on this thing are truly impressive for such laptop with such a thin frame", 
                 "Overall, great Macbook for anyone - from day to day work to photo editing, video editing, music production etc."
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                [],
-                [],
+                [], 
+                [], 
+                [
+                    {
+                        "target_position": [
+                            "13", 
+                            "19"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "screen", 
+                        "subcategory": ""
+                    }, 
+                    {
+                        "target_position": [
+                            "37", 
+                            "45"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "keyboard", 
+                        "subcategory": ""
+                    }
+                ], 
+                [
+                    {
+                        "target_position": [
+                            "4", 
+                            "12"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "speakers", 
+                        "subcategory": ""
+                    }
+                ], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "Awesome...totally FANTASTIC!",
-                "Extremely pleased with my NEW MacBook Pro! I haven\u2019t found anything yet that I don\u2019t like",
+                "Awesome...totally FANTASTIC!", 
+                "Extremely pleased with my NEW MacBook Pro! I haven\u2019t found anything yet that I don\u2019t like", 
                 "I LOVE it!"
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
+                [], 
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "Good deal",
-                "Love the computer",
-                "Was surprised Amazon sold for such a discount",
-                "No complaints so far (and had for a few months now)",
+                "Good deal", 
+                "Love the computer", 
+                "Was surprised Amazon sold for such a discount", 
+                "No complaints so far (and had for a few months now)", 
                 "Was brand new when it arrived."
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                [],
-                [],
+                [], 
+                [
+                    {
+                        "target_position": [
+                            "9", 
+                            "17"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "computer", 
+                        "subcategory": ""
+                    }
+                ], 
+                [], 
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "Satisfied",
+                "Satisfied", 
                 "Good one, but too much of heat generated during load on the laptop."
-            ],
+            ], 
             "opinions": [
-                [],
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "That is new product !!",
-                "help friend to brought it, coz her don't have account for amazon",
-                "I just looking for the view by another customer to buy, suggestion you guys choose this one",
+                "That is new product !!", 
+                "help friend to brought it, coz her don't have account for amazon", 
+                "I just looking for the view by another customer to buy, suggestion you guys choose this one", 
                 "The color and style I like it."
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                [],
+                [], 
+                [], 
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "New Apple MacBook Pro (16-inch, 16GB RAM, 512GB Storage) - Space Gray",
+                "New Apple MacBook Pro (16-inch, 16GB RAM, 512GB Storage) - Space Gray", 
                 "What can I say\u2014it\u2019s an Apple and I love it."
-            ],
+            ], 
             "opinions": [
-                [],
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "Great Value for a Used Product",
-                "Bought this \u2018used very good condition\u2019 MacBook 16 from Expercom",
-                "Looks like I lucked out; it was pristine with only 7 battery cycles",
-                "What\u2019s more, it had been purchased 3 weeks before so was able to add AppleCare",
-                "Truly an outstanding value at about 80% of retail",
+                "Great Value for a Used Product", 
+                "Bought this \u2018used very good condition\u2019 MacBook 16 from Expercom", 
+                "Looks like I lucked out; it was pristine with only 7 battery cycles", 
+                "What\u2019s more, it had been purchased 3 weeks before so was able to add AppleCare", 
+                "Truly an outstanding value at about 80% of retail", 
                 "Very happy."
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                [],
-                [],
-                [],
+                [], 
+                [], 
+                [], 
+                [], 
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "Great performance, and fun touchbar",
-                "Arrived earlier than expected and exceeded expectations",
-                "Great processing power and easy transition from old laptop (MacBook Pro 17\", 2010)",
-                "During COVID-19, was thankful that delivery driver waited a safe distance for me to acknowledge delivery",
+                "Great performance, and fun touchbar", 
+                "Arrived earlier than expected and exceeded expectations", 
+                "Great processing power and easy transition from old laptop (MacBook Pro 17\", 2010)", 
+                "During COVID-19, was thankful that delivery driver waited a safe distance for me to acknowledge delivery", 
                 "Very smooth from order to delivery."
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                [],
-                [],
+                [], 
+                [], 
+                [
+                    {
+                        "target_position": [
+                            "6", 
+                            "22"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "processing power", 
+                        "subcategory": ""
+                    }
+                ], 
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "Macbook for the CREATORS",
-                "This is what I was seeking from apple for a long time",
-                "Best display, good battery life, slim design and silent operation",
-                "It is a power packed machine",
+                "Macbook for the CREATORS", 
+                "This is what I was seeking from apple for a long time", 
+                "Best display, good battery life, slim design and silent operation", 
+                "It is a power packed machine", 
                 "I don't think you will regret your purchase."
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                [],
-                [],
+                [], 
+                [], 
+                [
+                    {
+                        "target_position": [
+                            "5", 
+                            "12"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "display", 
+                        "subcategory": ""
+                    }, 
+                    {
+                        "target_position": [
+                            "19", 
+                            "26"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "battery", 
+                        "subcategory": ""
+                    }, 
+                    {
+                        "target_position": [
+                            "38", 
+                            "44"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "design", 
+                        "subcategory": ""
+                    }
+                ], 
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "Great machine",
+                "Great machine", 
                 "Wonderful machine"
-            ],
+            ], 
             "opinions": [
-                [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "6", 
+                            "13"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "machine", 
+                        "subcategory": ""
+                    }
+                ], 
+                [
+                    {
+                        "target_position": [
+                            "10", 
+                            "17"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "machine", 
+                        "subcategory": ""
+                    }
+                ]
             ]
-        },
+        }, 
         {
             "text": [
-                "OMG, what a wonderful difference.",
-                "Having been a 13\" Macbook Pro fan for years, I finally decided to go bigger",
-                "What a wonderful surprise ! Quick, clear, lightweight, responsive",
+                "OMG, what a wonderful difference.", 
+                "Having been a 13\" Macbook Pro fan for years, I finally decided to go bigger", 
+                "What a wonderful surprise ! Quick, clear, lightweight, responsive", 
                 "Love the feel of the new keyboard."
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                [],
-                []
+                [], 
+                [], 
+                [], 
+                [
+                    {
+                        "target_position": [
+                            "25", 
+                            "33"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "keyboard", 
+                        "subcategory": ""
+                    }
+                ]
             ]
-        },
+        }, 
         {
             "text": [
-                "I love it!",
-                "The reason I rated 3 for gaming is because I don't use it for that",
-                "Same for touchscreen, of course I have a touch bar",
+                "I love it!", 
+                "The reason I rated 3 for gaming is because I don't use it for that", 
+                "Same for touchscreen, of course I have a touch bar", 
                 "I would rate that 6."
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                [],
+                [], 
+                [], 
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "Favorite MacBook",
-                "Came quickly",
-                "Genuine apple product",
-                "Was able to get apple care through apple, you just need to contact apple support and they\u2019ll kindly help you out! Love having a MacBook again",
+                "Favorite MacBook", 
+                "Came quickly", 
+                "Genuine apple product", 
+                "Was able to get apple care through apple, you just need to contact apple support and they\u2019ll kindly help you out! Love having a MacBook again", 
                 "The Touch ID is cool."
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                [],
-                [],
+                [], 
+                [], 
+                [], 
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "I\u2019m in love!!",
-                "The best thing I own honestly",
+                "I\u2019m in love!!", 
+                "The best thing I own honestly", 
                 "Speakers and screen are impeccable! Only thing is it doesn\u2019t have ports but you can easily get an adapter for everything!"
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                []
+                [], 
+                [], 
+                [
+                    {
+                        "target_position": [
+                            "0", 
+                            "8"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "Speakers", 
+                        "subcategory": ""
+                    }, 
+                    {
+                        "target_position": [
+                            "13", 
+                            "19"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "screen", 
+                        "subcategory": ""
+                    }, 
+                    {
+                        "target_position": [
+                            "66", 
+                            "71"
+                        ], 
+                        "polarity": "negative", 
+                        "category": "", 
+                        "target": "ports", 
+                        "subcategory": ""
+                    }
+                ]
             ]
-        },
+        }, 
         {
             "text": [
-                "Elegant and Sturdy .",
+                "Elegant and Sturdy .", 
                 "I love that this is an Apple \ud83c\udf4e product and it comes with an expensive price with it .it is very thin and very elegant .I love its specs and functionality ."
-            ],
+            ], 
             "opinions": [
-                [],
-                []
+                [], 
+                [
+                    {
+                        "target_position": [
+                            "131", 
+                            "136"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "specs", 
+                        "subcategory": ""
+                    }
+                ]
             ]
-        },
+        }, 
         {
             "text": [
-                "Best laptop ever used",
-                "This was probably the best part of 2020, I love this thing",
-                "The battery is amazing and the new keyboard is so nice! Apple has really outdone themselves with this model",
-                "The screen quality is beyond anything I imagine (I came from a 2011 model) and the size is perfect",
+                "Best laptop ever used", 
+                "This was probably the best part of 2020, I love this thing", 
+                "The battery is amazing and the new keyboard is so nice! Apple has really outdone themselves with this model", 
+                "The screen quality is beyond anything I imagine (I came from a 2011 model) and the size is perfect", 
                 "The best screen ever! Best laptop ever!"
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                [],
-                [],
-                []
+                [], 
+                [], 
+                [
+                    {
+                        "target_position": [
+                            "4", 
+                            "11"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "battery", 
+                        "subcategory": ""
+                    }, 
+                    {
+                        "target_position": [
+                            "35", 
+                            "43"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "keyboard", 
+                        "subcategory": ""
+                    }
+                ], 
+                [
+                    {
+                        "target_position": [
+                            "83", 
+                            "87"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "size", 
+                        "subcategory": ""
+                    }
+                ], 
+                [
+                    {
+                        "target_position": [
+                            "9", 
+                            "15"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "screen", 
+                        "subcategory": ""
+                    }
+                ]
             ]
-        },
+        }, 
         {
             "text": [
-                "best laptop ever",
-                "This replaced my 2011,10 year old macbook pro",
-                "I expect to get 10+ years from this one",
-                "How long did your last pc last",
+                "best laptop ever", 
+                "This replaced my 2011,10 year old macbook pro", 
+                "I expect to get 10+ years from this one", 
+                "How long did your last pc last", 
                 "nuff said."
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                [],
-                [],
+                [], 
+                [], 
+                [], 
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "Amazing!",
-                "Awesome laptop! Very fast! Love the big screen, and the speakers are phenomenal",
-                "Also worth noting - Apple brought back the old keyboard - it\u2019s great!! It was delivered quickly and well packaged",
+                "Amazing!", 
+                "Awesome laptop! Very fast! Love the big screen, and the speakers are phenomenal", 
+                "Also worth noting - Apple brought back the old keyboard - it\u2019s great!! It was delivered quickly and well packaged", 
                 "Extremely happy with my purchase!"
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                [],
+                [], 
+                [
+                    {
+                        "target_position": [
+                            "40", 
+                            "46"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "screen", 
+                        "subcategory": ""
+                    }, 
+                    {
+                        "target_position": [
+                            "56", 
+                            "64"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "speakers", 
+                        "subcategory": ""
+                    }
+                ], 
+                [
+                    {
+                        "target_position": [
+                            "47", 
+                            "55"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "keyboard", 
+                        "subcategory": ""
+                    }
+                ], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "Send it back",
+                "Send it back", 
                 "It locked up and wouldn\u2019t except password"
-            ],
+            ], 
             "opinions": [
-                [],
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "Not worth the money",
-                "Love apple products",
+                "Not worth the money", 
+                "Love apple products", 
                 "The only reason why three stars since this laptop not worth the money I paid."
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
+                [], 
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "This is exactly the Macbook Pro I have wanted",
-                "So after hating my last Macbook Pro and the terrible butterfly keyboard",
-                "I actually bought a PC and tried to use it",
-                "But they fixed what I hated and this one has a great keyboard that's easy and fun to type on",
-                "Screen is great, battery lasts forever..",
+                "This is exactly the Macbook Pro I have wanted", 
+                "So after hating my last Macbook Pro and the terrible butterfly keyboard", 
+                "I actually bought a PC and tried to use it", 
+                "But they fixed what I hated and this one has a great keyboard that's easy and fun to type on", 
+                "Screen is great, battery lasts forever..", 
                 "Finally!"
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                [],
-                [],
-                [],
+                [], 
+                [], 
+                [], 
+                [
+                    {
+                        "target_position": [
+                            "53", 
+                            "61"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "keyboard", 
+                        "subcategory": ""
+                    }
+                ], 
+                [
+                    {
+                        "target_position": [
+                            "0", 
+                            "6"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "Screen", 
+                        "subcategory": ""
+                    }, 
+                    {
+                        "target_position": [
+                            "17", 
+                            "24"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "battery", 
+                        "subcategory": ""
+                    }
+                ], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "Amazing upgrade",
-                "Great product",
-                "Replacement for my other macbook that lasted 7 years and was still going strong besides the battery",
+                "Amazing upgrade", 
+                "Great product", 
+                "Replacement for my other macbook that lasted 7 years and was still going strong besides the battery", 
                 "Great upgrade"
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                [],
+                [], 
+                [], 
+                [
+                    {
+                        "target_position": [
+                            "92", 
+                            "99"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "battery", 
+                        "subcategory": ""
+                    }
+                ], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "High quality",
-                "Absolutely the best computer by far",
-                "Bought for my husband and he loves it",
+                "High quality", 
+                "Absolutely the best computer by far", 
+                "Bought for my husband and he loves it", 
                 "Makes beautiful movie slides from your photos with music"
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "5", 
+                            "12"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "quality", 
+                        "subcategory": ""
+                    }
+                ], 
+                [], 
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "Confusing Listing",
-                "This is a NEW unit, it is an OLD model",
+                "Confusing Listing", 
+                "This is a NEW unit, it is an OLD model", 
                 "2019 model, I bought Jan 26, 2021."
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
+                [], 
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "First Mac ever! Love it!",
-                "This is my first Mac and I love it",
+                "First Mac ever! Love it!", 
+                "This is my first Mac and I love it", 
                 "Apple is the BEST!"
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
+                [], 
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "Great MacBook Pro 16 2019!",
-                "Amazing MacBook Pro 16",
-                "Just as described and brand new",
+                "Great MacBook Pro 16 2019!", 
+                "Amazing MacBook Pro 16", 
+                "Just as described and brand new", 
                 "An upgrade from a 2013 MacBook Pro 13."
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                [],
+                [], 
+                [], 
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "A magnificent laptop",
-                "Basically, the laptop is a work of art",
-                "You know exactly what you\u2019re buying with an Apple product",
-                "I love that it comes with 16 GB of memory as default",
-                "The video card is very powerful",
-                "The touchpad is huge and works flawlessly",
+                "A magnificent laptop", 
+                "Basically, the laptop is a work of art", 
+                "You know exactly what you\u2019re buying with an Apple product", 
+                "I love that it comes with 16 GB of memory as default", 
+                "The video card is very powerful", 
+                "The touchpad is huge and works flawlessly", 
                 "It is expensive, but worth every penny."
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                [],
-                [],
-                [],
-                [],
+                [], 
+                [], 
+                [], 
+                [
+                    {
+                        "target_position": [
+                            "35", 
+                            "41"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "memory", 
+                        "subcategory": ""
+                    }
+                ], 
+                [
+                    {
+                        "target_position": [
+                            "4", 
+                            "13"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "video car", 
+                        "subcategory": ""
+                    }
+                ], 
+                [
+                    {
+                        "target_position": [
+                            "4", 
+                            "12"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "touchpad", 
+                        "subcategory": ""
+                    }
+                ], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "USB Adapter not included",
-                "No issues with the computer so far but I find it ridiculous that they don\u2019t include the USB adapter in the box &amp; you have to buy it separately",
+                "USB Adapter not included", 
+                "No issues with the computer so far but I find it ridiculous that they don\u2019t include the USB adapter in the box &amp; you have to buy it separately", 
                 "Especially with the price tag of this laptop."
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
+                [], 
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "Best MacBook I\u2019ve owned!",
-                "Best MacBook Pro I ever owned",
+                "Best MacBook I\u2019ve owned!", 
+                "Best MacBook Pro I ever owned", 
                 "Handles 4K video rendering like a breeze! I found the touchpad more helpful than I though I would."
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                []
+                [], 
+                [], 
+                [
+                    {
+                        "target_position": [
+                            "54", 
+                            "62"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "touchpad", 
+                        "subcategory": ""
+                    }
+                ]
             ]
-        },
+        }, 
         {
             "text": [
-                "delivery is important too",
-                "I love the lap top",
+                "delivery is important too", 
+                "I love the lap top", 
                 "I was horrified to find the expensive digital just left on my front porch."
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
+                [], 
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "Need better delivery service",
+                "Need better delivery service", 
                 "I got a brand new laptop and it arrived with a crack in the screen."
-            ],
+            ], 
             "opinions": [
-                [],
-                []
+                [], 
+                [
+                    {
+                        "target_position": [
+                            "60", 
+                            "66"
+                        ], 
+                        "polarity": "negative", 
+                        "category": "", 
+                        "target": "screen", 
+                        "subcategory": ""
+                    }
+                ]
             ]
-        },
+        }, 
         {
             "text": [
-                "Love this computer!",
-                "This is a big upgrade from my last Mac book pro",
+                "Love this computer!", 
+                "This is a big upgrade from my last Mac book pro", 
                 "Delivered quickly."
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
+                [], 
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "It\u2019s a factory sealed MacBook; had no issues",
-                "It\u2019s a factory sealed MacBook",
+                "It\u2019s a factory sealed MacBook; had no issues", 
+                "It\u2019s a factory sealed MacBook", 
                 "It works as expected"
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
+                [], 
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "Nice machine but exchanged it fire one with more RAM.",
+                "Nice machine but exchanged it fire one with more RAM.", 
                 "I returned it and bought one with more RAM."
-            ],
+            ], 
             "opinions": [
-                [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "49", 
+                            "52"
+                        ], 
+                        "polarity": "negative", 
+                        "category": "", 
+                        "target": "RAM", 
+                        "subcategory": ""
+                    }
+                ], 
+                [
+                    {
+                        "target_position": [
+                            "39", 
+                            "42"
+                        ], 
+                        "polarity": "negative", 
+                        "category": "", 
+                        "target": "RAM", 
+                        "subcategory": ""
+                    }
+                ]
             ]
-        },
+        }, 
         {
             "text": [
-                "Love this Mac",
-                "I love this laptop - the screen resolution is beautiful, the light up touch bar is super nice and an innovative touch",
+                "Love this Mac", 
+                "I love this laptop - the screen resolution is beautiful, the light up touch bar is super nice and an innovative touch", 
                 "I have recently converted form a PC user to MAC after all the years that I have enjoyed other apple products such as Ipad, and I doubt I'd switch back."
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
+                [], 
+                [
+                    {
+                        "target_position": [
+                            "25", 
+                            "31"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "screen", 
+                        "subcategory": ""
+                    }, 
+                    {
+                        "target_position": [
+                            "70", 
+                            "79"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "touch bar", 
+                        "subcategory": ""
+                    }
+                ], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "Very Good iPad Air",
-                "It is well made, Liked it had two positions when opened rather than just one",
+                "Very Good iPad Air", 
+                "It is well made, Liked it had two positions when opened rather than just one", 
                 "However, it would have been better if it had three reading positions when opened."
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
+                [], 
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "Good Portable Video editing Machine",
-                "Over all I love Mac because of its long lasting quality",
-                "I need a machine to edit my 6K BRaw footage captured on my Black Magic and this serves the purpose",
+                "Good Portable Video editing Machine", 
+                "Over all I love Mac because of its long lasting quality", 
+                "I need a machine to edit my 6K BRaw footage captured on my Black Magic and this serves the purpose", 
                 "It has a little heating issue and the fan is often too loud which I do not mind for the portability it provides."
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                [],
+                [], 
+                [
+                    {
+                        "target_position": [
+                            "48", 
+                            "55"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "quality", 
+                        "subcategory": ""
+                    }
+                ], 
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "what's Important",
-                "i was not impressed when it was delivered because it was not a sign package when it should be because it was over $1,000",
-                "it was left outside of my garage which i did not like because of the volume and cost of the computer",
+                "what's Important", 
+                "i was not impressed when it was delivered because it was not a sign package when it should be because it was over $1,000", 
+                "it was left outside of my garage which i did not like because of the volume and cost of the computer", 
                 "It's a good quality computer, great picture."
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                [],
-                []
+                [], 
+                [], 
+                [], 
+                [
+                    {
+                        "target_position": [
+                            "12", 
+                            "19"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "quality", 
+                        "subcategory": ""
+                    }
+                ]
             ]
-        },
+        }, 
         {
             "text": [
-                "Best for computing and Entertainment if you don't have a tv",
-                "Not for gaming",
-                "Build your own rig for gaming its better",
+                "Best for computing and Entertainment if you don't have a tv", 
+                "Not for gaming", 
+                "Build your own rig for gaming its better", 
                 "But for portability and computing and Graphic designing this is best."
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                [],
+                [], 
+                [], 
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "Beautiful",
+                "Beautiful", 
                 "I opened the box and was like, \u201dHello Lover\u201d It's gorgeous."
-            ],
+            ], 
             "opinions": [
-                [],
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "Heating issue with external monitor",
-                "Top notch until you don't use external monitor as well",
+                "Heating issue with external monitor", 
+                "Top notch until you don't use external monitor as well", 
                 "Its common issue"
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
+                [], 
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "Great Product",
-                "Shipped in a very heavy duty box",
-                "Highly recommend",
+                "Great Product", 
+                "Shipped in a very heavy duty box", 
+                "Highly recommend", 
                 "Save a couple hundred and buy off amazon."
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                [],
+                [], 
+                [], 
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "Great product",
+                "Great product", 
                 "This is my main computer"
-            ],
+            ], 
             "opinions": [
-                [],
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "GREAT!",
+                "GREAT!", 
                 "It\u2019s Apple what else can I say."
-            ],
+            ], 
             "opinions": [
-                [],
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "Great laptop!",
-                "Great laptop! I have been using it for months now and haven\u2019t had any issues",
+                "Great laptop!", 
+                "Great laptop! I have been using it for months now and haven\u2019t had any issues", 
                 "Highly recommended"
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "6", 
+                            "12"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "laptop", 
+                        "subcategory": ""
+                    }
+                ], 
+                [
+                    {
+                        "target_position": [
+                            "6", 
+                            "12"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "laptop", 
+                        "subcategory": ""
+                    }
+                ], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "Amazing! It just keeps getting better and better :-) Thanks Apple!",
-                "Highly recommend",
-                "Outstanding laptop",
-                "Best one I have ever owned",
+                "Amazing! It just keeps getting better and better :-) Thanks Apple!", 
+                "Highly recommend", 
+                "Outstanding laptop", 
+                "Best one I have ever owned", 
                 ":-)"
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                [],
-                [],
+                [], 
+                [], 
+                [], 
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "wish it had touch screen.",
+                "wish it had touch screen.", 
                 "every thing great but wish it had touch screen."
-            ],
+            ], 
             "opinions": [
-                [],
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "Pristine",
+                "Pristine", 
                 "The computer arrived in pristine condition, sealed box, the box had a small dent in it but the computer was intact."
-            ],
+            ], 
             "opinions": [
-                [],
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "GREAT PRODUCT",
-                "Outstanding computer",
-                "A big step up....with amazing features and tech service to go along with it",
+                "GREAT PRODUCT", 
+                "Outstanding computer", 
+                "A big step up....with amazing features and tech service to go along with it", 
                 "Worth every penny! And state of the art."
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                [],
+                [], 
+                [], 
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "VERY HAPPY",
+                "VERY HAPPY", 
                 "EXCELLENT PRODUCT"
-            ],
+            ], 
             "opinions": [
-                [],
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "Excellent",
+                "Excellent", 
                 "Excellent computer"
-            ],
+            ], 
             "opinions": [
-                [],
-                []
+                [], 
+                [
+                    {
+                        "target_position": [
+                            "10", 
+                            "18"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "computer", 
+                        "subcategory": ""
+                    }
+                ]
             ]
-        },
+        }, 
         {
             "text": [
-                "It\u2019s a good machine",
-                "Just have to get use to all the changes in the operating system",
-                "Value for the money is still an open question",
+                "It\u2019s a good machine", 
+                "Just have to get use to all the changes in the operating system", 
+                "Value for the money is still an open question", 
                 "Haven\u2019t had it long enough."
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                [],
+                [], 
+                [], 
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "Works as advertised",
-                "Not worth the money but if you got it spend it.",
+                "Works as advertised", 
+                "Not worth the money but if you got it spend it.", 
                 "Works as advertised."
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
+                [], 
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "Would recommend",
-                "What I like was that this deal gave me the choice to choose if I wanted to pay a higher price from Apple.com with free AirPods or a much cheaper price without AirPods",
+                "Would recommend", 
+                "What I like was that this deal gave me the choice to choose if I wanted to pay a higher price from Apple.com with free AirPods or a much cheaper price without AirPods", 
                 "The one thing I don't like is the overheating problem, but that's from apple side, not amazon."
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
+                [], 
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "I love this machine.",
-                "Great laptop",
+                "I love this machine.", 
+                "Great laptop", 
                 "Found out it can't handle being left out in the rain without an umbrella, though! Apple was unwilling to pay for the replacement."
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
+                [], 
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "Awesome laptop! Super fast &amp; reliable!",
-                "I love this device",
-                "I've been using it for about a month and have no complains",
+                "Awesome laptop! Super fast &amp; reliable!", 
+                "I love this device", 
+                "I've been using it for about a month and have no complains", 
                 "Great speakers, great performance &amp; awesome screen! I love it!"
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                [],
-                []
+                [], 
+                [], 
+                [], 
+                [
+                    {
+                        "target_position": [
+                            "6", 
+                            "14"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "speakers", 
+                        "subcategory": ""
+                    }, 
+                    {
+                        "target_position": [
+                            "22", 
+                            "33"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "performance", 
+                        "subcategory": ""
+                    }, 
+                    {
+                        "target_position": [
+                            "48", 
+                            "54"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "screen", 
+                        "subcategory": ""
+                    }
+                ]
             ]
-        },
+        }, 
         {
             "text": [
-                "Good as old ones",
-                "Its almost same size as my old Mac from 2013",
-                "Keyboard is almost same",
-                "Touchbar volume control can be irritating but my kid love it",
+                "Good as old ones", 
+                "Its almost same size as my old Mac from 2013", 
+                "Keyboard is almost same", 
+                "Touchbar volume control can be irritating but my kid love it", 
                 "Its working fine for Android/iOS development"
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                [],
-                [],
+                [], 
+                [], 
+                [
+                    {
+                        "target_position": [
+                            "0", 
+                            "8"
+                        ], 
+                        "polarity": "neutral", 
+                        "category": "", 
+                        "target": "Keyboard", 
+                        "subcategory": ""
+                    }
+                ], 
+                [
+                    {
+                        "target_position": [
+                            "0", 
+                            "8"
+                        ], 
+                        "polarity": "neutral", 
+                        "category": "", 
+                        "target": "Touchbar", 
+                        "subcategory": ""
+                    }
+                ], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "Excellent laptop",
-                "Great battery life; excellent display",
+                "Excellent laptop", 
+                "Great battery life; excellent display", 
                 "The sound is surprisingly good."
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                []
+                [], 
+                [
+                    {
+                        "target_position": [
+                            "6", 
+                            "13"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "battery", 
+                        "subcategory": ""
+                    }, 
+                    {
+                        "target_position": [
+                            "30", 
+                            "37"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "display", 
+                        "subcategory": ""
+                    }
+                ], 
+                [
+                    {
+                        "target_position": [
+                            "4", 
+                            "9"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "sound", 
+                        "subcategory": ""
+                    }
+                ]
             ]
-        },
+        }, 
         {
             "text": [
-                "Great purchase",
+                "Great purchase", 
                 "PERFECT!!!!"
-            ],
+            ], 
             "opinions": [
-                [],
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "Simply Awesome",
+                "Simply Awesome", 
                 "It really doesn't get any better than a MacBook Pro."
-            ],
+            ], 
             "opinions": [
-                [],
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "Very good",
-                "This is a very good computer",
+                "Very good", 
+                "This is a very good computer", 
                 "It\u2019s really fast and the screen is good too"
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                []
+                [], 
+                [
+                    {
+                        "target_position": [
+                            "20", 
+                            "28"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "computer", 
+                        "subcategory": ""
+                    }
+                ], 
+                [
+                    {
+                        "target_position": [
+                            "25", 
+                            "31"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "screen", 
+                        "subcategory": ""
+                    }
+                ]
             ]
-        },
+        }, 
         {
             "text": [
-                "Just amazing!",
-                "You are paying for a premium and getting it! It is amazing how Apple has listened to us costumers",
+                "Just amazing!", 
+                "You are paying for a premium and getting it! It is amazing how Apple has listened to us costumers", 
                 "The horrible, easily breakable butterfly keyboard is no longer on this mac and i\u2019m glad! I can just see how this mac will last me for 7+ years!"
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
+                [], 
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "Quality of Apple computers a step above",
-                "Loving the new 16 inch MacBook",
-                "Never used a trackpad very much before on laptops, but ease of use this MacBook makes you want to use it",
+                "Quality of Apple computers a step above", 
+                "Loving the new 16 inch MacBook", 
+                "Never used a trackpad very much before on laptops, but ease of use this MacBook makes you want to use it", 
                 "The dynamic menu options bar at top of the keyboard is a very nice, in addition to the Touch ID,"
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                [],
-                []
+                [], 
+                [], 
+                [], 
+                [
+                    {
+                        "target_position": [
+                            "43", 
+                            "51"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "keyboard", 
+                        "subcategory": ""
+                    }
+                ]
             ]
-        },
+        }, 
         {
             "text": [
-                "Best MacBook for a Professional!",
-                "The 2019 16 inch MacBook Pro is hands down the best MacBook that Apple currently sells",
+                "Best MacBook for a Professional!", 
+                "The 2019 16 inch MacBook Pro is hands down the best MacBook that Apple currently sells", 
                 "The 6-core i7 processor, improved thermal design, and new GPU makes tackling pro-level tasks extremely smooth."
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                []
+                [], 
+                [], 
+                [
+                    {
+                        "target_position": [
+                            "58", 
+                            "61"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "GPU", 
+                        "subcategory": ""
+                    }, 
+                    {
+                        "target_position": [
+                            "42", 
+                            "48"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "design", 
+                        "subcategory": ""
+                    }, 
+                    {
+                        "target_position": [
+                            "14", 
+                            "23"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "processor", 
+                        "subcategory": ""
+                    }
+                ]
             ]
-        },
+        }, 
         {
             "text": [
-                "New Mac man.",
+                "New Mac man.", 
                 "Lovin\u2019 it!"
-            ],
+            ], 
             "opinions": [
-                [],
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "great price",
+                "great price", 
                 "nothing better than a MacBook!!"
-            ],
+            ], 
             "opinions": [
-                [],
+                [
+                    {
+                        "target_position": [
+                            "6", 
+                            "11"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "price", 
+                        "subcategory": ""
+                    }
+                ], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "Great item",
-                "It was packed well when it was delivered and the quality of the item is beyond expectations",
+                "Great item", 
+                "It was packed well when it was delivered and the quality of the item is beyond expectations", 
                 "I would highly recommend this item to someone who wants a good computer and wants a larger screen."
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                []
+                [], 
+                [], 
+                [
+                    {
+                        "target_position": [
+                            "91", 
+                            "97"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "screen", 
+                        "subcategory": ""
+                    }
+                ]
             ]
-        },
+        }, 
         {
             "text": [
-                "The best Macbook",
-                "I've been using this Macbook Pro for 2 months and I have to say that this powerful machine can do whatever you need",
+                "The best Macbook", 
+                "I've been using this Macbook Pro for 2 months and I have to say that this powerful machine can do whatever you need", 
                 "It's super fast and overall the performance is amazing."
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                []
+                [], 
+                [
+                    {
+                        "target_position": [
+                            "83", 
+                            "90"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "machine", 
+                        "subcategory": ""
+                    }
+                ], 
+                [
+                    {
+                        "target_position": [
+                            "32", 
+                            "43"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "performance", 
+                        "subcategory": ""
+                    }
+                ]
             ]
-        },
+        }, 
         {
             "text": [
-                "Worth every penny",
-                "Apple continues to shock and awe.",
+                "Worth every penny", 
+                "Apple continues to shock and awe.", 
                 "Hands down the best screen resolution, speakers, and ease of use I have experienced on a computer yet."
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                []
+                [], 
+                [], 
+                [
+                    {
+                        "target_position": [
+                            "20", 
+                            "26"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "screen", 
+                        "subcategory": ""
+                    }, 
+                    {
+                        "target_position": [
+                            "39", 
+                            "47"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "speakers", 
+                        "subcategory": ""
+                    }
+                ]
             ]
-        },
+        }, 
         {
             "text": [
-                "Love my Apple!",
-                "I've always been a PC user",
+                "Love my Apple!", 
+                "I've always been a PC user", 
                 "What I difference! I wish I made the switch earlier."
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
+                [], 
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "Cost more Worth more",
-                "Bigger Screen is all matters but only weight 2KG",
+                "Cost more Worth more", 
+                "Bigger Screen is all matters but only weight 2KG", 
                 "Amazing sound quality better than before."
-            ],
+            ], 
             "opinions": [
-                [],
-                [],
-                []
+                [], 
+                [
+                    {
+                        "target_position": [
+                            "7", 
+                            "13"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "Screen", 
+                        "subcategory": ""
+                    }
+                ], 
+                [
+                    {
+                        "target_position": [
+                            "8", 
+                            "13"
+                        ], 
+                        "polarity": "positive", 
+                        "category": "", 
+                        "target": "sound", 
+                        "subcategory": ""
+                    }
+                ]
             ]
-        },
+        }, 
         {
             "text": [
-                "Amazing!!",
+                "Amazing!!", 
                 "Just amazing!! Yes it\u2019s considerably big and heavy compared to others, but Honestly that just feels like better quality to me"
-            ],
+            ], 
             "opinions": [
-                [],
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "Excellent",
+                "Excellent", 
                 "Still learning But it seams great"
-            ],
+            ], 
             "opinions": [
-                [],
+                [], 
                 []
             ]
-        },
+        }, 
         {
             "text": [
-                "Easy to transfer",
+                "Easy to transfer", 
                 "Easy to transfer what I wanted from my old Mac, without having everything transfer."
-            ],
+            ], 
             "opinions": [
-                [],
+                [], 
                 []
             ]
         }

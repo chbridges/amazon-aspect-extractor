@@ -7,6 +7,7 @@ from torch.utils.data import Dataset
 from tqdm import tqdm, trange
 from utils.metrics import accuracy, log_sq_diff
 from utils.preprocessing import review_to_int
+from typings import List
 
 
 class SentimentModel(nn.Module):
@@ -25,7 +26,7 @@ class SentimentModel(nn.Module):
         bidirectional: bool = True,
         dropout: float = 0.0,
         model_name: str = "LSTM",
-        device="cpu",
+        device: str = "cpu",
     ):
         """
         Arguments:
@@ -53,6 +54,8 @@ class SentimentModel(nn.Module):
         self.embedding = nn.Embedding(dict_size, embedding_dim, padding_idx=0).to(
             self.device
         )
+
+        # unused
         self.fc1 = nn.Linear(embedding_dim + 1, embedding_dim + 1).to(self.device)
 
         self.lstm = nn.LSTM(
@@ -63,8 +66,20 @@ class SentimentModel(nn.Module):
             bidirectional=bidirectional,
             batch_first=True,
         ).to(self.device)
+
         self.dropout = nn.Dropout(dropout).to(self.device)
-        self.fc = nn.Linear(hidden_dim * (1 + self.bidirectional), output_size).to(
+
+        # Convolutional Model
+        self.conv1 = nn.Conv1d(
+            in_channels=embedding_dim + 1, out_channels=32, kernel_size=3
+        ).to(self.device)
+        self.conv2 = nn.Conv1d(in_channels=32, out_channels=32, kernel_size=3).to(
+            self.device
+        )
+        self.max_pool = nn.MaxPool1d(kernel_size=3).to(self.device)
+        self.flatten = nn.Flatten().to(self.device)
+
+        self.fc = nn.Linear(hidden_dim * (1 + self.bidirectional) + 32, output_size).to(
             self.device
         )
         self.normalize_output = normalize_output
@@ -77,7 +92,8 @@ class SentimentModel(nn.Module):
     def init_hidden(self, batch_size: int, stddev=1):
         """Reset the hidden state. Always call this before a new, unrelated prediction
         Arguments:
-        - batch_size: size of the next incoming batch"""
+        - batch_size: size of the next incoming batch
+        - stddev: the standard deviation of the gaussian used for initialization"""
         h = (
             torch.randn(
                 self.n_layers * (1 + self.bidirectional),
@@ -106,7 +122,7 @@ class SentimentModel(nn.Module):
 
         Returns:
         Sentiment prediction for the batch of inputs,
-        shape (batch_size, seq_len, self.output_size)"""
+        shape (batch_size, self.output_size)"""
 
         batch_size, seq_len, _ = x.shape
         embedded = torch.cat(
@@ -114,10 +130,11 @@ class SentimentModel(nn.Module):
             dim=-1,
         )
 
-        embedded = self.fc1(embedded)
-
-        embedded = self.dropout(embedded)
-        embedded = self.relu(embedded)
+        # unused
+        # embedded = self.fc1(embedded)
+        #
+        # embedded = self.dropout(embedded)
+        # embedded = self.relu(embedded)
 
         # Dynamic input packing adapted from
         # https://towardsdatascience.com/taming-lstms-variable-sized-mini-batches-and-why-pytorch-is-good-for-your-health-61d35642972e
@@ -130,17 +147,28 @@ class SentimentModel(nn.Module):
         out, _ = torch.nn.utils.rnn.pad_packed_sequence(out, batch_first=True)
 
         out = out.contiguous().view(batch_size, seq_len, out.shape[2])
-
+        out, _ = torch.max(out, 1)
         out = self.dropout(out)
-        out = self.fc(out)
+
+        out2 = self.conv1(embedded.permute(0, 2, 1))
+        out2 = self.dropout(out2)
+        out2 = self.relu(out2)
+        out2 = self.max_pool(out2)
+        out2 = self.conv2(out2)
+        out2 = self.dropout(out2)
+        out2 = self.relu(out2)
+        out2, _ = torch.max(out2, -1)
+        out2 = self.flatten(out2)
+
+        out = self.fc(torch.cat((out, out2), dim=-1))
 
         out = self.activation(out)
 
-        return out.view(batch_size, seq_len, self.output_size)[:, -1, :]
+        return out.view(batch_size, self.output_size)
 
 
 class SentimentDataset(Dataset):
-    def __init__(self, reviews, aspects, sentiments):
+    def __init__(self, reviews: List, aspects: List, sentiments: List):
         """
         Arguments:
         - reviews: a 2d list of shape (num_reviews, num_tokens)
@@ -164,43 +192,50 @@ class SentimentDataset(Dataset):
             reviews = [
                 [self.str_to_int_dict[token] for token in rev] for rev in reviews
             ]
-
         self.max_len = max([len(rev) for rev in reviews])
         self.dict_size = max([max(rev) for rev in reviews])
+        print(
+            "Reviews over 200 words: {}/{}".format(
+                torch.sum(torch.BoolTensor([len(rev) > 200 for rev in reviews])),
+                len(reviews),
+            )
+        )
 
-        reviews = [
-            rev for i, rev in enumerate(reviews) for op in aspects[i]
+        revs = [
+            rev.copy() for i, rev in enumerate(reviews) for op in aspects[i]
         ]  # Duplicate reviews to have one per opinion
-        aspects = [op for asp in aspects for op in asp]  # flatten opinions
+        asps = [
+            op.copy() for i, asp in enumerate(aspects) for op in asp
+        ]  # flatten opinions
         # flatten sentiments
         sentiments = [pol for sent in sentiments for pol in sent]
 
-        [asp.extend([0] * (self.max_len - len(asp))) for asp in aspects]  # pad opinions
-        [rev.extend([0] * (self.max_len - len(rev))) for rev in reviews]  # pad reviews
+        [asp.extend([0] * (self.max_len - len(asp))) for asp in asps]  # pad opinions
+        [rev.extend([0] * (self.max_len - len(rev))) for rev in revs]  # pad reviews
 
-        self.seq_lens = [len(rev) for rev in reviews]
+        self.seq_lens = [len(rev) for rev in revs]
 
-        self.reviews = torch.Tensor(reviews).type(torch.long)
-        self.aspects = torch.Tensor(aspects).type(torch.long)
+        self.reviews = torch.Tensor(revs).type(torch.long)
+        self.aspects = torch.Tensor(asps).type(torch.long)
         self.sentiments = torch.Tensor(sentiments).type(torch.float)
         assert self.reviews.shape == (
-            len(reviews),
+            len(revs),
             self.max_len,
         ), "Review tensor shape not recognized correctly by pytorch"
         assert self.aspects.shape == (
-            len(aspects),
+            len(asps),
             self.max_len,
         ), "Aspect tensor shape not recognized correctly by pytorch"
 
     def __len__(self):
         return len(self.reviews)
 
-    def __getitem__(self, idx):
+    def __getitem__(self, idx: int):
         return (
             torch.stack((self.reviews[idx], self.aspects[idx]), dim=-1),
             self.seq_lens[idx],
             self.sentiments[idx],
-        )  #
+        )
 
 
 def train_sentiment_model(
@@ -209,13 +244,15 @@ def train_sentiment_model(
     dataloaders,
     scheduler=None,
     criterion=log_sq_diff,
-    n_epochs=1,
-    eval_every=10,
-    save_every=10,
-    save_best=True,
-    overwrite_chkpt=True,
+    n_epochs: int = 1,
+    eval_every: int = 10,
+    save_every: int = 10,
+    save_best: bool = True,
+    overwrite_chkpt: bool = True,
 ):
     """
+    Train the sentiment LSTM on the dataloaders["train"] data
+
     Arguments:
     - model: the SentimentModel that is to be trained
     - optimizer: the optimizer used for training
@@ -321,6 +358,15 @@ def train_sentiment_model(
 
 
 def evaluate_sentiment_model(model, dataloaders, criterion=accuracy):
+    """
+    Evaluate the sentiment LSTM on the given criterion in batches
+    on the dataloaders["val"] dataset
+    Arguments:
+    - model: the SentimentModel that should be evaluated
+    - dataloaders: a dictionary of pytorch dataloaders with keys train/val/test
+    - criterion: the function to evaluate the model on
+
+    """
     acc = 0
     for batch_id, (x, seq_lens, y) in tqdm(
         enumerate(dataloaders["train"]), desc="Computing train accuracy"
