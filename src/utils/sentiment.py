@@ -138,15 +138,17 @@ class SentimentModel(nn.Module):
         # Dynamic input packing adapted from
         # https://towardsdatascience.com/taming-lstms-variable-sized-mini-batches-and-why-pytorch-is-good-for-your-health-61d35642972e
 
+        #s_lengths, embedded = s_lengths[ind], embedded[ind]
+
         out = torch.nn.utils.rnn.pack_padded_sequence(
-            embedded, s_lengths, batch_first=True
+            embedded, s_lengths, batch_first=True, enforce_sorted=False
         )
 
         out, self.hidden = self.lstm(out, self.hidden)
 
         out, _ = torch.nn.utils.rnn.pad_packed_sequence(out, batch_first=True)
 
-        out = out.contiguous().view(batch_size, seq_len, out.shape[2])
+        out = out.contiguous().view(batch_size, -1, out.shape[2])
         out, _ = torch.max(out, 1)
         out = self.dropout(out)
 
@@ -163,8 +165,10 @@ class SentimentModel(nn.Module):
         out = self.fc(torch.cat((out, out2), dim=-1))
 
         out = self.activation(out)
+        out = out.view(batch_size, self.output_size)
+        #out[ind] = out
 
-        return out.view(batch_size, self.output_size)
+        return out
 
 
 class SentimentDataset(Dataset):
@@ -209,11 +213,11 @@ class SentimentDataset(Dataset):
         ]  # flatten opinions
         # flatten sentiments
         sentiments = [pol for sent in sentiments for pol in sent]
+        self.seq_lens = [len(rev) for rev in revs]
 
         [asp.extend([0] * (self.max_len - len(asp))) for asp in asps]  # pad opinions
         [rev.extend([0] * (self.max_len - len(rev))) for rev in revs]  # pad reviews
 
-        self.seq_lens = [len(rev) for rev in revs]
 
         self.reviews = torch.Tensor(revs).type(torch.long)
         self.aspects = torch.Tensor(asps).type(torch.long)
@@ -366,7 +370,7 @@ def train_sentiment_model(
 def evaluate_sentiment_model(model, dataloaders, criterion=accuracy):
     """
     Evaluate the sentiment LSTM on the given criterion in batches
-    on the dataloaders["val"] dataset
+    on the train, val and test dataset
     Arguments:
     - model: the SentimentModel that should be evaluated
     - dataloaders: a dictionary of pytorch dataloaders with keys train/val/test
@@ -412,6 +416,27 @@ def evaluate_sentiment_model(model, dataloaders, criterion=accuracy):
             )
     print(
         "Validation results of model {} on criterion {}: {}".format(
+            model.name, criterion.__name__, acc
+        )
+    )
+    acc = 0
+    for batch_id, (x, seq_lens, y) in tqdm(
+        enumerate(dataloaders["test"]), desc="Computing test accuracy"
+    ):
+        with torch.no_grad():
+            model.init_hidden(len(x))
+
+            x, seq_lens, y = (
+                x.to(model.device),
+                seq_lens.to(model.device),
+                y.to(model.device),
+            )
+            pred = model(x, seq_lens)
+            acc += criterion(pred, y, regression=(model.output_size == 1)) / len(
+                dataloaders["val"]
+            )
+    print(
+        "Test results of model {} on criterion {}: {}".format(
             model.name, criterion.__name__, acc
         )
     )

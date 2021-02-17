@@ -20,7 +20,7 @@ class Pipeline:
         filter_keywords=True,
         aggregate_similar_aspects=True,
         filter_threshold=0.3,
-        model_path = "models/LSTM_classifier_best.pth",
+        model_path = "models/laptops_best.pth",
         **kwargs
     ):
         self.algorithm = algorithm
@@ -57,7 +57,6 @@ class Pipeline:
             keyphrases.extend(kp_temp)
             aspect_masks.extend(am_temp)
 
-        print(reviews[0])
 
         # Step 3: Recreate aspects from keyphrases and apply filter
         for i in range(len(keyphrases)):
@@ -85,6 +84,9 @@ class Pipeline:
                 aspect_masks[i] for i in range(len(filter_mask)) if filter_mask[i]
             ]
         aspect_texts = aspects.copy()
+
+        seq_lens = [len(rev) for rev in keyphrases]
+
         # Step 3.5: Preprocessing for the neural network
         print("Preprocessing keywords...")
         for i in range(len(keyphrases)):
@@ -93,7 +95,6 @@ class Pipeline:
             keyphrases[i] = list(map(remove_special_characters_str, keyphrases[i]))
             keyphrases[i] = [self.dict_for.get(token) for token in keyphrases[i]]
             keyphrases[i] = [token if not token is None else 0 for token in keyphrases[i]]
-        seq_lens = [len(rev) for rev in keyphrases]
 
         max_len = max(seq_lens)
 
