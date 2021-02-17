@@ -20,7 +20,28 @@
                 "The laptop is sleekly and I love the fact I have more disk space"
             ],
             "opinions": [
-                [],
+                [
+                    {
+                        "target_position": [
+                            "7",
+                            "17"
+                        ],
+                        "polarity": "neutral",
+                        "target": "disk space",
+                        "category": "",
+                        "subcategory": ""
+                    },
+                    {
+                        "target_position": [
+                            "22",
+                            "28"
+                        ],
+                        "polarity": "neutral",
+                        "target": "memory",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 []
             ]
         },
@@ -43,8 +64,40 @@
             ],
             "opinions": [
                 [],
-                [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "18",
+                            "23"
+                        ],
+                        "polarity": "positive",
+                        "target": "Speed",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "6",
+                            "11"
+                        ],
+                        "polarity": "positive",
+                        "target": "color",
+                        "category": "",
+                        "subcategory": ""
+                    },
+                    {
+                        "target_position": [
+                            "16",
+                            "24"
+                        ],
+                        "polarity": "positive",
+                        "target": "graphics",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 []
             ]
         },
@@ -64,8 +117,40 @@
                 "very lightweight and good value"
             ],
             "opinions": [
-                [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "13",
+                            "18"
+                        ],
+                        "polarity": "positive",
+                        "target": "price",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "5",
+                            "16"
+                        ],
+                        "polarity": "positive",
+                        "target": "lightweight",
+                        "category": "",
+                        "subcategory": ""
+                    },
+                    {
+                        "target_position": [
+                            "26",
+                            "31"
+                        ],
+                        "polarity": "positive",
+                        "target": "value",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ]
             ]
         },
         {
@@ -77,7 +162,18 @@
             "opinions": [
                 [],
                 [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "13",
+                            "18"
+                        ],
+                        "polarity": "positive",
+                        "target": "speed",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ]
             ]
         },
         {
@@ -98,9 +194,51 @@
                 "This is perfect."
             ],
             "opinions": [
+                [
+                    {
+                        "target_position": [
+                            "6",
+                            "12"
+                        ],
+                        "polarity": "positive",
+                        "target": "design",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
-                [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "24",
+                            "29"
+                        ],
+                        "polarity": "positive",
+                        "target": "price",
+                        "category": "",
+                        "subcategory": ""
+                    },
+                    {
+                        "target_position": [
+                            "53",
+                            "57"
+                        ],
+                        "polarity": "positive",
+                        "target": "look",
+                        "category": "",
+                        "subcategory": ""
+                    },
+                    {
+                        "target_position": [
+                            "62",
+                            "66"
+                        ],
+                        "polarity": "positive",
+                        "target": "feel",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 []
             ]
         },
@@ -110,7 +248,18 @@
                 "I don't like that in some start ups of the computer screen flashes for about 10 seconds"
             ],
             "opinions": [
-                [],
+                [
+                    {
+                        "target_position": [
+                            "30",
+                            "36"
+                        ],
+                        "polarity": "negative",
+                        "target": "screen",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 []
             ]
         },
@@ -143,7 +292,18 @@
             ],
             "opinions": [
                 [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "17",
+                            "23"
+                        ],
+                        "polarity": "positive",
+                        "target": "design",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ]
             ]
         },
         {
@@ -153,7 +313,28 @@
             ],
             "opinions": [
                 [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "4",
+                            "9"
+                        ],
+                        "polarity": "positive",
+                        "target": "price",
+                        "category": "",
+                        "subcategory": ""
+                    },
+                    {
+                        "target_position": [
+                            "29",
+                            "34"
+                        ],
+                        "polarity": "positive",
+                        "target": "specs",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ]
             ]
         },
         {
@@ -163,7 +344,18 @@
             ],
             "opinions": [
                 [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "34",
+                            "43"
+                        ],
+                        "polarity": "positive",
+                        "target": "condition",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ]
             ]
         },
         {
@@ -202,7 +394,18 @@
                 "I haven't had it long but it seems decent"
             ],
             "opinions": [
-                [],
+                [
+                    {
+                        "target_position": [
+                            "0",
+                            "9"
+                        ],
+                        "polarity": "negative",
+                        "target": "Touch pad",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 []
             ]
         },
@@ -213,7 +416,18 @@
             ],
             "opinions": [
                 [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "33",
+                            "39"
+                        ],
+                        "polarity": "negative",
+                        "target": "set up",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ]
             ]
         },
         {
@@ -225,7 +439,18 @@
             "opinions": [
                 [],
                 [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "21",
+                            "27"
+                        ],
+                        "polarity": "positive",
+                        "target": "screen",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ]
             ]
         },
         {
@@ -245,7 +470,18 @@
             ],
             "opinions": [
                 [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "24",
+                            "30"
+                        ],
+                        "polarity": "positive",
+                        "target": "weight",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ]
             ]
         },
         {
@@ -283,11 +519,75 @@
                 [],
                 [],
                 [],
+                [
+                    {
+                        "target_position": [
+                            "70",
+                            "78"
+                        ],
+                        "polarity": "positive",
+                        "target": "keyboard",
+                        "category": "",
+                        "subcategory": ""
+                    },
+                    {
+                        "target_position": [
+                            "3",
+                            "8"
+                        ],
+                        "polarity": "positive",
+                        "target": "looks",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "21",
+                            "33"
+                        ],
+                        "polarity": "negative",
+                        "target": "audio volume",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
-                [],
-                [],
-                [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "8",
+                            "13"
+                        ],
+                        "polarity": "positive",
+                        "target": "price",
+                        "category": "",
+                        "subcategory": ""
+                    },
+                    {
+                        "target_position": [
+                            "82",
+                            "90"
+                        ],
+                        "polarity": "positive",
+                        "target": "delivery",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "64",
+                            "69"
+                        ],
+                        "polarity": "negative",
+                        "target": "sound",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ]
             ]
         },
         {
@@ -311,6 +611,33 @@
                 "Get another laptop and don't let the craze of quarantine make you go for the first laptop you find on Amazon."
             ],
             "opinions": [
+                [
+                    {
+                        "target_position": [
+                            "0",
+                            "8"
+                        ],
+                        "polarity": "negative",
+                        "target": "Heats up",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [],
+                [],
+                [],
+                [
+                    {
+                        "target_position": [
+                            "26",
+                            "37"
+                        ],
+                        "polarity": "negative",
+                        "target": "temperature",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 [],
                 [],
@@ -319,12 +646,48 @@
                 [],
                 [],
                 [],
-                [],
-                [],
-                [],
-                [],
-                [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "48",
+                            "54"
+                        ],
+                        "polarity": "positive",
+                        "target": "screen",
+                        "category": "",
+                        "subcategory": ""
+                    },
+                    {
+                        "target_position": [
+                            "71",
+                            "74"
+                        ],
+                        "polarity": "positive",
+                        "target": "RAM",
+                        "category": "",
+                        "subcategory": ""
+                    },
+                    {
+                        "target_position": [
+                            "42",
+                            "47"
+                        ],
+                        "polarity": "positive",
+                        "target": "1080p",
+                        "category": "",
+                        "subcategory": ""
+                    },
+                    {
+                        "target_position": [
+                            "63",
+                            "67"
+                        ],
+                        "polarity": "positive",
+                        "target": "8 GB",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 [],
                 []
@@ -345,7 +708,18 @@
                 [],
                 [],
                 [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "17",
+                            "25"
+                        ],
+                        "polarity": "negative",
+                        "target": "keyboard",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 [],
                 [],
@@ -404,7 +778,18 @@
             "opinions": [
                 [],
                 [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "26",
+                            "34"
+                        ],
+                        "polarity": "negative",
+                        "target": "keyboard",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 [],
                 []
@@ -436,7 +821,28 @@
             "opinions": [
                 [],
                 [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "25",
+                            "30"
+                        ],
+                        "polarity": "neutral",
+                        "target": "speed",
+                        "category": "",
+                        "subcategory": ""
+                    },
+                    {
+                        "target_position": [
+                            "52",
+                            "59"
+                        ],
+                        "polarity": "negative",
+                        "target": "battery",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 [],
                 [],
@@ -481,18 +887,137 @@
             "opinions": [
                 [],
                 [],
+                [
+                    {
+                        "target_position": [
+                            "4",
+                            "9"
+                        ],
+                        "polarity": "positive",
+                        "target": "specs",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "19",
+                            "22"
+                        ],
+                        "polarity": "positive",
+                        "target": "RAM",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "4",
+                            "10"
+                        ],
+                        "polarity": "positive",
+                        "target": "design",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "4",
+                            "9"
+                        ],
+                        "polarity": "positive",
+                        "target": "price",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "4",
+                            "12"
+                        ],
+                        "polarity": "positive",
+                        "target": "graphics",
+                        "category": "",
+                        "subcategory": ""
+                    },
+                    {
+                        "target_position": [
+                            "4",
+                            "12"
+                        ],
+                        "polarity": "positive",
+                        "target": "graphics",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "11",
+                            "16"
+                        ],
+                        "polarity": "positive",
+                        "target": "1080p",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "31",
+                            "39"
+                        ],
+                        "polarity": "positive",
+                        "target": "portable",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 [],
                 [],
-                [],
-                [],
-                [],
-                [],
-                [],
-                [],
-                [],
-                [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "29",
+                            "36"
+                        ],
+                        "polarity": "positive",
+                        "target": "quality",
+                        "category": "",
+                        "subcategory": ""
+                    },
+                    {
+                        "target_position": [
+                            "41",
+                            "51"
+                        ],
+                        "polarity": "positive",
+                        "target": "durability",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "4",
+                            "12"
+                        ],
+                        "polarity": "positive",
+                        "target": "keyboard",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 []
             ]
         },
@@ -512,6 +1037,18 @@
                 "It is highly recommended that students buy one ! Good price! Online shopping is also very convenient!"
             ],
             "opinions": [
+                [
+                    {
+                        "target_position": [
+                            "29",
+                            "34"
+                        ],
+                        "polarity": "positive",
+                        "target": "price",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 [],
                 [],
@@ -522,8 +1059,18 @@
                 [],
                 [],
                 [],
-                [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "54",
+                            "59"
+                        ],
+                        "polarity": "positive",
+                        "target": "price",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ]
             ]
         },
         {
@@ -546,11 +1093,54 @@
                 [],
                 [],
                 [],
+                [
+                    {
+                        "target_position": [
+                            "6",
+                            "12"
+                        ],
+                        "polarity": "positive",
+                        "target": "weight",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
+                [
+                    {
+                        "target_position": [
+                            "7",
+                            "15"
+                        ],
+                        "polarity": "positive",
+                        "target": "8 gb ram",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
-                [],
-                [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "36",
+                            "44"
+                        ],
+                        "polarity": "neutral",
+                        "target": "keyboard",
+                        "category": "",
+                        "subcategory": ""
+                    },
+                    {
+                        "target_position": [
+                            "36",
+                            "44"
+                        ],
+                        "polarity": "negative",
+                        "target": "keyboard",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 [],
                 []
@@ -575,8 +1165,30 @@
                 [],
                 [],
                 [],
-                [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "4",
+                            "10"
+                        ],
+                        "polarity": "positive",
+                        "target": "design",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "4",
+                            "8"
+                        ],
+                        "polarity": "positive",
+                        "target": "size",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 []
             ]
         },
@@ -598,7 +1210,18 @@
                 [],
                 [],
                 [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "29",
+                            "36"
+                        ],
+                        "polarity": "positive",
+                        "target": "battery",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 []
             ]
         },
@@ -616,12 +1239,66 @@
             "opinions": [
                 [],
                 [],
+                [
+                    {
+                        "target_position": [
+                            "4",
+                            "10"
+                        ],
+                        "polarity": "positive",
+                        "target": "weight",
+                        "category": "",
+                        "subcategory": ""
+                    },
+                    {
+                        "target_position": [
+                            "46",
+                            "50"
+                        ],
+                        "polarity": "positive",
+                        "target": "size",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 [],
-                [],
-                [],
-                [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "4",
+                            "13"
+                        ],
+                        "polarity": "positive",
+                        "target": "processor",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "13",
+                            "26"
+                        ],
+                        "polarity": "negative",
+                        "target": "USB interface",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "4",
+                            "9"
+                        ],
+                        "polarity": "positive",
+                        "target": "price",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ]
             ]
         },
         {
@@ -639,7 +1316,18 @@
                 [],
                 [],
                 [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "4",
+                            "9"
+                        ],
+                        "polarity": "positive",
+                        "target": "speed",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ]
             ]
         },
         {
@@ -654,11 +1342,44 @@
             ],
             "opinions": [
                 [],
+                [
+                    {
+                        "target_position": [
+                            "75",
+                            "86"
+                        ],
+                        "polarity": "positive",
+                        "target": "performance",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "80",
+                            "85"
+                        ],
+                        "polarity": "positive",
+                        "target": "price",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 [],
-                [],
-                [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "0",
+                            "15"
+                        ],
+                        "polarity": "positive",
+                        "target": "Graphic quality",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 []
             ]
         },
@@ -672,8 +1393,60 @@
             "opinions": [
                 [],
                 [],
-                [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "24",
+                            "29"
+                        ],
+                        "polarity": "positive",
+                        "target": "speed",
+                        "category": "",
+                        "subcategory": ""
+                    },
+                    {
+                        "target_position": [
+                            "43",
+                            "48"
+                        ],
+                        "polarity": "positive",
+                        "target": "setup",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "4",
+                            "11"
+                        ],
+                        "polarity": "positive",
+                        "target": "battery",
+                        "category": "",
+                        "subcategory": ""
+                    },
+                    {
+                        "target_position": [
+                            "49",
+                            "55"
+                        ],
+                        "polarity": "positive",
+                        "target": "camera",
+                        "category": "",
+                        "subcategory": ""
+                    },
+                    {
+                        "target_position": [
+                            "60",
+                            "73"
+                        ],
+                        "polarity": "positive",
+                        "target": "sound quality",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ]
             ]
         },
         {
@@ -683,7 +1456,28 @@
             ],
             "opinions": [
                 [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "300",
+                            "305"
+                        ],
+                        "polarity": "positive",
+                        "target": "1080p",
+                        "category": "",
+                        "subcategory": ""
+                    },
+                    {
+                        "target_position": [
+                            "345",
+                            "354"
+                        ],
+                        "polarity": "positive",
+                        "target": "touch pad",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ]
             ]
         },
         {
@@ -699,7 +1493,28 @@
                 [],
                 [],
                 [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "25",
+                            "41"
+                        ],
+                        "polarity": "positive",
+                        "target": "costumer service",
+                        "category": "",
+                        "subcategory": ""
+                    },
+                    {
+                        "target_position": [
+                            "11",
+                            "16"
+                        ],
+                        "polarity": "positive",
+                        "target": "price",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ]
             ]
         },
         {
@@ -711,7 +1526,18 @@
             "opinions": [
                 [],
                 [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "55",
+                            "61"
+                        ],
+                        "polarity": "positive",
+                        "target": "screen",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ]
             ]
         },
         {
@@ -725,9 +1551,42 @@
             "opinions": [
                 [],
                 [],
-                [],
-                [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "47",
+                            "53"
+                        ],
+                        "polarity": "positive",
+                        "target": "weight",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "10",
+                            "16"
+                        ],
+                        "polarity": "positive",
+                        "target": "memory",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "4",
+                            "8"
+                        ],
+                        "polarity": "positive",
+                        "target": "size",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ]
             ]
         },
         {
@@ -737,7 +1596,38 @@
             ],
             "opinions": [
                 [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "134",
+                            "139"
+                        ],
+                        "polarity": "positive",
+                        "target": "speed",
+                        "category": "",
+                        "subcategory": ""
+                    },
+                    {
+                        "target_position": [
+                            "145",
+                            "154"
+                        ],
+                        "polarity": "positive",
+                        "target": "processor",
+                        "category": "",
+                        "subcategory": ""
+                    },
+                    {
+                        "target_position": [
+                            "77",
+                            "82"
+                        ],
+                        "polarity": "positive",
+                        "target": "price",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ]
             ]
         },
         {
@@ -747,7 +1637,18 @@
             ],
             "opinions": [
                 [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "12",
+                            "19"
+                        ],
+                        "polarity": "negative",
+                        "target": "Quality",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ]
             ]
         },
         {
@@ -759,8 +1660,30 @@
             ],
             "opinions": [
                 [],
-                [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "44",
+                            "49"
+                        ],
+                        "polarity": "positive",
+                        "target": "price",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "17",
+                            "22"
+                        ],
+                        "polarity": "positive",
+                        "target": "setup",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 []
             ]
         },
@@ -790,7 +1713,18 @@
                 [],
                 [],
                 [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "4",
+                            "13"
+                        ],
+                        "polarity": "negative",
+                        "target": "processor",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 []
             ]
         },
@@ -805,7 +1739,18 @@
             "opinions": [
                 [],
                 [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "4",
+                            "10"
+                        ],
+                        "polarity": "positive",
+                        "target": "screen",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 []
             ]
@@ -839,6 +1784,40 @@
                 "Love it!"
             ],
             "opinions": [
+                [
+                    {
+                        "target_position": [
+                            "6",
+                            "11"
+                        ],
+                        "polarity": "positive",
+                        "target": "value",
+                        "category": "",
+                        "subcategory": ""
+                    },
+                    {
+                        "target_position": [
+                            "89",
+                            "95"
+                        ],
+                        "polarity": "positive",
+                        "target": "screen",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "45",
+                            "50"
+                        ],
+                        "polarity": "positive",
+                        "target": "price",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 [],
                 [],
@@ -848,20 +1827,104 @@
                 [],
                 [],
                 [],
+                [
+                    {
+                        "target_position": [
+                            "4",
+                            "17"
+                        ],
+                        "polarity": "positive",
+                        "target": "build quality",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "25",
+                            "29"
+                        ],
+                        "polarity": "positive",
+                        "target": "size",
+                        "category": "",
+                        "subcategory": ""
+                    },
+                    {
+                        "target_position": [
+                            "53",
+                            "65"
+                        ],
+                        "polarity": "positive",
+                        "target": "battery life",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 [],
                 [],
+                [
+                    {
+                        "target_position": [
+                            "39",
+                            "45"
+                        ],
+                        "polarity": "neutral",
+                        "target": "screen",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "4",
+                            "12"
+                        ],
+                        "polarity": "negative",
+                        "target": "keyboard",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "8",
+                            "17"
+                        ],
+                        "polarity": "negative",
+                        "target": "USB ports",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 [],
                 [],
-                [],
-                [],
-                [],
-                [],
-                [],
-                [],
-                [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "76",
+                            "89"
+                        ],
+                        "polarity": "positive",
+                        "target": "build quality",
+                        "category": "",
+                        "subcategory": ""
+                    },
+                    {
+                        "target_position": [
+                            "101",
+                            "107"
+                        ],
+                        "polarity": "positive",
+                        "target": "screen",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 []
             ]
@@ -885,13 +1948,46 @@
                 [],
                 [],
                 [],
+                [
+                    {
+                        "target_position": [
+                            "94",
+                            "99"
+                        ],
+                        "polarity": "positive",
+                        "target": "price",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 [],
+                [
+                    {
+                        "target_position": [
+                            "33",
+                            "40"
+                        ],
+                        "polarity": "positive",
+                        "target": "quality",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 [],
-                [],
-                [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "39",
+                            "44"
+                        ],
+                        "polarity": "positive",
+                        "target": "price",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ]
             ]
         },
         {
@@ -917,9 +2013,42 @@
                 [],
                 [],
                 [],
-                [],
-                [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "35",
+                            "42"
+                        ],
+                        "polarity": "positive",
+                        "target": "quality",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "29",
+                            "52"
+                        ],
+                        "polarity": "positive",
+                        "target": "rubber key button cover",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "0",
+                            "12"
+                        ],
+                        "polarity": "positive",
+                        "target": "Battery life",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 []
             ]
@@ -943,10 +2072,32 @@
                 [],
                 [],
                 [],
+                [
+                    {
+                        "target_position": [
+                            "4",
+                            "10"
+                        ],
+                        "polarity": "positive",
+                        "target": "screen",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 [],
-                [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "6",
+                            "11"
+                        ],
+                        "polarity": "positive",
+                        "target": "value",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 []
             ]
         },
@@ -965,11 +2116,74 @@
                 [],
                 [],
                 [],
+                [
+                    {
+                        "target_position": [
+                            "131",
+                            "137"
+                        ],
+                        "polarity": "negative",
+                        "target": "screen",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 [],
-                [],
-                [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "4",
+                            "11"
+                        ],
+                        "polarity": "positive",
+                        "target": "quality",
+                        "category": "",
+                        "subcategory": ""
+                    },
+                    {
+                        "target_position": [
+                            "33",
+                            "40"
+                        ],
+                        "polarity": "positive",
+                        "target": "graphic",
+                        "category": "",
+                        "subcategory": ""
+                    },
+                    {
+                        "target_position": [
+                            "147",
+                            "160"
+                        ],
+                        "polarity": "positive",
+                        "target": "silicon cover",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "8",
+                            "13"
+                        ],
+                        "polarity": "positive",
+                        "target": "price",
+                        "category": "",
+                        "subcategory": ""
+                    },
+                    {
+                        "target_position": [
+                            "21",
+                            "28"
+                        ],
+                        "polarity": "positive",
+                        "target": "quality",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ]
             ]
         },
         {
@@ -993,16 +2207,82 @@
                 [],
                 [],
                 [],
+                [
+                    {
+                        "target_position": [
+                            "0",
+                            "8"
+                        ],
+                        "polarity": "positive",
+                        "target": "Keyboard",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "124",
+                            "129"
+                        ],
+                        "polarity": "positive",
+                        "target": "wi-fi",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 [],
                 [],
+                [
+                    {
+                        "target_position": [
+                            "9",
+                            "12"
+                        ],
+                        "polarity": "positive",
+                        "target": "RAM",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "4",
+                            "10"
+                        ],
+                        "polarity": "positive",
+                        "target": "screen",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "0",
+                            "7"
+                        ],
+                        "polarity": "positive",
+                        "target": "Colours",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
-                [],
-                [],
-                [],
-                [],
-                [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "20",
+                            "25"
+                        ],
+                        "polarity": "positive",
+                        "target": "price",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 []
             ]
         },
@@ -1032,18 +2312,84 @@
                 [],
                 [],
                 [],
+                [
+                    {
+                        "target_position": [
+                            "105",
+                            "131"
+                        ],
+                        "polarity": "positive",
+                        "target": "keyboard protector overlay",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "37",
+                            "45"
+                        ],
+                        "polarity": "positive",
+                        "target": "touchpad",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [],
+                [],
+                [
+                    {
+                        "target_position": [
+                            "40",
+                            "46"
+                        ],
+                        "polarity": "positive",
+                        "target": "screen",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "0",
+                            "12"
+                        ],
+                        "polarity": "neutral",
+                        "target": "Battery life",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 [],
                 [],
                 [],
-                [],
-                [],
-                [],
-                [],
-                [],
-                [],
-                [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "4",
+                            "13"
+                        ],
+                        "polarity": "positive",
+                        "target": "processor",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "24",
+                            "40"
+                        ],
+                        "polarity": "positive",
+                        "target": "processing speed",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 []
             ]
@@ -1076,6 +2422,18 @@
                 [],
                 [],
                 [],
+                [
+                    {
+                        "target_position": [
+                            "12",
+                            "23"
+                        ],
+                        "polarity": "positive",
+                        "target": "performance",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 [],
                 [],
@@ -1083,11 +2441,64 @@
                 [],
                 [],
                 [],
-                [],
-                [],
-                [],
-                [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "4",
+                            "10"
+                        ],
+                        "polarity": "positive",
+                        "target": "screen",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "4",
+                            "11"
+                        ],
+                        "polarity": "positive",
+                        "target": "picture",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "8",
+                            "17"
+                        ],
+                        "polarity": "positive",
+                        "target": "standard ",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "13",
+                            "24"
+                        ],
+                        "polarity": "positive",
+                        "target": "performance",
+                        "category": "",
+                        "subcategory": ""
+                    },
+                    {
+                        "target_position": [
+                            "38",
+                            "43"
+                        ],
+                        "polarity": "positive",
+                        "target": "value",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ]
             ]
         },
         {
@@ -1108,11 +2519,55 @@
                 [],
                 [],
                 [],
+                [
+                    {
+                        "target_position": [
+                            "0",
+                            "7"
+                        ],
+                        "polarity": "positive",
+                        "target": "Battery",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "0",
+                            "6"
+                        ],
+                        "polarity": "positive",
+                        "target": "Screen",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "10",
+                            "15"
+                        ],
+                        "polarity": "positive",
+                        "target": "price",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
-                [],
-                [],
-                [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "7",
+                            "14"
+                        ],
+                        "polarity": "neutral",
+                        "target": "storage",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 []
             ]
         },
@@ -1129,7 +2584,18 @@
             "opinions": [
                 [],
                 [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "60",
+                            "68"
+                        ],
+                        "polarity": "positive",
+                        "target": "keyboard",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 [],
                 [],
@@ -1158,7 +2624,28 @@
                 [],
                 [],
                 [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "25",
+                            "31"
+                        ],
+                        "polarity": "negative",
+                        "target": "screen",
+                        "category": "",
+                        "subcategory": ""
+                    },
+                    {
+                        "target_position": [
+                            "85",
+                            "92"
+                        ],
+                        "polarity": "negative",
+                        "target": "charger",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 []
             ]
         },
@@ -1201,16 +2688,112 @@
                 "Overall its a nicely designed very high quality laptop and highly recommended"
             ],
             "opinions": [
+                [
+                    {
+                        "target_position": [
+                            "8",
+                            "14"
+                        ],
+                        "polarity": "positive",
+                        "target": "design",
+                        "category": "",
+                        "subcategory": ""
+                    },
+                    {
+                        "target_position": [
+                            "38",
+                            "45"
+                        ],
+                        "polarity": "positive",
+                        "target": "quality",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "42",
+                            "49"
+                        ],
+                        "polarity": "positive",
+                        "target": "quality",
+                        "category": "",
+                        "subcategory": ""
+                    },
+                    {
+                        "target_position": [
+                            "51",
+                            "56"
+                        ],
+                        "polarity": "positive",
+                        "target": "looks",
+                        "category": "",
+                        "subcategory": ""
+                    },
+                    {
+                        "target_position": [
+                            "61",
+                            "78"
+                        ],
+                        "polarity": "positive",
+                        "target": "ease of operation",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [],
+                [
+                    {
+                        "target_position": [
+                            "0",
+                            "6"
+                        ],
+                        "polarity": "positive",
+                        "target": "Design",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 [],
+                [
+                    {
+                        "target_position": [
+                            "6",
+                            "13"
+                        ],
+                        "polarity": "neutral",
+                        "target": "storage",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "0",
+                            "6"
+                        ],
+                        "polarity": "positive",
+                        "target": "Screen",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
-                [],
-                [],
-                [],
-                [],
-                [],
-                [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "28",
+                            "41"
+                        ],
+                        "polarity": "positive",
+                        "target": "sound quality",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 []
             ]
         },
@@ -1233,7 +2816,28 @@
                 [],
                 [],
                 [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "110",
+                            "122"
+                        ],
+                        "polarity": "positive",
+                        "target": "battery life",
+                        "category": "",
+                        "subcategory": ""
+                    },
+                    {
+                        "target_position": [
+                            "192",
+                            "217"
+                        ],
+                        "polarity": "positive",
+                        "target": "keyboard protection cover",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 [],
                 [],
@@ -1301,9 +2905,42 @@
                 [],
                 [],
                 [],
-                [],
-                [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "4",
+                            "10"
+                        ],
+                        "polarity": "positive",
+                        "target": "screen",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "7",
+                            "10"
+                        ],
+                        "polarity": "neutral",
+                        "target": "RAM",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "0",
+                            "12"
+                        ],
+                        "polarity": "neutral",
+                        "target": "Battery life",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 []
             ]
@@ -1323,12 +2960,34 @@
                 "I have no complaints at all, in fact I have a lot of praise for the value these laptops bring."
             ],
             "opinions": [
+                [
+                    {
+                        "target_position": [
+                            "44",
+                            "56"
+                        ],
+                        "polarity": "positive",
+                        "target": "battery life",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 [],
                 [],
                 [],
-                [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "42",
+                            "48"
+                        ],
+                        "polarity": "positive",
+                        "target": "design",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 [],
                 [],
@@ -1362,10 +3021,53 @@
                 [],
                 [],
                 [],
+                [
+                    {
+                        "target_position": [
+                            "4",
+                            "10"
+                        ],
+                        "polarity": "positive",
+                        "target": "design",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "4",
+                            "15"
+                        ],
+                        "polarity": "positive",
+                        "target": "performance",
+                        "category": "",
+                        "subcategory": ""
+                    },
+                    {
+                        "target_position": [
+                            "20",
+                            "29"
+                        ],
+                        "polarity": "positive",
+                        "target": "usability",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
-                [],
-                [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "0",
+                            "15"
+                        ],
+                        "polarity": "positive",
+                        "target": "Picture quality",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 []
             ]
@@ -1384,8 +3086,40 @@
                 [],
                 [],
                 [],
-                [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "17",
+                            "31"
+                        ],
+                        "polarity": "positive",
+                        "target": "keyboard cover",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "57",
+                            "63"
+                        ],
+                        "polarity": "positive",
+                        "target": "design",
+                        "category": "",
+                        "subcategory": ""
+                    },
+                    {
+                        "target_position": [
+                            "73",
+                            "77"
+                        ],
+                        "polarity": "positive",
+                        "target": "size",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ]
             ]
         },
         {
@@ -1401,7 +3135,18 @@
                 [],
                 [],
                 [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "96",
+                            "100"
+                        ],
+                        "polarity": "positive",
+                        "target": "size",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ]
             ]
         },
         {
@@ -1443,11 +3188,53 @@
                 "Overall we are very happy with the purchase, it is good spec for the price and for the same price I believe you would struggle to get better for new."
             ],
             "opinions": [
+                [
+                    {
+                        "target_position": [
+                            "10",
+                            "15"
+                        ],
+                        "polarity": "positive",
+                        "target": "Build",
+                        "category": "",
+                        "subcategory": ""
+                    },
+                    {
+                        "target_position": [
+                            "20",
+                            "31"
+                        ],
+                        "polarity": "positive",
+                        "target": "Performance",
+                        "category": "",
+                        "subcategory": ""
+                    },
+                    {
+                        "target_position": [
+                            "44",
+                            "49"
+                        ],
+                        "polarity": "positive",
+                        "target": "Price",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 [],
                 [],
-                [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "4",
+                            "17"
+                        ],
+                        "polarity": "positive",
+                        "target": "build quailty",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 []
             ]
@@ -1531,11 +3318,33 @@
             "opinions": [
                 [],
                 [],
+                [
+                    {
+                        "target_position": [
+                            "4",
+                            "10"
+                        ],
+                        "polarity": "negative",
+                        "target": "screen",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 [],
                 [],
-                [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "0",
+                            "16"
+                        ],
+                        "polarity": "negative",
+                        "target": "Customer service",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 [],
                 [],
@@ -1599,7 +3408,18 @@
                 [],
                 [],
                 [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "4",
+                            "16"
+                        ],
+                        "polarity": "negative",
+                        "target": "instructions",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 [],
                 [],
@@ -1616,9 +3436,31 @@
                 "I would recommend this laptop to anyone and don't be fooled because it doesn't say Samsung, Apple or Asus on the box as its a great fast product at around a 1/4 of the price of the market leaders."
             ],
             "opinions": [
+                [
+                    {
+                        "target_position": [
+                            "32",
+                            "37"
+                        ],
+                        "polarity": "negative",
+                        "target": "price",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
-                [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "157",
+                            "169"
+                        ],
+                        "polarity": "neutral",
+                        "target": "battery life",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 []
             ]
         },
@@ -1636,12 +3478,34 @@
             "opinions": [
                 [],
                 [],
+                [
+                    {
+                        "target_position": [
+                            "18",
+                            "24"
+                        ],
+                        "polarity": "positive",
+                        "target": "weight",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 [],
                 [],
                 [],
-                [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "16",
+                            "30"
+                        ],
+                        "polarity": "positive",
+                        "target": "keyboard cover",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ]
             ]
         },
         {
@@ -1680,16 +3544,103 @@
             ],
             "opinions": [
                 [],
+                [
+                    {
+                        "target_position": [
+                            "67",
+                            "72"
+                        ],
+                        "polarity": "positive",
+                        "target": "price",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [],
+                [
+                    {
+                        "target_position": [
+                            "40",
+                            "53"
+                        ],
+                        "polarity": "positive",
+                        "target": "battery\u200b life",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 [],
-                [],
-                [],
-                [],
-                [],
-                [],
-                [],
-                [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "4",
+                            "10"
+                        ],
+                        "polarity": "positive",
+                        "target": "screen",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "11",
+                            "17"
+                        ],
+                        "polarity": "positive",
+                        "target": "design",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "4",
+                            "15"
+                        ],
+                        "polarity": "positive",
+                        "target": "performance",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "86",
+                            "91"
+                        ],
+                        "polarity": "positive",
+                        "target": "sound",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
+                [
+                    {
+                        "target_position": [
+                            "4",
+                            "12"
+                        ],
+                        "polarity": "positive",
+                        "target": "keyboard",
+                        "category": "",
+                        "subcategory": ""
+                    },
+                    {
+                        "target_position": [
+                            "61",
+                            "75"
+                        ],
+                        "polarity": "positive",
+                        "target": "keyboard cover",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ]
             ]
         },
         {
@@ -1761,7 +3712,18 @@
                 [],
                 [],
                 [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "4",
+                            "10"
+                        ],
+                        "polarity": "negative",
+                        "target": "keypad",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 []
             ]
@@ -1778,7 +3740,18 @@
                 "That is a separate charge you need to make."
             ],
             "opinions": [
-                [],
+                [
+                    {
+                        "target_position": [
+                            "5",
+                            "11"
+                        ],
+                        "polarity": "positive",
+                        "target": "design",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 [],
                 [],
@@ -1798,7 +3771,18 @@
             ],
             "opinions": [
                 [],
-                [],
+                [
+                    {
+                        "target_position": [
+                            "43",
+                            "48"
+                        ],
+                        "polarity": "positive",
+                        "target": "price",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 [],
                 []
@@ -1823,7 +3807,28 @@
             ],
             "opinions": [
                 [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "32",
+                            "39"
+                        ],
+                        "polarity": "positive",
+                        "target": "quality",
+                        "category": "",
+                        "subcategory": ""
+                    },
+                    {
+                        "target_position": [
+                            "56",
+                            "61"
+                        ],
+                        "polarity": "positive",
+                        "target": "price",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ]
             ]
         },
         {
@@ -1843,11 +3848,33 @@
                 [],
                 [],
                 [],
+                [
+                    {
+                        "target_position": [
+                            "21",
+                            "35"
+                        ],
+                        "polarity": "positive",
+                        "target": "keyboard cover",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ],
                 [],
                 [],
                 [],
-                [],
-                []
+                [
+                    {
+                        "target_position": [
+                            "29",
+                            "46"
+                        ],
+                        "polarity": "positive",
+                        "target": "extended warranty",
+                        "category": "",
+                        "subcategory": ""
+                    }
+                ]
             ]
         }
     ]
