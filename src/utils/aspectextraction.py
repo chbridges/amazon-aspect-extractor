@@ -39,6 +39,7 @@ def create_aspectmask(
         keywords = [k[0] for k in yake_str(doc)]
 
     # Tokenize doc
+
     doc_tokens = re.split(" |\n", re.sub(r"[^\w\d\s]|'", "", doc).lower())
     while "" in doc_tokens:
         doc_tokens.remove("")
@@ -96,7 +97,7 @@ def split_aspect_mask(input_mask: list):
     return new_masks
 
 
-def extract_aspects(doc: str, sep=r"\.", algorithm="rake"):
+def extract_aspects(doc: str, sep=r"\. ", algorithm="rake"):
     """
     Returns tokenized substrings and corresponding aspect masks for each aspect in a document
     based on a given seperator
@@ -115,11 +116,16 @@ def extract_aspects(doc: str, sep=r"\.", algorithm="rake"):
         tokenized_subdocs.append(subdoc_tokens)
         subsequence_lengths.append(len(subdoc_tokens))
 
+    tokenized_doc = []
+    [tokenized_doc.extend(sub) for sub in tokenized_subdocs]
+
+
     # Split aspect mask of the doc accordingly
     for i in range(len(subsequence_lengths)):
         begin = sum(subsequence_lengths[:i])
         end = sum(subsequence_lengths[: i + 1])
         submasks.append(mask[begin:end])
+
         assert len(tokenized_subdocs[i]) == len(
             submasks[i]
         )  # sanity check for equal sizes
