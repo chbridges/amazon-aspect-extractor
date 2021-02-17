@@ -8,3 +8,6 @@ python-rake
 selenium
 git+https://github.com/LIAAD/yake
 chromedriver-py==88.0.4324.96
+sklearn
+tqdm
+lxml
