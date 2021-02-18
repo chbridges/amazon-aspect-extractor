@@ -18,14 +18,15 @@ if __name__ == "__main__":
 
     device = "cuda" if is_available() else "cpu"
 
-    P = Pipeline(output_size=3,
-            model_name="laptops_best",
-            device=device,
-            normalize_output=False,
-            n_layers=1,
-            embedding_dim=300,
-            hidden_dim=128,
-            dropout=0.35,
-            bidirectional=False,
+    P = Pipeline(
+        output_size=3,
+        model_name="laptops_best",
+        device=device,
+        normalize_output=False,
+        n_layers=1,
+        embedding_dim=300,
+        hidden_dim=128,
+        dropout=0.35,
+        bidirectional=False,
     )
     run_app(P)
