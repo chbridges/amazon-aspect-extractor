@@ -44,6 +44,7 @@ class Pipeline:
         # Step 1: Scrape reviews
         print("Fetching reviews...")
         reviews = extract_reviews_for_products([url], 1, 1)[0]
+        print(reviews)
 
         keyphrases = []
         aspect_masks = []
@@ -132,8 +133,6 @@ class Pipeline:
         df_neu = df.loc[df['sentiment_text'] == "neutral"]
         df_neg = df.loc[df['sentiment_text'] == "negative"]
 
-        print(df_pos.head(10))
-        print(df_neu.head(5))
-        print(df_neg.head(10))
+        data = {"all": df, "pos": df_pos, "neu": df_neu, "neg": df_neg}
 
-        return df
+        return data
