@@ -27,7 +27,7 @@ class Pipeline:
         self.filter_keywords = filter_keywords
         self.aggregate_similar_aspects = aggregate_similar_aspects
         self.filter_threshold = filter_threshold
-        model_dict = torch.load(model_path, map_location=torch.device(device) )
+        model_dict = torch.load(model_path, map_location=torch.device(kwargs.get("device")) )
         self.dict_for, self.dict_back = model_dict["dict_for"], model_dict["dict_back"]
 
         self.sentiment_model = SentimentModel(len(self.dict_for) + 1, **kwargs)
