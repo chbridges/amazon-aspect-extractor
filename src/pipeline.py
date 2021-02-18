@@ -27,7 +27,7 @@ class Pipeline:
         self.filter_keywords = filter_keywords
         self.aggregate_similar_aspects = aggregate_similar_aspects
         self.filter_threshold = filter_threshold
-        model_dict = torch.load(model_path)
+        model_dict = torch.load(model_path, map_location=torch.device(device) )
         self.dict_for, self.dict_back = model_dict["dict_for"], model_dict["dict_back"]
 
         self.sentiment_model = SentimentModel(len(self.dict_for) + 1, **kwargs)
@@ -43,6 +43,7 @@ class Pipeline:
     def __call__(self, url: str) -> pd.core.frame.DataFrame:
         # Step 1: Scrape reviews
         print("Fetching reviews...")
+        print(url)
         reviews = extract_reviews_for_products([url], 1, 1)[0]
         print(reviews)
 
