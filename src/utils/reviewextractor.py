@@ -281,10 +281,12 @@ def extract_product_title_and_jpg(url: str) -> (str, bytes):
         )
     else:
         title = 'unknown'
-    img_url_start = '<img alt="' + title + '" src="'
-    start_idx = data.find(img_url_start)
-    end_idx = data.find('"', start_idx + len(img_url_start))
-    img_url = data[start_idx + len(img_url_start): end_idx]
+    # img_url_start = '<img alt="' + title + '" src="'
+    img_url_start = '<div id="main-image-container" class="a-dynamic-image-container"'
+    start_offset = data.find(img_url_start)
+    start_idx = data.find('src="', start_offset)
+    end_idx = data.find('"', start_idx + len('src="'))
+    img_url = data[start_idx + len('src="'): end_idx]
     r = requests.get(img_url)  # set browser to use this page
     img = r.content
     return title, img
