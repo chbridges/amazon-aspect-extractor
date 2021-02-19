@@ -138,7 +138,7 @@ class SentimentModel(nn.Module):
         # Dynamic input packing adapted from
         # https://towardsdatascience.com/taming-lstms-variable-sized-mini-batches-and-why-pytorch-is-good-for-your-health-61d35642972e
 
-        #s_lengths, embedded = s_lengths[ind], embedded[ind]
+        # s_lengths, embedded = s_lengths[ind], embedded[ind]
 
         out = torch.nn.utils.rnn.pack_padded_sequence(
             embedded, s_lengths, batch_first=True, enforce_sorted=False
@@ -166,7 +166,7 @@ class SentimentModel(nn.Module):
 
         out = self.activation(out)
         out = out.view(batch_size, self.output_size)
-        #out[ind] = out
+        # out[ind] = out
 
         return out
 
@@ -217,7 +217,6 @@ class SentimentDataset(Dataset):
 
         [asp.extend([0] * (self.max_len - len(asp))) for asp in asps]  # pad opinions
         [rev.extend([0] * (self.max_len - len(rev))) for rev in revs]  # pad reviews
-
 
         self.reviews = torch.Tensor(revs).type(torch.long)
         self.aspects = torch.Tensor(asps).type(torch.long)

@@ -1,17 +1,12 @@
-import datetime
-import json
-import sys
-from time import sleep
 import tkinter as tk
-from typing import List
 import threading
 import matplotlib
-import matplotlib.pyplot as plt
 from matplotlib import gridspec
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+import numpy as np
 
 matplotlib.use("TkAgg")
-import numpy as np
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+
 
 try:
     from matplotlib.backends.backend_tkagg import NavigationToolbar2TkAgg
@@ -59,7 +54,14 @@ class plotWindow:
     def plot(self, event):
         url = self.box.get()
         data = []
-        thread = threading.Thread(target=executePipeline, args=(self.P, url, data,))
+        thread = threading.Thread(
+            target=executePipeline,
+            args=(
+                self.P,
+                url,
+                data,
+            ),
+        )
         thread.start()
         while thread.is_alive():
             self.frame.winfo_toplevel().update()
@@ -68,7 +70,7 @@ class plotWindow:
 
         title, jpg = extract_product_title_and_jpg(url)
         if len(title) > 50:
-            title = title[:47] + '...'
+            title = title[:47] + "..."
         stream = BytesIO(jpg)
         image = Image.open(stream).convert("RGBA")
         stream.close()
@@ -162,12 +164,6 @@ class plotWindow:
         canvas.draw()
         canvas.get_tk_widget().grid(row=1, column=0, columnspan=3, sticky="nswe")
 
-    def convert_string_to_bytes(self, string):
-        bytes = b""
-        for i in string:
-            bytes += struct.pack("B", ord(i))
-        return bytes
-
     def color_by_sentiment(self, word, **kwargs):
         sentiment = self.df.loc[self.df["aspect"] == word]["sentiment_text"].iloc[0]
         if sentiment == "negative":
@@ -223,7 +219,6 @@ def run_app(P):
 
     e1.grid(row=0, column=1, sticky="we", columnspan=2)
     e2.grid(row=0, column=1, sticky="we", columnspan=2)
-
 
     plot1 = plotWindow(f1, e1, P)
     plot2 = plotWindow(f2, e2, P)

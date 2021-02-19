@@ -119,7 +119,6 @@ def extract_aspects(doc: str, sep=r"\. ", algorithm="rake"):
     tokenized_doc = []
     [tokenized_doc.extend(sub) for sub in tokenized_subdocs]
 
-
     # Split aspect mask of the doc accordingly
     for i in range(len(subsequence_lengths)):
         begin = sum(subsequence_lengths[:i])
