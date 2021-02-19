@@ -4,9 +4,10 @@ import sys
 from time import sleep
 import tkinter as tk
 from typing import List
-
+import threading
 import matplotlib
 import matplotlib.pyplot as plt
+from matplotlib import gridspec
 
 matplotlib.use("TkAgg")
 import numpy as np
@@ -44,6 +45,10 @@ class ResizingCanvas(tk.Canvas):
         self.scale("all", 0, 0, wscale, hscale)
 
 
+def executePipeline(P, url, data):
+    data.append(P(url))
+
+
 class plotWindow:
     def __init__(self, frame, box, P):
         self.frame = frame
@@ -53,16 +58,27 @@ class plotWindow:
 
     def plot(self, event):
         url = self.box.get()
-        data = self.P(url)
+        data = []
+        thread = threading.Thread(target=executePipeline, args=(self.P, url, data,))
+        thread.start()
+        while thread.is_alive():
+            self.frame.winfo_toplevel().update()
+        thread.join()
+        data = data[0]
+
         title, jpg = extract_product_title_and_jpg(url)
+        if len(title) > 50:
+            title = title[:47] + '...'
         stream = BytesIO(jpg)
         image = Image.open(stream).convert("RGBA")
         stream.close()
         image = np.asarray(image)
 
-        fig = Figure(figsize=(16, 6))
+        fig = Figure(figsize=(18, 6))
+        gs = gridspec.GridSpec(ncols=2, nrows=2, figure=fig, width_ratios=[1, 3])
+
         fig.suptitle(title, fontsize=18)
-        a = fig.add_subplot(221)
+        a = fig.add_subplot(gs[0, 0])
         # Piechart
         n_asp = 30
 
@@ -86,7 +102,7 @@ class plotWindow:
         )
         a.axis("off")
 
-        a = fig.add_subplot(222)
+        a = fig.add_subplot(gs[0, 1])
 
         n_asp = 15
 
@@ -113,7 +129,7 @@ class plotWindow:
         a.set_xticks(np.arange(len(counts)))
         a.set_xticklabels(labels)
 
-        a = fig.add_subplot(223)
+        a = fig.add_subplot(gs[1, 0])
 
         a.imshow(image)
         a.axis("off")
@@ -121,7 +137,7 @@ class plotWindow:
         a.set_xticks([])
         a.set_yticks([])
 
-        a = fig.add_subplot(224)
+        a = fig.add_subplot(gs[1, 1])
 
         n_asp = 20
 
@@ -144,7 +160,7 @@ class plotWindow:
 
         canvas = FigureCanvasTkAgg(fig, master=self.frame)
         canvas.draw()
-        canvas.get_tk_widget().grid(row=1, column=0, columnspan=2, sticky="nswe")
+        canvas.get_tk_widget().grid(row=1, column=0, columnspan=3, sticky="nswe")
 
     def convert_string_to_bytes(self, string):
         bytes = b""
@@ -197,14 +213,17 @@ def run_app(P):
     tk.Grid.rowconfigure(root, 0, weight=1)
     root.title("Amazon Aspect Extraction")
 
-    e1 = tk.Entry(f1)
-    e2 = tk.Entry(f2)
+    font = tk.font.Font(family="Calibri", size=14)
 
-    tk.Label(f1, text="Amazon URL 1").grid(row=0)
-    tk.Label(f2, text="Amazon URL 2").grid(row=0)
+    e1 = tk.Entry(f1, font=font)
+    e2 = tk.Entry(f2, font=font)
 
-    e1.grid(row=0, column=1)
-    e2.grid(row=0, column=1)
+    tk.Label(f1, text="Amazon URL 1", font=font).grid(row=0)
+    tk.Label(f2, text="Amazon URL 2", font=font).grid(row=0)
+
+    e1.grid(row=0, column=1, sticky="we", columnspan=2)
+    e2.grid(row=0, column=1, sticky="we", columnspan=2)
+
 
     plot1 = plotWindow(f1, e1, P)
     plot2 = plotWindow(f2, e2, P)
