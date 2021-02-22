@@ -95,7 +95,9 @@ if __name__ == "__main__":
     )
     print(
         "SVM val accuracy: {}".format(
-            np.mean(np.where((y_test).astype(np.int) == y_svm_test.astype(np.int), 1, 0))
+            np.mean(
+                np.where((y_test).astype(np.int) == y_svm_test.astype(np.int), 1, 0)
+            )
         )
     )
 
@@ -162,7 +164,6 @@ if __name__ == "__main__":
         acc_svm_test.append(tp / np.sum(y_test == c))
         f1_svm_test.append(tp / (tp + 0.5 * (fp + fn)))
 
-
         tp = np.sum(np.logical_and(y_train == c, y_forest_train == c))
         fp = np.sum(np.logical_and(y_train != c, y_forest_train == c))
         fn = np.sum(np.logical_and(y_train == c, y_forest_train != c))
@@ -181,7 +182,6 @@ if __name__ == "__main__":
         fn = np.sum(np.logical_and(y_test == c, y_forest_test != c))
         acc_forest_test.append(tp / np.sum(y_test == c))
         f1_forest_test.append(tp / (tp + 0.5 * (fp + fn)))
-
 
         class_freq_val.append(np.sum(y_val == c) / len(y_val))
 
@@ -260,7 +260,6 @@ if __name__ == "__main__":
             "model_state_dict"
         ]
     )
-
 
     for metric in [accuracy, class_balanced_accuracy, f1_score]:
         evaluate_sentiment_model(model, dataloaders, criterion=metric)

@@ -14,10 +14,12 @@ from chromedriver_py import binary_path
 # https://chromedriver.chromium.org/downloads/
 
 review_part_start = '<span class="cr-original-review-content">'
-review_part_end = '</span>'
+review_part_end = "</span>"
 
-title_part_start = '<span id="productTitle" class="a-size-large product-title-word-break">'
-title_part_end = '</span>'
+title_part_start = (
+    '<span id="productTitle" class="a-size-large product-title-word-break">'
+)
+title_part_end = "</span>"
 
 
 class AmazonReviewPageExtractor:
@@ -274,17 +276,15 @@ def extract_product_title_and_jpg(url: str) -> (str, bytes):
     start_idx = data.find(title_part_start)  # starting point
     if start_idx != -1:
         end_idx = data.find(title_part_end, start_idx)  # starting end point
-        title = (
-            remove_html_code(
-                data[start_idx + len(title_part_start): end_idx]
-            )
-        )
+        title = remove_html_code(data[start_idx + len(title_part_start) : end_idx])
     else:
-        title = 'unknown'
-    img_url_start = '<img alt="' + title + '" src="'
-    start_idx = data.find(img_url_start)
-    end_idx = data.find('"', start_idx + len(img_url_start))
-    img_url = data[start_idx + len(img_url_start): end_idx]
+        title = "unknown"
+    # img_url_start = '<img alt="' + title + '" src="'
+    img_url_start = '<div id="main-image-container" class="a-dynamic-image-container"'
+    start_offset = data.find(img_url_start)
+    start_idx = data.find('src="', start_offset)
+    end_idx = data.find('"', start_idx + len('src="'))
+    img_url = data[start_idx + len('src="') : end_idx]
     r = requests.get(img_url)  # set browser to use this page
     img = r.content
     return title, img
@@ -307,8 +307,8 @@ if __name__ == "__main__":
     # write to file
     newFile.write(bytearray(jpg))
 
-    #review_data = extract_reviews_for_products(testlink, 100, 30)
-    #print("Found: " + str(len(review_data)) + " reviews")
-    #pp = pprint.PrettyPrinter(indent=4)
-    #pp.pprint(review_data)
-    #print("End  : " + datetime.datetime.now().strftime("%H:%M:%S"))
+    # review_data = extract_reviews_for_products(testlink, 100, 30)
+    # print("Found: " + str(len(review_data)) + " reviews")
+    # pp = pprint.PrettyPrinter(indent=4)
+    # pp.pprint(review_data)
+    # print("End  : " + datetime.datetime.now().strftime("%H:%M:%S"))

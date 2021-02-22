@@ -44,7 +44,7 @@ class Pipeline:
         # Step 1: Scrape reviews
         if self.verbose:
             print("Fetching reviews from {}".format(url))
-        reviews = extract_reviews_for_products([url], 1, 1)[0]
+        reviews = extract_reviews_for_products([url], 5, 5)[0]
 
         if self.verbose:
             print("Found {} reviews".format(len(reviews)))
