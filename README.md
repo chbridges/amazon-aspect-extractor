@@ -16,7 +16,7 @@
 - Sentiment LSTM: https://towardsdatascience.com/sentiment-analysis-using-lstm-step-by-step-50d074f09948  
 - Dynamic input sizes for LSTMs: https://towardsdatascience.com/taming-lstms-variable-sized-mini-batches-and-why-pytorch-is-good-for-your-health-61d35642972e  
 
-### Utilized libraries: 
+### Utilized libraries:
 - see requirements.txt  
 - Google Chrome, available https://www.google.com/chrome/
 - chromedriver, available: https://chromedriver.chromium.org/downloads
@@ -27,19 +27,22 @@
 <img src="./milestone_01/Planning_State.png" alt="drawing" width="600rem"/>
 
 
-- Stretch Goal: GUI (Simple Tkinter/Browser-PlugIn) 
+- Stretch Goal: GUI (Simple Tkinter/Browser-PlugIn)
 
 ### Training State:
 Results of best sentiment model on custom Laptop dataset:
 
 |Split \ Metric|Accuracy|Class balanced accuracy|F1 Score|Class Splits|
 |--------------|--------|-----------------------|--------|------------|
-|LSTM Training|81.31%|85.80%|0.8421|-|
-|LSTM Validation|69.11%|59.81%|0.7324|30.46%/6.44%/63.10%|
-|Random Forest Training|63.26%|73.30%|0.5876|-|
-|Random Forest Validation|52.94%|48.82%|0.4204|49.73%/16.58%/33.69%|
-|SVM Training|71.15%|65.78%|0.6438|-|
-|SVM Validation|61.49%|37.84%|0.3689|14.97%/4.28%/80.75%|
+|LSTM Training|81.58%|85.25%|0.8407|-|
+|LSTM Validation|68.12%|62.38%|0.7713|28.12%/8.75%/63.13%|
+|LSTM Test|90.37%|64.56%|0.8787|-|
+|Random Forest Training|62.22%|72.24%|0.5755|-|
+|Random Forest Validation|57.63%|54.22%|0.4716|55.56%/9.03%/35.42%|
+|Random Forest Test|55.00%|60.27%|0.4912|-|
+|SVM Training|72.50%|65.63%|0.6480|-|
+|SVM Validation|62.50%|36.59%|0.3619|14.89%/4.17%/81.94%|
+|SVM Test|62.77%|41.17%|0.4066|-|
 |Validation Set|-|-|-|37.97%/3.21%/58.82%|
 
 Results of best sentiment model on Restaurants (deprecated):
@@ -78,7 +81,7 @@ Results of best sentiment model on Restaurants (deprecated):
 
 ### Preprocessing:
 
-The implementation of our crawler is still a work in progress. 
+The implementation of our crawler is still a work in progress.
 A uniform document schema for the crawled data to ensure its quality will be developed later on.
 
 ### Basic Statistics:
@@ -89,15 +92,15 @@ A uniform document schema for the crawled data to ensure its quality will be dev
 <table style="width:30rem">
   <tr>
     <th>Dataset</th>
-    <th>#(Reviews)</th> 
+    <th>#(Reviews)</th>
     <th>Opinions per Review</th>
     <th>Polarity</th>
     <th></th>
-    <th></th> 
+    <th></th>
   </tr>
   <tr>
     <th></th>
-    <th></th> 
+    <th></th>
     <th></th>
     <th>(+)</th>
     <th>(0)</th>
@@ -105,35 +108,35 @@ A uniform document schema for the crawled data to ensure its quality will be dev
   </tr>
   <tr>
     <td>laptopdata</td>
-    <td>340</td> 
+    <td>340</td>
     <td>8.35</td>
-    <td>1103</td> 
+    <td>1103</td>
     <td>106</td>
     <td>765</td>
   </tr>
   <tr>
     <td>restaurantsdata</td>
-    <td>195</td> 
+    <td>195</td>
     <td>7.28</td>
-    <td>1198</td> 
+    <td>1198</td>
     <td>53</td>
     <td>403</td>
   </tr>
   <tr>
     <td>foursquare_gold</td>
-    <td>157</td> 
+    <td>157</td>
     <td>2.24</td>
-    <td>946</td> 
+    <td>946</td>
     <td>18</td>
     <td>191</td>
   </tr>
-</table> 
+</table>
 
 The overall amount of training data is quite small for training a neural network.  
 Another challenge is the uneven representation of classes.  
 
 The following three plots visualize the distribution of our training data.  
-Empty opinions are opinions in the dataset which do not include a target category or polarity. 
+Empty opinions are opinions in the dataset which do not include a target category or polarity.
 
 #### Laptop:
 

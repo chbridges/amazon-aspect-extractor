@@ -11,3 +11,4 @@ chromedriver-py==88.0.4324.96
 sklearn
 tqdm
 lxml
+wordcloud
