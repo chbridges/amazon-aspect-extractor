@@ -9,7 +9,6 @@ import requests
 from selenium import webdriver
 
 from chromedriver_py import binary_path
-from webdriver_manager.chrome import ChromeDriverManager
 
 # requires chrome driver
 # https://chromedriver.chromium.org/downloads/
@@ -134,7 +133,6 @@ def extract_amazon_review(thread_idx: int, product_id: str, data: list):
     :return: None
     """
     driver = webdriver.Chrome(
-        ChromeDriverManager(version="87.0.4280.88").install(),
         options=get_chrome_options(), executable_path=binary_path
     )  # create driver engine
     driver.get(
@@ -271,7 +269,6 @@ def extract_product_title_and_jpg(url: str) -> (str, bytes):
     :return: title and jpg image as bytes
     """
     driver = webdriver.Chrome(
-        ChromeDriverManager(version="87.0.4280.88").install(),
         options=get_chrome_options(), executable_path=binary_path
     )  # create driver engine
     driver.get(url)  # set browser to use this page

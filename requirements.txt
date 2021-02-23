@@ -1,3 +1,4 @@
+pipenv
 numpy
 pandas
 xgboost
@@ -12,4 +13,3 @@ tqdm
 lxml
 wordcloud
 matplotlib
-webdriver-manager
