@@ -1,7 +1,12 @@
+import sys
 import re
 from collections import Counter
 
-import en_core_web_sm
+try:
+    import en_core_web_sm
+except ModuleNotFoundError:
+    print("\nPlease run 'pipenv run spacy' before running the main program")
+    sys.exit()
 import spacy
 from nltk.stem import PorterStemmer
 from tqdm import tqdm
