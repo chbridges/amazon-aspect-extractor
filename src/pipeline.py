@@ -21,7 +21,7 @@ class Pipeline:
         filter_keywords=True,
         aggregate_similar_aspects=True,
         filter_threshold=0.3,
-        model_path="models/laptops_best.pth",
+        model_path="src/models/laptops_best.pth",
         **kwargs
     ):
         self.algorithm = algorithm

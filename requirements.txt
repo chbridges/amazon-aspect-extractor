@@ -12,3 +12,4 @@ tqdm
 lxml
 wordcloud
 matplotlib
+webdriver-manager

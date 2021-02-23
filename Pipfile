@@ -23,6 +23,7 @@ xgboost = "*"
 importlib-metadata = "*"
 matplotlib = "*"
 wordcloud = "*"
+webdriver-manager = "*"
 
 [scripts]
 spacy = "python -m spacy download en_core_web_sm"
