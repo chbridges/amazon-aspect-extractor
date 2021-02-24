@@ -28,6 +28,9 @@ TODO.md
 src/data/*
 !src/data/ABSA15/instructions.txt
 !src/data/amazon-reviews-ml/instructions.txt
+!src/data/filter_train.csv
 
 # models
 src/models/*
+!src/models/keywordfilter.buffer
+!src/models/keywordfilter.model
