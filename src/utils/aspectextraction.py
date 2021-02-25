@@ -24,9 +24,10 @@ def create_aspectmask(
     Return:
     List of booleans
     """
+    # Adjectives are likely to be part of the sentiment
     if ignore_adjectives:
         nlp = spacy.load("en_core_web_sm", disable=["ner", "parser"])
-
+        # Identify adjectives using PoS tags
         def pos(w):
             return nlp(w)[0].pos_
 
@@ -67,7 +68,15 @@ def create_aspectmask(
 
 
 def count_aspects(mask: list):
-    """Counts the number of keywords in a given aspect mask"""
+    """Counts the number of keywords (runs) in a given aspect mask
+    Example:
+    - input: [1,1,0,0,1,0]
+    - output: 2
+    Arguments:
+    - mask: list of booleans (returned by function create_aspectmask)
+    Return:
+    Positive integer
+    """
     mask_str = "".join([str(x) for x in mask])
     return len(re.findall(r"^1|01", mask_str))
 
@@ -75,8 +84,12 @@ def count_aspects(mask: list):
 def split_aspect_mask(input_mask: list):
     """Splits masks containing more than one aspect into multiple masks by "nullifying" distinct aspects
     Example:
-    input: [1,1,0,0,1,0]
-    output: [[1,1,0,0,0,0], [0,0,0,0,1,0]]
+    - input: [1,1,0,0,1,0]
+    - output: [[1,1,0,0,0,0], [0,0,0,0,1,0]]
+    Argument:
+    - input_mask: list of booleans (returned by function create_aspectmask)
+    Return:
+    - list of aspect masks (lists of booleans)
     """
     mask_str = "".join([str(x) for x in input_mask])
 
@@ -100,7 +113,14 @@ def split_aspect_mask(input_mask: list):
 def extract_aspects(doc: str, sep=r"\. ", algorithm="rake"):
     """
     Returns tokenized substrings and corresponding aspect masks for each aspect in a document
-    based on a given seperator
+    based on a given seperator.
+    Arguments:
+    - doc: A string, typically containing a review
+    - sep: A seperator, by default simply splitting doc into individual sentences
+    - algorithm: Keyword extraction algorithm, can be 'rake' or 'yake'
+    Returns:
+    - List of tokenized sentences containing aspects
+    - List of aspect masks, each corresponding to the sentence with equal index
     """
     mask = create_aspectmask(doc)
     subdocs = re.split(sep, doc)
