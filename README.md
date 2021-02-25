@@ -1,8 +1,14 @@
 # Amazon Aspect Extractor
 
+## Project Description  
+
+This project aims to extract and compile information about products on Amazon from its reviews.  
+Keyword extraction and Sentiment Analysis are employed in order to compute statistics and summaries of products given their URLs.  
+
+
 ### Processing pipeline
 
-<img src="./milestone_01/Pipeline_02.png" alt="drawing" width="600rem"/>
+<img src="./milestone_01/Pipeline_final.png" alt="drawing" width="600rem"/>
 
 
 ### Training State:
@@ -40,8 +46,6 @@ Results of best sentiment model on custom Laptop dataset:
 - see requirements.txt  
 - Google Chrome, available https://www.google.com/chrome/
 - chromedriver, available: https://chromedriver.chromium.org/downloads
-
-## Project Description
 
 
 ### Team members:  
