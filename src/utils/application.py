@@ -1,9 +1,17 @@
-import tkinter as tk
 import threading
+import tkinter as tk
+from io import BytesIO
+
+import numpy as np
+from PIL import Image
+
 import matplotlib
 from matplotlib import gridspec
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-import numpy as np
+from matplotlib.figure import Figure
+from wordcloud import WordCloud
+
+from .reviewextractor import extract_product_title_and_jpg
 
 matplotlib.use("TkAgg")
 
@@ -14,11 +22,7 @@ except ImportError:
     from matplotlib.backends.backend_tkagg import (
         NavigationToolbar2Tk as NavigationToolbar2TkAgg,
     )
-from matplotlib.figure import Figure
-from wordcloud import WordCloud
-from .reviewextractor import extract_product_title_and_jpg
-from PIL import Image
-from io import BytesIO
+
 
 def executePipeline(P, url, data):
     """Pipeline execution function for threading
@@ -28,13 +32,15 @@ def executePipeline(P, url, data):
     - data: the array to save the results in"""
     data.append(P(url))
 
+
 class plotWindow:
-    """"A class that binds itself to a tkinter entry box and plots a link when-
+    """ "A class that binds itself to a tkinter entry box and plots a link when-
     ever Enter is pressed.
     Arguments:
     - frame: The tkinter frame to draw the plots into
     - box: The tkinter entry box to monitor
     - P: The pipeline to use for processing the URL"""
+
     def __init__(self, frame, box, P):
         self.frame = frame
         self.box = box
@@ -47,7 +53,7 @@ class plotWindow:
         - event: Unused tkinter event"""
         url = self.box.get()
         data = []
-        #Assign pipeline execution to a new thread
+        # Assign pipeline execution to a new thread
         thread = threading.Thread(
             target=executePipeline,
             args=(
@@ -60,9 +66,9 @@ class plotWindow:
         while thread.is_alive():
             self.frame.winfo_toplevel().update()
         thread.join()
-        data = data[0] #extracted data from URL
+        data = data[0]  # extracted data from URL
 
-        title, jpg = extract_product_title_and_jpg(url) #Get metadata
+        title, jpg = extract_product_title_and_jpg(url)  # Get metadata
         if len(title) > 50:
             title = title[:47] + "..."
         stream = BytesIO(jpg)
@@ -100,7 +106,7 @@ class plotWindow:
 
         a = fig.add_subplot(gs[0, 1])
 
-        #Bar Plot
+        # Bar Plot
 
         n_asp = 15
 
@@ -129,7 +135,7 @@ class plotWindow:
 
         a = fig.add_subplot(gs[1, 0])
 
-        #Product image
+        # Product image
 
         a.imshow(image)
         a.axis("off")
@@ -139,7 +145,7 @@ class plotWindow:
 
         a = fig.add_subplot(gs[1, 1])
 
-        #Wordcloud
+        # Wordcloud
 
         n_asp = 20
 

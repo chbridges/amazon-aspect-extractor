@@ -3,6 +3,7 @@ import re
 import threading
 import time
 from typing import List
+
 import requests
 from selenium import webdriver
 

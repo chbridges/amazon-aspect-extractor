@@ -1,15 +1,16 @@
-import sys
 import re
+import sys
 from collections import Counter
+
+import spacy
+from nltk.stem import PorterStemmer
+from tqdm import tqdm
 
 try:
     import en_core_web_sm
 except ModuleNotFoundError:
     print("\nPlease run 'pipenv run spacy' before running the main program")
     sys.exit()
-import spacy
-from nltk.stem import PorterStemmer
-from tqdm import tqdm
 
 nlp = en_core_web_sm.load(disable=["parser", "tagger", "ner"])
 

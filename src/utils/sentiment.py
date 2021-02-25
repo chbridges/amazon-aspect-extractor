@@ -1,4 +1,5 @@
 import os
+from typing import List
 
 import torch
 import torch.nn as nn
@@ -7,7 +8,6 @@ from torch.utils.data import Dataset
 from tqdm import tqdm, trange
 from utils.metrics import accuracy, log_sq_diff
 from utils.preprocessing import review_to_int
-from typing import List
 
 
 class SentimentModel(nn.Module):

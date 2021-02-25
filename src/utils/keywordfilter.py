@@ -8,6 +8,10 @@ import xgboost as xgb
 
 
 class Filter:
+    """
+    Classifies whether extracted keywords are suitable aspects, based on their Part-of-Speech tags.
+    """
+
     def __init__(self, include_wordlength=False, params=dict()):
         self.nlp = spacy.load("en_core_web_sm", disable=["ner", "parser"])
         self.params = params
@@ -28,7 +32,10 @@ class Filter:
             self.tags.append("WORDCOUNT")
 
     def train(self):
-        # Load data
+        """
+        Load data from ../data/filter_train.csv, train the model,
+        store the trained model and the processed dataset in ../models/
+        """
         data = []
 
         with open(os.path.join(self.data_path, "filter_train.csv")) as csvfile:
@@ -61,6 +68,10 @@ class Filter:
         return self.bst
 
     def load_model(self):
+        """
+        Load trained model and training data buffer from ../models/
+        """
+
         print("Loading XGBoost model...")
         try:
             self.bst = xgb.Booster()
@@ -74,6 +85,12 @@ class Filter:
         return self.bst
 
     def predict(self, keywords: list):
+        """
+        Regression.
+        Input: List of keywords
+        Output: List of predictions in [0.0, 1.0]
+        """
+
         if self.bst is None:
             print("ERROR: Model is not trained.")
             return None
@@ -96,8 +113,10 @@ class Filter:
 
         return self.bst.predict(data)
 
-    # Cross-Validation
     def cv(self):
+        """
+        5-fold cross validation based on the internally stored dataset
+        """
         if self.dtrain is None:
             print("ERROR: Model is not trained")
             return
@@ -109,8 +128,11 @@ class Filter:
         print("test-rmse-mean: ", np.mean(results["test-rmse-mean"]))
         print("test-rmse-std:  ", np.mean(results["test-rmse-std"]), "\n")
 
-    # Evaluation of classification on the training set for different thresholds
     def classification_eval(self, threshold=0.3):
+        """
+        Evaluation of classification on the training dataset.
+        The default threshold 0.3 is used in the actual program.
+        """
         if self.dtrain is None:
             print("ERROR: Model is not trained")
             return
@@ -127,9 +149,11 @@ class Filter:
         labels = [bool(int(data[i][1])) for i in range(len(data))]
         data = [data[i][0] for i in range(len(data))]
 
+        # Create boolean list of predictions > threshold
         predictions_regression = self.predict(data)
         predictions_classification = [(x >= threshold) for x in predictions_regression]
 
+        # Evaluation and output
         TP = sum(
             [
                 1

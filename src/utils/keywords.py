@@ -152,4 +152,13 @@ def keywords_to_dataframe(
 
 
 def aggregate_similar_keywords(kw1: str, kw2: str):
+    """Maps 2 keywords to one entity if the are similar.
+    Example:
+    {battery life, battery} -> battery
+    {graphic, graphics} -> graphics
+    {graphic quality, graphics} PASS!
+
+    1st run: Unigrams: Base algorithm on edit distance; map to longer element (takes plural forms into account)
+    2nd run: Bigrams:  Replace unigrams, map to common unigram?
+    """
     pass
