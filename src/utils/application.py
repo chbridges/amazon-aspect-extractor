@@ -20,31 +20,21 @@ from .reviewextractor import extract_product_title_and_jpg
 from PIL import Image
 from io import BytesIO
 
-
-class ResizingCanvas(tk.Canvas):
-    def __init__(self, parent, **kwargs):
-        tk.Canvas.__init__(self, parent, **kwargs)
-        self.bind("<Configure>", self.on_resize)
-        self.height = self.winfo_reqheight()
-        self.width = self.winfo_reqwidth()
-
-    def on_resize(self, event):
-        # determine the ratio of old width/height to new width/height
-        wscale = float(event.width) / self.width
-        hscale = float(event.height) / self.height
-        self.width = event.width
-        self.height = event.height
-        # resize the canvas
-        self.config(width=self.width, height=self.height)
-        # rescale all the objects tagged with the "all" tag
-        self.scale("all", 0, 0, wscale, hscale)
-
-
 def executePipeline(P, url, data):
+    """Pipeline execution function for threading
+    Arguments:
+    - P: Pipeline for extracting aspects and sentiments from a URL
+    - url: The URL to crawl
+    - data: the array to save the results in"""
     data.append(P(url))
 
-
 class plotWindow:
+    """"A class that binds itself to a tkinter entry box and plots a link when-
+    ever Enter is pressed.
+    Arguments:
+    - frame: The tkinter frame to draw the plots into
+    - box: The tkinter entry box to monitor
+    - P: The pipeline to use for processing the URL"""
     def __init__(self, frame, box, P):
         self.frame = frame
         self.box = box
@@ -52,8 +42,12 @@ class plotWindow:
         self.P = P
 
     def plot(self, event):
+        """Called whenever enter is pressed in an entry box
+        Arguments:
+        - event: Unused tkinter event"""
         url = self.box.get()
         data = []
+        #Assign pipeline execution to a new thread
         thread = threading.Thread(
             target=executePipeline,
             args=(
@@ -66,9 +60,9 @@ class plotWindow:
         while thread.is_alive():
             self.frame.winfo_toplevel().update()
         thread.join()
-        data = data[0]
+        data = data[0] #extracted data from URL
 
-        title, jpg = extract_product_title_and_jpg(url)
+        title, jpg = extract_product_title_and_jpg(url) #Get metadata
         if len(title) > 50:
             title = title[:47] + "..."
         stream = BytesIO(jpg)
@@ -106,6 +100,8 @@ class plotWindow:
 
         a = fig.add_subplot(gs[0, 1])
 
+        #Bar Plot
+
         n_asp = 15
 
         pos = int(n_asp * len(topx.loc[topx["sentiment_text"] == "positive"]) / 30)
@@ -133,6 +129,8 @@ class plotWindow:
 
         a = fig.add_subplot(gs[1, 0])
 
+        #Product image
+
         a.imshow(image)
         a.axis("off")
 
@@ -140,6 +138,8 @@ class plotWindow:
         a.set_yticks([])
 
         a = fig.add_subplot(gs[1, 1])
+
+        #Wordcloud
 
         n_asp = 20
 
@@ -165,6 +165,11 @@ class plotWindow:
         canvas.get_tk_widget().grid(row=1, column=0, columnspan=3, sticky="nswe")
 
     def color_by_sentiment(self, word, **kwargs):
+        """Coloring function for the wordcloud
+        Arguments:
+        - word: the string to color
+        Returns:
+        A string contatining the color based on the sentiment in the dataset"""
         sentiment = self.df.loc[self.df["aspect"] == word]["sentiment_text"].iloc[0]
         if sentiment == "negative":
             return "red"
@@ -182,6 +187,9 @@ def onFrameConfigure(canvas):
 
 
 def run_app(P):
+    """Define window layout and bind plotting listeners
+    Arguments:
+    - P: Pipeline for fetching data from a URL"""
     # Main window
     root = tk.Tk()
 
