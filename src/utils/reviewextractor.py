@@ -109,7 +109,7 @@ def get_amazon_product_id(url: str) -> str:
     if end == -1:
         end = url.find("?", start + count)
         if end == -1:
-            end = len(url) - 1
+            end = len(url)
     result = url[start + count : end]
     return result
 
@@ -297,3 +297,7 @@ def extract_product_title_and_jpg(url: str) -> (str, bytes):
     img = r.content
     return title, img
 
+
+if __name__=='__main__':
+    url = 'https://www.amazon.com/-/de/dp/B08316YSKH'
+    print(get_amazon_product_id(url))
