@@ -4,6 +4,7 @@
 
 This project aims to extract and compile information about products on Amazon from its reviews.  
 Keyword extraction and Sentiment Analysis are employed in order to compute statistics and summaries of products given their URLs.  
+Set up the program with `pipenv install` and `pipenv run spacy`. Now you can execute the main program by running `pipenv run main`.
 
 
 ### Processing pipeline
