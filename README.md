@@ -1,6 +1,4 @@
-# Amazon Aspect Extractor
-
-## Project Description  
+## Amazon Aspect Extractor
 
 This project aims to extract and compile information about products on Amazon from their reviews.
 Aspect Extraction and Sentiment Analysis are employed in order to compute statistics and summaries of products given their URLs.  
