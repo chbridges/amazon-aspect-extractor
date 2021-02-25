@@ -2,17 +2,26 @@
 
 ## Project Description  
 
-This project aims to extract and compile information about products on Amazon from its reviews using Google Chrome.  
-Keyword extraction and Sentiment Analysis are employed in order to compute statistics and summaries of products given their URLs.  
-Set up the program with `pipenv install` and `pipenv run spacy`. Now you can execute the main program by running `pipenv run main`.
+This project aims to extract and compile information about products on Amazon from their reviews.
+Aspect Extraction and Sentiment Analysis are employed in order to compute statistics and summaries of products given their URLs.  
 
-### Trouble shooting
+### Usage
 
-We had some issues with "Are You A Robot" pages from Amazon. 
-This means that it is not possible to crawl reviews from Amazon. 
-To do this, the aspect extractor can be started in debug mode with `pipenv run debug`.
-In debug mode, the pages will be opened in the foreground and you have the opportunity to enter the image code of the "Are You A Robot" challenge.
-We generally recommend copying the product URLs from the Google Chrome browser so that the corresponding cookies in Google Chrome ensure that no "Are You A Robot" challenge is opened.
+#### Requirements
+- Google Chrome
+- pipenv (`pip3 install pipenv`)
+
+#### Setup
+Run `pipenv install` and `pipenv run spacy` to install all necessary packages. The program can now be run using `pipenv run main`.
+
+#### Troubleshooting
+
+There is an issues with "Are You A Robot" pages from Amazon preventing the crawling of reviews. In this case, a ValueError exception will be thrown while the GUI does not close automatically.
+
+To override this, launch the program using `pipenv run debug`.
+
+In debug mode the pages will be opened in the foreground and you get the opportunity to enter the image code of the "Are You A Robot" challenge.
+We generally recommend copying the product URLs from the Google Chrome browser so that the corresponding cookies ensure that no "Are You A Robot" challenge will be triggered.
 
 
 ### Processing pipeline
