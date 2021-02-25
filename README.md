@@ -2,7 +2,7 @@
 
 ### Processing pipeline
 
-<img src="./milestone_01/Pipeline_02.png" alt="drawing" width="600rem"/>
+<img src="./milestone_01/Pipeline_final.png" alt="drawing" width="600rem"/>
 
 
 ### Training State:
