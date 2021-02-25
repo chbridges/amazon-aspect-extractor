@@ -2,9 +2,17 @@
 
 ## Project Description  
 
-This project aims to extract and compile information about products on Amazon from its reviews.  
+This project aims to extract and compile information about products on Amazon from its reviews using Google Chrome.  
 Keyword extraction and Sentiment Analysis are employed in order to compute statistics and summaries of products given their URLs.  
 Set up the program with `pipenv install` and `pipenv run spacy`. Now you can execute the main program by running `pipenv run main`.
+
+## Trouble shooting
+
+We had some issues with "Are You A Robot" pages from Amazon. 
+This means that it is not possible to crawl reviews from Amazon. 
+To do this, the aspect extractor can be started in debug mode with `pipenv run debug`.
+In debug mode, the pages will be opened in the foreground and you have the opportunity to enter the image code of the "Are You A Robot" challenge.
+We recommend copying the product URLs from the Google Chrome browser so that the corresponding cookies in Google Chrome ensure that no "Are You A Robot challenge" is opened.
 
 
 ### Processing pipeline
@@ -46,7 +54,6 @@ Results of best sentiment model on custom Laptop dataset:
 #### Utilized libraries:
 - see requirements.txt  
 - Google Chrome, available https://www.google.com/chrome/
-- chromedriver, available: https://chromedriver.chromium.org/downloads
 
 
 ### Team members:  
