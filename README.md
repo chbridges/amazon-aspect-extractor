@@ -8,11 +8,13 @@ Aspect Extraction and Sentiment Analysis are employed in order to compute statis
 ### Usage
 
 #### Requirements
+- Python 3.6+
 - Google Chrome
+- Tkinter (`sudo apt-get install python3-tk`)
 - pipenv (`pip3 install pipenv`)
 
 #### Setup
-Run `pipenv install` and `pipenv run spacy` to install all necessary packages. The program can now be run using `pipenv run main`.
+Run `pipenv install` and `pipenv run spacy` in the root directory to install all necessary packages. The program can now be run using `pipenv run main`.
 
 #### Troubleshooting
 
@@ -20,7 +22,7 @@ There is an issues with "Are You A Robot" pages from Amazon preventing the crawl
 
 To override this, launch the program using `pipenv run debug`.
 
-In debug mode the pages will be opened in the foreground and you get the opportunity to enter the image code of the "Are You A Robot" challenge.
+In debug mode, the pages will be opened in the foreground and you get the opportunity to enter the image code of the "Are You A Robot" challenge.
 We generally recommend copying the product URLs from the Google Chrome browser so that the corresponding cookies ensure that no "Are You A Robot" challenge will be triggered.
 
 
