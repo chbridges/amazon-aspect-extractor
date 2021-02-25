@@ -1,7 +1,5 @@
-# from utils.keywordfilter import Filter
 import pandas as pd
 from utils.aspectextraction import extract_aspects
-from utils.keywords import aggregate_similar_keywords
 from utils.reviewextractor import extract_reviews_for_products
 from utils.sentiment import SentimentModel
 from utils.preprocessing import (
@@ -52,7 +50,6 @@ class Pipeline:
         keyphrases = []
         aspect_masks = []
         aspects = []
-        sentiments = []
 
         # Step 2: Extract sentences containing aspects
         if self.verbose:

@@ -1,8 +1,4 @@
-import datetime
 import json
-import sys
-from collections import OrderedDict
-from time import sleep
 from tkinter import *
 from typing import List
 
