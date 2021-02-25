@@ -29,7 +29,7 @@ requests = "*"
 spacy = "python -m spacy download en_core_web_sm"
 test = "coverage run --include=src/*,tests/* -m unittest discover -s ./tests -p *_test.py"
 report = "coverage html"
-main = "python ./src/main.py"
+main = "python -O ./src/main.py"
 
 [requires]
 python_version = "3.6"

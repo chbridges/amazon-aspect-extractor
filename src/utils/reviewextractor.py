@@ -11,7 +11,6 @@ from chromedriver_py import binary_path
 
 # requires Google Chrome Version 88
 
-
 review_part_start = '<span class="cr-original-review-content">'
 review_part_end = "</span>"
 
@@ -120,7 +119,8 @@ def get_chrome_options() -> webdriver.ChromeOptions:
     :return: Default driver options
     """
     options = webdriver.ChromeOptions()
-    options.add_argument("--headless")  # background task; don't open a window
+    if not bool(__debug__):
+        options.add_argument("--headless")  # background task; don't open a window
     options.add_argument("--disable-gpu")
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
@@ -143,7 +143,10 @@ def extract_amazon_review(thread_idx: int, product_id: str, data: list):
     driver.get(
         get_amazon_link(product_id, thread_idx + 1)
     )  # set browser to use this page
-    time.sleep(6)  # wait for page
+    if bool(__debug__):
+        time.sleep(60)
+    else:
+        time.sleep(6)  # wait for page
     result = driver.page_source  # extract page html source
     driver.quit()  # close driver
     review_page = AmazonReviewPageExtractor(result)  # initialize review extractor class
@@ -277,7 +280,10 @@ def extract_product_title_and_jpg(url: str) -> (str, bytes):
         options=get_chrome_options(), executable_path=binary_path
     )  # create driver engine
     driver.get(url)  # set browser to use this page
-    time.sleep(6)  # wait for page
+    if bool(__debug__):
+        time.sleep(60)
+    else:
+        time.sleep(6)  # wait for page
     data = driver.page_source  # extract page html source
     start_idx = data.find(title_part_start)  # starting point
     if start_idx != -1:
@@ -285,16 +291,19 @@ def extract_product_title_and_jpg(url: str) -> (str, bytes):
         title = remove_html_code(data[start_idx + len(title_part_start) : end_idx])
     else:
         title = "unknown"
-    # Search Pattern for the product image container
-    img_url_start = '<div id="main-image-container" class="a-dynamic-image-container"'
-    start_offset = data.find(img_url_start)
-    # Try to find a src attribute in the container
-    start_idx = data.find('src="', start_offset)
-    end_idx = data.find('"', start_idx + len('src="'))
-    img_url = data[start_idx + len('src="') : end_idx]
-    # Send HTTP Request to get the image
-    r = requests.get(img_url)  # set browser to use this page
-    img = r.content
+    try:
+        # Search Pattern for the product image container
+        img_url_start = '<div id="main-image-container" class="a-dynamic-image-container"'
+        start_offset = data.find(img_url_start)
+        # Try to find a src attribute in the container
+        start_idx = data.find('src="', start_offset)
+        end_idx = data.find('"', start_idx + len('src="'))
+        img_url = data[start_idx + len('src="') : end_idx]
+        # Send HTTP Request to get the image
+        r = requests.get(img_url)  # set browser to use this page
+        img = r.content
+    except:
+        img = ''
     return title, img
 
 
