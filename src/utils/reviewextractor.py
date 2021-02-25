@@ -100,7 +100,10 @@ def get_amazon_product_id(url: str) -> str:
         start = url.find("/product-reviews/")  # search pattern for a review page
         count = 17
         if start == -1:
-            raise Exception("Failed to find the product id in the given url: " + url)
+            start = url.find("/product/")  # search pattern for a review page
+            count = 9
+            if start == -1:
+                raise Exception("Failed to find the product id in the given url: " + url)
     end = url.find("/", start + count)
     result = url[start + count : end]
     return result
