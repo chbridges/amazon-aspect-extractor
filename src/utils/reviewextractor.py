@@ -103,7 +103,9 @@ def get_amazon_product_id(url: str) -> str:
             start = url.find("/product/")  # search pattern for a review page
             count = 9
             if start == -1:
-                raise Exception("Failed to find the product id in the given url: " + url)
+                raise Exception(
+                    "Failed to find the product id in the given url: " + url
+                )
     end = url.find("/", start + count)
     if end == -1:
         end = url.find("?", start + count)
@@ -307,6 +309,6 @@ def extract_product_title_and_jpg(url: str) -> (str, bytes):
     return title, img
 
 
-if __name__=='__main__':
-    url = 'https://www.amazon.com/-/de/dp/B08316YSKH'
+if __name__ == "__main__":
+    url = "https://www.amazon.com/-/de/dp/B08316YSKH"
     print(get_amazon_product_id(url))
