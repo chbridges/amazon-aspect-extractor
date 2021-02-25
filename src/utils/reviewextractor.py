@@ -46,7 +46,7 @@ class AmazonReviewPageExtractor:
                 # extract the header an find the body
                 header = (
                     remove_html_code(
-                        self.data[start_idx + len(review_part_start): end_idx]
+                        self.data[start_idx + len(review_part_start) : end_idx]
                     )
                     + ". "
                 )
@@ -54,7 +54,7 @@ class AmazonReviewPageExtractor:
                 end_idx = self.data.find(review_part_end, start_idx)
                 # extract the body
                 content = remove_html_code(
-                    self.data[start_idx + len(review_part_start): end_idx]
+                    self.data[start_idx + len(review_part_start) : end_idx]
                 )
                 start_idx = self.data.find(review_part_start, end_idx)
                 end_idx = self.data.find(review_part_end, start_idx)
@@ -102,7 +102,7 @@ def get_amazon_product_id(url: str) -> str:
         if start == -1:
             raise Exception("Failed to find the product id in the given url: " + url)
     end = url.find("/", start + count)
-    result = url[start + count: end]
+    result = url[start + count : end]
     return result
 
 
@@ -274,7 +274,7 @@ def extract_product_title_and_jpg(url: str) -> (str, bytes):
     start_idx = data.find(title_part_start)  # starting point
     if start_idx != -1:
         end_idx = data.find(title_part_end, start_idx)  # starting end point
-        title = remove_html_code(data[start_idx + len(title_part_start): end_idx])
+        title = remove_html_code(data[start_idx + len(title_part_start) : end_idx])
     else:
         title = "unknown"
     # Search Pattern for the product image container
@@ -283,7 +283,7 @@ def extract_product_title_and_jpg(url: str) -> (str, bytes):
     # Try to find a src attribute in the container
     start_idx = data.find('src="', start_offset)
     end_idx = data.find('"', start_idx + len('src="'))
-    img_url = data[start_idx + len('src="'): end_idx]
+    img_url = data[start_idx + len('src="') : end_idx]
     # Send HTTP Request to get the image
     r = requests.get(img_url)  # set browser to use this page
     img = r.content
