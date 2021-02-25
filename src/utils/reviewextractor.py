@@ -295,7 +295,9 @@ def extract_product_title_and_jpg(url: str) -> (str, bytes):
         title = "unknown"
     try:
         # Search Pattern for the product image container
-        img_url_start = '<div id="main-image-container" class="a-dynamic-image-container"'
+        img_url_start = (
+            '<div id="main-image-container" class="a-dynamic-image-container"'
+        )
         start_offset = data.find(img_url_start)
         # Try to find a src attribute in the container
         start_idx = data.find('src="', start_offset)
@@ -305,7 +307,7 @@ def extract_product_title_and_jpg(url: str) -> (str, bytes):
         r = requests.get(img_url)  # set browser to use this page
         img = r.content
     except:
-        img = ''
+        img = ""
     return title, img
 
 
