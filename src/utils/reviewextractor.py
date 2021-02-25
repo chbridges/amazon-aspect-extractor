@@ -1,6 +1,4 @@
-import datetime
 import math
-import pprint
 import re
 import threading
 import time
@@ -10,8 +8,7 @@ from selenium import webdriver
 
 from chromedriver_py import binary_path
 
-# requires chrome driver
-# https://chromedriver.chromium.org/downloads/
+# requires Google Chrome Version 88
 
 
 review_part_start = '<span class="cr-original-review-content">'
@@ -49,7 +46,7 @@ class AmazonReviewPageExtractor:
                 # extract the header an find the body
                 header = (
                     remove_html_code(
-                        self.data[start_idx + len(review_part_start) : end_idx]
+                        self.data[start_idx + len(review_part_start): end_idx]
                     )
                     + ". "
                 )
@@ -57,7 +54,7 @@ class AmazonReviewPageExtractor:
                 end_idx = self.data.find(review_part_end, start_idx)
                 # extract the body
                 content = remove_html_code(
-                    self.data[start_idx + len(review_part_start) : end_idx]
+                    self.data[start_idx + len(review_part_start): end_idx]
                 )
                 start_idx = self.data.find(review_part_start, end_idx)
                 end_idx = self.data.find(review_part_end, start_idx)
@@ -105,7 +102,7 @@ def get_amazon_product_id(url: str) -> str:
         if start == -1:
             raise Exception("Failed to find the product id in the given url: " + url)
     end = url.find("/", start + count)
-    result = url[start + count : end]
+    result = url[start + count: end]
     return result
 
 
@@ -277,39 +274,17 @@ def extract_product_title_and_jpg(url: str) -> (str, bytes):
     start_idx = data.find(title_part_start)  # starting point
     if start_idx != -1:
         end_idx = data.find(title_part_end, start_idx)  # starting end point
-        title = remove_html_code(data[start_idx + len(title_part_start) : end_idx])
+        title = remove_html_code(data[start_idx + len(title_part_start): end_idx])
     else:
         title = "unknown"
-    # img_url_start = '<img alt="' + title + '" src="'
+    # Search Pattern for the product image container
     img_url_start = '<div id="main-image-container" class="a-dynamic-image-container"'
     start_offset = data.find(img_url_start)
+    # Try to find a src attribute in the container
     start_idx = data.find('src="', start_offset)
     end_idx = data.find('"', start_idx + len('src="'))
-    img_url = data[start_idx + len('src="') : end_idx]
+    img_url = data[start_idx + len('src="'): end_idx]
+    # Send HTTP Request to get the image
     r = requests.get(img_url)  # set browser to use this page
     img = r.content
     return title, img
-
-
-if __name__ == "__main__":
-    # print("Start: " + datetime.datetime.now().strftime("%H:%M:%S"))
-    testlink = [
-        "https://www.amazon.com/-/de/dp/B07RF1XD36/",
-        "https://www.amazon.com/dp/B08JQKMFFB/ref=sspa_dk_detail_2?psc=1&pd_rd_i=B08JQKMFFB&pd_rd_w=5AdCg"
-        + "&pf_rd_p=45e679f6-d55f-4626-99ea-f1ec7720af94&pd_rd_wg=bWbE5&pf_rd_r=HJV72D1QHGE2XJ8QJBV0&pd_rd_r"
-        + "=b3a4c265-2d13-454f-a385-3ad0a71737eb&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEzN1NSWjVRTFFINUFNJmVuY3J5cHR"
-        + "lZElkPUEwMjY3OTk2MUQ5ODYwVU4zNlhBVCZlbmNyeXB0ZWRBZElkPUEwMzMwMjc2M1VQMVJXVllMVVpGJndpZGdldE5hbWU9c"
-        + "3BfZGV0YWlsJmFjdGlvbj1jbGlja1JlZGlyZWN0JmRvTm90TG9nQ2xpY2s9dHJ1ZQ==",
-        "https://www.amazon.com/product-reviews/B08KH53NKR/ref=cm_cr_arp_d_viewopt_sr?ie=UTF8&filterByStar"
-        + "=all_stars&reviewerType=all_reviews&pageNumber=1#reviews-filter-bar",
-    ]
-    title, jpg = extract_product_title_and_jpg(testlink[0])
-    newFile = open("img.jpg", "w+b")
-    # write to file
-    newFile.write(bytearray(jpg))
-
-    # review_data = extract_reviews_for_products(testlink, 100, 30)
-    # print("Found: " + str(len(review_data)) + " reviews")
-    # pp = pprint.PrettyPrinter(indent=4)
-    # pp.pprint(review_data)
-    # print("End  : " + datetime.datetime.now().strftime("%H:%M:%S"))
