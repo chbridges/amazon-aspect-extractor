@@ -12,7 +12,8 @@ from utils.keywordfilter import Filter
 import torch
 
 BEST_MODEL_PATH = os.path.join(
-    "/".join(os.path.realpath(__file__).split("/")[:-1]), "models/laptops_best.pth"
+    os.path.join(os.path.dirname(os.path.realpath(__file__)), "models"),
+    "laptops_best.pth",
 )
 
 
