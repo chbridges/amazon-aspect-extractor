@@ -6,10 +6,14 @@ from utils.preprocessing import (
     remove_stopwords_list,
     remove_special_characters_str,
 )
-
+import os
 
 from utils.keywordfilter import Filter
 import torch
+
+BEST_MODEL_PATH = os.path.join(
+    "/".join(os.path.realpath(__file__).split("/")[:-1]), "models/laptops_best.pth"
+)
 
 
 class Pipeline:
@@ -19,7 +23,7 @@ class Pipeline:
         filter_keywords=True,
         aggregate_similar_aspects=True,
         filter_threshold=0.3,
-        model_path="src/models/laptops_best.pth",
+        model_path=BEST_MODEL_PATH,
         **kwargs
     ):
         self.algorithm = algorithm

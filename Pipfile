@@ -32,4 +32,4 @@ report = "coverage html"
 main = "python ./src/main.py"
 
 [requires]
-python_version = "3.7"
+python_version = "3.6"
